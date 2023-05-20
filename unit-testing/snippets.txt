@@ -1,0 +1,1158 @@
+Snippets: Unit Testing and Dependency Injection Crash Course
+
+1.
+let converter = Converter()
+
+XCTAssertNil(converter.convertFromDecimalToRoman("coconut"))
+XCTAssertNil(converter.convertFromDecimalToRoman("0"))
+XCTAssertNil(converter.convertFromDecimalToRoman("5000"))
+
+2.
+@testable import RomanNumerals
+
+3.
+XCTAssertEqual(converter.convertFromDecimalToRoman("1"), "I")
+
+4.
+XCTAssertEqual(converter.convertFromDecimalToRoman("4999"), "MMMMCMXCIX")
+XCTAssertEqual(converter.convertFromDecimalToRoman("700"), "DCC")
+XCTAssertEqual(converter.convertFromDecimalToRoman("450"), "CDL")
+XCTAssertEqual(converter.convertFromDecimalToRoman("300"), "CCC")
+XCTAssertEqual(converter.convertFromDecimalToRoman("100"), "C")
+XCTAssertEqual(converter.convertFromDecimalToRoman("40"), "XL")
+XCTAssertEqual(converter.convertFromDecimalToRoman("30"), "XXX")
+XCTAssertEqual(converter.convertFromDecimalToRoman("20"), "XX")
+XCTAssertEqual(converter.convertFromDecimalToRoman("10"), "X")
+XCTAssertEqual(converter.convertFromDecimalToRoman("8"), "VIII")
+XCTAssertEqual(converter.convertFromDecimalToRoman("7"), "VII")
+XCTAssertEqual(converter.convertFromDecimalToRoman("6"), "VI")
+XCTAssertEqual(converter.convertFromDecimalToRoman("5"), "V")
+XCTAssertEqual(converter.convertFromDecimalToRoman("4"), "IV")
+XCTAssertEqual(converter.convertFromDecimalToRoman("3"), "III")
+XCTAssertEqual(converter.convertFromDecimalToRoman("2"), "II")
+XCTAssertEqual(converter.convertFromDecimalToRoman("1"), "I")
+
+5.
+let converter = Converter()
+
+XCTAssertNil(converter.convertFromRomanToDecimal("COCONUT"))
+XCTAssertNil(converter.convertFromRomanToDecimal("IIII"))
+
+6.
+XCTAssertEqual(converter.convertFromRomanToDecimal("MDCLXIV"), "1664")
+
+7.
+import UIKit
+
+let appDelegateClass: AnyClass = NSClassFromString("TestingAppDelegate") ?? AppDelegate.self
+
+UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(appDelegateClass))
+
+8.
+@testable import RomanNumerals
+import UIKit
+
+@objc(TestingAppDelegate)
+final class TestingAppDelegate: UIResponder, UIApplicationDelegate {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    for sceneSession in application.openSessions {
+      application.perform(Selector(("_removeSessionFromSessionSet:")), with: sceneSession)
+    }
+    return true
+  }
+
+  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+    sceneConfiguration.delegateClass = TestingSceneDelegate.self
+    return sceneConfiguration
+  }
+}
+
+9.
+@testable import RomanNumerals
+import UIKit
+
+class TestingSceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+  static var connectionOptions: UIScene.ConnectionOptions?
+
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions
+  ) {
+    TestingSceneDelegate.connectionOptions = connectionOptions
+
+    guard let windowScene = (scene as? UIWindowScene) else {
+      return
+    }
+    window = UIWindow(windowScene: windowScene)
+    window?.rootViewController = TestingRootVC()
+    window?.makeKeyAndVisible()
+  }
+}
+
+10.
+import UIKit
+
+class TestingRootVC: UIViewController {
+  override func loadView() {
+    let label = UILabel()
+    label.text = "Running unit tests..."
+    label.textAlignment = .center
+    label.textColor = .white
+    label.backgroundColor = .black
+    view = label
+  }
+}
+
+11.
+import UIKit
+
+class ConverterTextFieldDelegate: NSObject, UITextFieldDelegate {
+  private let converterView: ConverterView
+  private let decimalInputFinished: () -> Void
+  private let romanInputFinished: () -> Void
+
+  init(
+    converterView: ConverterView,
+    decimalInputFinished: @escaping () -> Void,
+    romanInputFinished: @escaping () -> Void
+  ) {
+    self.converterView = converterView
+    self.decimalInputFinished = decimalInputFinished
+    self.romanInputFinished = romanInputFinished
+  }
+  func textField(
+    _ textField: UITextField,
+    shouldChangeCharactersIn range: NSRange,
+    replacementString string: String
+  ) -> Bool {
+    let convertButton: UIButton
+    if textField == converterView.decimalToRomanTextField {
+      convertButton = converterView.decimalToRomanButton
+    } else /* if textField == converterView.romanToDecimalTextField */ {
+      convertButton = converterView.romanToDecimalButton
+    }
+    if range.location == 0 && string == "" {
+      convertButton.isHidden = true
+    } else {
+      convertButton.isHidden = false
+    }
+    return true
+  }
+
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if textField == converterView.decimalToRomanTextField {
+      decimalInputFinished()
+    } else /* if textField == converterView.romanToDecimalTextField */ {
+      romanInputFinished()
+    }
+    return true
+  }
+}
+
+12.
+private var converterTextFieldDelegate: ConverterTextFieldDelegate?
+
+13.
+converterTextFieldDelegate = ConverterTextFieldDelegate(
+  converterView: converterView,
+  decimalInputFinished: { self.convertAndUpdateUIDecimalToRoman() },
+  romanInputFinished: { self.convertAndUpdateUIRomanToDecimal() }
+)
+
+14.
+converterView.setupTextViews(delegate: converterTextFieldDelegate)
+
+15.
+@testable import RomanNumerals
+import XCTest
+
+final class ConverterTextFieldDelegateTests: XCTestCase {
+  private var decimalInputDidFinish = false
+  private var romanInputDidFinish = false
+
+  func testShouldChangeCharactersIn() {
+    let converterView = ConverterView()
+    let delegate = ConverterTextFieldDelegate(
+      converterView: converterView,
+      decimalInputFinished: {},
+      romanInputFinished: {}
+    )
+
+    privateTestShouldChangeCharactersIn(
+      converterView: converterView,
+      delegate: delegate,
+      textField: converterView.decimalToRomanTextField,
+      button: converterView.decimalToRomanButton
+    )
+
+    privateTestShouldChangeCharactersIn(
+      converterView: converterView,
+      delegate: delegate,
+      textField: converterView.romanToDecimalTextField,
+      button: converterView.romanToDecimalButton
+    )
+  }
+
+  private func privateTestShouldChangeCharactersIn(
+    converterView: ConverterView,
+    delegate: ConverterTextFieldDelegate,
+    textField: UITextField,
+    button: UIButton
+  ) {
+    XCTAssert(button.isHidden)
+
+    let range = NSRange(location: 0, length: 0)
+    var shouldChangeCharacters = delegate.textField(
+      textField,
+      shouldChangeCharactersIn: range,
+      replacementString: "🥥"
+    )
+
+    XCTAssert(shouldChangeCharacters)
+    XCTAssertFalse(button.isHidden)
+
+    shouldChangeCharacters = delegate.textField(
+      textField,
+      shouldChangeCharactersIn: range,
+      replacementString: ""
+    )
+
+    XCTAssert(shouldChangeCharacters)
+    XCTAssert(button.isHidden)
+  }
+
+  func testTextFieldShouldReturn() {
+    let converterView = ConverterView()
+
+    privateTestTextFieldShouldReturn(
+      converterView: converterView,
+      textField: converterView.decimalToRomanTextField,
+      inputDidFinish: { self.decimalInputDidFinish = true },
+      assertFinishedInput: { XCTAssert(decimalInputDidFinish) }
+    )
+
+    privateTestTextFieldShouldReturn(
+      converterView: converterView,
+      textField: converterView.romanToDecimalTextField,
+      inputDidFinish: { self.romanInputDidFinish = true },
+      assertFinishedInput: { XCTAssert(romanInputDidFinish) }
+    )
+  }
+
+  private func privateTestTextFieldShouldReturn(
+    converterView: ConverterView,
+    textField: UITextField,
+    inputDidFinish: @escaping () -> Void,
+    assertFinishedInput: () -> Void
+  ) {
+    let delegate = ConverterTextFieldDelegate(
+      converterView: converterView,
+      decimalInputFinished: inputDidFinish,
+      romanInputFinished: inputDidFinish
+    )
+
+    let textFieldShouldReturn = delegate.textFieldShouldReturn(textField)
+
+    XCTAssert(textFieldShouldReturn)
+    assertFinishedInput()
+  }
+}
+
+16.
+import UIKit
+
+class ConverterDataSource: NSObject, UITableViewDataSource {
+  var results: [String]
+
+  init(results: [String]) {
+    self.results = results
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    results.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResultCell.self)") as? ResultCell {
+      cell.configure(result: results[indexPath.row])
+      return cell
+    } else {
+      fatalError("Could not initialize \(ResultCell.self).")
+    }
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    ConverterView.rowHeight
+  }
+}
+
+17.
+private let converterDataSource: ConverterDataSource
+
+18.
+converterDataSource = ConverterDataSource(results: persistentStorage.loadStringArray())
+
+19.
+converterView.setupTable(dataSource: converterDataSource)
+
+20.
+@testable import RomanNumerals
+import XCTest
+
+final class ConverterDataSourceTests: XCTestCase {
+  private let dataSource = ConverterDataSource(results: ["🥥", "🍕", "🐋"])
+  private let indexPathZero = IndexPath(row: 0, section: 0)
+
+  func testNumberOfRowsInSection() {
+    let numberOfRows = dataSource.tableView(UITableView(), numberOfRowsInSection: 0)
+    XCTAssertEqual(dataSource.results.count, numberOfRows)
+  }
+
+  func testCellForRowAt() {
+    let tableView = UITableView()
+    tableView.register(ResultCell.self, forCellReuseIdentifier: "\(ResultCell.self)")
+    guard let cell = dataSource.tableView(tableView, cellForRowAt: indexPathZero) as? ResultCell else {
+      XCTFail("Could not get first \(ResultCell.self).")
+      return
+    }
+    XCTAssertEqual(dataSource.results[0], cell.resultLabel.text)
+  }
+
+  func testHeightForRowAt() {
+    let height = dataSource.tableView(UITableView(), heightForRowAt: indexPathZero)
+    XCTAssertEqual(ConverterView.rowHeight, height)
+  }
+}
+
+Bogus DeviceTests.swift
+@testable import RomanNumerals
+import XCTest
+
+final class DeviceTests: XCTestCase {
+  func testUserFacingMessage() {
+    XCTAssertEqual("RomanNumerals is running on Simulator.", Device.userFacingMessage)
+  }
+}
+
+Bogus PersistentStorageTests.swift
+@testable import RomanNumerals
+import XCTest
+
+final class PersistentStorageTests: XCTestCase {
+  func testPersistAndLoadStringArray() {
+    let sampleStringArray = ["🥥", "🍕", "🐋"]
+    PersistentStorage.persistStringArray([])
+    XCTAssertEqual([], PersistentStorage.loadStringArray())
+    PersistentStorage.persistStringArray(sampleStringArray)
+    XCTAssertEqual(sampleStringArray, PersistentStorage.loadStringArray())
+  }
+}
+
+Bogus AnalyticsServiceTests.swift
+@testable import RomanNumerals
+import XCTest
+
+final class AnalyticsServiceTests: XCTestCase {
+  func testSendAnalyticsEvent() {
+    AnalyticsService.sendAnalyticsEvent(.converterViewLoaded)
+    AnalyticsService.sendAnalyticsEvent(.conversionSucceeded)
+    AnalyticsService.sendAnalyticsEvent(.conversionFailed)
+    AnalyticsService.sendAnalyticsEvent(.weatherRequestSucceeded)
+    AnalyticsService.sendAnalyticsEvent(.weatherRequestFailed)
+  }
+}
+
+Bogus WeatherRequesterTests.swift
+@testable import RomanNumerals
+import XCTest
+
+class WeatherRequesterTests: XCTestCase {
+  func testGetCurrentConditionsInRome() async {
+    if let conditions = await WeatherRequester.getCurrentConditionsInRome() {
+      XCTAssertEqual("Currently in Rome: 52° F, clear sky", conditions)
+    } else {
+      XCTFail("Getting current conditions in Rome failed.")
+      return
+    }
+  }
+}
+
+21.
+protocol Device {
+  var userFacingMessage: String { get }
+}
+
+extension Device {
+  var placeholder: String {
+    "PLACEHOLDER"
+  }
+
+  var messageWithoutDevice: String {
+    "RomanNumerals is running on \(placeholder)."
+  }
+}
+
+22.
+import UIKit
+
+struct DeviceReal: Device {
+  var userFacingMessage: String {
+    messageWithoutDevice.replacingOccurrences(of: placeholder, with: UIDevice.current.name)
+  }
+}
+
+23.
+struct DeviceStub: Device {
+  let name: String
+
+  var userFacingMessage: String {
+    messageWithoutDevice.replacingOccurrences(of: placeholder, with: name)
+  }
+}
+
+24.
+window.rootViewController = ConverterVC(device: DeviceReal())
+
+25.
+private let device: Device
+
+26.
+init(device: Device) {
+    self.device = device
+
+27.
+converterView.deviceLabel.text = device.userFacingMessage
+
+28.
+@testable import RomanNumerals
+import XCTest
+
+final class DeviceStubTests: XCTestCase {
+  func testUserFacingMessage() {
+    let testDevice = "iPod Nano"
+    let device = DeviceStub(name: testDevice)
+    XCTAssertEqual("RomanNumerals is running on \(testDevice).", device.userFacingMessage)
+  }
+}
+
+29.
+@testable import RomanNumerals
+import XCTest
+
+final class DeviceRealTests: XCTestCase {
+  func testUserFacingMessage() {
+    let device = DeviceReal()
+    let expectedPrefix = "RomanNumerals is running on"
+    let actualPrefix = String(device.userFacingMessage.prefix(expectedPrefix.count))
+    XCTAssertEqual(expectedPrefix, actualPrefix)
+  }
+}
+
+30.
+protocol SoundPlayer {
+  func play(_ sound: Sound)
+}
+
+31.
+class SoundPlayerDummy: SoundPlayer {
+  func play(_ sound: Sound) {}
+}
+
+32.
+private let converter: Converter
+private let soundPlayer: SoundPlayer
+
+33.
+init(device: Device, soundPlayer: SoundPlayer) {
+  self.device = device
+  self.soundPlayer = soundPlayer
+  converter = Converter(soundPlayer: soundPlayer)
+  converterDataSource = ConverterDataSource(results: persistentStorage.loadStringArray())
+  super.init(nibName: nil, bundle: nil)
+}
+
+34.
+let soundPlayer: SoundPlayer
+
+35.
+window.rootViewController = ConverterVC(
+  device: DeviceReal(),
+  soundPlayer: SoundPlayerReal()
+)
+
+36.
+@testable import RomanNumerals
+import XCTest
+
+final class SoundPlayerDummyTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerDummy()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+37.
+let converter = Converter(soundPlayer: SoundPlayerDummy())
+
+38.
+@testable import RomanNumerals
+import XCTest
+
+final class SoundPlayerRealTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerReal()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+39.
+protocol PersistentStorage {
+  func loadStringArray() -> [String]
+  func persistStringArray(_ array: [String])
+}
+
+40.
+
+class PersistentStorageFake: PersistentStorage {
+  private var persistedArray: [String] = []
+
+  func loadStringArray() -> [String] {
+    persistedArray
+  }
+
+  func persistStringArray(_ array: [String]) {
+    persistedArray = array
+  }
+}
+
+41.
+private let persistentStorage: PersistentStorage
+
+42.
+window.rootViewController = ConverterVC(
+  device: DeviceReal(),
+  soundPlayer: SoundPlayerReal(),
+  persistentStorage: PersistentStorageReal()
+)
+
+43.
+@testable import RomanNumerals
+import XCTest
+
+final class PersistentStorageFakeTests: XCTestCase {
+  func testLoadAndPersistStringArray() {
+    let persistentStorage = PersistentStorageFake()
+    XCTAssert(persistentStorage.loadStringArray().isEmpty)
+    let arrayToPersist = ["🐋", "🍕", "🥥"]
+    persistentStorage.persistStringArray(arrayToPersist)
+    XCTAssertEqual(arrayToPersist, persistentStorage.loadStringArray())
+  }
+}
+
+44.
+@testable import RomanNumerals
+import XCTest
+
+final class PersistentStorageRealTests: XCTestCase {
+  private var savedArray: [String] = []
+  private let persistentStorage = PersistentStorageReal()
+
+  override func setUp() {
+    savedArray = persistentStorage.loadStringArray()
+  }
+
+  func testLoadAndPersistStringArray() {
+    persistentStorage.persistStringArray([])
+    XCTAssert(persistentStorage.loadStringArray().isEmpty)
+    let arrayToPersist = ["🎉", "🐋", "🍕", "🥥", "🌴"]
+    persistentStorage.persistStringArray(arrayToPersist)
+    XCTAssertEqual(arrayToPersist, persistentStorage.loadStringArray())
+  }
+
+  override func tearDown() {
+    persistentStorage.persistStringArray(savedArray)
+  }
+}
+
+45.
+class AnalyticsServiceReal: AnalyticsService {
+  func sendAnalyticsEvent(_ analyticsEvent: AnalyticsEvent) {
+    // Imagine that the next line sends the event to, for example, GoogleAnalytics instead
+    // of printing. Something like this:
+    // shared.sendAnalyticEventToBackend(analyticEvent)
+
+    print("analytics event sent: \(analyticsEvent)")
+  }
+}
+
+46.
+protocol AnalyticsService {
+  func sendAnalyticsEvent(_ analyticsEvent: AnalyticsEvent)
+}
+
+47.
+class AnalyticsServiceSpy: AnalyticsService {
+  private(set) var processedEvents: [AnalyticsEvent] = []
+
+  func sendAnalyticsEvent(_ analyticsEvent: AnalyticsEvent) {
+    processedEvents.append(analyticsEvent)
+  }
+}
+
+48.
+window.rootViewController = ConverterVC(
+  device: DeviceReal(),
+  soundPlayer: SoundPlayerReal(),
+  persistentStorage: PersistentStorageReal(),
+  analyticsService: AnalyticsServiceReal()
+)
+
+49.
+private let analyticsService: AnalyticsService
+
+50.
+converter = Converter(soundPlayer: soundPlayer, analyticsService: analyticsService)
+
+51.
+if let conditions = await WeatherRequester.getCurrentConditionsInRome(analyticsService: analyticsService) {
+
+52.
+static func getCurrentConditionsInRome(analyticsService: AnalyticsService) async -> String? {
+
+53.
+let analyticsService: AnalyticsService
+
+54.
+let converter = Converter(soundPlayer: SoundPlayerDummy(), analyticsService: AnalyticsServiceSpy())
+
+55.
+@testable import RomanNumerals
+import XCTest
+
+final class AnalyticsServiceSpyTests: XCTestCase {
+  func testSendAnalyticsEvent() async {
+    guard Config.openWeatherKey != "" else {
+      XCTFail("This unit test requires an Open Weather API key.")
+      return
+    }
+
+    let spy = AnalyticsServiceSpy()
+
+    // converterViewLoaded
+    let converterVC = await ConverterVC(
+      device: DeviceStub(name: ""),
+      soundPlayer: SoundPlayerDummy(),
+      persistentStorage: PersistentStorageFake(),
+      analyticsService: spy
+    )
+    await converterVC.loadView()
+    XCTAssertEqual(.converterViewLoaded, spy.processedEvents[0])
+
+    // conversionFailed (decimal to Roman)
+    let converter = Converter(soundPlayer: SoundPlayerDummy(), analyticsService: spy)
+    _ = converter.convertFromDecimalToRoman("🥥")
+    XCTAssertEqual(.conversionFailed, spy.processedEvents[1])
+
+    // conversionSucceeded (decimal to Roman)
+    _ = converter.convertFromDecimalToRoman("42")
+    XCTAssertEqual(.conversionSucceeded, spy.processedEvents[2])
+
+    // conversionFailed (Roman to decimal)
+    _ = converter.convertFromRomanToDecimal("🍕")
+    XCTAssertEqual(.conversionFailed, spy.processedEvents[3])
+
+    // conversionFailed (Roman to decimal, non-canonical)
+    _ = converter.convertFromRomanToDecimal("IIII")
+    XCTAssertEqual(.conversionFailed, spy.processedEvents[4])
+
+    // conversionSucceeded (Roman to decimal)
+    _ = converter.convertFromRomanToDecimal("IV")
+    XCTAssertEqual(.conversionSucceeded, spy.processedEvents[5])
+
+    // weatherRequestSucceeded or weatherRequestFailed
+    if await WeatherRequester.getCurrentConditionsInRome(analyticsService: spy) != nil {
+      XCTAssertEqual(.weatherRequestSucceeded, spy.processedEvents[6])
+    } else {
+      XCTAssertEqual(.weatherRequestFailed, spy.processedEvents[6])
+    }
+  }
+}
+
+56.
+import Foundation
+
+extension URLSession {
+ static var urlDataDict: [URL: Data] = [:]
+ static var didProcessURL = false
+
+ static var stubSession: URLSession {
+   if !didProcessURL {
+     didProcessURL = true
+
+     guard let conditionsDataFromBundle else {
+       fatalError("Unable to load mock JSON data for URL \(remoteURL).")
+     }
+
+     urlDataDict[remoteURL] = conditionsDataFromBundle
+   }
+
+   let config = URLSessionConfiguration.ephemeral
+   config.protocolClasses = [URLProtocolStub.self]
+   return URLSession(configuration: config)
+ }
+
+ static var remoteURL: URL {
+   if let remoteURL = URL(string: WeatherRequester.urlString) {
+     return remoteURL
+   } else {
+     fatalError(URL.couldNotInit(urlString: WeatherRequester.urlString))
+   }
+ }
+
+ static var conditionsDataFromBundle: Data? {
+   if
+     let path = Bundle.main.path(forResource: "currentConditions.json", ofType: nil),
+     let conditionsDataFromBundle = try? Data(contentsOf: URL(fileURLWithPath: path))
+   {
+     return conditionsDataFromBundle
+   } else {
+     return nil
+   }
+ }
+}
+
+57.
+import Foundation
+
+class URLProtocolStub: URLProtocol {
+  override class func canInit(with request: URLRequest) -> Bool {
+    true
+  }
+
+  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    request
+  }
+
+  override func startLoading() {
+    if
+      let url = request.url,
+      let data = URLSession.urlDataDict[url]
+    {
+      client?.urlProtocol(self, didReceive: URLResponse(), cacheStoragePolicy: .notAllowed)
+      client?.urlProtocol(self, didLoad: data)
+    } else {
+      client?.urlProtocol(self, didFailWithError: LoadingError.loadFailed)
+    }
+    client?.urlProtocolDidFinishLoading(self)
+  }
+
+  override func stopLoading() {}
+
+  enum LoadingError: Error {
+    case loadFailed
+  }
+}
+
+58.
+{
+  "current": {
+    "temp": 11.68,
+    "weather": [
+      {
+        "description": "cloudy with a chance of suppli",
+      }
+    ]
+  }
+}
+
+59.
+import Foundation
+
+extension URL {
+  static func couldNotInit(urlString: String) -> String {
+    "Could not initialize URL from \(urlString)."
+  }
+}
+
+60.
+window.rootViewController = ConverterVC(
+  device: DeviceReal(),
+  soundPlayer: SoundPlayerReal(),
+  persistentStorage: PersistentStorageReal(),
+  analyticsService: AnalyticsServiceReal(),
+  session: URLSession.shared
+)
+
+61.
+private let session: URLSession
+
+62.
+if let conditions = await WeatherRequester.getCurrentConditionsInRome(
+  analyticsService: analyticsService,
+  session: session
+) {
+
+63.
+static func getCurrentConditionsInRome(
+  analyticsService: AnalyticsService,
+  session: URLSession
+) async -> String? {
+
+64.
+session: URLSession.stubSession
+
+65.
+if await WeatherRequester.getCurrentConditionsInRome(analyticsService: spy, session: .stubSession) != nil {
+
+66.
+@testable import RomanNumerals
+import XCTest
+
+class WeatherRquesterTests: XCTestCase {
+  func testGetCurrentConditionsInRome() async {
+    guard Config.openWeatherKey != "" else {
+      XCTFail("This unit test requires an Open Weather API key.")
+      return
+    }
+
+    let currentConditions = await WeatherRequester.getCurrentConditionsInRome(
+      analyticsService: AnalyticsServiceSpy(),
+      session: .stubSession
+    )
+    XCTAssertEqual("Currently in Rome: 53° F, cloudy with a chance of suppli", currentConditions)
+  }
+}
+
+67.
+@testable import RomanNumerals
+import XCTest
+
+final class ConverterVCTests: XCTestCase {
+
+}
+
+68.
+private var converterVC: ConverterVC!
+
+override func setUp() {
+  converterVC = ConverterVC(
+    device: DeviceStub(name: "🥥"),
+    soundPlayer: SoundPlayerDummy(),
+    persistentStorage: PersistentStorageFake(),
+    analyticsService: AnalyticsServiceSpy(),
+    session: URLSession.stubSession
+  )
+}
+
+func testConvertAndUpdateUIDecimalToRoman() {
+  XCTAssert(converterVC.converterDataSource.results.isEmpty)
+  converterVC.converterView.decimalToRomanTextField.text = "42"
+  converterVC.convertAndUpdateUIDecimalToRoman()
+  XCTAssertEqual("42 ➡️ XLII", converterVC.converterDataSource.results[0])
+}
+
+func testConvertAndUpdateUIRomanToDecimal() {
+  XCTAssert(converterVC.converterDataSource.results.isEmpty)
+  converterVC.converterView.romanToDecimalTextField.text = "XLII"
+  converterVC.convertAndUpdateUIRomanToDecimal()
+  XCTAssertEqual("XLII ➡️ 42", converterVC.converterDataSource.results[0])
+}
+
+69.
+func testClearResults() {
+  XCTAssert(converterVC.converterDataSource.results.isEmpty)
+  converterVC.converterDataSource.results = ["🎉 ➡️ 🌴"]
+  XCTAssertFalse(converterVC.converterDataSource.results.isEmpty)
+  converterVC.clearResults()
+  XCTAssert(converterVC.converterDataSource.results.isEmpty)
+}
+
+70.
+@testable import RomanNumerals
+import XCTest
+
+final class ConverterViewTests: XCTestCase {
+  private let converterView = ConverterView(frame: .zero)
+
+  func testSetupTable() {
+    XCTAssertNil(converterView.tableView.value(forKey: "_cellClassDict") as? [String: Any])
+    XCTAssertNil(converterView.tableView.dataSource)
+
+    let dataSource = ConverterDataSource(results: ["🥥", "🍕", "🐋"])
+    converterView.setupTable(dataSource: dataSource)
+    guard let castedDataSource = converterView.tableView.dataSource as? ConverterDataSource else {
+      XCTFail("Could not cast dataSource to \(ConverterDataSource.self).")
+      return
+    }
+    XCTAssertEqual(dataSource, castedDataSource)
+
+    guard let registeredCellClasses = converterView.tableView.value(forKey: "_cellClassDict") as? [String: Any] else {
+      XCTFail("Could not get registered cell classes.")
+      return
+    }
+    XCTAssertEqual("\(ResultCell.self)", registeredCellClasses.first?.key)
+  }
+
+  func testSetupTextViews() {
+    XCTAssertNil(converterView.romanToDecimalTextField.delegate)
+    XCTAssertNil(converterView.decimalToRomanTextField.delegate)
+
+    let delegate = ConverterTextFieldDelegate(
+      converterView: converterView,
+      decimalInputFinished: {},
+      romanInputFinished: {}
+    )
+    converterView.setupTextViews(delegate: delegate)
+
+    guard let castedRomanDelegate = converterView.romanToDecimalTextField.delegate as? ConverterTextFieldDelegate else {
+      XCTFail("Could not cast delegate to \(ConverterTextFieldDelegate.self).")
+      return
+    }
+    XCTAssertEqual(delegate, castedRomanDelegate)
+
+    guard let castedDecimalDelegate = converterView.decimalToRomanTextField.delegate as? ConverterTextFieldDelegate else {
+      XCTFail("Could not cast delegate to \(ConverterTextFieldDelegate.self).")
+      return
+    }
+    XCTAssertEqual(delegate, castedDecimalDelegate)
+  }
+
+  func testScrollTableAndSetClearButtonVisibility() {
+    let dataSource = ConverterDataSource(results: ["🥥", "🍕", "🐋"])
+    converterView.setupTable(dataSource: dataSource)
+
+    XCTAssert(converterView.clearButton.isHidden)
+    converterView.scrollTableAndSetClearButtonVisibility(lastRow: 0)
+    XCTAssertFalse(converterView.clearButton.isHidden)
+    converterView.scrollTableAndSetClearButtonVisibility(lastRow: 1)
+    XCTAssertFalse(converterView.clearButton.isHidden)
+  }
+}
+
+71.
+@testable import RomanNumerals
+import XCTest
+
+class ResultCellTests: XCTestCase {
+  func testResultCell() {
+    let cell = ResultCell(style: .default, reuseIdentifier: "\(ResultCell.self)")
+    let 🥥 = "🥥"
+    cell.configure(result: 🥥)
+    XCTAssertEqual(🥥, cell.resultLabel.text)
+  }
+}
+
+72.
+@testable import RomanNumerals
+import XCTest
+
+class NSLayoutConstraintExtensionTests: XCTestCase {
+  func testActivate() {
+    let parentView = UIView()
+    let view1 = UIView()
+    let view2 = UIView()
+
+    [view1, view2].forEach {
+      parentView.addSubview($0)
+    }
+
+    let constraint = NSLayoutConstraint(
+      item: view1,
+      attribute: .bottom,
+      relatedBy: .equal,
+      toItem: view2,
+      attribute: .bottom,
+      multiplier: 1.0,
+      constant: 0.0
+    )
+
+    XCTAssertFalse(constraint.isActive)
+    constraint.activate()
+    XCTAssert(constraint.isActive)
+  }
+}
+
+73.
+@testable import RomanNumerals
+import XCTest
+
+class URLExtensionTests: XCTestCase {
+  func testCouldNotInit() {
+    let 🙀 = "🙀"
+    XCTAssertEqual("Could not initialize URL from \(🙀).", URL.couldNotInit(urlString: 🙀))
+  }
+}
+
+74.
+@testable import RomanNumerals
+import XCTest
+
+class URLProtocolStubTests: XCTestCase {
+  private var request: URLRequest {
+    URLRequest(url: URLSession.remoteURL)
+  }
+
+  func testCanInit() {
+    XCTAssert(URLProtocolStub.canInit(with: request))
+  }
+
+  func testCanonicalRequest() {
+    XCTAssertEqual(request, URLProtocolStub.canonicalRequest(for: request))
+  }
+
+  func testStartLoading() {
+    _ = URLSession.stubSession
+    let exp = expectation(description: "Waiting for load.")
+    let protocolClientSpy = ProtocolClientSpy(didLoad: { data in
+      XCTAssertEqual(URLSession.conditionsDataFromBundle, data)
+      exp.fulfill()
+    })
+    let urlProtocolStub = URLProtocolStub(request: request, cachedResponse: nil, client: protocolClientSpy)
+    urlProtocolStub.startLoading()
+    let timeout: TimeInterval = 1.0
+    wait(for: [exp], timeout: timeout)
+  }
+}
+
+private class ProtocolClientSpy: NSObject, URLProtocolClient {
+  let didLoad: (Data) -> Void
+
+  init(didLoad: @escaping (Data) -> Void) {
+    self.didLoad = didLoad
+  }
+
+  func urlProtocol(_ protocol: URLProtocol, didLoad data: Data) { didLoad(data) }
+
+  func urlProtocolDidFinishLoading(_ protocol: URLProtocol) {}
+  func urlProtocol(_ protocol: URLProtocol, wasRedirectedTo request: URLRequest, redirectResponse: URLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, cachedResponseIsValid cachedResponse: CachedURLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive response: URLResponse, cacheStoragePolicy policy: URLCache.StoragePolicy) {}
+  func urlProtocol(_ protocol: URLProtocol, didFailWithError error: Error) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive challenge: URLAuthenticationChallenge) {}
+  func urlProtocol(_ protocol: URLProtocol, didCancel challenge: URLAuthenticationChallenge) {}
+}
+
+75.
+@testable import RomanNumerals
+import XCTest
+
+class URLSessionExtensionTests: XCTestCase {
+  func testStubData() {
+    let session = URLSession.stubSession
+    XCTAssert(session.configuration.protocolClasses?[0] is URLProtocolStub.Type)
+    let expectedTestURLCount = 1
+    XCTAssertEqual(expectedTestURLCount, URLSession.urlDataDict.count)
+  }
+}
+
+76.
+@testable import RomanNumerals
+import XCTest
+
+class UsesAutoLayoutTests: XCTestCase {
+  @UsesAutoLayout
+  private var wrappedView = UIView()
+
+  func testUsesAutoLayout() {
+    let vanillaView = UIView()
+    XCTAssert(vanillaView.translatesAutoresizingMaskIntoConstraints)
+
+    XCTAssertFalse(wrappedView.translatesAutoresizingMaskIntoConstraints)
+
+    var vanillaWrappedView = UsesAutoLayout<UIView>(wrappedValue: vanillaView)
+    XCTAssertFalse(vanillaWrappedView.wrappedValue.translatesAutoresizingMaskIntoConstraints)
+
+    vanillaWrappedView.wrappedValue = vanillaView
+    XCTAssertFalse(vanillaWrappedView.wrappedValue.translatesAutoresizingMaskIntoConstraints)
+  }
+}
+
+77.
+import Foundation
+
+struct World {
+  var device: Device
+  var soundPlayer: SoundPlayer
+  var persistentStorage: PersistentStorage
+  var analyticsService: AnalyticsService
+  var session: URLSession
+
+  static let production: World = {
+    World(
+      device: DeviceReal(),
+      soundPlayer: SoundPlayerReal(),
+      persistentStorage: PersistentStorageReal(),
+      analyticsService: AnalyticsServiceReal(),
+      session: URLSession.shared
+    )
+  }()
+
+  static let unitTest: World = {
+    World(
+      device: DeviceStub(name: "iPod Nano"),
+      soundPlayer: SoundPlayerDummy(),
+      persistentStorage: PersistentStorageFake(),
+      analyticsService: AnalyticsServiceSpy(),
+      session: URLSession.stubSession
+    )
+  }()
+}
+
+78.
+var Current = World.production
+
+79.
+Current = World.unitTest
+
+80.
+guard let spy = Current.analyticsService as? AnalyticsServiceSpy else {
+  XCTFail("Current.analyticsService is not an AnalyticsServiceSpy.")
+  return
+}
+spy.clearEvents()
+
+81.
+func clearEvents() {
+  processedEvents = []
+}
+
+82.
+override func setUp() {
+  converterVC = ConverterVC()
+  Current.persistentStorage.persistStringArray([])
+}
+
+override func tearDown() {
+  Current.persistentStorage.persistStringArray([])
+}
+
+83.
+func testAddTwoInts() {
+  XCTAssertEqual(42, Adder.addTwoInts(int1: 20, int2: 22)
+}
+
+84.
+enum Adder {
+  static func addTwoInts(int1: Int, int2: Int) -> Int {
+    42
+  }
+}
+
+85.
+XCTAssertEqual(2, Adder.addTwoInts(int1: 1, int2: 1)
+
+86.
+enum Adder {
+  static func addTwoInts(int1: Int, int2: Int) -> Int? {
+    int1 + int2
+  }
+}
+
+87.
+// 42,00 €
+// £42.00

@@ -1,0 +1,6 @@
+disabled_rules:
+  - cyclomatic_complexity
+  - function_body_length
+  - identifier_name
+  - line_length
+  - weak_delegate
