@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SymbolCell" rowHeight="120" id="KGk-i7-Jjw" customClass="SymbolCell" customModule="CoolSymbols" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="385" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pawprint.fill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="acj-cK-2EP" userLabel="nameLabel">
+                        <rect key="frame" x="20" y="10" width="247" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pawprint.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0sa-j5-mWQ" userLabel="representationImageView">
+                        <rect key="frame" x="275" y="11" width="90" height="97.666666666666671"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="Wsl-l1-hHn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4J-yw-Mjo" userLabel="categoryLabel">
+                        <rect key="frame" x="20" y="39" width="47" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="acj-cK-2EP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="ANx-Ba-UV5"/>
+                    <constraint firstItem="acj-cK-2EP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="CAm-RS-263"/>
+                    <constraint firstAttribute="bottom" secondItem="0sa-j5-mWQ" secondAttribute="bottom" constant="11" id="D01-n6-xkE"/>
+                    <constraint firstAttribute="trailing" secondItem="0sa-j5-mWQ" secondAttribute="trailing" constant="20" symbolic="YES" id="EVD-LG-rU4"/>
+                    <constraint firstItem="0sa-j5-mWQ" firstAttribute="leading" secondItem="acj-cK-2EP" secondAttribute="trailing" constant="8" id="Ml8-af-5lQ"/>
+                    <constraint firstItem="0sa-j5-mWQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="aze-aT-kL5"/>
+                    <constraint firstItem="t4J-yw-Mjo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="lRb-ce-AeO"/>
+                    <constraint firstItem="t4J-yw-Mjo" firstAttribute="top" secondItem="acj-cK-2EP" secondAttribute="bottom" constant="8" symbolic="YES" id="u6d-Yb-ICS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryLabel" destination="t4J-yw-Mjo" id="Qhn-Ta-VVP"/>
+                <outlet property="nameLabel" destination="acj-cK-2EP" id="Ak1-qL-iGp"/>
+                <outlet property="representationImageView" destination="0sa-j5-mWQ" id="pal-kP-2xV"/>
+            </connections>
+            <point key="canvasLocation" x="63.358778625954194" y="15.492957746478874"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pawprint.fill" catalog="system" width="128" height="112"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

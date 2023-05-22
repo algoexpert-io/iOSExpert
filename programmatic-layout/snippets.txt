@@ -1,0 +1,512 @@
+Snippets: Programmatic-Layout Crash Course
+
+1.
+import UIKit
+
+class MainTabBarVC: UITabBarController {
+ override func viewDidLoad() {
+   let browseSymbolsVC = UIViewController()
+   browseSymbolsVC.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(systemName: "eye.fill"), selectedImage: nil)
+   let browseSymbolsNC = UINavigationController()
+   browseSymbolsNC.pushViewController(browseSymbolsVC, animated: false)
+
+   let settingVC = UIViewController()
+   settingVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle.fill"), selectedImage: nil)
+
+   viewControllers = [browseSymbolsNC, settingVC]
+ }
+}
+
+2.
+func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+  guard let windowScene = scene as? UIWindowScene else {
+    fatalError("Could not cast scene to UIWindowScene.")
+  }
+  let window = UIWindow(windowScene: windowScene)
+  window.rootViewController = MainTabBarVC()
+  self.window = window
+  window.makeKeyAndVisible()
+}
+
+3.
+import UIKit
+
+class BrowseSymbolsView: UIView {
+ required init(coder aDecoder: NSCoder) {
+   fatalError("init(coder:) has not been implemented.")
+ }
+
+ override init(frame: CGRect) {
+   super.init(frame: frame)
+   backgroundColor = .purple
+ }
+}
+
+4.
+import UIKit
+
+class BrowseSymbolsVC: UIViewController {
+  private var browseSymbolsView: BrowseSymbolsView {
+    if let castedView = view as? BrowseSymbolsView {
+      return castedView
+    } else {
+      fatalError("Could not cast \(self).view to \(BrowseSymbolsView.self).")
+    }
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+  
+  init() {
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  override func loadView() {
+    view = BrowseSymbolsView(frame: UIScreen.main.bounds)
+  }
+}
+
+5.
+import UIKit
+
+class BrowseSymbolsView: UIView {
+  static let rowHeight: CGFloat = 120.0
+  
+  private(set) var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.rowHeight = BrowseSymbolsView.rowHeight
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    return tableView
+  }()
+  
+  private var iosExpertLabel: UILabel = {
+    let iosExpertLabel = UILabel()
+    iosExpertLabel.text = "iOSExpert"
+    iosExpertLabel.font = UIFont.systemFont(ofSize: 12.0)
+    iosExpertLabel.textAlignment = .right
+    iosExpertLabel.textColor = .secondaryLabel
+    iosExpertLabel.translatesAutoresizingMaskIntoConstraints = false
+    return iosExpertLabel
+  }()
+  
+  required init(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .systemBackground
+    
+    [tableView, iosExpertLabel].forEach {
+      addSubview($0)
+    }
+    
+    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8.0).isActive = true
+    tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+    tableView.bottomAnchor.constraint(equalTo: iosExpertLabel.topAnchor, constant: -8.0).isActive = true
+    
+    iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
+  }
+  
+  func setupTable(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+    tableView.dataSource = dataSource
+    tableView.delegate = delegate
+    tableView.register(SymbolCell.self, forCellReuseIdentifier: "\(SymbolCell.self)")
+  }
+}
+
+6.
+import UIKit
+
+class SymbolCell: UITableViewCell {
+  private var nameLabel: UILabel = {
+    let nameLabel = UILabel()
+    nameLabel.adjustsFontSizeToFitWidth = true
+    nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
+    nameLabel.translatesAutoresizingMaskIntoConstraints = false
+    return nameLabel
+  }()
+
+  private var categoryLabel: UILabel = {
+    let categoryLabel = UILabel()
+    categoryLabel.font = UIFont.systemFont(ofSize: 15.0)
+    categoryLabel.textColor = .secondaryLabel
+    categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+    return categoryLabel
+  }()
+
+  private var representationImageView: UIImageView = {
+    let representationImageView = UIImageView()
+    representationImageView.translatesAutoresizingMaskIntoConstraints = false
+    return representationImageView
+  }()
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    backgroundColor = UIColor.systemBackground
+
+    [nameLabel, categoryLabel, representationImageView].forEach {
+      addSubview($0)
+    }
+
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0).isActive = true
+    nameLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: -8.0).isActive = true
+
+    categoryLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8.0).isActive = true
+    categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8.0).isActive = true
+    categoryLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: -8.0).isActive = true
+
+    representationImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
+    representationImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8.0).isActive = true
+    let representationHeightWidth: CGFloat = 104
+    representationImageView.heightAnchor.constraint(equalToConstant: representationHeightWidth).isActive = true
+    representationImageView.widthAnchor.constraint(equalToConstant: representationHeightWidth).isActive = true
+  }
+
+  func configure(symbol: Symbol) {
+    nameLabel.text = symbol.name
+    categoryLabel.text = symbol.category
+    representationImageView.image = UIImage(systemName: symbol.name)
+  }
+}
+
+7.
+import UIKit
+
+class BrowseSymbolsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  private var symbols: [Symbol]
+
+  private var browseSymbolsView: BrowseSymbolsView {
+    if let castedView = view as? BrowseSymbolsView {
+      return castedView
+    } else {
+      fatalError("Could not cast \(self).view to \(BrowseSymbolsView.self).")
+    }
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+
+  init() {
+    symbols = []
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  override func loadView() {
+    view = BrowseSymbolsView(frame: UIScreen.main.bounds)
+    browseSymbolsView.setupTable(dataSource: self, delegate: self)
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let previousSymbols = symbols
+    symbols = Symbol.allSymbolsSorted
+    if symbols != previousSymbols {
+      browseSymbolsView.tableView.reloadData()
+      browseSymbolsView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+    }
+  }
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    symbols.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: "\(SymbolCell.self)") as? SymbolCell {
+      cell.configure(symbol: symbols[indexPath.row])
+      return cell
+    } else {
+      fatalError("Could not initialize \(SymbolCell.self).")
+    }
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    BrowseSymbolsView.rowHeight
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    // TODO
+  }
+}
+
+8.
+import UIKit
+
+class SymbolDetailView: UIView {
+  private var nameLabel: UILabel = {
+    let nameLabel = UILabel()
+    nameLabel.adjustsFontSizeToFitWidth = true
+    nameLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
+    nameLabel.textAlignment = .center
+    nameLabel.translatesAutoresizingMaskIntoConstraints = false
+    return nameLabel
+  }()
+
+  private var representationImageView: UIImageView = {
+    let representationImageView = UIImageView()
+    representationImageView.translatesAutoresizingMaskIntoConstraints = false
+    return representationImageView
+  }()
+
+  private var categoryLabel: UILabel = {
+    let categoryLabel = UILabel()
+    categoryLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+    categoryLabel.textAlignment = .center
+    categoryLabel.textColor = .secondaryLabel
+    categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+    return categoryLabel
+  }()
+
+  private var iosExpertLabel: UILabel = {
+    let iosExpertLabel = UILabel()
+    iosExpertLabel.text = "iOSExpert"
+    iosExpertLabel.font = UIFont.systemFont(ofSize: 12.0)
+    iosExpertLabel.textAlignment = .right
+    iosExpertLabel.textColor = .secondaryLabel
+    iosExpertLabel.translatesAutoresizingMaskIntoConstraints = false
+    return iosExpertLabel
+  }()
+
+  required init(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .systemBackground
+
+    [nameLabel, representationImageView, categoryLabel, iosExpertLabel].forEach {
+      addSubview($0)
+    }
+
+    nameLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    nameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+    nameLabel.bottomAnchor.constraint(equalTo: representationImageView.topAnchor, constant: -8.0).isActive = true
+
+    representationImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    representationImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    let representationHeightWidth: CGFloat = 343
+    representationImageView.heightAnchor.constraint(equalToConstant: representationHeightWidth).isActive = true
+    representationImageView.widthAnchor.constraint(equalToConstant: representationHeightWidth).isActive = true
+
+    categoryLabel.topAnchor.constraint(equalTo: representationImageView.bottomAnchor, constant: 8.0).isActive = true
+    categoryLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    categoryLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+
+    iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
+  }
+
+  func configure(symbol: Symbol) {
+    nameLabel.text = symbol.name
+    representationImageView.image = UIImage(systemName: symbol.name)
+    categoryLabel.text = symbol.category
+  }
+}
+
+9.
+import UIKit
+
+class SymbolDetailVC: UIViewController {
+  private let symbol: Symbol
+  
+  private var symbolDetailView: SymbolDetailView {
+    if let castedView = view as? SymbolDetailView {
+      return castedView
+    } else {
+      fatalError("Could not cast \(self).view to \(SymbolDetailView.self).")
+    }
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+  
+  init(symbol: Symbol) {
+    self.symbol = symbol
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  override func loadView() {
+    view = SymbolDetailView(frame: UIScreen.main.bounds)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    symbolDetailView.configure(symbol: symbol)
+  }
+}
+
+10.
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  tableView.deselectRow(at: indexPath, animated: false)
+  let symbolDetailVC = SymbolDetailVC(symbol: symbols[indexPath.row])
+  navigationController?.pushViewController(symbolDetailVC, animated: true)
+}
+
+11.
+import UIKit
+
+class SettingView: UIView {
+  private var sortByLabel: UILabel = {
+    let sortByLabel = UILabel()
+    sortByLabel.text = "Sort By"
+    sortByLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
+    sortByLabel.translatesAutoresizingMaskIntoConstraints = false
+    return sortByLabel
+  }()
+  
+  private(set) var sortSegmentedControl: UISegmentedControl = {
+    let sortSegmentedControl = UISegmentedControl(items: ["Name", "Category"])
+    sortSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    return sortSegmentedControl
+  }()
+  
+  private var iosExpertLabel: UILabel = {
+    let iosExpertLabel = UILabel()
+    iosExpertLabel.text = "iOSExpert"
+    iosExpertLabel.font = UIFont.systemFont(ofSize: 12.0)
+    iosExpertLabel.textAlignment = .right
+    iosExpertLabel.textColor = .secondaryLabel
+    iosExpertLabel.translatesAutoresizingMaskIntoConstraints = false
+    return iosExpertLabel
+  }()
+  
+  required init(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented.")
+  }
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .systemBackground
+    
+    [sortByLabel, sortSegmentedControl, iosExpertLabel].forEach {
+      addSubview($0)
+    }
+    
+    sortByLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    sortByLabel.bottomAnchor.constraint(equalTo: sortSegmentedControl.topAnchor, constant: -8.0).isActive = true
+    
+    sortSegmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    sortSegmentedControl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    
+    iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+    iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
+  }
+}
+
+12.
+import UIKit
+
+class SettingVC: UIViewController {
+  var settingView: SettingView {
+    if let castedView = view as? SettingView {
+      return castedView
+    } else {
+      fatalError("Could not cast \(self).view to \(SettingView.self).")
+    }
+  }
+
+  override func loadView() {
+    view = SettingView(frame: UIScreen.main.bounds)
+    settingView.sortSegmentedControl.addTarget(self, action: #selector(SettingVC.sortOrderChanged(_:)), for: .valueChanged)
+    settingView.sortSegmentedControl.selectedSegmentIndex = SortOrder.current.segmentIndex
+  }
+
+  @objc func sortOrderChanged(_ sender: UISegmentedControl) {
+    SortOrder.current = SortOrder.sortOrderForIndex(settingView.sortSegmentedControl.selectedSegmentIndex)
+  }
+}
+
+13.
+import UIKit
+
+extension UIViewController {
+  func fatalCastMessage(view: Any) -> String {
+    return "Could not cast \(self).view to \(view)."
+  }
+}
+
+14.
+fatalError(fatalCastMessage(view: FooView.self))
+
+15.
+import Foundation
+
+extension NSCoder {
+  static func fatalErrorNotImplemented() -> Never {
+    fatalError("init(coder:) has not been implemented.")
+  }
+}
+
+16.
+NSCoder.fatalErrorNotImplemented()
+
+17.
+import UIKit
+
+struct Layout {
+  static let standardSpacing: CGFloat = 8.0
+}
+
+18.
+import UIKit
+
+extension NSLayoutConstraint {
+  @discardableResult func activate() -> NSLayoutConstraint {
+    isActive = true
+    return self
+  }
+}
+
+19.
+import UIKit
+
+@propertyWrapper
+public struct UsesAutoLayout<T: UIView> {
+  public var wrappedValue: T {
+    didSet {
+      wrappedValue.translatesAutoresizingMaskIntoConstraints = false
+    }
+  }
+
+  public init(wrappedValue: T) {
+    self.wrappedValue = wrappedValue
+    wrappedValue.translatesAutoresizingMaskIntoConstraints = false
+  }
+}
+
+20.
+@UsesAutoLayout
+private var representationImageView = UIImageView()
+
+21.
+import UIKit
+
+extension UILabel {
+  static func iosExpertLabel() -> UILabel {
+    let iosExpertLabel = UILabel()
+    iosExpertLabel.text = "iOSExpert"
+    iosExpertLabel.font = UIFont.systemFont(ofSize: 12.0)
+    iosExpertLabel.textAlignment = .right
+    iosExpertLabel.textColor = .secondaryLabel
+    return iosExpertLabel
+  }
+}
+
+22.
+@UsesAutoLayout
+private var iosExpertLabel = UILabel.iosExpertLabel()
