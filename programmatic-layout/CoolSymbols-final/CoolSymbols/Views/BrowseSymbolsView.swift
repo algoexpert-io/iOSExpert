@@ -5,10 +5,10 @@ import UIKit
 class BrowseSymbolsView: UIView {
   static let rowHeight: CGFloat = 120.0
 
+  @UsesAutoLayout
   private(set) var tableView: UITableView = {
     let tableView = UITableView()
     tableView.rowHeight = BrowseSymbolsView.rowHeight
-    tableView.translatesAutoresizingMaskIntoConstraints = false
     return tableView
   }()
 

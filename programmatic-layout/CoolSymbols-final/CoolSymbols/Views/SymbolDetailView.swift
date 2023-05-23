@@ -3,24 +3,24 @@
 import UIKit
 
 class SymbolDetailView: UIView {
+  @UsesAutoLayout
   private var nameLabel: UILabel = {
     let nameLabel = UILabel()
     nameLabel.adjustsFontSizeToFitWidth = true
     nameLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
     nameLabel.textAlignment = .center
-    nameLabel.translatesAutoresizingMaskIntoConstraints = false
     return nameLabel
   }()
 
   @UsesAutoLayout
   private var representationImageView = UIImageView()
 
+  @UsesAutoLayout
   private var categoryLabel: UILabel = {
     let categoryLabel = UILabel()
     categoryLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
     categoryLabel.textAlignment = .center
     categoryLabel.textColor = .secondaryLabel
-    categoryLabel.translatesAutoresizingMaskIntoConstraints = false
     return categoryLabel
   }()
 

@@ -3,17 +3,17 @@
 import UIKit
 
 class SettingView: UIView {
+  @UsesAutoLayout
   private var sortByLabel: UILabel = {
     let sortByLabel = UILabel()
     sortByLabel.text = "Sort By"
     sortByLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
-    sortByLabel.translatesAutoresizingMaskIntoConstraints = false
     return sortByLabel
   }()
 
+  @UsesAutoLayout
   private(set) var sortSegmentedControl: UISegmentedControl = {
     let sortSegmentedControl = UISegmentedControl(items: ["Name", "Category"])
-    sortSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
     return sortSegmentedControl
   }()
 

@@ -11,8 +11,6 @@
 		033342752A1A7B5400C3625C /* BrowseSymbolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033342742A1A7B5400C3625C /* BrowseSymbolsView.swift */; };
 		033342772A1B275E00C3625C /* SymbolDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033342762A1B275E00C3625C /* SymbolDetailView.swift */; };
 		033342792A1BB89300C3625C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033342782A1BB89300C3625C /* SettingView.swift */; };
-		0333427C2A1BC11C00C3625C /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333427B2A1BC11C00C3625C /* UIViewControllerExtension.swift */; };
-		0333427E2A1BC2E100C3625C /* NSCoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333427D2A1BC2E100C3625C /* NSCoderExtension.swift */; };
 		033342802A1BC52D00C3625C /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0333427F2A1BC52D00C3625C /* Layout.swift */; };
 		033342822A1BC6CA00C3625C /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033342812A1BC6CA00C3625C /* NSLayoutConstraintExtension.swift */; };
 		033342842A1BCA0900C3625C /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033342832A1BCA0900C3625C /* UsesAutoLayout.swift */; };
@@ -27,6 +25,8 @@
 		03BEC26E298B1088003D8BB3 /* SymbolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEC26C298B1088003D8BB3 /* SymbolCell.swift */; };
 		03BEC271298B3CB2003D8BB3 /* SymbolDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEC270298B3CB2003D8BB3 /* SymbolDetailVC.swift */; };
 		03BEC273298B7A0D003D8BB3 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BEC272298B7A0D003D8BB3 /* SettingVC.swift */; };
+		03DCC6962A1C812D00D263F2 /* NSCoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DCC6952A1C812D00D263F2 /* NSCoderExtension.swift */; };
+		03DCC6982A1C816800D263F2 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DCC6972A1C816800D263F2 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +34,6 @@
 		033342742A1A7B5400C3625C /* BrowseSymbolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSymbolsView.swift; sourceTree = "<group>"; };
 		033342762A1B275E00C3625C /* SymbolDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailView.swift; sourceTree = "<group>"; };
 		033342782A1BB89300C3625C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		0333427B2A1BC11C00C3625C /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		0333427D2A1BC2E100C3625C /* NSCoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoderExtension.swift; sourceTree = "<group>"; };
 		0333427F2A1BC52D00C3625C /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		033342812A1BC6CA00C3625C /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
 		033342832A1BCA0900C3625C /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
@@ -52,6 +50,8 @@
 		03BEC26C298B1088003D8BB3 /* SymbolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCell.swift; sourceTree = "<group>"; };
 		03BEC270298B3CB2003D8BB3 /* SymbolDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailVC.swift; sourceTree = "<group>"; };
 		03BEC272298B7A0D003D8BB3 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		03DCC6952A1C812D00D263F2 /* NSCoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCoderExtension.swift; sourceTree = "<group>"; };
+		03DCC6972A1C816800D263F2 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +69,10 @@
 			isa = PBXGroup;
 			children = (
 				0333427F2A1BC52D00C3625C /* Layout.swift */,
-				0333427D2A1BC2E100C3625C /* NSCoderExtension.swift */,
+				03DCC6952A1C812D00D263F2 /* NSCoderExtension.swift */,
 				033342812A1BC6CA00C3625C /* NSLayoutConstraintExtension.swift */,
 				033342852A1BCBE800C3625C /* UILabelExtension.swift */,
-				0333427B2A1BC11C00C3625C /* UIViewControllerExtension.swift */,
+				03DCC6972A1C816800D263F2 /* UIViewControllerExtension.swift */,
 				033342832A1BCA0900C3625C /* UsesAutoLayout.swift */,
 			);
 			path = Helpers;
@@ -250,9 +250,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0333427E2A1BC2E100C3625C /* NSCoderExtension.swift in Sources */,
 				03BEC257298AEEDD003D8BB3 /* BrowseSymbolsVC.swift in Sources */,
 				033342802A1BC52D00C3625C /* Layout.swift in Sources */,
+				03DCC6982A1C816800D263F2 /* UIViewControllerExtension.swift in Sources */,
 				033342772A1B275E00C3625C /* SymbolDetailView.swift in Sources */,
 				03BEC26E298B1088003D8BB3 /* SymbolCell.swift in Sources */,
 				03BEC267298AF6E0003D8BB3 /* Symbol.swift in Sources */,
@@ -263,8 +263,8 @@
 				03BEC255298AEEDD003D8BB3 /* SceneDelegate.swift in Sources */,
 				03BEC271298B3CB2003D8BB3 /* SymbolDetailVC.swift in Sources */,
 				039012B9298B821E00E79ECF /* SortOrder.swift in Sources */,
-				0333427C2A1BC11C00C3625C /* UIViewControllerExtension.swift in Sources */,
 				033342792A1BB89300C3625C /* SettingView.swift in Sources */,
+				03DCC6962A1C812D00D263F2 /* NSCoderExtension.swift in Sources */,
 				033342752A1A7B5400C3625C /* BrowseSymbolsView.swift in Sources */,
 				033342862A1BCBE800C3625C /* UILabelExtension.swift in Sources */,
 				03BEC273298B7A0D003D8BB3 /* SettingVC.swift in Sources */,
