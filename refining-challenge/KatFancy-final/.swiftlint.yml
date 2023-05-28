@@ -1,0 +1,8 @@
+disabled_rules:
+  - line_length
+  - function_body_length
+  - identifier_name
+  - void_return
+  - cyclomatic_complexity
+  - type_name
+  - multiple_closures_with_trailing_closure
