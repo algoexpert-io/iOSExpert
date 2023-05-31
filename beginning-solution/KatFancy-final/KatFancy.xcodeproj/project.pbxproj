@@ -10,7 +10,6 @@
 		03F1B50229976A52000251F5 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50129976A52000251F5 /* KatFancyApp.swift */; };
 		03F1B50429976A52000251F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50329976A52000251F5 /* ContentView.swift */; };
 		03F1B50629976A53000251F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F1B50529976A53000251F5 /* Assets.xcassets */; };
-		03F1B50929976A53000251F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F1B50829976A53000251F5 /* Preview Assets.xcassets */; };
 		03F1B51029976A5F000251F5 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50F29976A5F000251F5 /* Breed.swift */; };
 		03F1B51229976A68000251F5 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51129976A68000251F5 /* Breeds.swift */; };
 		03F1B51429976A70000251F5 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51329976A70000251F5 /* License.swift */; };
@@ -23,7 +22,6 @@
 		03F1B50129976A52000251F5 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
 		03F1B50329976A52000251F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		03F1B50529976A53000251F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03F1B50829976A53000251F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03F1B50F29976A5F000251F5 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		03F1B51129976A68000251F5 /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
 		03F1B51329976A70000251F5 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
@@ -42,6 +40,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03A928892A27A180009BFE26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03F1B50F29976A5F000251F5 /* Breed.swift */,
+				03F1B51129976A68000251F5 /* Breeds.swift */,
+				03F1B51329976A70000251F5 /* License.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		03A9288A2A27A18D009BFE26 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03F1B51729976A85000251F5 /* BreedsLoader.swift */,
+				03F1B51529976A7A000251F5 /* URLExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		03F1B4F529976A52000251F5 = {
 			isa = PBXGroup;
 			children = (
@@ -62,24 +79,12 @@
 			isa = PBXGroup;
 			children = (
 				03F1B50529976A53000251F5 /* Assets.xcassets */,
-				03F1B50F29976A5F000251F5 /* Breed.swift */,
-				03F1B51129976A68000251F5 /* Breeds.swift */,
-				03F1B51729976A85000251F5 /* BreedsLoader.swift */,
 				03F1B50329976A52000251F5 /* ContentView.swift */,
+				03A9288A2A27A18D009BFE26 /* Helpers */,
 				03F1B50129976A52000251F5 /* KatFancyApp.swift */,
-				03F1B51329976A70000251F5 /* License.swift */,
-				03F1B50729976A53000251F5 /* Preview Content */,
-				03F1B51529976A7A000251F5 /* URLExtension.swift */,
+				03A928892A27A180009BFE26 /* Models */,
 			);
 			path = KatFancy;
-			sourceTree = "<group>";
-		};
-		03F1B50729976A53000251F5 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				03F1B50829976A53000251F5 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +145,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03F1B50929976A53000251F5 /* Preview Assets.xcassets in Resources */,
 				03F1B50629976A53000251F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +290,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -315,7 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

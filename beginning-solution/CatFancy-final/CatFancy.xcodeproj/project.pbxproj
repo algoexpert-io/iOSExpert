@@ -47,6 +47,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03A928872A27A077009BFE26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03F1B4EB2997638A000251F5 /* Breed.swift */,
+				03F1B4F1299767BE000251F5 /* Breeds.swift */,
+				03F1B4ED2997647C000251F5 /* License.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		03A928882A27A084009BFE26 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03593C64299864E7004459DB /* BreedsLoader.swift */,
+				03F1B4EF29976712000251F5 /* URLExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		03F1B4CB29976212000251F5 = {
 			isa = PBXGroup;
 			children = (
@@ -68,15 +87,12 @@
 			children = (
 				03F1B4D729976213000251F5 /* AppDelegate.swift */,
 				03F1B4E029976214000251F5 /* Assets.xcassets */,
-				03F1B4EB2997638A000251F5 /* Breed.swift */,
-				03F1B4F1299767BE000251F5 /* Breeds.swift */,
-				03593C64299864E7004459DB /* BreedsLoader.swift */,
+				03A928882A27A084009BFE26 /* Helpers */,
 				03F1B4E529976214000251F5 /* Info.plist */,
 				03F1B4E229976214000251F5 /* LaunchScreen.storyboard */,
-				03F1B4ED2997647C000251F5 /* License.swift */,
 				03F1B4DD29976213000251F5 /* Main.storyboard */,
+				03A928872A27A077009BFE26 /* Models */,
 				03F1B4D929976213000251F5 /* SceneDelegate.swift */,
-				03F1B4EF29976712000251F5 /* URLExtension.swift */,
 				03F1B4DB29976213000251F5 /* ViewController.swift */,
 			);
 			path = CatFancy;
