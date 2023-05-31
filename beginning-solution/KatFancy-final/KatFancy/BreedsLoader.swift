@@ -4,7 +4,7 @@ import Foundation
 
 enum BreedsLoader {
   static func loadBreeds() async throws -> [Breed] {
-    let urlString = "https://raceconditionsoftware.s3.us-west-1.amazonaws.com/CatFancy/breeds.json"
+    let urlString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"
     guard let url = URL(string: urlString) else {
       fatalError(URL.couldNotInit(urlString: urlString))
     }
