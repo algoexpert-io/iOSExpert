@@ -31,7 +31,7 @@ class BrowseBreedsVC: UIViewController {
     view = BrowseBreedsView(frame: UIScreen.main.bounds)
     title = "Browse"
     browseBreedsView.setupTable(dataSource: deleSource, delegate: deleSource)
-    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
+    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds), for: .valueChanged)
     browseBreedsView.retryButton.addTarget(self, action: #selector(retry), for: .touchUpInside)
   }
 
