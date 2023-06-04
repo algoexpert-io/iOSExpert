@@ -31,8 +31,8 @@ class BrowseBreedsVC: UIViewController {
     view = BrowseBreedsView(frame: UIScreen.main.bounds)
     title = "Browse"
     browseBreedsView.setupTable(dataSource: deleSource, delegate: deleSource)
-    browseBreedsView.refresh.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
-    browseBreedsView.retry.addTarget(self, action: #selector(retry), for: .touchUpInside)
+    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
+    browseBreedsView.retryButton.addTarget(self, action: #selector(retry), for: .touchUpInside)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +44,7 @@ class BrowseBreedsVC: UIViewController {
       loadBreeds()
     } else if loadingState == .succeededWithBreeds {
       deleSource.sortBreeds()
-      browseBreedsView.table.setContentOffset(.zero, animated: false)
+      browseBreedsView.tableView.setContentOffset(.zero, animated: false)
     }
   }
 
@@ -77,10 +77,10 @@ class BrowseBreedsVC: UIViewController {
 
     browseBreedsView.showLoadingState(loadingState)
     if isRefreshing {
-      browseBreedsView.refresh.endRefreshing()
+      browseBreedsView.refreshControl.endRefreshing()
       isRefreshing = false
     }
-    browseBreedsView.table.reloadData()
+    browseBreedsView.tableView.reloadData()
     onRequestFinished(deleSource.breeds)
   }
 
