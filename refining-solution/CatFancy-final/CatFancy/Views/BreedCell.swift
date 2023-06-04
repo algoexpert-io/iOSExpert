@@ -4,34 +4,34 @@ import UIKit
 
 class BreedCell: UITableViewCell {
   @UsesAutoLayout
-  private(set) var name: UILabel = {
-    let name = UILabel()
-    name.adjustsFontSizeToFitWidth = true
-    name.font = Fonts.labelBold
-    return name
+  private(set) var nameLabel: UILabel = {
+    let nameLabel = UILabel()
+    nameLabel.adjustsFontSizeToFitWidth = true
+    nameLabel.font = Fonts.labelBold
+    return nameLabel
   }()
 
   @UsesAutoLayout
-  private(set) var knownFor: UILabel = {
-    let knownFor = UILabel()
-    knownFor.font = Fonts.label
-    knownFor.numberOfLines = 0
-    return knownFor
+  private(set) var knownForLabel: UILabel = {
+    let knownForLabel = UILabel()
+    knownForLabel.font = Fonts.label
+    knownForLabel.numberOfLines = 0
+    return knownForLabel
   }()
 
   @UsesAutoLayout
-  private(set) var popularity: UILabel = {
-    let popularity = UILabel()
-    popularity.font = Fonts.label
-    return popularity
+  private(set) var popularityLabel: UILabel = {
+    let popularityLabel = UILabel()
+    popularityLabel.font = Fonts.label
+    return popularityLabel
   }()
 
   @UsesAutoLayout
-  private(set) var photo: UIImageView = {
-    let photo = UIImageView()
-    photo.contentMode = .scaleAspectFit
-    photo.image = Symbols.pawPrint
-    return photo
+  private(set) var photoImageView: UIImageView = {
+    let photoImageView = UIImageView()
+    photoImageView.contentMode = .scaleAspectFit
+    photoImageView.image = Symbols.pawPrint
+    return photoImageView
   }()
 
   required init?(coder aDecoder: NSCoder) {
@@ -42,32 +42,32 @@ class BreedCell: UITableViewCell {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     backgroundColor = UIColor.systemBackground
 
-    [name, knownFor, popularity, photo].forEach {
+    [nameLabel, knownForLabel, popularityLabel, photoImageView].forEach {
       addSubview($0)
     }
 
-    name.topAnchor.constraint(equalTo: topAnchor, constant: Layout.defaultSpacing).activate()
-    name.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    name.trailingAnchor.constraint(equalTo: photo.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.defaultSpacing).activate()
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
 
-    knownFor.topAnchor.constraint(equalTo: name.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    knownFor.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    knownFor.trailingAnchor.constraint(equalTo: photo.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
 
-    popularity.topAnchor.constraint(equalTo: knownFor.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    popularity.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    popularity.trailingAnchor.constraint(equalTo: photo.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
 
     let photoPadding: CGFloat = 4.0
-    photo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.defaultSpacing * -1.0 + photoPadding).activate()
-    photo.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
-    photo.heightAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
-    photo.widthAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
+    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.defaultSpacing * -1.0 + photoPadding).activate()
+    photoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
+    photoImageView.heightAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
+    photoImageView.widthAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
   }
 
   func configure(breed: Breed) {
-    name.text = breed.name
-    knownFor.text = breed.knownFor
-    popularity.text = "Popularity: \(breed.popularity)"
+    nameLabel.text = breed.name
+    knownForLabel.text = breed.knownFor
+    popularityLabel.text = "Popularity: \(breed.popularity)"
   }
 }

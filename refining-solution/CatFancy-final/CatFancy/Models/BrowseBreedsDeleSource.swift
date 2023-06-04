@@ -32,7 +32,7 @@ class BrowseBreedsDeleSource: NSObject, UITableViewDelegate, UITableViewDataSour
         let image = image,
         let updateCell = tableView.cellForRow(at: indexPath) as? BreedCell
       {
-        updateCell.photo.image = image
+        updateCell.photoImageView.image = image
       }
     }
 

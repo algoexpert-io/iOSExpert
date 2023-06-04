@@ -54,7 +54,7 @@ class BrowseBreedsDeleSourceTests: XCTestCase {
       XCTFail("Could not get first \(BreedCell.self).")
       return
     }
-    XCTAssertEqual(a, cell.name.text)
+    XCTAssertEqual(a, cell.nameLabel.text)
   }
 
   func testDidSelectRow() {

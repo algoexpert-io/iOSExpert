@@ -11,8 +11,8 @@ class BreedCellTests: XCTestCase {
 
     cell.configure(breed: breed)
 
-    XCTAssertEqual(breed.name, cell.name.text)
-    XCTAssertEqual("Popularity: \(breed.popularity)", cell.popularity.text)
-    XCTAssertEqual(Symbols.pawPrint, cell.photo.image)
+    XCTAssertEqual(breed.name, cell.nameLabel.text)
+    XCTAssertEqual("Popularity: \(breed.popularity)", cell.popularityLabel.text)
+    XCTAssertEqual(Symbols.pawPrint, cell.photoImageView.image)
   }
 }
