@@ -2,7 +2,7 @@
 
 import UIKit
 
-struct Fonts {
+enum Fonts {
   private static let avenirNext = "AvenirNext-"
   private static let demibold = "Demibold"
   private static let bold = "Bold"
