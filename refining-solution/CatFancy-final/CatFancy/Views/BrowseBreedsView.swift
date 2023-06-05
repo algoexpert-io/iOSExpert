@@ -126,7 +126,7 @@ class BrowseBreedsView: UIView {
       activityIndicatorView.isHidden = true
       statusLabel.isHidden = false
       statusDescription.isHidden = false
-      let status = "Breed fetch failed."
+      let status = "Breed loading failed."
       statusDescription.text = status
       retryButton.isHidden = false
     }
