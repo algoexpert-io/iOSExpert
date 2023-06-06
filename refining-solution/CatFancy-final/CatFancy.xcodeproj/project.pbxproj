@@ -331,7 +331,6 @@
 				0317D0C728E0EEE900A4634C /* Breed.swift */,
 				0317D0C928E0EF6C00A4634C /* Breeds.swift */,
 				0317D0E728E0F52B00A4634C /* BreedsURL.swift */,
-				0365271628E10EB100C31BA4 /* BrowseBreedsDeleSource.swift */,
 				03872D3028E1EE2600B99D5F /* License.swift */,
 				0365271428E10E5300C31BA4 /* LoadingState.swift */,
 				0352B69A2A1F1834007EF6A9 /* SessionType.swift */,
@@ -385,6 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				0317D08828DFAA3B00A4634C /* AppDelegate.swift */,
+				0365271628E10EB100C31BA4 /* BrowseBreedsDeleSource.swift */,
 				0317D0F328E101BE00A4634C /* main.swift */,
 				0317D08A28DFAA3B00A4634C /* SceneDelegate.swift */,
 			);
