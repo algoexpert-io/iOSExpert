@@ -12,12 +12,12 @@ class BrowseBreedsDeleSource: NSObject, UITableViewDelegate, UITableViewDataSour
 
   func sortBreeds() {
     breeds.sort { breed1, breed2 in
-      return Current.settings.sortOrder.compare(breed1: breed1, breed2: breed2)
+      Current.settings.sortOrder.compare(breed1: breed1, breed2: breed2)
     }
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return breeds.count
+    breeds.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
