@@ -17,19 +17,19 @@ class SettingsVC: UIViewController {
 
     settingsView.breedsURLControl.addTarget(
       self,
-      action: #selector(SettingsVC.breedsURLChanged(_:)),
+      action: #selector(breedsURLChanged(_:)),
       for: .valueChanged
     )
 
     settingsView.sessionTypeControl.addTarget(
       self,
-      action: #selector(SettingsVC.sessionTypeChanged(_:)),
+      action: #selector(sessionTypeChanged(_:)),
       for: .valueChanged
     )
 
     settingsView.sortOrderControl.addTarget(
       self,
-      action: #selector(SettingsVC.sortOrderChanged(_:)),
+      action: #selector(sortOrderChanged(_:)),
       for: .valueChanged
     )
   }
