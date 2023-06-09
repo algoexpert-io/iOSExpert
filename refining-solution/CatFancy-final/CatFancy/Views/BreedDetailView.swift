@@ -81,7 +81,7 @@ class BreedDetailView: UIView {
     wikipediaButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
   }
 
-  internal func updatePhotoSize(heightWidth: CGFloat) {
+  func updatePhotoSize(heightWidth: CGFloat) {
     photoWidth?.constant = heightWidth
     photoHeight?.constant = heightWidth
   }
