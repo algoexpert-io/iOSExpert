@@ -28,7 +28,7 @@ class ImageCacheLoader {
   }
 
   static func requestImageFromCache(url: URL) -> UIImage? {
-    return shared.cache.object(forKey: url.absoluteString as NSString)
+    shared.cache.object(forKey: url.absoluteString as NSString)
   }
 
   static func clearCache() {
