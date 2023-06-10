@@ -2,7 +2,7 @@
 
 import UIKit
 
-class BreedDetailView: UIView {
+class BreedDetailView: UIView, UITextViewDelegate {
   @UsesAutoLayout
   var photoImageView: UIImageView = {
     let photoImageView = UIImageView()
@@ -54,6 +54,8 @@ class BreedDetailView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .secondarySystemBackground
+    descriptionTextView.delegate = self
+
     [photoImageView, descriptionTextView, creditLabel, licenseButton, wikipediaButton].forEach {
       addSubview($0)
     }
@@ -81,7 +83,16 @@ class BreedDetailView: UIView {
     wikipediaButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
   }
 
-  func updatePhotoSize(heightWidth: CGFloat) {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let y = descriptionTextView.contentOffset.y
+    if y < BreedDetailView.initialPhotoHeightWidth {
+      updatePhotoSize(heightWidth: BreedDetailView.initialPhotoHeightWidth - y)
+    } else {
+      updatePhotoSize(heightWidth: 0.0)
+    }
+  }
+
+  private func updatePhotoSize(heightWidth: CGFloat) {
     photoWidth?.constant = heightWidth
     photoHeight?.constant = heightWidth
   }

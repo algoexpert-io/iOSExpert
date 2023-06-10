@@ -2,7 +2,7 @@
 
 import UIKit
 
-class BreedDetailVC: UIViewController, UITextViewDelegate {
+class BreedDetailVC: UIViewController {
   private let breed: Breed
   private weak var breedDelegate: BreedDelegate?
 
@@ -27,7 +27,6 @@ class BreedDetailVC: UIViewController, UITextViewDelegate {
   override func loadView() {
     view = BreedDetailView(frame: UIScreen.main.bounds)
     title = breed.name
-    breedDetailView.descriptionTextView.delegate = self
     breedDetailView.descriptionTextView.text = breed.description
     breedDetailView.creditLabel.text = "Photo Credit: \(breed.credit)"
 
@@ -45,14 +44,5 @@ class BreedDetailVC: UIViewController, UITextViewDelegate {
 
   @objc func showLicense() {
     breedDelegate?.showWebpage(url: breed.license.url, didSucceed: nil)
-  }
-
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let y = breedDetailView.descriptionTextView.contentOffset.y
-    if y < BreedDetailView.initialPhotoHeightWidth {
-      breedDetailView.updatePhotoSize(heightWidth: BreedDetailView.initialPhotoHeightWidth - y)
-    } else {
-      breedDetailView.updatePhotoSize(heightWidth: 0.0)
-    }
   }
 }
