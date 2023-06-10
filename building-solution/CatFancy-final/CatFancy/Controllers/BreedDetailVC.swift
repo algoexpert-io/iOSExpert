@@ -32,11 +32,11 @@ class BreedDetailVC: UIViewController {
       await breedDetailView.photoImageView.image = ImageCacheLoader.requestImage(url: breed.photoUrl)
     }
 
-    breedDetailView.wikipediaButton.addTarget(self, action: #selector(viewInWikipedia), for: .touchUpInside)
+    breedDetailView.wikipediaButton.addTarget(self, action: #selector(showWikipediaArticle), for: .touchUpInside)
     breedDetailView.licenseButton.addTarget(self, action: #selector(showLicense), for: .touchUpInside)
   }
 
-  @objc func viewInWikipedia() {
+  @objc func showWikipediaArticle() {
     UIApplication.shared.open(breed.infoUrl)
   }
 

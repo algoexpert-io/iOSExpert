@@ -24,9 +24,9 @@ class BreedDetailVCTests: XCTestCase {
     let bdvc = BreedDetailVC(breed: sampleBreed, breedDelegate: testBreedDelegate)
 
     bdvc.beginAppearanceTransition(true, animated: false)
-    bdvc.viewInWikipedia()
+    bdvc.showWikipediaArticle()
     guard let tappedURL = url else {
-      XCTFail("View-in-Wikipedia button tap did not set URL.")
+      XCTFail("Show-Wikipedia-article button tap did not set URL.")
       return
     }
     XCTAssertEqual(sampleBreed.infoUrl, tappedURL)
