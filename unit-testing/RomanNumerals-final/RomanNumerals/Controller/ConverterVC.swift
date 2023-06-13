@@ -1,12 +1,5 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 3/1/23.
 
-// TOD0: Make PersistentStorage code a protocol. Real uses FileManager. Fake uses an array.
-// TOD0: Make a SoundPlayer protocol and allow use of RealSoundPlayer or TestSoundPlayer.
-// TOD0: Convert AnalyticsService to a protocol. Make AnalyticsServiceReal and AnalyticsServiceSpy.
-// TOD0: Dependency inject Device.
-// TOD0: Dependency inject URLSession and add mock JSON to bundle.
-// TOD0: Ensure that key in Config.swift doesn't go to GitHub.
-
 import UIKit
 
 class ConverterVC: UIViewController {
