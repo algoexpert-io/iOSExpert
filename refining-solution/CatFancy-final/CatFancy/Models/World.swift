@@ -9,11 +9,6 @@ struct World {
   var settings: Settings
   var soundPlayer: SoundPlayer
 
-  init(settings: Settings, soundPlayer: SoundPlayer) {
-    self.settings = settings
-    self.soundPlayer = soundPlayer
-  }
-
   static func chooseWorld() -> World {
     if NSClassFromString("XCTest") != nil {
       return World.unitTest
