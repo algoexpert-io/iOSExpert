@@ -18,15 +18,21 @@ struct World {
   }
 
   static let production: World = {
-    World(
-      settings: Settings(getterSetter: GetterSetterReal()),
+    let settings = Settings(getterSetter: GetterSetterReal())
+    settings.sessionType = .shared
+
+    return World(
+      settings: settings,
       soundPlayer: SoundPlayerReal()
     )
   }()
 
   static let unitTest: World = {
-    World(
-      settings: Settings(getterSetter: GetterSetterFake()),
+    let settings = Settings(getterSetter: GetterSetterFake())
+    settings.sessionType = .stub
+
+    return World(
+      settings: settings,
       soundPlayer: SoundPlayerDummy()
     )
   }()
