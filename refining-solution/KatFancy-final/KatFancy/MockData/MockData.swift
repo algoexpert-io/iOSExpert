@@ -3,7 +3,7 @@
 enum MockData {
   static let mockPhotoExtension = ".jpg"
   static let photoUrlPrefix = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/"
-  static let catNames: [String] = [
+  static let breedNames: [String] = [
     "Abyssinian",
     "Balinese",
     "Bengal",

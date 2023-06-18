@@ -7,7 +7,7 @@ class BreedsLoaderTests: XCTestCase {
   func testLoadBreeds() async throws {
     Current.settings.breedsURL = .withMore
     let breeds = try await BreedsLoader.loadBreeds()
-    let expectedCount = MockData.catNames.count
+    let expectedCount = MockData.breedNames.count
     XCTAssertEqual(expectedCount, breeds.count)
   }
 }

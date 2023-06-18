@@ -5,7 +5,7 @@ import XCTest
 
 final class ImageLoaderTests: XCTestCase {
   func testFetch() async throws {
-    guard let goodUrl = URL(string: MockData.photoUrlPrefix + MockData.catNames[0] + MockData.mockPhotoExtension) else {
+    guard let goodUrl = URL(string: MockData.photoUrlPrefix + MockData.breedNames[0] + MockData.mockPhotoExtension) else {
       XCTFail("Unable to initialize good photo URL.")
       return
     }

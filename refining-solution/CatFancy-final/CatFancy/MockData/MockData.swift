@@ -16,7 +16,7 @@ enum MockData {
     }
   }
 
-  static let catNames: [String] = [
+  static let breedNames: [String] = [
     "Abyssinian",
     "Balinese",
     "Bengal",

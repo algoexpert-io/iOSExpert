@@ -20,10 +20,10 @@ extension URLSession {
         }
       }
 
-      for catName in MockData.catNames {
+      for breedName in MockData.breedNames {
         if
-          let bundleUrl = Bundle.main.url(forResource: catName, withExtension: MockData.mockPhotoExtension),
-          let actualUrl = URL(string: "\(MockData.photoUrlPrefix)\(catName)\(MockData.mockPhotoExtension)")
+          let bundleUrl = Bundle.main.url(forResource: breedName, withExtension: MockData.mockPhotoExtension),
+          let actualUrl = URL(string: "\(MockData.photoUrlPrefix)\(breedName)\(MockData.mockPhotoExtension)")
         {
           do {
             let data = try Data(contentsOf: bundleUrl)
@@ -32,7 +32,7 @@ extension URLSession {
             fatalError("Unable to initialize Data.")
           }
         } else {
-          fatalError("Unable to construct path to \(catName).\(MockData.mockPhotoExtension).")
+          fatalError("Unable to construct path to \(breedName).\(MockData.mockPhotoExtension).")
         }
       }
     }
