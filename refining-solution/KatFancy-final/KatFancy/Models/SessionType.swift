@@ -11,7 +11,7 @@ enum SessionType: String, CaseIterable {
     case .shared:
       return URLSession.shared
     case .stub:
-      return URLSession.stubSession
+      return URLSession.stub
     }
   }
 

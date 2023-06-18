@@ -25,7 +25,7 @@ struct World {
       soundPlayer: SoundPlayerDummy(),
       persistentStorage: PersistentStorageFake(),
       analyticsService: AnalyticsServiceSpy(),
-      session: URLSession.stubSession
+      session: URLSession.stub
     )
   }()
 }

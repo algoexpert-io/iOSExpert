@@ -6,7 +6,7 @@ extension URLSession {
   static var urlDataDict: [URL: Data] = [:]
   static var didProcessURL = false
 
-  static var stubSession: URLSession {
+  static var stub: URLSession {
     if !didProcessURL {
       didProcessURL = true
 

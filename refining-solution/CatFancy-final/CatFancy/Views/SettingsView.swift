@@ -19,7 +19,7 @@ class SettingsView: UIView {
   private(set) var sessionTypeControl = SettingsView.createControl(displayNames: SessionType.allCases.map { $0.displayName })
 
   @UsesAutoLayout
-  private var sessionTypeDescription = SettingsView.createDescription(text: "This setting controls which URLSession to use for JSON retrieval and image loading: shared or stubSession.")
+  private var sessionTypeDescription = SettingsView.createDescription(text: "This setting controls which URLSession to use for JSON retrieval and image loading: shared or stub.")
 
   @UsesAutoLayout
   private var sortOrderLabel = SettingsView.createLabel(text: "Sort Order")

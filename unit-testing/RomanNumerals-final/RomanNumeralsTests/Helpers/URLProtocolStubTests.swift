@@ -17,7 +17,7 @@ class URLProtocolStubTests: XCTestCase {
   }
 
   func testStartLoading() {
-    _ = URLSession.stubSession
+    _ = URLSession.stub
     let exp = expectation(description: "Waiting for load.")
     let protocolClientSpy = ProtocolClientSpy(didLoad: { data in
       XCTAssertEqual(URLSession.conditionsDataFromBundle, data)

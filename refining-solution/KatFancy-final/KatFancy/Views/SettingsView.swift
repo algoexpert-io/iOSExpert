@@ -39,7 +39,7 @@ struct SettingsView: View {
         }
         .segmentedPicker()
 
-        Text("This setting controls which URLSession to use for JSON retrieval and image fetching: shared or stubSession.")
+        Text("This setting controls which URLSession to use for JSON retrieval and image fetching: shared or stub.")
           .padding()
       }
 

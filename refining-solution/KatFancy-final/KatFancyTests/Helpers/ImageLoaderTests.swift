@@ -39,10 +39,10 @@ final class ImageLoaderTests: XCTestCase {
     var session = await imageLoader.getSession()
     XCTAssertEqual(session, .shared)
 
-    let stubSession = URLSession.stubSession
-    await imageLoader.configure(session: stubSession)
+    let stub = URLSession.stub
+    await imageLoader.configure(session: stub)
     session = await imageLoader.getSession()
-    XCTAssertEqual(session, stubSession)
+    XCTAssertEqual(session, stub)
   }
 
   func testSetSession() async {

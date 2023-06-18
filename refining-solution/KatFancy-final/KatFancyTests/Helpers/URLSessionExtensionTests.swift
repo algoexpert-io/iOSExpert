@@ -14,7 +14,7 @@ class URLSessionExtensionTests: XCTestCase {
 
   func testStubData() {
     Current.settings.breedsURL = .withMore
-    let session = URLSession.stubSession
+    let session = URLSession.stub
     XCTAssert(session.configuration.protocolClasses?[0] is URLProtocolStub.Type)
     let expectedTestURLCount = MockData.catNames.count + BreedsURL.allCases.count
     XCTAssertEqual(expectedTestURLCount, URLSession.urlDataDict.count)
