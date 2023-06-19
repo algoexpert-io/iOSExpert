@@ -4,7 +4,6 @@ import UIKit
 
 class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDetailDelegate {
   var navigationController: UINavigationController
-  private(set) var breedDetailVC: BreedDetailVC?
 
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
@@ -18,7 +17,6 @@ class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDetailDelegate {
 
   func showDetails(breed: Breed, animated: Bool) {
     let breedDetailVC = BreedDetailVC(breed: breed, breedDetailDelegate: self)
-    self.breedDetailVC = breedDetailVC
     navigationController.pushViewController(breedDetailVC, animated: animated)
   }
 
