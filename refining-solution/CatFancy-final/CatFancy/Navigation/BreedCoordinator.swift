@@ -2,7 +2,7 @@
 
 import UIKit
 
-class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDelegate {
+class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDetailDelegate {
   var navigationController: UINavigationController
   private(set) var breedDetailVC: BreedDetailVC?
 
@@ -17,7 +17,7 @@ class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDelegate {
   }
 
   func showDetails(breed: Breed, animated: Bool) {
-    let breedDetailVC = BreedDetailVC(breed: breed, breedDelegate: self)
+    let breedDetailVC = BreedDetailVC(breed: breed, breedDetailDelegate: self)
     self.breedDetailVC = breedDetailVC
     navigationController.pushViewController(breedDetailVC, animated: animated)
   }

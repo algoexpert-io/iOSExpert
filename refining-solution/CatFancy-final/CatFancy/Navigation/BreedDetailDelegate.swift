@@ -2,6 +2,6 @@
 
 import Foundation
 
-protocol BreedDelegate: AnyObject {
+protocol BreedDetailDelegate: AnyObject {
   func showWebpage(url: URL, didSucceed: ((Bool) -> ())?)
 }

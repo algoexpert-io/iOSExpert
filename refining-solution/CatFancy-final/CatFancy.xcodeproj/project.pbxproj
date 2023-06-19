@@ -75,7 +75,7 @@
 		0365271528E10E5300C31BA4 /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271428E10E5300C31BA4 /* LoadingState.swift */; };
 		0365271728E10EB100C31BA4 /* BrowseBreedsDeleSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271628E10EB100C31BA4 /* BrowseBreedsDeleSource.swift */; };
 		0365271928E10F3100C31BA4 /* BrowseBreedsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271828E10F3100C31BA4 /* BrowseBreedsDelegate.swift */; };
-		0365271B28E10F8900C31BA4 /* BreedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271A28E10F8900C31BA4 /* BreedDelegate.swift */; };
+		0365271B28E10F8900C31BA4 /* BreedDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271A28E10F8900C31BA4 /* BreedDetailDelegate.swift */; };
 		0365271D28E10FFF00C31BA4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271C28E10FFF00C31BA4 /* Coordinator.swift */; };
 		0365271F28E1108F00C31BA4 /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365271E28E1108F00C31BA4 /* BrowseBreedsView.swift */; };
 		0365272128E110F800C31BA4 /* BreedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365272028E110F800C31BA4 /* BreedCell.swift */; };
@@ -197,7 +197,7 @@
 		0365271428E10E5300C31BA4 /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		0365271628E10EB100C31BA4 /* BrowseBreedsDeleSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsDeleSource.swift; sourceTree = "<group>"; };
 		0365271828E10F3100C31BA4 /* BrowseBreedsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsDelegate.swift; sourceTree = "<group>"; };
-		0365271A28E10F8900C31BA4 /* BreedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDelegate.swift; sourceTree = "<group>"; };
+		0365271A28E10F8900C31BA4 /* BreedDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailDelegate.swift; sourceTree = "<group>"; };
 		0365271C28E10FFF00C31BA4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0365271E28E1108F00C31BA4 /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
 		0365272028E110F800C31BA4 /* BreedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCell.swift; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				0365270E28E10BF600C31BA4 /* BreedCoordinator.swift */,
-				0365271A28E10F8900C31BA4 /* BreedDelegate.swift */,
+				0365271A28E10F8900C31BA4 /* BreedDetailDelegate.swift */,
 				0365271828E10F3100C31BA4 /* BrowseBreedsDelegate.swift */,
 				0365271C28E10FFF00C31BA4 /* Coordinator.swift */,
 				03872D2C28E1615600B99D5F /* SettingsCoordinator.swift */,
@@ -684,7 +684,7 @@
 				03872D2D28E1615600B99D5F /* SettingsCoordinator.swift in Sources */,
 				0317D0E828E0F52B00A4634C /* BreedsURL.swift in Sources */,
 				0317D0E328E0F24900A4634C /* SoundPlayerReal.swift in Sources */,
-				0365271B28E10F8900C31BA4 /* BreedDelegate.swift in Sources */,
+				0365271B28E10F8900C31BA4 /* BreedDetailDelegate.swift in Sources */,
 				0317D0F428E101BE00A4634C /* main.swift in Sources */,
 				0317D0CE28E0F15100A4634C /* MainTabBarVC.swift in Sources */,
 				0365271928E10F3100C31BA4 /* BrowseBreedsDelegate.swift in Sources */,
