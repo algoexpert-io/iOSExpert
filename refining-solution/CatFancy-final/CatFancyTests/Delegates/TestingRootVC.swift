@@ -3,7 +3,7 @@
 @testable import CatFancy
 import UIKit
 
-class TestingRootViewController: UIViewController {
+class TestingRootVC: UIViewController {
   override func loadView() {
     let label = UILabel()
     label.text = "Running unit tests..."
