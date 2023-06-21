@@ -20,7 +20,16 @@ class BreedDetailVCTests: XCTestCase {
       XCTFail(URL.couldNotInit(urlString: infoURLString))
       return
     }
-    let sampleBreed = Breed(name: 🙀, knownFor: 🙀, popularity: fortyTwo, photoUrl: infoURL, infoUrl: infoURL, credit: 🙀, license: .publicDomain, description: 🙀)
+    let sampleBreed = Breed(
+      name: 🙀,
+      knownFor: 🙀,
+      popularity: fortyTwo,
+      photoUrl: infoURL,
+      infoUrl: infoURL,
+      credit: 🙀,
+      license: .publicDomain,
+      description: 🙀
+    )
     let bdvc = BreedDetailVC(breed: sampleBreed, breedDetailDelegate: testBreedDetailDelegate)
 
     bdvc.beginAppearanceTransition(true, animated: false)
