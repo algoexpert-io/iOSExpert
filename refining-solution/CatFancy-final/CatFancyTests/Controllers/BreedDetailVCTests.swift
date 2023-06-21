@@ -7,7 +7,7 @@ class BreedDetailVCTests: XCTestCase {
   func testButtons() {
     var url: URL?
 
-    let testBreedDetailDelegate = TestBreedDetailDelegate(
+    let testBreedDetailDelegateSpy = TestBreedDetailDelegateSpy(
       onShowWebpage: { actualURL in
         url = actualURL
       }
@@ -30,7 +30,7 @@ class BreedDetailVCTests: XCTestCase {
       license: .publicDomain,
       description: 🙀
     )
-    let bdvc = BreedDetailVC(breed: sampleBreed, breedDetailDelegate: testBreedDetailDelegate)
+    let bdvc = BreedDetailVC(breed: sampleBreed, breedDetailDelegate: testBreedDetailDelegateSpy)
 
     bdvc.beginAppearanceTransition(true, animated: false)
     bdvc.showWikipediaArticle()
@@ -50,7 +50,7 @@ class BreedDetailVCTests: XCTestCase {
   }
 }
 
-private class TestBreedDetailDelegate: BreedDetailDelegate {
+private class TestBreedDetailDelegateSpy: BreedDetailDelegate {
   private let onShowWebpage: (URL) -> ()
 
   init(onShowWebpage: @escaping (URL) -> ()) {
