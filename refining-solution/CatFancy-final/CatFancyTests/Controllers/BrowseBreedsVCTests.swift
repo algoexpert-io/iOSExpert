@@ -34,15 +34,18 @@ class BrowseBreedsVCTests: XCTestCase {
     Current.settings.breedsURL = breedsURL
     var breeds: [Breed] = []
     var selectedBreed: Breed?
-    let testBrowseBreedsDelegate = TestBrowseBreedsDelegate(onShowDetails: { breed in
+    let testBrowseBreedsDelegateSpy = TestBrowseBreedsDelegateSpy(onShowDetails: { breed in
       selectedBreed = breed
     })
 
     let exp = expectation(description: "loading breeds from \(breedsURL.url.absoluteString)")
-    let bbvc = BrowseBreedsVC(browseBreedsDelegate: testBrowseBreedsDelegate, onRequestFinished: { result in
-      breeds = result
-      exp.fulfill()
-    })
+    let bbvc = BrowseBreedsVC(
+      browseBreedsDelegate: testBrowseBreedsDelegateSpy,
+      onRequestFinished: { result in
+        breeds = result
+        exp.fulfill()
+      }
+    )
 
     bbvc.beginAppearanceTransition(true, animated: false)
 
@@ -64,7 +67,7 @@ class BrowseBreedsVCTests: XCTestCase {
   }
 }
 
-private class TestBrowseBreedsDelegate: BrowseBreedsDelegate {
+private class TestBrowseBreedsDelegateSpy: BrowseBreedsDelegate {
   private let onShowDetails: (Breed) -> ()
 
   init(onShowDetails: @escaping (Breed) -> ()) {
