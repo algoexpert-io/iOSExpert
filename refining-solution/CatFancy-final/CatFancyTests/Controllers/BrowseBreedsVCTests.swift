@@ -46,7 +46,7 @@ class BrowseBreedsVCTests: XCTestCase {
 
     bbvc.beginAppearanceTransition(true, animated: false)
 
-    let timeout: TimeInterval = 5.0
+    let timeout: TimeInterval = 1.0
     waitForExpectations(timeout: timeout)
 
     XCTAssertEqual(expectedBreedCount, breeds.count)
