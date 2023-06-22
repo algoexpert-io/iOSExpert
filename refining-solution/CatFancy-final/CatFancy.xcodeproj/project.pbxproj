@@ -438,7 +438,6 @@
 			isa = PBXGroup;
 			children = (
 				03101A5528E3A17900F7E42D /* BreedsURLTests.swift */,
-				03101A4F28E3A17900F7E42D /* BrowseBreedsDeleSourceTests.swift */,
 				03101A6F28E50E0000F7E42D /* LicenseTests.swift */,
 				03101A5328E3A17900F7E42D /* SettingsTests.swift */,
 				03101A5228E3A17900F7E42D /* SortOrderTests.swift */,
@@ -471,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				03872D3C28E360F000B99D5F /* AppDelegateTests.swift */,
+				03101A4F28E3A17900F7E42D /* BrowseBreedsDeleSourceTests.swift */,
 				0317D10128E107F600A4634C /* TestingAppDelegate.swift */,
 				0317D10228E107F600A4634C /* TestingRootVC.swift */,
 				0317D10328E107F600A4634C /* TestingSceneDelegate.swift */,
