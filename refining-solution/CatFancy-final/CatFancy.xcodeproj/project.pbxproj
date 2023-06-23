@@ -112,7 +112,6 @@
 		03F3E84E2A2104760075D979 /* Tonkinese.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F3E83C2A2104760075D979 /* Tonkinese.jpg */; };
 		03F3E84F2A2104760075D979 /* EuropeanWildcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F3E83D2A2104760075D979 /* EuropeanWildcat.jpg */; };
 		03F3E8502A2104760075D979 /* RussianBlue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03F3E83E2A2104760075D979 /* RussianBlue.jpg */; };
-		03F3E8522A2114120075D979 /* FontsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F3E8512A2114120075D979 /* FontsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,7 +233,6 @@
 		03F3E83C2A2104760075D979 /* Tonkinese.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Tonkinese.jpg; sourceTree = "<group>"; };
 		03F3E83D2A2104760075D979 /* EuropeanWildcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EuropeanWildcat.jpg; sourceTree = "<group>"; };
 		03F3E83E2A2104760075D979 /* RussianBlue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RussianBlue.jpg; sourceTree = "<group>"; };
-		03F3E8512A2114120075D979 /* FontsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,7 +448,6 @@
 			isa = PBXGroup;
 			children = (
 				03101A5628E3A17900F7E42D /* BreedsLoaderTests.swift */,
-				03F3E8512A2114120075D979 /* FontsTests.swift */,
 				03101A5428E3A17900F7E42D /* GetterSetterFakeTests.swift */,
 				03101A5028E3A17900F7E42D /* GetterSetterRealTests.swift */,
 				03101A3F28E39C9E00F7E42D /* ImageCacheLoaderTests.swift */,
@@ -730,7 +727,6 @@
 				03101A5E28E3A17900F7E42D /* BreedsURLTests.swift in Sources */,
 				03101A5D28E3A17900F7E42D /* GetterSetterFakeTests.swift in Sources */,
 				03101A4728E39C9E00F7E42D /* ImageCacheLoaderTests.swift in Sources */,
-				03F3E8522A2114120075D979 /* FontsTests.swift in Sources */,
 				03101A4928E39C9E00F7E42D /* URLSessionExtensionTests.swift in Sources */,
 				03101A5728E3A17900F7E42D /* WorldTests.swift in Sources */,
 				03101A6428E3ADB500F7E42D /* MainTabBarVCTests.swift in Sources */,
