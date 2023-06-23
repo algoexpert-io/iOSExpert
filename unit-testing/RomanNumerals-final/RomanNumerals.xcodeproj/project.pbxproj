@@ -29,7 +29,6 @@
 		0314621529AFEC4500A3C6D7 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621029AFEC4500A3C6D7 /* UsesAutoLayout.swift */; };
 		0314621629AFEC4500A3C6D7 /* NSCoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621129AFEC4500A3C6D7 /* NSCoderExtension.swift */; };
 		0314621729AFEC4500A3C6D7 /* NSLayoutConstraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621229AFEC4500A3C6D7 /* NSLayoutConstraintExtension.swift */; };
-		0314621829AFEC4500A3C6D7 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621329AFEC4500A3C6D7 /* UIViewControllerExtension.swift */; };
 		0314621A29AFEFCF00A3C6D7 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621929AFEFCF00A3C6D7 /* ResultCell.swift */; };
 		0314621C29B008F600A3C6D7 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0314621B29B008F600A3C6D7 /* Converter.swift */; };
 		03172D4329CD5F7000CF9DC9 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03172D4229CD5F7000CF9DC9 /* Device.swift */; };
@@ -108,7 +107,6 @@
 		0314621029AFEC4500A3C6D7 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		0314621129AFEC4500A3C6D7 /* NSCoderExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCoderExtension.swift; sourceTree = "<group>"; };
 		0314621229AFEC4500A3C6D7 /* NSLayoutConstraintExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtension.swift; sourceTree = "<group>"; };
-		0314621329AFEC4500A3C6D7 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0314621929AFEFCF00A3C6D7 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		0314621B29B008F600A3C6D7 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		03172D4229CD5F7000CF9DC9 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				03D7FF2A29EE55AF00AECBAA /* SoundPlayer.swift */,
 				03D7FF2C29EE560500AECBAA /* SoundPlayerDummy.swift */,
 				03022CAE29C57B5B00DF38B0 /* SoundPlayerReal.swift */,
-				0314621329AFEC4500A3C6D7 /* UIViewControllerExtension.swift */,
 				03D7FF4729F0461300AECBAA /* URLExtension.swift */,
 				03D7FF4029F042CA00AECBAA /* URLProtocolStub.swift */,
 				03D7FF4229F042E400AECBAA /* URLSessionExtension.swift */,
@@ -518,7 +515,6 @@
 				03D7FF4829F0461300AECBAA /* URLExtension.swift in Sources */,
 				03052FF129C6C33700745FA2 /* PersistentStorage.swift in Sources */,
 				03022CA129C1460B00DF38B0 /* WeatherResponse.swift in Sources */,
-				0314621829AFEC4500A3C6D7 /* UIViewControllerExtension.swift in Sources */,
 				03022CAD29C57B1F00DF38B0 /* Sound.swift in Sources */,
 				03D7FF3B29EFA14500AECBAA /* PersistentStorageReal.swift in Sources */,
 				03022CAF29C57B5B00DF38B0 /* SoundPlayerReal.swift in Sources */,
