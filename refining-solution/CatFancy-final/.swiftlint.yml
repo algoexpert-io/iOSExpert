@@ -4,3 +4,4 @@ disabled_rules:
   - identifier_name
   - void_return
   - cyclomatic_complexity
+  - function_parameter_count
