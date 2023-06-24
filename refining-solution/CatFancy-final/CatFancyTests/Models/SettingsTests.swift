@@ -11,7 +11,15 @@ class SettingsTests: XCTestCase {
     settings.breedsURL = .standard
     XCTAssertNotEqual(Settings.breedsURLDefault, settings.breedsURL)
     XCTAssertEqual(BreedsURL.standard, settings.breedsURL)
-    Current.settings.breedsURL = Settings.breedsURLDefault
+  }
+
+  func testSessionTypeSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.shared, settings.sessionType)
+    settings.sessionType = .stub
+    XCTAssertNotEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.stub, settings.sessionType)
   }
 
   func testSortOrderSetting() {
@@ -21,6 +29,5 @@ class SettingsTests: XCTestCase {
     settings.sortOrder = .popularity
     XCTAssertNotEqual(Settings.sortOrderDefault, settings.sortOrder)
     XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
-    Current.settings.sortOrder = Settings.sortOrderDefault
   }
 }
