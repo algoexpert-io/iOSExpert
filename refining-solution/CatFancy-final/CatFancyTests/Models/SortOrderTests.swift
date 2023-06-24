@@ -4,7 +4,12 @@
 import XCTest
 
 class SortOrderTests: XCTestCase {
-  func testCompareTo() {
+  func testDisplayName() {
+    XCTAssertEqual("Name", SortOrder.name.displayName)
+    XCTAssertEqual("Popularity", SortOrder.popularity.displayName)
+  }
+
+  func testCompare() {
     let a = "A"
     let b = "B"
 

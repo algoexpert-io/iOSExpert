@@ -426,7 +426,6 @@
 			isa = PBXGroup;
 			children = (
 				03101A6028E3ADB400F7E42D /* BreedCoordinatorTests.swift */,
-				03101A6128E3ADB400F7E42D /* MainTabBarVCTests.swift */,
 				03101A6228E3ADB400F7E42D /* SettingsCoordinatorTests.swift */,
 			);
 			path = Navigation;
@@ -480,6 +479,7 @@
 			children = (
 				03872D3828E2ABFD00B99D5F /* BreedDetailVCTests.swift */,
 				03872D3628E2AA4C00B99D5F /* BrowseBreedsVCTests.swift */,
+				03101A6128E3ADB400F7E42D /* MainTabBarVCTests.swift */,
 				03872D3A28E35FB700B99D5F /* SettingsVCTests.swift */,
 			);
 			path = Controllers;
