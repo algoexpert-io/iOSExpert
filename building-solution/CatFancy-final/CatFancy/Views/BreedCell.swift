@@ -71,4 +71,3 @@ class BreedCell: UITableViewCell {
     popularityLabel.text = "Popularity: \(breed.popularity)"
   }
 }
-

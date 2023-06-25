@@ -6,3 +6,4 @@ disabled_rules:
   - cyclomatic_complexity
   - type_name
   - multiple_closures_with_trailing_closure
+  - function_parameter_count

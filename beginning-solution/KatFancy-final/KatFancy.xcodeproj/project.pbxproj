@@ -97,6 +97,7 @@
 				03F1B4FA29976A52000251F5 /* Sources */,
 				03F1B4FB29976A52000251F5 /* Frameworks */,
 				03F1B4FC29976A52000251F5 /* Resources */,
+				0348F1D32A47FDE5001C7BED /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -150,6 +151,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0348F1D32A47FDE5001C7BED /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"Warning: SwiftLint not installed. Download from https://github.com/realm/SwiftLint.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03F1B4FA29976A52000251F5 /* Sources */ = {
