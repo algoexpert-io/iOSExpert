@@ -1,0 +1,871 @@
+Snippets: Building the Model UIKit Solution
+
+1.
+import UIKit
+
+struct Layout {
+  static let defaultSpacing: CGFloat = 8.0
+  static let doubleDefaultSpacing: CGFloat = 16.0
+  static let defaultHorizontalMargin: CGFloat = 16.0
+}
+
+2.
+import Foundation
+
+extension NSCoder {
+  static func fatalErrorNotImplemented() -> Never {
+    fatalError("init(coder:) has not been implemented.")
+  }
+}
+
+3.
+import UIKit
+
+extension NSLayoutConstraint {
+  @discardableResult func activate() -> NSLayoutConstraint {
+    isActive = true
+    return self
+  }
+}
+
+4.
+import UIKit
+
+extension UIViewController {
+  func fatalCastMessage(view: Any) -> String {
+    "Could not cast \(self).view to \(view)."
+  }
+}
+
+5.
+import UIKit
+
+@propertyWrapper
+public struct UsesAutoLayout<T: UIView> {
+  public var wrappedValue: T {
+    didSet {
+      wrappedValue.translatesAutoresizingMaskIntoConstraints = false
+    }
+  }
+
+  public init(wrappedValue: T) {
+    self.wrappedValue = wrappedValue
+    wrappedValue.translatesAutoresizingMaskIntoConstraints = false
+  }
+}
+
+6
+import UIKit
+
+class SettingsVC: UIViewController {}
+
+7.
+import UIKit
+
+class BreedDetailVC: UIViewController {}
+
+8.
+import UIKit
+
+class BrowseBreedsVC: UIViewController {
+  override func viewDidLoad() {
+    Task {
+      do {
+        let breeds = try await BreedsLoader.loadBreeds()
+        print("BreedsLoader retrieved \(breeds.count) breed(s).")
+      } catch {
+        print("An error happened during breed loading.")
+      }
+    }
+  }
+}
+
+9.
+import UIKit
+
+class MainTabBarVC: UITabBarController {
+  convenience init() {
+    self.init(nibName: nil, bundle: nil)
+
+    let browseBreedsNavC = UINavigationController(rootViewController: BrowseBreedsVC())
+    browseBreedsNavC.tabBarItem = UITabBarItem(
+      title: "Browse",
+      image: UIImage(systemName: "pawprint"),
+      selectedImage: nil
+    )
+
+    let settingsVC = SettingsVC()
+    settingsVC.tabBarItem = UITabBarItem(
+      title: "Settings",
+      image: UIImage(systemName: "gear"),
+      selectedImage: nil
+    )
+
+    viewControllers = [browseBreedsNavC, settingsVC]
+  }
+}
+
+10.
+import UIKit
+
+enum Symbols {
+  static let pawPrint = UIImage(systemName: "pawprint")
+  static let gear = UIImage(systemName: "gear")
+}
+
+11.
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    guard let windowScene = scene as? UIWindowScene else {
+      fatalError("Could not cast scene to UIWindowScene.")
+    }
+    let window = UIWindow(windowScene: windowScene)
+    window.rootViewController = MainTabBarVC()
+    window.tintColor = .systemPurple
+    self.window = window
+    window.makeKeyAndVisible()
+  }
+
+  func sceneDidDisconnect(_ scene: UIScene) {}
+
+  func sceneDidBecomeActive(_ scene: UIScene) {}
+
+  func sceneWillResignActive(_ scene: UIScene) {}
+
+  func sceneWillEnterForeground(_ scene: UIScene) {}
+
+  func sceneDidEnterBackground(_ scene: UIScene) {}
+}
+
+12.
+import UIKit
+
+class BrowseBreedsVC: UIViewController {
+  var browseBreedsView: BrowseBreedsView {
+    if let castedView = view as? BrowseBreedsView {
+      return castedView
+    } else {
+      fatalError(fatalCastMessage(view: BrowseBreedsView.self))
+    }
+  }
+
+  override func loadView() {
+    view = BrowseBreedsView(frame: UIScreen.main.bounds)
+    title = "Browse"
+  }
+}
+
+13.
+import UIKit
+
+class BrowseBreedsView: UIView {
+  static let rowHeight: CGFloat = 128.0
+
+  @UsesAutoLayout
+  private var activityIndicatorView: UIActivityIndicatorView = {
+    let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    return activityIndicatorView
+  }()
+
+  @UsesAutoLayout
+  private(set) var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.rowHeight = BrowseBreedsView.rowHeight
+    return tableView
+  }()
+
+  let refreshControl = UIRefreshControl()
+
+  @UsesAutoLayout
+  private var statusLabel: UILabel = {
+    let statusLabel = UILabel()
+    statusLabel.text = "Status"
+    statusLabel.font = Fonts.heading
+    return statusLabel
+  }()
+
+  @UsesAutoLayout
+  private var statusDescription: UILabel = {
+    let statusDescription = UILabel()
+    statusDescription.numberOfLines = 0
+    statusDescription.lineBreakMode = .byWordWrapping
+    statusDescription.font = Fonts.smallBody
+    statusDescription.textAlignment = .center
+    return statusDescription
+  }()
+
+  @UsesAutoLayout
+  private(set) var retryButton: UIButton = {
+    let retryButton = UIButton()
+    retryButton.setTitle("Retry", for: .normal)
+    retryButton.titleLabel?.font = Fonts.buttonLarge
+    retryButton.setTitleColor(.systemPurple, for: .normal)
+    return retryButton
+  }()
+
+  required init(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .secondarySystemBackground
+
+    [tableView, activityIndicatorView, statusLabel, statusDescription, retryButton].forEach {
+      addSubview($0)
+    }
+
+    tableView.refreshControl = refreshControl
+
+    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.defaultSpacing).activate()
+    tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
+    tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
+    tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
+
+    activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
+
+    statusDescription.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
+    statusDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    statusDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    statusLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    statusLabel.bottomAnchor.constraint(equalTo: statusDescription.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    retryButton.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    retryButton.topAnchor.constraint(equalTo: statusDescription.bottomAnchor, constant: Layout.defaultSpacing).activate()
+  }
+
+  func setupTable(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
+    tableView.dataSource = dataSource
+    tableView.delegate = delegate
+    tableView.register(BreedCell.self, forCellReuseIdentifier: "\(BreedCell.self)")
+  }
+
+  func showLoadingState(_ loadingState: LoadingState) {
+    switch loadingState {
+    case .notStarted:
+      tableView.isHidden = true
+      activityIndicatorView.stopAnimating()
+      activityIndicatorView.isHidden = true
+      statusLabel.isHidden = true
+      statusDescription.isHidden = true
+      retryButton.isHidden = true
+    case .loading:
+      tableView.isHidden = true
+      activityIndicatorView.startAnimating()
+      activityIndicatorView.isHidden = false
+      statusLabel.isHidden = true
+      statusDescription.isHidden = true
+      retryButton.isHidden = true
+    case .succeededWithBreeds:
+      activityIndicatorView.stopAnimating()
+      activityIndicatorView.isHidden = true
+      tableView.reloadData()
+      tableView.isHidden = false
+      statusLabel.isHidden = true
+      statusDescription.isHidden = true
+      retryButton.isHidden = true
+    case .succeededWithNoBreeds:
+      activityIndicatorView.stopAnimating()
+      activityIndicatorView.isHidden = true
+      tableView.reloadData()
+      tableView.isHidden = true
+      statusLabel.isHidden = false
+      statusDescription.isHidden = false
+      let status = "No breeds are available. Please check again later."
+      statusDescription.text = status
+      retryButton.isHidden = false
+    case .failed:
+      tableView.isHidden = true
+      activityIndicatorView.stopAnimating()
+      activityIndicatorView.isHidden = true
+      statusLabel.isHidden = false
+      statusDescription.isHidden = false
+      let status = "Breed loading failed."
+      statusDescription.text = status
+      retryButton.isHidden = false
+    }
+  }
+}
+
+14.
+import UIKit
+
+enum Fonts {
+  private static let avenirNext = "AvenirNext-"
+  private static let demibold = "Demibold"
+  private static let bold = "Bold"
+  static let label = UIFont(name: avenirNext + demibold, size: 18.0)!
+  static let labelBold = UIFont(name: avenirNext + bold, size: 18.0)!
+  static let heading = UIFont(name: avenirNext + bold, size: 24.0)!
+  static let smallBody = UIFont(name: avenirNext + demibold, size: 12.0)!
+  static let buttonSmall = UIFont(name: avenirNext + demibold, size: 18.0)!
+  static let buttonLarge = UIFont(name: avenirNext + demibold, size: 24.0)!
+}
+
+15.
+import UIKit
+
+class BreedCell: UITableViewCell {
+  @UsesAutoLayout
+  private(set) var nameLabel: UILabel = {
+    let nameLabel = UILabel()
+    nameLabel.adjustsFontSizeToFitWidth = true
+    nameLabel.font = Fonts.labelBold
+    return nameLabel
+  }()
+
+  @UsesAutoLayout
+  private(set) var knownForLabel: UILabel = {
+    let knownForLabel = UILabel()
+    knownForLabel.font = Fonts.label
+    knownForLabel.numberOfLines = 0
+    return knownForLabel
+  }()
+
+  @UsesAutoLayout
+  private(set) var popularityLabel: UILabel = {
+    let popularityLabel = UILabel()
+    popularityLabel.font = Fonts.label
+    return popularityLabel
+  }()
+
+  @UsesAutoLayout
+  private(set) var photoImageView: UIImageView = {
+    let photoImageView = UIImageView()
+    photoImageView.contentMode = .scaleAspectFit
+    photoImageView.image = Symbols.pawPrint
+    return photoImageView
+  }()
+
+  required init?(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    backgroundColor = UIColor.systemBackground
+
+    [nameLabel, knownForLabel, popularityLabel, photoImageView].forEach {
+      addSubview($0)
+    }
+
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.defaultSpacing).activate()
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
+    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    let photoPadding: CGFloat = 4.0
+    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.defaultSpacing * -1.0 + photoPadding).activate()
+    photoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
+    photoImageView.heightAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
+    photoImageView.widthAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
+  }
+
+  func configure(breed: Breed) {
+    nameLabel.text = breed.name
+    knownForLabel.text = breed.knownFor
+    popularityLabel.text = "Popularity: \(breed.popularity)"
+  }
+}
+
+16.
+enum LoadingState {
+  case notStarted
+  case loading
+  case succeededWithBreeds
+  case succeededWithNoBreeds
+  case failed
+}
+
+17.
+private var loadingState: LoadingState = .notStarted
+
+18.
+import UIKit
+
+class BrowseBreedsDeleSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+  var breeds: [Breed] = []
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    breeds.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "\(BreedCell.self)") as? BreedCell ?? BreedCell()
+    let breed = breeds[indexPath.row]
+    cell.configure(breed: breed)
+
+    return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // TODO
+  }
+}
+
+19.
+enum Sound: String {
+  case chime
+  case sadTrombone
+}
+
+20.
+import AVFoundation
+
+class SoundPlayer {
+  private var sounds: [String: AVAudioPlayer]
+  private let soundExtension = "mp3"
+
+  init () {
+    sounds = [:]
+  }
+
+  func play(_ sound: Sound) {
+    if sounds[sound.rawValue] == nil {
+      if let audioURL = Bundle.main.url(forResource: sound.rawValue, withExtension: soundExtension) {
+        try? sounds[sound.rawValue] = AVAudioPlayer.init(contentsOf: audioURL)
+      }
+    }
+
+    if let retrievedSound = sounds[sound.rawValue] {
+      retrievedSound.play()
+    }
+  }
+}
+
+21.
+class BrowseBreedsVC: UIViewController {
+  private let soundPlayer = SoundPlayer()
+  private let deleSource: BrowseBreedsDeleSource
+  private var loadingState: LoadingState = .notStarted
+  private var isRefreshing = false
+
+  private var browseBreedsView: BrowseBreedsView {
+    if let castedView = view as? BrowseBreedsView {
+      return castedView
+    } else {
+      fatalError(fatalCastMessage(view: BrowseBreedsView.self))
+    }
+  }
+
+  init() {
+    deleSource = BrowseBreedsDeleSource()
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override func loadView() {
+    view = BrowseBreedsView(frame: UIScreen.main.bounds)
+    title = "Browse"
+    browseBreedsView.setupTable(dataSource: deleSource, delegate: deleSource)
+    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
+    browseBreedsView.retryButton.addTarget(self, action: #selector(retry), for: .touchUpInside)
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+    browseBreedsView.showLoadingState(loadingState)
+
+    if loadingState == .notStarted {
+      loadBreeds()
+    } else if loadingState == .succeededWithBreeds {
+      browseBreedsView.tableView.setContentOffset(.zero, animated: false)
+    }
+  }
+
+  private func loadBreeds() {
+    Task {
+      await loadBreedsAsync()
+    }
+  }
+
+  private func loadBreedsAsync() async {
+    loadingState = .loading
+    browseBreedsView.showLoadingState(loadingState)
+
+    do {
+      let breeds = try await BreedsLoader.loadBreeds()
+      deleSource.breeds = breeds
+      if breeds.isEmpty {
+        self.loadingState = .succeededWithNoBreeds
+        soundPlayer.play(.sadTrombone)
+      } else {
+        loadingState = .succeededWithBreeds
+        soundPlayer.play(.chime)
+      }
+    } catch {
+      deleSource.breeds = []
+      loadingState = .failed
+      soundPlayer.play(.sadTrombone)
+    }
+
+    browseBreedsView.showLoadingState(loadingState)
+    if isRefreshing {
+      browseBreedsView.refreshControl.endRefreshing()
+      isRefreshing = false
+    }
+    browseBreedsView.tableView.reloadData()
+  }
+
+  @objc private func refreshBreeds(_ sender: Any) {
+    isRefreshing = true
+    loadBreeds()
+  }
+
+  @objc func retry() {
+    loadBreeds()
+  }
+}
+
+22.
+enum SortOrder: String, CaseIterable {
+  static var current = SortOrder.name
+
+  case name
+  case popularity
+
+  var displayName: String {
+    switch self {
+    case .name:
+      return "Name"
+    case .popularity:
+      return "Popularity"
+    }
+  }
+
+  func compare(breed1: Breed, breed2: Breed) -> Bool {
+    switch self {
+    case .name:
+      return breed1.name.caseInsensitiveCompare(breed2.name) == .orderedAscending
+    case .popularity:
+      return breed1.popularity < breed2.popularity
+    }
+  }
+}
+
+23.
+  func sortBreeds() {
+    breeds.sort { breed1, breed2 in
+      SortOrder.current.compare(breed1: breed1, breed2: breed2)
+    }
+  }
+
+24.
+deleSource.sortBreeds()
+
+25.
+import UIKit
+
+class SettingsView: UIView {
+  @UsesAutoLayout
+  private var sortOrderLabel: UILabel = {
+    let sortOrderLabel = UILabel()
+    sortOrderLabel.text = "SortOrder"
+    sortOrderLabel.font = Fonts.heading
+    return sortOrderLabel
+  }()
+
+  @UsesAutoLayout
+  private(set) var sortOrderControl: UISegmentedControl = {
+    var items: [String] = []
+    SortOrder.allCases.forEach {
+      items.append($0.displayName)
+    }
+    return UISegmentedControl(items: items)
+  }()
+
+  @UsesAutoLayout
+  private var sortOrderDescription: UILabel = {
+    let sortOrderDescription = UILabel()
+    sortOrderDescription.text = "This setting controls the sort order of breeds: by name or by popularity."
+    sortOrderDescription.numberOfLines = 0
+    sortOrderDescription.lineBreakMode = .byWordWrapping
+    sortOrderDescription.font = Fonts.smallBody
+    return sortOrderDescription
+  }()
+
+  required init(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .secondarySystemBackground
+
+    [sortOrderLabel, sortOrderControl, sortOrderDescription].forEach {
+      addSubview($0)
+    }
+
+    sortOrderLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    sortOrderControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sortOrderControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+    sortOrderControl.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
+
+    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sortOrderDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sortOrderDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+  }
+}
+
+26.
+import UIKit
+
+class SettingsVC: UIViewController {
+  var settingsView: SettingsView {
+    if let castedView = view as? SettingsView {
+      return castedView
+    } else {
+      fatalError(fatalCastMessage(view: SettingsView.self))
+    }
+  }
+
+  override func loadView() {
+    view = SettingsView(frame: UIScreen.main.bounds)
+    title = "Settings"
+
+    settingsView.sortOrderControl.addTarget(
+      self,
+      action: #selector(sortOrderChanged(_:)),
+      for: .valueChanged
+    )
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    updateControl()
+  }
+
+  private func updateControl() {
+    switch SortOrder.current {
+    case .name:
+      settingsView.sortOrderControl.selectedSegmentIndex = 0
+    case .popularity:
+      settingsView.sortOrderControl.selectedSegmentIndex = 1
+    }
+  }
+
+  @objc func sortOrderChanged(_ sender: UISegmentedControl) {
+    let index = settingsView.sortOrderControl.selectedSegmentIndex
+    if index == 0 {
+      SortOrder.current = .name
+    } else if index == 1 {
+      SortOrder.current = .popularity
+    }
+  }
+}
+
+27.
+import UIKit
+
+class ImageCacheLoader {
+  private static let shared = ImageCacheLoader()
+  private var cache: NSCache<NSString, UIImage>
+
+  private init() {
+    cache = NSCache()
+  }
+
+  static func requestImage(url: URL) async -> UIImage? {
+    if let image = shared.cache.object(forKey: url.absoluteString as NSString) {
+      return image
+    } else {
+      do {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let image = UIImage(data: data)
+        if let image {
+          shared.cache.setObject(image, forKey: url.absoluteString as NSString)
+        }
+        return image
+      } catch {
+        return nil
+      }
+    }
+  }
+}
+
+28.
+Task {
+  let image = await ImageCacheLoader.requestImage(url: breed.photoUrl)
+  if
+    let image,
+    let updateCell = tableView.cellForRow(at: indexPath) as? BreedCell
+  {
+    updateCell.photoImageView.image = image
+  }
+}
+
+29.
+import UIKit
+
+class BreedDetailView: UIView, UITextViewDelegate {
+  @UsesAutoLayout
+  private(set) var photoImageView: UIImageView = {
+    let photoImageView = UIImageView()
+    photoImageView.contentMode = .scaleAspectFit
+    return photoImageView
+  } ()
+
+  @UsesAutoLayout
+  private(set) var descriptionTextView: UITextView = {
+    let descriptionTextView = UITextView()
+    descriptionTextView.font = Fonts.smallBody
+    descriptionTextView.bounces = false
+    return descriptionTextView
+  } ()
+
+  @UsesAutoLayout
+  private(set) var creditLabel: UILabel = {
+    let creditLabel = UILabel()
+    creditLabel.font = Fonts.labelBold
+    return creditLabel
+  }()
+
+  @UsesAutoLayout
+  private(set) var licenseButton: UIButton = {
+    let licenseButton = UIButton()
+    licenseButton.titleLabel?.font = Fonts.buttonSmall
+    licenseButton.setTitle("Show License", for: .normal)
+    licenseButton.setTitleColor(.systemPurple, for: .normal)
+    return licenseButton
+  }()
+
+  @UsesAutoLayout
+  private(set) var wikipediaButton: UIButton = {
+    let wikipediaButton = UIButton()
+    wikipediaButton.titleLabel?.font = Fonts.buttonSmall
+    wikipediaButton.setTitle("View in Wikipedia", for: .normal)
+    wikipediaButton.setTitleColor(.systemPurple, for: .normal)
+    return wikipediaButton
+  }()
+
+  private static let initialPhotoHeightWidth: CGFloat = 180.0
+  private var photoHeight: NSLayoutConstraint?
+  private var photoWidth: NSLayoutConstraint?
+
+  required init(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .secondarySystemBackground
+    descriptionTextView.delegate = self
+
+    [photoImageView, descriptionTextView, creditLabel, licenseButton, wikipediaButton].forEach {
+      addSubview($0)
+    }
+
+    photoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).activate()
+    photoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    photoHeight = photoImageView.heightAnchor.constraint(equalToConstant: BreedDetailView.initialPhotoHeightWidth)
+    photoHeight?.activate()
+    photoWidth = photoImageView.widthAnchor.constraint(equalToConstant: BreedDetailView.initialPhotoHeightWidth)
+    photoWidth?.activate()
+
+    descriptionTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    descriptionTextView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
+    descriptionTextView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
+
+    creditLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    creditLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+
+    licenseButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
+    licenseButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: Layout.defaultSpacing).activate()
+    licenseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
+
+    wikipediaButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
+    wikipediaButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    wikipediaButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
+  }
+
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let y = descriptionTextView.contentOffset.y
+    if y < BreedDetailView.initialPhotoHeightWidth {
+      updatePhotoSize(heightWidth: BreedDetailView.initialPhotoHeightWidth - y)
+    } else {
+      updatePhotoSize(heightWidth: 0.0)
+    }
+  }
+
+  private func updatePhotoSize(heightWidth: CGFloat) {
+    photoWidth?.constant = heightWidth
+    photoHeight?.constant = heightWidth
+  }
+}
+
+30.
+import UIKit
+
+class BreedDetailVC: UIViewController {
+  private let breed: Breed
+
+  private var breedDetailView: BreedDetailView {
+    if let castedView = view as? BreedDetailView {
+      return castedView
+    } else {
+      fatalError(fatalCastMessage(view: BreedDetailView.self))
+    }
+  }
+
+  init(breed: Breed) {
+    self.breed = breed
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override func loadView() {
+    view = BreedDetailView(frame: UIScreen.main.bounds)
+    title = breed.name
+    breedDetailView.descriptionTextView.text = breed.description
+    breedDetailView.creditLabel.text = "Photo Credit: \(breed.credit)"
+
+    Task {
+      await breedDetailView.photoImageView.image = ImageCacheLoader.requestImage(url: breed.photoUrl)
+    }
+
+    breedDetailView.wikipediaButton.addTarget(self, action: #selector(showWikipediaArticle), for: .touchUpInside)
+    breedDetailView.licenseButton.addTarget(self, action: #selector(showLicense), for: .touchUpInside)
+  }
+
+  @objc func showWikipediaArticle() {
+    UIApplication.shared.open(breed.infoUrl)
+  }
+
+  @objc func showLicense() {
+    UIApplication.shared.open(breed.license.url)
+  }
+}
+
+31.
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  let breedDetailVC = BreedDetailVC(breed: breeds[indexPath.row])
+  navigationController?.pushViewController(breedDetailVC, animated: true)
+}
+
+32.
+var navigationController: UINavigationController?
+
+33.
+deleSource.navigationController = navigationController

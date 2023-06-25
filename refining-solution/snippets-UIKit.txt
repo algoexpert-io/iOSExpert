@@ -1,0 +1,1602 @@
+Snippets: Refining the Model UIKit Solution
+
+1.
+struct World {
+  var soundPlayer: SoundPlayer
+  var getterSetter: GetterSetter
+  var breedsURL: BreedsURL
+  var sessionType: SessionType
+}
+
+2.
+import Foundation
+
+var Current = World.chooseWorld()
+
+struct World {
+  var settings: Settings
+  var soundPlayer: SoundPlayer
+
+  static func chooseWorld() -> World {
+    if NSClassFromString("XCTest") != nil {
+      return World.unitTest
+    } else {
+      return World.production
+    }
+  }
+
+  static let production: World = {
+    let settings = Settings(getterSetter: GetterSetterReal())
+    settings.sessionType = .shared
+
+    return World(
+      settings: settings,
+      soundPlayer: SoundPlayerReal()
+    )
+  }()
+
+  static let unitTest: World = {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    settings.sessionType = .stub
+
+    return World(
+      settings: settings,
+      soundPlayer: SoundPlayerDummy()
+    )
+  }()
+}
+
+3.
+protocol SoundPlayer {
+  func play(_ sound: Sound)
+}
+
+4.
+import AVFoundation
+
+class SoundPlayerReal: SoundPlayer {
+  private var sounds: [String: AVAudioPlayer]
+  private let soundExtension = "mp3"
+
+  init () {
+    sounds = [:]
+  }
+
+  func play(_ sound: Sound) {
+    if sounds[sound.rawValue] == nil {
+      if let audioURL = Bundle.main.url(forResource: sound.rawValue, withExtension: soundExtension) {
+        try? sounds[sound.rawValue] = AVAudioPlayer.init(contentsOf: audioURL)
+      }
+    }
+
+    if let retrievedSound = sounds[sound.rawValue] {
+      retrievedSound.play()
+    }
+  }
+}
+
+5.
+protocol GetterSetter {
+  func get(key: String) -> String?
+  func set(key: String, value: String)
+}
+
+6.
+import Foundation
+
+class GetterSetterReal: GetterSetter {
+  func get(key: String) -> String? {
+    return UserDefaults.standard.string(forKey: key)
+  }
+
+  func set(key: String, value: String) {
+    UserDefaults.standard.set(value, forKey: key)
+  }
+}
+
+7.
+class GetterSetterFake: GetterSetter {
+  var dictionary: [String: String] = [:]
+
+  init() {}
+
+  init(dictionary: [String: String]) {
+    self.dictionary = dictionary
+  }
+
+  func get(key: String) -> String? {
+    return dictionary[key]
+  }
+
+  func set(key: String, value: String) {
+    dictionary[key] = value
+  }
+}
+
+8.
+​​class Settings {
+  let getterSetter: GetterSetter
+
+  var breedsURL: BreedsURL {
+    didSet {
+      if breedsURL != oldValue {
+        getterSetter.set(key: Settings.breedsURLKey, value: breedsURL.rawValue)
+      }
+    }
+  }
+  static let breedsURLKey = "breedsURL"
+  static let breedsURLDefault: BreedsURL = .withMore
+
+  var sessionType: SessionType {
+    didSet {
+      if sessionType != oldValue {
+        getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+      }
+    }
+  }
+  static let sessionTypeKey = "sessionType"
+  static let sessionTypeDefault: SessionType = .shared
+
+  var sortOrder: SortOrder {
+    didSet {
+      if sortOrder != oldValue {
+        getterSetter.set(key: Settings.sortOrderKey, value: sortOrder.rawValue)
+      }
+    }
+  }
+  static let sortOrderKey = "sortOrder"
+  static let sortOrderDefault: SortOrder = .name
+
+  init(getterSetter: GetterSetter) {
+    self.getterSetter = getterSetter
+
+    if let breedsURLString = getterSetter.get(key: Settings.breedsURLKey) {
+      breedsURL = BreedsURL(rawValue: breedsURLString) ?? Settings.breedsURLDefault
+    } else {
+      breedsURL = Settings.breedsURLDefault
+      getterSetter.set(key: Settings.breedsURLKey, value: breedsURL.rawValue)
+    }
+
+    if let sessionTypeString = getterSetter.get(key: Settings.sessionTypeKey) {
+      sessionType = SessionType(rawValue: sessionTypeString) ?? Settings.sessionTypeDefault
+    } else {
+      sessionType = Settings.sessionTypeDefault
+      getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+    }
+
+    if let sortOrderString = getterSetter.get(key: Settings.sortOrderKey) {
+      sortOrder = SortOrder(rawValue: sortOrderString) ?? Settings.sortOrderDefault
+    } else {
+      sortOrder = Settings.sortOrderDefault
+      getterSetter.set(key: Settings.sortOrderKey, value: sortOrder.rawValue)
+    }
+  }
+}
+
+9.
+import Foundation
+
+enum BreedsURL: String, CaseIterable {
+  case standard
+  case empty
+  case malformed
+  case withMore
+
+  var url: URL {
+    let standardURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"
+    let emptyURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_empty.json"
+    let malformedURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_malformed.json"
+    let withMoreURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_with_more.json"
+
+    let urlString: String
+
+    switch self {
+    case .standard:
+      urlString = standardURLString
+    case .empty:
+      urlString = emptyURLString
+    case .malformed:
+      urlString = malformedURLString
+    case .withMore:
+      urlString = withMoreURLString
+    }
+
+    if let url = URL(string: urlString) {
+      return url
+    } else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+  }
+
+  var displayName: String {
+    switch self {
+    case .standard:
+      return "Breeds"
+    case .empty:
+      return "Empty"
+    case .malformed:
+      return "Malformed"
+    case .withMore:
+      return "With More"
+    }
+  }
+}
+
+10.
+import Foundation
+
+enum SessionType: String, CaseIterable {
+  case shared
+  case stub
+
+  var session: URLSession {
+    switch self {
+    case .shared:
+      return URLSession.shared
+    case .stub:
+      return URLSession.stubSession
+    }
+  }
+
+  var displayName: String {
+    switch self {
+    case .shared:
+      return "Shared"
+    case .stub:
+      return "Stub"
+    }
+  }
+}
+
+11.
+import Foundation
+
+extension URLSession {
+  static var urlDataDict: [URL: Data] = [:]
+  static var didProcessURLs = false
+
+  static var stub: URLSession {
+    if !didProcessURLs {
+      didProcessURLs = true
+      BreedsURL.allCases.forEach {
+        if let path = Bundle.main.path(forResource: $0.url.lastPathComponent, ofType: nil) {
+          do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            URLSession.urlDataDict[$0.url] = data
+          } catch {
+            fatalError("Unable to load mock JSON data for URL \($0.url).")
+          }
+        }
+      }
+
+      for breedName in MockData.breedNames {
+        if
+          let bundleUrl = Bundle.main.url(forResource: breedName, withExtension: MockData.mockPhotoExtension),
+          let actualUrl = URL(string: "\(MockData.photoUrlPrefix)\(breedName)\(MockData.mockPhotoExtension)")
+        {
+          do {
+            let data = try Data(contentsOf: bundleUrl)
+            URLSession.urlDataDict[actualUrl] = data
+          } catch {
+            fatalError("Unable to initialize Data.")
+          }
+        } else {
+          fatalError("Unable to construct path to \(breedName).\(MockData.mockPhotoExtension).")
+        }
+      }
+    }
+
+    let config = URLSessionConfiguration.ephemeral
+    config.protocolClasses = [URLProtocolStub.self]
+    return URLSession(configuration: config)
+  }
+}
+
+12.
+import Foundation
+
+enum MockData {
+  static let photoUrlPrefix = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/"
+  static let mockPhotoName = "Abyssinian"
+  static let mockPhotoExtension = ".jpg"
+
+  static var photoURL: URL {
+    let urlString = photoUrlPrefix + mockPhotoName + mockPhotoExtension
+    if let url = URL(string: urlString) {
+      return url
+    } else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+  }
+
+  static let breedNames: [String] = [
+    "Abyssinian",
+    "Balinese",
+    "Bengal",
+    "Burmese",
+    "CloudedLeopard",
+    "DevonRex",
+    "EuropeanWildcat",
+    "MaineCoon",
+    "Manx",
+    "Ragdoll",
+    "RussianBlue",
+    "Sand",
+    "Savannah",
+    "Serval",
+    "Siamese",
+    "Smilodon",
+    "Tonkinese",
+    "TurkishAngora",
+    "Van"
+  ]
+}
+
+13.
+import Foundation
+
+class URLProtocolStub: URLProtocol {
+  override class func canInit(with request: URLRequest) -> Bool {
+    true
+  }
+
+  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    request
+  }
+
+  override func startLoading() {
+    if
+      let url = request.url,
+      let data = URLSession.urlDataDict[url]
+    {
+      client?.urlProtocol(self, didReceive: URLResponse(), cacheStoragePolicy: .notAllowed)
+      client?.urlProtocol(self, didLoad: data)
+    } else {
+      client?.urlProtocol(self, didFailWithError: LoadingError.loadFailed)
+    }
+    client?.urlProtocolDidFinishLoading(self)
+  }
+
+  override func stopLoading() {}
+
+  enum LoadingError: Error {
+    case loadFailed
+  }
+}
+
+14.
+import UIKit
+
+class SettingsView: UIView {
+  @UsesAutoLayout
+  private var breedsURLLabel = SettingsView.createLabel(text: "Breeds URL")
+
+  @UsesAutoLayout
+  private(set) var breedsURLControl = SettingsView.createControl(displayNames: BreedsURL.allCases.map { $0.displayName })
+
+  @UsesAutoLayout
+  private var breedsURLDescription = SettingsView.createDescription(text: "This setting controls the URL of the JSON file that the breeds-browsing screen retrieves. If you change this setting, pull down the breeds table to refresh it or, if the error or no-breeds state is showing, tap Retry.")
+
+  @UsesAutoLayout
+  private var sessionTypeLabel = SettingsView.createLabel(text: "URLSession Type")
+
+  @UsesAutoLayout
+  private(set) var sessionTypeControl = SettingsView.createControl(displayNames: SessionType.allCases.map { $0.displayName })
+
+  @UsesAutoLayout
+  private var sessionTypeDescription = SettingsView.createDescription(text: "This setting controls which URLSession to use for JSON retrieval and image loading: shared or stub.")
+
+  @UsesAutoLayout
+  private var sortOrderLabel = SettingsView.createLabel(text: "Sort Order")
+
+  @UsesAutoLayout
+  private(set) var sortOrderControl = SettingsView.createControl(displayNames: SortOrder.allCases.map { $0.displayName })
+
+  @UsesAutoLayout
+  private var sortOrderDescription = SettingsView.createDescription(text: "This setting controls the sort order of breeds: by name or by popularity.")
+
+  required init(coder aDecoder: NSCoder) {
+    NSCoder.fatalErrorNotImplemented()
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .secondarySystemBackground
+
+    [
+      breedsURLLabel, breedsURLControl, breedsURLDescription,
+      sessionTypeLabel, sessionTypeControl, sessionTypeDescription,
+      sortOrderLabel, sortOrderControl, sortOrderDescription
+    ].forEach {
+      addSubview($0)
+    }
+
+    breedsURLLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.defaultSpacing).activate()
+    breedsURLLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    breedsURLLabel.bottomAnchor.constraint(equalTo: breedsURLControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    breedsURLControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    breedsURLControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    breedsURLDescription.topAnchor.constraint(equalTo: breedsURLControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    breedsURLDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    breedsURLDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    sessionTypeLabel.topAnchor.constraint(equalTo: breedsURLDescription.bottomAnchor, constant: Layout.doubleDefaultSpacing).activate()
+    sessionTypeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    sessionTypeLabel.bottomAnchor.constraint(equalTo: sessionTypeControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    sessionTypeControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sessionTypeControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    sessionTypeDescription.topAnchor.constraint(equalTo: sessionTypeControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sessionTypeDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sessionTypeDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    sortOrderLabel.topAnchor.constraint(equalTo: sessionTypeDescription.bottomAnchor, constant: Layout.doubleDefaultSpacing).activate()
+    sortOrderLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
+    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+
+    sortOrderControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sortOrderControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+
+    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sortOrderDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
+    sortOrderDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
+  }
+
+  private static func createLabel(text: String) -> UILabel {
+    let label = UILabel()
+    label.text = text
+    label.font = Fonts.heading
+    return label
+  }
+
+  private static func createControl(displayNames: [String]) -> UISegmentedControl {
+    var items: [String] = []
+    displayNames.forEach {
+      items.append($0)
+    }
+    return UISegmentedControl(items: items)
+  }
+
+  private static func createDescription(text: String) -> UILabel {
+    let description = UILabel()
+    description.text = text
+    description.numberOfLines = 0
+    description.lineBreakMode = .byWordWrapping
+    description.font = Fonts.smallBody
+    return description
+  }
+}
+
+15.
+import UIKit
+
+class SettingsVC: UIViewController {
+  var settingsView: SettingsView {
+    if let castedView = view as? SettingsView {
+      return castedView
+    } else {
+      fatalError(fatalCastMessage(view: SettingsView.self))
+    }
+  }
+
+  override func loadView() {
+    view = SettingsView(frame: UIScreen.main.bounds)
+    title = "Settings"
+
+    settingsView.breedsURLControl.addTarget(
+      self,
+      action: #selector(breedsURLChanged(_:)),
+      for: .valueChanged
+    )
+
+    settingsView.sessionTypeControl.addTarget(
+      self,
+      action: #selector(sessionTypeChanged(_:)),
+      for: .valueChanged
+    )
+
+    settingsView.sortOrderControl.addTarget(
+      self,
+      action: #selector(sortOrderChanged(_:)),
+      for: .valueChanged
+    )
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    updateControls()
+  }
+
+  private func updateControls() {
+    switch Current.settings.breedsURL {
+    case .standard:
+      settingsView.breedsURLControl.selectedSegmentIndex = 0
+    case .empty:
+      settingsView.breedsURLControl.selectedSegmentIndex = 1
+    case .malformed:
+      settingsView.breedsURLControl.selectedSegmentIndex = 2
+    case .withMore:
+      settingsView.breedsURLControl.selectedSegmentIndex = 3
+    }
+
+    switch Current.settings.sessionType {
+    case .shared:
+      settingsView.sessionTypeControl.selectedSegmentIndex = 0
+    case .stub:
+      settingsView.sessionTypeControl.selectedSegmentIndex = 1
+    }
+
+    switch Current.settings.sortOrder {
+    case .name:
+      settingsView.sortOrderControl.selectedSegmentIndex = 0
+    case .popularity:
+      settingsView.sortOrderControl.selectedSegmentIndex = 1
+    }
+  }
+
+  @objc func breedsURLChanged(_ sender: UISegmentedControl) {
+    let index = settingsView.breedsURLControl.selectedSegmentIndex
+    if index == 0 {
+      Current.settings.breedsURL = .standard
+    } else if index == 1 {
+      Current.settings.breedsURL = .empty
+    } else if index == 2 {
+      Current.settings.breedsURL = .malformed
+    } else if index == 3 {
+      Current.settings.breedsURL = .withMore
+    }
+  }
+
+  @objc func sessionTypeChanged(_ sender: UISegmentedControl) {
+    let index = settingsView.sessionTypeControl.selectedSegmentIndex
+    if index == 0 {
+      Current.settings.sessionType = .shared
+    } else if index == 1 {
+      Current.settings.sessionType = .stub
+    }
+  }
+
+  @objc func sortOrderChanged(_ sender: UISegmentedControl) {
+    let index = settingsView.sortOrderControl.selectedSegmentIndex
+    if index == 0 {
+      Current.settings.sortOrder = .name
+    } else if index == 1 {
+      Current.settings.sortOrder = .popularity
+    }
+  }
+}
+
+16.
+import UIKit
+
+protocol Coordinator {
+  var navigationController: UINavigationController { get set }
+  func start()
+}
+
+17.
+import UIKit
+
+class BreedCoordinator: Coordinator, BrowseBreedsDelegate, BreedDetailDelegate {
+  var navigationController: UINavigationController
+
+  init(navigationController: UINavigationController) {
+    self.navigationController = navigationController
+  }
+
+  func start() {
+    let vc = BrowseBreedsVC(browseBreedsDelegate: self)
+    vc.tabBarItem = UITabBarItem(title: "Browse", image: Symbols.pawPrint, selectedImage: nil)
+    navigationController.pushViewController(vc, animated: false)
+  }
+
+  func showDetails(breed: Breed, animated: Bool) {
+    let breedDetailVC = BreedDetailVC(breed: breed, breedDetailDelegate: self)
+    navigationController.pushViewController(breedDetailVC, animated: animated)
+  }
+
+  func showWebpage(url: URL, didSucceed: ((Bool) -> ())?) {
+    if UIApplication.shared.canOpenURL(url) {
+      UIApplication.shared.open(url)
+      didSucceed?(true)
+    } else {
+      didSucceed?(false)
+    }
+  }
+}
+
+18.
+protocol BrowseBreedsDelegate: AnyObject {
+  func showDetails(breed: Breed, animated: Bool)
+}
+
+extension BrowseBreedsDelegate {
+  func showDetails(breed: Breed) {
+    showDetails(breed: breed, animated: true)
+  }
+}
+
+19.
+import Foundation
+
+protocol BreedDetailDelegate: AnyObject {
+  func showWebpage(url: URL, didSucceed: ((Bool) -> ())?)
+}
+
+20.
+private let onRequestFinished: ([Breed]) -> ()
+
+21.
+onRequestFinished(deleSource.breeds)
+
+22.
+init(browseBreedsDelegate: BrowseBreedsDelegate, onRequestFinished: @escaping ([Breed]) -> () = { _ in }) {
+  deleSource = BrowseBreedsDeleSource(browseBreedsDelegate: browseBreedsDelegate)
+  self.onRequestFinished = onRequestFinished
+  super.init(nibName: nil, bundle: nil)
+}
+
+23.
+weak var browseBreedsDelegate: BrowseBreedsDelegate?
+
+24.
+init(browseBreedsDelegate: BrowseBreedsDelegate) {
+  self.browseBreedsDelegate = browseBreedsDelegate
+}
+
+25.
+browseBreedsDelegate?.showDetails(breed: breeds[indexPath.row])
+
+26.
+private weak var breedDetailDelegate: BreedDetailDelegate?
+
+27.
+init(breed: Breed, breedDetailDelegate: BreedDetailDelegate) {
+  self.breed = breed
+  self.breedDetailDelegate = breedDetailDelegate
+  super.init(nibName: nil, bundle: nil)
+}
+
+28.
+@objc func showWikipediaArticle() {
+  breedDetailDelegate?.showWebpage(url: breed.infoUrl, didSucceed: nil)
+}
+
+@objc func showLicense() {
+  breedDetailDelegate?.showWebpage(url: breed.license.url, didSucceed: nil)
+}
+
+29.
+import UIKit
+
+class MainTabBarVC: UITabBarController {
+  private let breedCoordinator = BreedCoordinator(navigationController: UINavigationController())
+
+  override func viewDidLoad() {
+    breedCoordinator.start()
+
+    let settingsVC = SettingsVC()
+    settingsVC.tabBarItem = UITabBarItem(
+      title: "Settings",
+      image: Symbols.gear,
+      selectedImage: nil
+    )
+
+    viewControllers = [breedCoordinator.navigationController, settingsVC]
+  }
+}
+
+30.
+import UIKit
+
+class SettingsCoordinator: Coordinator {
+  var navigationController: UINavigationController
+
+  init(navigationController: UINavigationController) {
+    self.navigationController = navigationController
+  }
+
+  func start() {
+    let vc = SettingsVC()
+    vc.tabBarItem = UITabBarItem(title: "Settings", image: Symbols.gear, selectedImage: nil)
+    navigationController.pushViewController(vc, animated: false)
+  }
+}
+
+31.
+import UIKit
+
+class MainTabBarVC: UITabBarController {
+  private let breedCoordinator = BreedCoordinator(navigationController: UINavigationController())
+  private let settingsCoordinator = SettingsCoordinator(navigationController: UINavigationController())
+
+  override func viewDidLoad() {
+    breedCoordinator.start()
+    settingsCoordinator.start()
+    viewControllers = [breedCoordinator.navigationController, settingsCoordinator.navigationController]
+  }
+}
+
+32.
+import UIKit
+
+let appDelegateClass: AnyClass = NSClassFromString("TestingAppDelegate") ?? AppDelegate.self
+
+UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, nil, NSStringFromClass(appDelegateClass))
+
+33.
+import UIKit
+
+@objc(TestingAppDelegate)
+final class TestingAppDelegate: UIResponder, UIApplicationDelegate {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    for sceneSession in application.openSessions {
+      application.perform(Selector(("_removeSessionFromSessionSet:")), with: sceneSession)
+    }
+    return true
+  }
+
+  func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    let sceneConfiguration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
+    sceneConfiguration.delegateClass = TestingSceneDelegate.self
+    return sceneConfiguration
+  }
+}
+
+34.
+import UIKit
+
+class TestingSceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+  static var connectionOptions: UIScene.ConnectionOptions?
+
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions
+  ) {
+    TestingSceneDelegate.connectionOptions = connectionOptions
+
+    guard let windowScene = (scene as? UIWindowScene) else {
+      return
+    }
+    window = UIWindow(windowScene: windowScene)
+    window?.rootViewController = TestingRootVC()
+    window?.makeKeyAndVisible()
+  }
+}
+
+35.
+@testable import CatFancy
+import UIKit
+
+class TestingRootVC: UIViewController {
+  override func loadView() {
+    let label = UILabel()
+    label.text = "Running unit tests..."
+    label.textAlignment = .center
+    label.textColor = .white
+    label.font = Fonts.heading
+    view = label
+  }
+}
+
+36.
+@testable import CatFancy
+import XCTest
+
+class BreedDetailVCTests: XCTestCase {
+  func testButtons() {
+    var url: URL?
+
+    let testBreedDetailDelegateSpy = TestBreedDetailDelegateSpy(
+      onShowWebpage: { actualURL in
+        url = actualURL
+      }
+    )
+
+    let 🙀 = "🙀"
+    let fortyTwo = 42
+    let infoURLString = "https://racecondition.software"
+    guard let infoURL = URL(string: infoURLString) else {
+      XCTFail(URL.couldNotInit(urlString: infoURLString))
+      return
+    }
+    let sampleBreed = Breed(
+      name: 🙀,
+      knownFor: 🙀,
+      popularity: fortyTwo,
+      photoUrl: infoURL,
+      infoUrl: infoURL,
+      credit: 🙀,
+      license: .publicDomain,
+      description: 🙀
+    )
+    let bdvc = BreedDetailVC(breed: sampleBreed, breedDetailDelegate: testBreedDetailDelegateSpy)
+
+    bdvc.beginAppearanceTransition(true, animated: false)
+    bdvc.showWikipediaArticle()
+    guard let tappedURL = url else {
+      XCTFail("Show-Wikipedia-article button tap did not set URL.")
+      return
+    }
+    XCTAssertEqual(sampleBreed.infoUrl, tappedURL)
+
+    url = nil
+    bdvc.showLicense()
+    guard let tappedURL = url else {
+      XCTFail("Show-license button tap did not set URL.")
+      return
+    }
+    XCTAssertEqual(sampleBreed.license.url, tappedURL)
+  }
+}
+
+private class TestBreedDetailDelegateSpy: BreedDetailDelegate {
+  private let onShowWebpage: (URL) -> ()
+
+  init(onShowWebpage: @escaping (URL) -> ()) {
+    self.onShowWebpage = onShowWebpage
+  }
+
+  func showWebpage(url: URL, didSucceed: ((Bool) -> ())?) {
+    onShowWebpage(url)
+  }
+}
+
+37.
+@testable import CatFancy
+import XCTest
+
+class BrowseBreedsVCTests: XCTestCase {
+  override func setUp() {
+    Current.settings.sortOrder = .name
+  }
+
+  func testStandardScenario() {
+    let expectedBreedCount = 14
+    let expectedFirstName = "Abyssinian"
+    testScenario(breedsURL: .standard, expectedBreedCount: expectedBreedCount, expectedFirstName: expectedFirstName)
+  }
+
+  func testWithMoreScenario() {
+    let expectedBreedCount = 19
+    let expectedFirstName = "Abyssinian"
+    testScenario(breedsURL: .withMore, expectedBreedCount: expectedBreedCount, expectedFirstName: expectedFirstName)
+  }
+
+  func testEmptyScenario() {
+    let expectedBreedCount = 0
+    testScenario(breedsURL: .empty, expectedBreedCount: expectedBreedCount)
+  }
+
+  func testMalformedScenario() {
+    let expectedBreedCount = 0
+    testScenario(breedsURL: .malformed, expectedBreedCount: expectedBreedCount)
+  }
+
+  func testScenario(breedsURL: BreedsURL, expectedBreedCount: Int, expectedFirstName: String? = nil) {
+    Current.settings.breedsURL = breedsURL
+    var breeds: [Breed] = []
+    var selectedBreed: Breed?
+    let testBrowseBreedsDelegateSpy = TestBrowseBreedsDelegateSpy(onShowDetails: { breed in
+      selectedBreed = breed
+    })
+
+    let exp = expectation(description: "loading breeds from \(breedsURL.url.absoluteString)")
+    let bbvc = BrowseBreedsVC(
+      browseBreedsDelegate: testBrowseBreedsDelegateSpy,
+      onRequestFinished: { result in
+        breeds = result
+        exp.fulfill()
+      }
+    )
+
+    bbvc.beginAppearanceTransition(true, animated: false)
+
+    let timeout: TimeInterval = 1.0
+    waitForExpectations(timeout: timeout)
+
+    XCTAssertEqual(expectedBreedCount, breeds.count)
+
+    if !breeds.isEmpty {
+      bbvc.deleSource.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
+
+      guard let selectedBreed else {
+        XCTFail("Unexpectedly, no breed was selected.")
+        return
+      }
+
+      XCTAssertEqual(expectedFirstName, selectedBreed.name)
+    }
+  }
+}
+
+private class TestBrowseBreedsDelegateSpy: BrowseBreedsDelegate {
+  private let onShowDetails: (Breed) -> ()
+
+  init(onShowDetails: @escaping (Breed) -> ()) {
+    self.onShowDetails = onShowDetails
+  }
+
+  func showDetails(breed: Breed, animated: Bool) {
+    onShowDetails(breed)
+  }
+}
+
+38.
+@testable import CatFancy
+import XCTest
+
+class MainTabBarVCTests: XCTestCase {
+  func testInitialization() {
+    let mtbvc = MainTabBarVC()
+    mtbvc.viewDidLoad()
+
+    guard let viewControllers = mtbvc.viewControllers else {
+      XCTFail("Failed to set tabs' view controllers.")
+      return
+    }
+
+    let expectedTabCount = 2
+    XCTAssertEqual(expectedTabCount, viewControllers.count)
+
+    if ((viewControllers[0] as? UINavigationController)?.topViewController) as? BrowseBreedsVC == nil {
+      XCTFail("viewControllers[0] does not have a \(BrowseBreedsVC.self).")
+    }
+
+    if ((viewControllers[1] as? UINavigationController)?.topViewController) as? SettingsVC == nil {
+      XCTFail("viewControllers[1] does not have a \(SettingsVC.self).")
+    }
+  }
+}
+
+39.
+@testable import CatFancy
+import XCTest
+
+class SettingsVCTests: XCTestCase {
+  func testControlValueChanges() {
+    let svc = SettingsVC()
+    svc.beginAppearanceTransition(true, animated: false)
+
+    Current.settings.breedsURL = .standard
+    XCTAssertEqual(Current.settings.breedsURL, BreedsURL.standard)
+    let breedsURLControl = svc.settingsView.breedsURLControl
+
+    breedsURLControl.selectedSegmentIndex = 1
+    breedsURLControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.breedsURL, BreedsURL.empty)
+
+    breedsURLControl.selectedSegmentIndex = 2
+    breedsURLControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.breedsURL, BreedsURL.malformed)
+
+    breedsURLControl.selectedSegmentIndex = 3
+    breedsURLControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.breedsURL, BreedsURL.withMore)
+
+    breedsURLControl.selectedSegmentIndex = 0
+    breedsURLControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.breedsURL, BreedsURL.standard)
+
+    Current.settings.sessionType = .shared
+    XCTAssertEqual(Current.settings.sessionType, SessionType.shared)
+    let sessionTypeControl = svc.settingsView.sessionTypeControl
+
+    sessionTypeControl.selectedSegmentIndex = 1
+    sessionTypeControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.sessionType, SessionType.stub)
+
+    sessionTypeControl.selectedSegmentIndex = 0
+    sessionTypeControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.sessionType, SessionType.shared)
+
+    Current.settings.sortOrder = .name
+    XCTAssertEqual(Current.settings.sortOrder, SortOrder.name)
+    let sortOrderControl = svc.settingsView.sortOrderControl
+
+    sortOrderControl.selectedSegmentIndex = 1
+    sortOrderControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.sortOrder, SortOrder.popularity)
+
+    sortOrderControl.selectedSegmentIndex = 0
+    sortOrderControl.sendActions(for: .valueChanged)
+    XCTAssertEqual(Current.settings.sortOrder, SortOrder.name)
+  }
+
+  func testUpdateControls() {
+    let svc = SettingsVC()
+
+    Current.settings.breedsURL = .standard
+    let breedsURLControl = svc.settingsView.breedsURLControl
+    svc.viewDidLoad()
+    XCTAssertEqual(0, breedsURLControl.selectedSegmentIndex)
+    Current.settings.breedsURL = .empty
+    svc.viewDidLoad()
+    XCTAssertEqual(1, breedsURLControl.selectedSegmentIndex)
+    Current.settings.breedsURL = .malformed
+    svc.viewDidLoad()
+    XCTAssertEqual(2, breedsURLControl.selectedSegmentIndex)
+    Current.settings.breedsURL = .withMore
+    svc.viewDidLoad()
+    XCTAssertEqual(3, breedsURLControl.selectedSegmentIndex)
+    Current.settings.breedsURL = .standard
+    svc.viewDidLoad()
+    XCTAssertEqual(0, breedsURLControl.selectedSegmentIndex)
+
+    Current.settings.sortOrder = .name
+    svc.viewDidLoad()
+    let sortOrderControl = svc.settingsView.sortOrderControl
+    svc.viewDidLoad()
+    XCTAssertEqual(0, sortOrderControl.selectedSegmentIndex)
+    Current.settings.sortOrder = .name
+    svc.viewDidLoad()
+    XCTAssertEqual(0, sortOrderControl.selectedSegmentIndex)
+    Current.settings.sortOrder = .popularity
+    svc.viewDidLoad()
+    XCTAssertEqual(1, sortOrderControl.selectedSegmentIndex)
+  }
+}
+
+40.
+@testable import CatFancy
+import XCTest
+
+class AppDelegateTests: XCTestCase {
+  func testDidFinishLaunching() {
+    let appDelegate = AppDelegate()
+    XCTAssert(appDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: nil))
+  }
+}
+
+41.
+@testable import CatFancy
+import XCTest
+
+class BreedsLoaderTests: XCTestCase {
+  func testLoadBreeds() async throws {
+    Current.settings.breedsURL = .withMore
+    let breeds = try await BreedsLoader.loadBreeds()
+    let expectedCount = MockData.breedNames.count
+    XCTAssertEqual(expectedCount, breeds.count)
+  }
+}
+
+42.
+@testable import CatFancy
+import XCTest
+
+class GetterSetterFakeTests: XCTestCase {
+  func testGetAndSet() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    let initialOrder = settings.sortOrder
+    XCTAssertEqual(SortOrder.name, initialOrder)
+    settings.sortOrder = .popularity
+    XCTAssertEqual(settings.sortOrder, .popularity)
+  }
+
+  func testInitialization() {
+    let 🦖 = "🦖"
+    let 🪐 = "🪐"
+    let getterSetter = GetterSetterFake(dictionary: [🦖: 🪐])
+    XCTAssertEqual(getterSetter.get(key: 🦖), 🪐)
+  }
+}
+
+43.
+@testable import CatFancy
+import XCTest
+
+class GetterSetterRealTests: XCTestCase {
+  func testGetAndSet() {
+    let getterSetter = GetterSetterReal()
+    let key = "key"
+    let emptyValue = ""
+    let actualValue = "🍕"
+    getterSetter.set(key: key, value: emptyValue)
+    XCTAssertEqual(emptyValue, getterSetter.get(key: key))
+    getterSetter.set(key: key, value: actualValue)
+    XCTAssertEqual(actualValue, getterSetter.get(key: key))
+  }
+}
+
+44.
+@testable import CatFancy
+import XCTest
+
+class ImageCacheLoaderTests: XCTestCase {
+  func testImageNotAvailable() async {
+    let badURLString = "https://racecondition.software"
+    guard let badURL = URL(string: badURLString) else {
+      XCTFail("Could not initialize URL for \(badURLString).")
+      return
+    }
+
+    let image = await ImageCacheLoader.requestImage(url: badURL)
+    XCTAssertNil(image)
+  }
+
+  func testRequestImageFromEndpointAndCache() async {
+    ImageCacheLoader.clearCache()
+    var image = await ImageCacheLoader.requestImage(url: MockData.photoURL) // endpoint
+    XCTAssertNotNil(image)
+    image = await ImageCacheLoader.requestImage(url: MockData.photoURL) // cache
+    XCTAssertNotNil(image)
+  }
+}
+
+45.
+static func clearCache() {
+  shared.cache.removeAllObjects()
+}
+
+46.
+@testable import CatFancy
+import XCTest
+
+class NSLayoutConstraintExtensionTests: XCTestCase {
+  func testActivate() {
+    let parentView = UIView()
+    let view1 = UIView()
+    let view2 = UIView()
+
+    [view1, view2].forEach {
+      parentView.addSubview($0)
+    }
+
+    let constraint = NSLayoutConstraint(
+      item: view1,
+      attribute: .bottom,
+      relatedBy: .equal,
+      toItem: view2,
+      attribute: .bottom,
+      multiplier: 1.0,
+      constant: 0.0
+    )
+
+    XCTAssertFalse(constraint.isActive)
+    constraint.activate()
+    XCTAssert(constraint.isActive)
+  }
+}
+
+47.
+​​@testable import CatFancy
+import XCTest
+
+final class SoundPlayerDummyTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerDummy()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+48.
+@testable import CatFancy
+import XCTest
+
+final class SoundPlayerRealTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerReal()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+49.
+@testable import CatFancy
+import XCTest
+
+class UIViewControllerExtensionTests: XCTestCase {
+  func testFatalCastMessage() {
+    let vc = SettingsVC()
+    let view = SettingsView()
+    let message = vc.fatalCastMessage(view: view.self)
+    XCTAssert(message.contains("Could not cast <CatFancy.SettingsVC:"))
+    XCTAssert(message.contains("to <CatFancy.SettingsView:"))
+  }
+}
+
+50.
+@testable import CatFancy
+import XCTest
+
+class URLExtensionTests: XCTestCase {
+  func testCouldNotInit() {
+    let 🙀 = "🙀"
+    XCTAssertEqual("Could not initialize URL from \(🙀).", URL.couldNotInit(urlString: 🙀))
+  }
+}
+
+51.
+@testable import CatFancy
+import XCTest
+
+class URLProtocolStubTests: XCTestCase {
+  private static var backupURLDataDict = [URL: Data]()
+
+  override class func setUp() {
+    backupURLDataDict = URLSession.urlDataDict
+  }
+
+  override class func tearDown() {
+    URLSession.urlDataDict = backupURLDataDict
+  }
+
+  private var url: URL {
+    let urlString = "https://racecondition.software"
+    if let url = URL(string: urlString) {
+      return url
+    } else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+  }
+
+  private var request: URLRequest {
+    URLRequest(url: url)
+  }
+
+  func testCanInit() {
+    XCTAssert(URLProtocolStub.canInit(with: request))
+  }
+
+  func testCanonicalRequest() {
+    XCTAssertEqual(request, URLProtocolStub.canonicalRequest(for: request))
+  }
+
+  func testStartLoading() {
+    URLSession.urlDataDict = [url: Data()]
+    let exp = expectation(description: "Waiting for load.")
+    let protocolClientStub = ProtocolClientStub(didFinishLoading: { urlProtocol in
+      XCTAssert(urlProtocol is URLProtocolStub)
+      exp.fulfill()
+    })
+    let urlProtocolStub = URLProtocolStub(request: request, cachedResponse: nil, client: protocolClientStub)
+    urlProtocolStub.startLoading()
+    let timeout: TimeInterval = 1.0
+    wait(for: [exp], timeout: timeout)
+  }
+}
+
+private class ProtocolClientStub: NSObject, URLProtocolClient {
+  let didFinishLoading: (URLProtocol) -> Void
+
+  init(didFinishLoading: @escaping (URLProtocol) -> Void) {
+    self.didFinishLoading = didFinishLoading
+  }
+
+  func urlProtocolDidFinishLoading(_ protocol: URLProtocol) {
+    didFinishLoading(`protocol`)
+  }
+
+  func urlProtocol(_ protocol: URLProtocol, wasRedirectedTo request: URLRequest, redirectResponse: URLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, cachedResponseIsValid cachedResponse: CachedURLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive response: URLResponse, cacheStoragePolicy policy: URLCache.StoragePolicy) {}
+  func urlProtocol(_ protocol: URLProtocol, didLoad data: Data) {}
+  func urlProtocol(_ protocol: URLProtocol, didFailWithError error: Error) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive challenge: URLAuthenticationChallenge) {}
+  func urlProtocol(_ protocol: URLProtocol, didCancel challenge: URLAuthenticationChallenge) {}
+}
+
+52.
+@testable import CatFancy
+import XCTest
+
+class URLSessionExtensionTests: XCTestCase {
+  override class func setUp() {
+    URLSession.didProcessURLs = false
+  }
+
+  override class func tearDown() {
+    URLSession.didProcessURLs = false
+  }
+
+  func testStubData() {
+    Current.settings.breedsURL = .withMore
+    let session = URLSession.stub
+    XCTAssert(session.configuration.protocolClasses?[0] is URLProtocolStub.Type)
+    let expectedTestURLCount = MockData.breedNames.count + BreedsURL.allCases.count
+    XCTAssertEqual(expectedTestURLCount, URLSession.urlDataDict.count)
+  }
+}
+
+53.
+@testable import CatFancy
+import XCTest
+
+class UsesAutoLayoutTests: XCTestCase {
+  @UsesAutoLayout
+  private var wrappedView = UIView()
+
+  func testUsesAutoLayout() {
+    let vanillaView = UIView()
+    XCTAssert(vanillaView.translatesAutoresizingMaskIntoConstraints)
+
+    XCTAssertFalse(wrappedView.translatesAutoresizingMaskIntoConstraints)
+
+    var vanillaWrappedView = UsesAutoLayout<UIView>(wrappedValue: vanillaView)
+    XCTAssertFalse(vanillaWrappedView.wrappedValue.translatesAutoresizingMaskIntoConstraints)
+
+    vanillaWrappedView.wrappedValue = vanillaView
+    XCTAssertFalse(vanillaWrappedView.wrappedValue.translatesAutoresizingMaskIntoConstraints)
+  }
+}
+
+54.
+@testable import CatFancy
+import XCTest
+
+class BreedsURLTests: XCTestCase {
+  func testURL() {
+    guard
+      let expectedStandardURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"),
+      let expectedEmptyURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_empty.json"),
+      let expectedMalformedURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_malformed.json"),
+      let expectedWithMoreURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_with_more.json")
+    else {
+      XCTFail("Failed to initialize expected URL.")
+      return
+    }
+
+    XCTAssertEqual(expectedStandardURL, BreedsURL.standard.url)
+    XCTAssertEqual(expectedEmptyURL, BreedsURL.empty.url)
+    XCTAssertEqual(expectedMalformedURL, BreedsURL.malformed.url)
+    XCTAssertEqual(expectedWithMoreURL, BreedsURL.withMore.url)
+  }
+
+  func testDisplayName() {
+    let expectedStandardDisplayName = "Breeds"
+    let expectedEmptyDisplayName = "Empty"
+    let expectedMalformedDisplayName = "Malformed"
+    let expectedWithMoreDisplayName = "With More"
+
+    XCTAssertEqual(expectedStandardDisplayName, BreedsURL.standard.displayName)
+    XCTAssertEqual(expectedEmptyDisplayName, BreedsURL.empty.displayName)
+    XCTAssertEqual(expectedMalformedDisplayName, BreedsURL.malformed.displayName)
+    XCTAssertEqual(expectedWithMoreDisplayName, BreedsURL.withMore.displayName)
+  }
+}
+
+55.
+@testable import CatFancy
+import XCTest
+
+class LicenseTests: XCTestCase {
+  func testURL() {
+    [
+      (License.cc1, "https://creativecommons.org/licenses/by-sa/1.0/"),
+      (.cc2, "https://creativecommons.org/licenses/by-sa/2.0/"),
+      (.cc3, "https://creativecommons.org/licenses/by-sa/3.0/"),
+      (.cc4, "https://creativecommons.org/licenses/by-sa/4.0/"),
+      (.ccnd2, "https://creativecommons.org/licenses/by-nd/2.0/"),
+      (.pinterest, "https://policy.pinterest.com/en/terms-of-service"),
+      (.publicDomain, "https://creativecommons.org/share-your-work/public-domain/")
+    ].forEach {
+      XCTAssertEqual("\($0.0.url)", $0.1)
+    }
+  }
+}
+
+56.
+@testable import CatFancy
+import XCTest
+
+class SettingsTests: XCTestCase {
+  func testBreedsURLSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.breedsURLDefault, settings.breedsURL)
+    XCTAssertEqual(BreedsURL.withMore, settings.breedsURL)
+    settings.breedsURL = .standard
+    XCTAssertNotEqual(Settings.breedsURLDefault, settings.breedsURL)
+    XCTAssertEqual(BreedsURL.standard, settings.breedsURL)
+  }
+
+  func testSessionTypeSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.shared, settings.sessionType)
+    settings.sessionType = .stub
+    XCTAssertNotEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.stub, settings.sessionType)
+  }
+
+  func testSortOrderSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.name, settings.sortOrder)
+    settings.sortOrder = .popularity
+    XCTAssertNotEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
+  }
+}
+
+57.
+@testable import CatFancy
+import XCTest
+
+class SortOrderTests: XCTestCase {
+  func testDisplayName() {
+    XCTAssertEqual("Name", SortOrder.name.displayName)
+    XCTAssertEqual("Popularity", SortOrder.popularity.displayName)
+  }
+
+  func testCompare() {
+    let a = "A"
+    let b = "B"
+
+    let urlString = "https://racecondition.software"
+    guard let url = URL(string: urlString) else {
+      XCTFail(URL.couldNotInit(urlString: urlString))
+      return
+    }
+
+    let breed1 = Breed(name: a, knownFor: "", popularity: 42, photoUrl: url, infoUrl: url, credit: "", license: .publicDomain, description: "")
+    let breed2 = Breed(name: b, knownFor: "", popularity: 21, photoUrl: url, infoUrl: url, credit: "", license: .publicDomain, description: "")
+
+    var sortOrder = SortOrder.name
+    XCTAssert(sortOrder.compare(breed1: breed1, breed2: breed2))
+    sortOrder = .popularity
+    XCTAssertFalse(sortOrder.compare(breed1: breed1, breed2: breed2))
+  }
+}
+
+58.
+@testable import CatFancy
+import XCTest
+
+class WorldTests: XCTestCase {
+  func testProductionWorld() {
+    let world = World.production
+    XCTAssert(world.settings.getterSetter is GetterSetterReal)
+    XCTAssert(world.soundPlayer is SoundPlayerReal)
+  }
+
+  func testUnitTestWorld() {
+    let world = World.unitTest
+    XCTAssert(world.settings.getterSetter is GetterSetterFake)
+    XCTAssert(world.soundPlayer is SoundPlayerDummy)
+  }
+}
+
+59.
+@testable import CatFancy
+import XCTest
+
+class BreedCoordinatorTests: XCTestCase {
+  private let breed = Breed(name: "", knownFor: "", popularity: 42, photoUrl: MockData.photoURL, infoUrl: MockData.photoURL, credit: "", license: .publicDomain, description: "")
+
+  func testStart() {
+    let nc = UINavigationController()
+    let coordinator = BreedCoordinator(navigationController: nc)
+    XCTAssertNil(coordinator.navigationController.topViewController)
+    coordinator.start()
+    XCTAssert(coordinator.navigationController.topViewController is BrowseBreedsVC)
+  }
+
+  func testShowDetails() {
+    let nc = UINavigationController()
+    let coordinator = BreedCoordinator(navigationController: nc)
+    XCTAssertNil(coordinator.navigationController.topViewController)
+    coordinator.start()
+    XCTAssert(coordinator.navigationController.topViewController is BrowseBreedsVC)
+    coordinator.showDetails(breed: breed, animated: false)
+    XCTAssert(coordinator.navigationController.topViewController is BreedDetailVC)
+  }
+
+  func testShowWebpage() {
+    let nc = UINavigationController()
+    let coordinator = BreedCoordinator(navigationController: nc)
+    XCTAssertNil(coordinator.navigationController.topViewController)
+    coordinator.start()
+    XCTAssert(coordinator.navigationController.topViewController is BrowseBreedsVC)
+    coordinator.showDetails(breed: breed, animated: false)
+    XCTAssert(coordinator.navigationController.topViewController is BreedDetailVC)
+    coordinator.showWebpage(url: breed.infoUrl, didSucceed: { didSucceed in
+      XCTAssert(didSucceed)
+    })
+  }
+}
+
+60.
+@testable import CatFancy
+import XCTest
+
+class SettingsCoordinatorTests: XCTestCase {
+  func testStart() {
+    let nc = UINavigationController()
+    let coordinator = SettingsCoordinator(navigationController: nc)
+    XCTAssertNil(coordinator.navigationController.topViewController)
+    coordinator.start()
+    XCTAssert(coordinator.navigationController.topViewController is SettingsVC)
+  }
+}
+
+61.
+@testable import CatFancy
+import XCTest
+
+class BreedCellTests: XCTestCase {
+  func testBreedCell() {
+    let cell = BreedCell(style: .default, reuseIdentifier: "\(BreedCell.self)")
+
+    let breed = Breed(name: "", knownFor: "", popularity: 42, photoUrl: MockData.photoURL, infoUrl: MockData.photoURL, credit: "", license: .publicDomain, description: "")
+
+    cell.configure(breed: breed)
+
+    XCTAssertEqual(breed.name, cell.nameLabel.text)
+    XCTAssertEqual("Popularity: \(breed.popularity)", cell.popularityLabel.text)
+    XCTAssertEqual(Symbols.pawPrint, cell.photoImageView.image)
+  }
+}
+
+62.
+@testable import CatFancy
+import XCTest
+
+class BreedDetailViewTests: XCTestCase {
+  func testInitialization() {
+    let bdv = BreedDetailView()
+    XCTAssertNotNil(bdv)
+  }
+}
+
+63.
+@testable import CatFancy
+import XCTest
+
+class BrowseBreedsViewTests: XCTestCase {
+  func testShowLoadingState() {
+    let bbv = BrowseBreedsView(frame: CGRect.zero)
+    XCTAssertNotNil(bbv)
+    [
+      (LoadingState.notStarted, true, true, true, true, true),
+      (.loading, true, false, true, true, true),
+      (.succeededWithBreeds, false, true, true, true, true),
+      (.succeededWithNoBreeds, true, true, false, false, false),
+      (.failed, true, true, false, false, false)
+    ].forEach {
+      verifyVisibility(
+        loadingState: $0.0,
+        view: bbv,
+        tableView: $0.1,
+        activityIndicatorView: $0.2,
+        statusLabel: $0.3,
+        statusDescription: $0.4,
+        retryButton: $0.5
+      )
+    }
+  }
+
+  private func verifyVisibility(
+    loadingState: LoadingState,
+    view: BrowseBreedsView,
+    tableView: Bool,
+    activityIndicatorView: Bool,
+    statusLabel: Bool,
+    statusDescription: Bool,
+    retryButton: Bool
+  ) {
+    view.showLoadingState(loadingState)
+    XCTAssertEqual(tableView, view.tableView.isHidden)
+    XCTAssertEqual(activityIndicatorView, view.activityIndicatorView.isHidden)
+    XCTAssertEqual(statusLabel, view.statusLabel.isHidden)
+    XCTAssertEqual(statusDescription, view.statusDescription.isHidden)
+    XCTAssertEqual(retryButton, view.retryButton.isHidden)
+  }
+}
+
+64.
+@testable import CatFancy
+import XCTest
+
+class SettingsViewTests: XCTestCase {
+  func testInitialization() {
+    let sv = SettingsView()
+    XCTAssertNotNil(sv)
+  }
+}
