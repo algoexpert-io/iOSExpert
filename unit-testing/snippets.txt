@@ -327,7 +327,7 @@ final class ConverterDataSourceTests: XCTestCase {
   }
 }
 
-Bogus DeviceTests.swift
+// Bogus DeviceTests.swift - not part of snippet 20
 @testable import RomanNumerals
 import XCTest
 
@@ -337,7 +337,7 @@ final class DeviceTests: XCTestCase {
   }
 }
 
-Bogus PersistentStorageTests.swift
+// Bogus PersistentStorageTests.swift
 @testable import RomanNumerals
 import XCTest
 
@@ -351,7 +351,7 @@ final class PersistentStorageTests: XCTestCase {
   }
 }
 
-Bogus AnalyticsServiceTests.swift
+// Bogus AnalyticsServiceTests.swift
 @testable import RomanNumerals
 import XCTest
 
@@ -365,7 +365,7 @@ final class AnalyticsServiceTests: XCTestCase {
   }
 }
 
-Bogus WeatherRequesterTests.swift
+// Bogus WeatherRequesterTests.swift
 @testable import RomanNumerals
 import XCTest
 
