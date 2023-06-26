@@ -8,7 +8,7 @@ class BreedDetailView: UIView, UITextViewDelegate {
     let photoImageView = UIImageView()
     photoImageView.contentMode = .scaleAspectFit
     return photoImageView
-  } ()
+  }()
 
   @UsesAutoLayout
   private(set) var descriptionTextView: UITextView = {
@@ -16,7 +16,7 @@ class BreedDetailView: UIView, UITextViewDelegate {
     descriptionTextView.font = Fonts.smallBody
     descriptionTextView.bounces = false
     return descriptionTextView
-  } ()
+  }()
 
   @UsesAutoLayout
   private(set) var creditLabel: UILabel = {
