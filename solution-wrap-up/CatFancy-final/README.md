@@ -11,7 +11,7 @@ CatFancy
 
 ## Introduction
 
-CatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using UIKit. Users can browse breeds of cats with images from various sources and breed info from Wikipedia. An earlier version of CatFancy accompanied a [blog post](https://racecondition.software/blog/challenges/) about UIKit iOS-developer coding challenges.
+CatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using UIKit. Users can browse breeds of cats with images from various sources and breed info from Wikipedia. An earlier version of CatFancy accompanied this [blog post](https://racecondition.software/blog/challenges/) about UIKit iOS-developer coding challenges.
 
 ## Build Tools & Versions Used
 
@@ -21,7 +21,7 @@ I developed CatFancy using Xcode 15, iOS 17, SwiftLint 0.52.3, and [this song](h
 
 Aside from meeting the requirements of the coding challenge, I focused in CatFancy on using a technique, dependency injection, and an architectural pattern, the coordinator, that facilitate unit testing. I have come to value unit testing because, as Jon Reid [observed](https://qualitycoding.org), a "robust suite of unit tests acts as a safety harness, giving you [courage](https://www.theverge.com/2016/9/7/12838024/apple-iphone-7-plus-headphone-jack-removal-courage) to make bold changes." In nuts-and-bolts terms, dependency injection makes objects testable by isolating dependencies and side effects. I have [written](https://racecondition.software/blog/dependency-injection/) [elsewhere](https://racecondition.software/blog/unit-testing/) on dependency injection. The coordinator pattern makes `UIViewController`s more testable by removing from them the work of navigating to other `UIViewController`s, whether in the [app itself](CatFancy/Navigation/BrowseBreedsDelegate.swift) or in [external apps](CatFancy/Navigation/BreedDelegate.swift). CatFancy's unit-test coverage is 88.7%.
 
-CatFancy demonstrates two new Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
+CatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
 
 Although the requirements only call for two screens, breed browsing and breed details, I chose to implement a settings screen to give the reviewer the option of choosing an alternate `URL` or `URLSession`. This screen is also home to the sort-order setting.
 
@@ -71,7 +71,7 @@ Antoine van der Lee [shared](https://www.avanderlee.com/swift/auto-layout-progra
 
 [Point-Free](https://www.pointfree.co/) developed and [evangelized](https://www.pointfree.co/blog/posts/21-how-to-control-the-world) CatFancy's approach to dependency injection, The World.
 
-Paul Hudson [shared](https://www.hackingwithswift.com/articles/153/how-to-test-ios-networking-code-the-easy-way) the approach to dependency injection for `URLSession` used in `URLProtocolStub.swift` and `URLSessionExtension.swift`.
+Paul Hudson [shared](https://www.hackingwithswift.com/articles/153/how-to-test-ios-networking-code-the-easy-way) the approach to dependency injection for `URLSession` used in `URLProtocolStub.swift` and `URLSessionExtension.swift`. His article preceded `async`/`await`, and I modified the implementation to support it.
 
 Soroush Khanlou [developed](http://khanlou.com/2015/01/the-coordinator/) the coordinator pattern that CatFancy uses for navigation. [Two](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps) [posts](https://www.hackingwithswift.com/articles/175/advanced-coordinator-pattern-tutorial-ios) by Paul Hudson also informed CatFancy's implementation.
 
