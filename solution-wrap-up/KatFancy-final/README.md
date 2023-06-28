@@ -11,7 +11,7 @@ KatFancy
 
 ## Introduction
 
-KatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using SwiftUI. Users can browse breeds of cats with images from various sources and breed info from Wikipedia. An earlier version of KatFancy accompanied this [blog post](https://racecondition.software/blog/swiftui-homeworks/) about SwiftUI iOS-developer coding challenges.
+KatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using SwiftUI. Users can browse breeds of cats with images from various sources and breed info from Wikipedia.
 
 ## Build Tools & Versions Used
 
@@ -20,6 +20,8 @@ I developed KatFancy using Xcode 15, iOS 17, SwiftLint 0.52.3, and [this song](h
 ## Discussion
 
 Aside from meeting the requirements of the coding challenge, I focused in KatFancy on using a technique, dependency injection, that facilitates unit testing. I have come to value unit testing because, as Jon Reid [observed](https://qualitycoding.org), a "robust suite of unit tests acts as a safety harness, giving you [courage](https://www.theverge.com/2016/9/7/12838024/apple-iphone-7-plus-headphone-jack-removal-courage) to make bold changes." In nuts-and-bolts terms, dependency injection makes objects testable by isolating dependencies and side effects. I have [written](https://racecondition.software/blog/dependency-injection/) [elsewhere](https://racecondition.software/blog/unit-testing/) on dependency injection.
+
+KatFancy uses view models to mediate between views and models. These view models keep views simple and are highly unit-testable.
 
 KatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
 
@@ -64,3 +66,5 @@ Paul Hudson [shared](https://www.hackingwithswift.com/articles/153/how-to-test-i
 `ImageLoader` is a modification of an approach to image caching that Donny Wals presented in [this article](https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/).
 
 [This video](https://www.youtube.com/watch?v=n1PeOa3qXy8) by Vincent Pradeilles inspired KatFancy's implementation.
+
+An earlier version of KatFancy accompanied [this blog post](https://racecondition.software/blog/swiftui-homeworks/) about SwiftUI iOS-developer coding challenges.

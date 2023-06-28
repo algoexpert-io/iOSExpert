@@ -11,7 +11,7 @@ CatFancy
 
 ## Introduction
 
-CatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using UIKit. Users can browse breeds of cats with images from various sources and breed info from Wikipedia. An earlier version of CatFancy accompanied this [blog post](https://racecondition.software/blog/challenges/) about UIKit iOS-developer coding challenges.
+CatFancy is an iOS app that demonstrates iOS-development techniques by solving a coding challenge using UIKit. Users can browse breeds of cats with images from various sources and breed info from Wikipedia.
 
 ## Build Tools & Versions Used
 
@@ -76,3 +76,5 @@ Paul Hudson [shared](https://www.hackingwithswift.com/articles/153/how-to-test-i
 Soroush Khanlou [developed](http://khanlou.com/2015/01/the-coordinator/) the coordinator pattern that CatFancy uses for navigation. [Two](https://www.hackingwithswift.com/articles/71/how-to-use-the-coordinator-pattern-in-ios-apps) [posts](https://www.hackingwithswift.com/articles/175/advanced-coordinator-pattern-tutorial-ios) by Paul Hudson also informed CatFancy's implementation.
 
 Geoff Hackworth [shared](https://medium.com/@hacknicity/how-to-switch-your-ios-app-and-scene-delegates-for-improved-testing-9746279378c3) the technique of bespoke app/scene delegates for unit tests exemplified by `TestingRootViewController.swift`, `TestingAppDelegate.swift`,  `TestingSceneDelegate.swift`, and `main.swift`, building on a technique [shared](https://qualitycoding.org/ios-app-delegate-testing/) by Jon Reid.
+
+An earlier version of CatFancy accompanied [this blog post](https://racecondition.software/blog/challenges/) about UIKit iOS-developer coding challenges.
