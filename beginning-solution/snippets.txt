@@ -1,0 +1,141 @@
+1.
+import Foundation
+
+struct Breed: Decodable {
+  let name: String
+  let knownFor: String
+  let popularity: Int
+  let photoUrl: URL
+  let infoUrl: URL
+  let credit: String
+  let license: String
+  let description: String
+}
+
+2.
+import Foundation
+
+enum License: String, Decodable {
+  case cc1
+  case cc2
+  case cc3
+  case cc4
+  case ccnd2
+  case pinterest
+  case publicDomain = "public_domain"
+
+  var url: URL {
+    let urlString: String
+    switch self {
+    case .cc1:
+      urlString = "https://creativecommons.org/licenses/by-sa/1.0/"
+    case .cc2:
+      urlString = "https://creativecommons.org/licenses/by-sa/2.0/"
+    case .cc3:
+      urlString = "https://creativecommons.org/licenses/by-sa/3.0/"
+    case .cc4:
+      urlString = "https://creativecommons.org/licenses/by-sa/4.0/"
+    case .ccnd2:
+      urlString = "https://creativecommons.org/licenses/by-nd/2.0/"
+    case .pinterest:
+      urlString = "https://policy.pinterest.com/en/terms-of-service"
+    case .publicDomain:
+      urlString = "https://creativecommons.org/share-your-work/public-domain/"
+    }
+
+    guard let url = URL(string: urlString) else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+
+    return url
+  }
+}
+
+3.
+import Foundation
+
+extension URL {
+  static func couldNotInit(urlString: String) -> String {
+    "Could not initialize URL from \(urlString)."
+  }
+}
+
+4.
+struct Breeds: Decodable {
+  let breeds: [Breed]
+}
+
+5.
+import Foundation
+
+enum BreedsLoader {
+  static func loadBreeds() async throws -> [Breed] {
+    let urlString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"
+    guard let url = URL(string: urlString) else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+
+    let (data, _) = try await URLSession.shared.data(from: url)
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    let breeds = try decoder.decode(Breeds.self, from: data)
+    return breeds.breeds
+  }
+}
+
+6.
+import UIKit
+
+class ViewController: UIViewController {
+  override func viewDidLoad() {
+    Task {
+      do {
+        let breeds = try await BreedsLoader.loadBreeds()
+        print("BreedsLoader retrieved \(breeds.count) breed(s).")
+      } catch {
+        print("An error happened during breed loading.")
+      }
+    }
+  }
+}
+
+7.
+import SwiftUI
+
+struct ContentView: View {
+  var body: some View {
+    VStack {
+      Image(systemName: "globe")
+        .imageScale(.large)
+        .foregroundColor(.accentColor)
+      Text("Hello, world!")
+    }
+    .padding()
+    .task {
+      do {
+        let breeds = try await BreedsLoader.loadBreeds()
+        print("BreedsLoader retrieved \(breeds.count) breed(s).")
+      } catch {
+        print("An error happened during breed loading.")
+      }
+    }
+  }
+}
+
+8.
+if which swiftlint >/dev/null; then
+swiftlint
+else
+echo "Warning: SwiftLint not installed. Download from https://github.com/realm/SwiftLint."
+fi
+
+9.
+disabled_rules:
+  - line_length
+  - function_body_length
+  - identifier_name
+  - void_return
+  - cyclomatic_complexity
+  - type_name
+  - multiple_closures_with_trailing_closure
+  - function_parameter_count

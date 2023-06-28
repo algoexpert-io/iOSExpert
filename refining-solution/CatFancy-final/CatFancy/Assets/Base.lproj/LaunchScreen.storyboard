@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21503.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21501.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,22 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Abyssinian.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-HE-UPH">
-                                <rect key="frame" x="52.5" y="198.5" width="270" height="270"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Abyssinian.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Kfr-cj-9QQ">
+                                <rect key="frame" x="66" y="212" width="243" height="243"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="270" id="DkF-kg-vyZ"/>
-                                    <constraint firstAttribute="width" constant="270" id="oFA-jz-zIh"/>
+                                    <constraint firstAttribute="width" constant="243" id="0vZ-tb-6ip"/>
+                                    <constraint firstAttribute="height" constant="243" id="9mP-n6-dJ3"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CatFancy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-0F-CrG">
-                                <rect key="frame" x="111.5" y="140.5" width="152" height="50"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Josh Adams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaz-uA-eZx">
+                                <rect key="frame" x="16" y="463" width="343" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Josh Adams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARw-4Z-iQU">
-                                <rect key="frame" x="86.5" y="476.5" width="202" height="50"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CatFancy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLv-4Y-t3g">
+                                <rect key="frame" x="16" y="161" width="343" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -39,12 +40,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tVB-HE-UPH" firstAttribute="top" secondItem="W9d-0F-CrG" secondAttribute="bottom" constant="8" id="Iz6-SG-bTW"/>
-                            <constraint firstItem="ARw-4Z-iQU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="K1A-F3-GnD"/>
-                            <constraint firstItem="ARw-4Z-iQU" firstAttribute="top" secondItem="tVB-HE-UPH" secondAttribute="bottom" constant="8" id="Qft-OZ-5BR"/>
-                            <constraint firstItem="tVB-HE-UPH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Zx4-6z-e54"/>
-                            <constraint firstItem="W9d-0F-CrG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cJ4-ev-cQf"/>
-                            <constraint firstItem="tVB-HE-UPH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="k5Q-xW-oMr"/>
+                            <constraint firstItem="Kfr-cj-9QQ" firstAttribute="top" secondItem="oLv-4Y-t3g" secondAttribute="bottom" constant="8" symbolic="YES" id="CuJ-nW-tp1"/>
+                            <constraint firstItem="Kfr-cj-9QQ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KQY-A4-YpO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oLv-4Y-t3g" secondAttribute="trailing" constant="16" id="WZF-Jw-eEM"/>
+                            <constraint firstItem="iaz-uA-eZx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bfu-vP-9KP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iaz-uA-eZx" secondAttribute="trailing" constant="16" id="hAP-tR-40e"/>
+                            <constraint firstItem="Kfr-cj-9QQ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lkD-6b-1ra"/>
+                            <constraint firstItem="oLv-4Y-t3g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="lx2-Mn-qeq"/>
+                            <constraint firstItem="iaz-uA-eZx" firstAttribute="top" secondItem="Kfr-cj-9QQ" secondAttribute="bottom" constant="8" symbolic="YES" id="oad-UX-6sJ"/>
                         </constraints>
                     </view>
                 </viewController>

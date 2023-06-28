@@ -48,9 +48,9 @@ My research indicates that this warning is [harmless](https://en.wikipedia.org/w
 | -------- | ------- |
 | ![](img/browse.png) | ![](img/details.png) |
 
-| Settings | Splash |
+| Settings | Launch |
 | -------- | ------- |
-| ![](img/settings.png) | ![](img/splash.png) |
+| ![](img/settings.png) | ![](img/launch.png) |
 
 ## Credits
 
@@ -104,9 +104,9 @@ I developed KatFancy using Xcode 15, iOS 17, SwiftLint 0.52.3, and [this song](h
 | -------- | ------- |
 | ![](img/browse.png) | ![](img/details.png) |
 
-| Settings | Splash |
+| Settings | Launch |
 | -------- | ------- |
-| ![](img/settings.png) | ![](img/splash.png) |
+| ![](img/settings.png) | ![](img/launch.png) |
 
 ## Credits
 
