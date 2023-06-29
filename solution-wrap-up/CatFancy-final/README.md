@@ -15,7 +15,7 @@ CatFancy is an iOS app that demonstrates iOS-development techniques by solving a
 
 ## Build Tools & Versions Used
 
-I developed CatFancy using Xcode 15, iOS 17, SwiftLint 0.52.3, and [this song](https://www.youtube.com/watch?v=e4ItJXUKk50).
+I developed CatFancy using Xcode 15.0, iOS 17.0, SwiftLint 0.52.3, and [this song](https://www.youtube.com/watch?v=e4ItJXUKk50).
 
 ## Discussion
 
