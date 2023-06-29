@@ -6,10 +6,6 @@ extension View {
   func segmentedPicker() -> some View {
     modifier(SegmentedPicker())
   }
-
-  func destructiveButton() -> some View {
-    modifier(DestructiveButton())
-  }
 }
 
 private struct SegmentedPicker: ViewModifier {
@@ -20,21 +16,12 @@ private struct SegmentedPicker: ViewModifier {
   }
 }
 
-private struct DestructiveButton: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .foregroundColor(.red)
-      .buttonStyle(.bordered)
-      .tint(.red)
-  }
-}
-
-private struct ModifiersView: View {
+private struct SegmentedPickerView: View {
   @State var selection = BreedsURL.withMore
 
   var body: some View {
     VStack {
-      Text("segmentedPicker")
+      Text("segmentedPicker()")
         .font(.headline)
 
       Picker("", selection: $selection) {
@@ -43,23 +30,12 @@ private struct ModifiersView: View {
         }
       }
       .segmentedPicker()
-
-      Spacer()
-        .frame(height: Layout.tripleDefaultSpacing)
-
-      Text("destructiveButton")
-        .font(.headline)
-
-      Button("Don't Tap This") {
-        Current.soundPlayer.play(.sadTrombone)
-      }
-      .destructiveButton()
     }
   }
 }
 
-struct ModifiersView_Previews: PreviewProvider {
+struct SegmentedPickerView_Previews: PreviewProvider {
   static var previews: some View {
-    ModifiersView()
+    SegmentedPickerView()
   }
 }

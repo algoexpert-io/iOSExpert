@@ -12,7 +12,6 @@ struct KatFancyApp: App {
   var body: some Scene {
     WindowGroup {
       MainTabView()
-        .environmentObject(Current)
     }
   }
 }

@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-@Bindable private var current = Current
+  @Bindable private var current = Current
 
   var body: some View {
     ScrollView(.vertical) {
@@ -54,7 +54,7 @@ struct SettingsView: View {
         }
         .segmentedPicker()
 
-        Text("This setting controls the sort order of breeds on FancyKat's breed-browsing screen.")
+        Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
           .padding()
       }
 
@@ -66,6 +66,5 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
   static var previews: some View {
     SettingsView()
-      .environmentObject(Current)
   }
 }

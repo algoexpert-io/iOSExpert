@@ -44,7 +44,7 @@
 		030B7F55296F5E8600C04F99 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F54296F5E8600C04F99 /* Sound.swift */; };
 		030B7F59296F5FCA00C04F99 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 030B7F57296F5FCA00C04F99 /* chime.mp3 */; };
 		030B7F5A296F5FCA00C04F99 /* sadTrombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 030B7F58296F5FCA00C04F99 /* sadTrombone.mp3 */; };
-		030B7F5C296F7A6E00C04F99 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F5B296F7A6E00C04F99 /* Modifiers.swift */; };
+		030B7F5C296F7A6E00C04F99 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F5B296F7A6E00C04F99 /* Modifier.swift */; };
 		030B7F5E296F7AC300C04F99 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F5D296F7AC300C04F99 /* Layout.swift */; };
 		030B7F62296F7EDB00C04F99 /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F61296F7EDB00C04F99 /* ErrorRetryView.swift */; };
 		030B7F6629707B2200C04F99 /* breeds_with_more.json in Resources */ = {isa = PBXBuildFile; fileRef = 030B7F6329707B2200C04F99 /* breeds_with_more.json */; };
@@ -132,7 +132,7 @@
 		030B7F54296F5E8600C04F99 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		030B7F57296F5FCA00C04F99 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		030B7F58296F5FCA00C04F99 /* sadTrombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sadTrombone.mp3; sourceTree = "<group>"; };
-		030B7F5B296F7A6E00C04F99 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		030B7F5B296F7A6E00C04F99 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		030B7F5D296F7AC300C04F99 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		030B7F61296F7EDB00C04F99 /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
 		030B7F6329707B2200C04F99 /* breeds_with_more.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = breeds_with_more.json; sourceTree = "<group>"; };
@@ -202,12 +202,12 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		0304ABD9297B18000029A775 /* ViewModels */ = {
+		0304ABD9297B18000029A775 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				0304AC00297B1D3F0029A775 /* BrowseBreedsViewModelTests.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0304ABDA297B18120029A775 /* Models */ = {
@@ -308,7 +308,7 @@
 			children = (
 				0304ABDB297B18160029A775 /* Helpers */,
 				0304ABDA297B18120029A775 /* Models */,
-				0304ABD9297B18000029A775 /* ViewModels */,
+				0304ABD9297B18000029A775 /* ViewModel */,
 			);
 			path = KatFancyTests;
 			sourceTree = "<group>";
@@ -355,7 +355,7 @@
 				030FCAEE2968D90A00EA23C8 /* BrowseBreedsView.swift */,
 				030B7F61296F7EDB00C04F99 /* ErrorRetryView.swift */,
 				030B7F38296E052E00C04F99 /* MainTabView.swift */,
-				030B7F5B296F7A6E00C04F99 /* Modifiers.swift */,
+				030B7F5B296F7A6E00C04F99 /* Modifier.swift */,
 				030B7F3A296E058900C04F99 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -550,7 +550,7 @@
 				030B7F55296F5E8600C04F99 /* Sound.swift in Sources */,
 				03FCC17129737EA800933493 /* MockData.swift in Sources */,
 				030FCAEF2968D90A00EA23C8 /* BrowseBreedsView.swift in Sources */,
-				030B7F5C296F7A6E00C04F99 /* Modifiers.swift in Sources */,
+				030B7F5C296F7A6E00C04F99 /* Modifier.swift in Sources */,
 				030B7F39296E052E00C04F99 /* MainTabView.swift in Sources */,
 				030B7F5E296F7AC300C04F99 /* Layout.swift in Sources */,
 				030B7F312969F9A500C04F99 /* BrowseBreedsViewModel.swift in Sources */,

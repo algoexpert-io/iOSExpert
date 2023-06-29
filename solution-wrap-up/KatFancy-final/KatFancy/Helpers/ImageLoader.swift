@@ -12,7 +12,7 @@ actor ImageLoader {
   }
 
   func fetch(_ url: URL) async -> UIImage {
-    let errorImage = UIImage(named: "error")!
+    let errorImage = UIImage(resource: .error)
 
     if let status = loaderStatuses[url] {
       switch status {
