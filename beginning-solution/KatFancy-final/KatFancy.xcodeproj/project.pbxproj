@@ -7,30 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03F1B50229976A52000251F5 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50129976A52000251F5 /* KatFancyApp.swift */; };
-		03F1B50429976A52000251F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50329976A52000251F5 /* ContentView.swift */; };
-		03F1B50629976A53000251F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F1B50529976A53000251F5 /* Assets.xcassets */; };
-		03F1B51029976A5F000251F5 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B50F29976A5F000251F5 /* Breed.swift */; };
-		03F1B51229976A68000251F5 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51129976A68000251F5 /* Breeds.swift */; };
-		03F1B51429976A70000251F5 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51329976A70000251F5 /* License.swift */; };
-		03F1B51629976A7A000251F5 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51529976A7A000251F5 /* URLExtension.swift */; };
-		03F1B51829976A85000251F5 /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1B51729976A85000251F5 /* BreedsLoader.swift */; };
+		03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47762A4E23E7006E4994 /* KatFancyApp.swift */; };
+		03DA47792A4E23E7006E4994 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47782A4E23E7006E4994 /* ContentView.swift */; };
+		03DA477B2A4E23E8006E4994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DA477A2A4E23E8006E4994 /* Assets.xcassets */; };
+		03DA47882A4E280C006E4994 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47872A4E280C006E4994 /* Breed.swift */; };
+		03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47892A4E2813006E4994 /* Breeds.swift */; };
+		03DA478C2A4E2819006E4994 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478B2A4E2819006E4994 /* License.swift */; };
+		03DA478E2A4E2898006E4994 /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478D2A4E2898006E4994 /* BreedsLoader.swift */; };
+		03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478F2A4E28B4006E4994 /* URLExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03F1B4FE29976A52000251F5 /* KatFancy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatFancy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03F1B50129976A52000251F5 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
-		03F1B50329976A52000251F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		03F1B50529976A53000251F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03F1B50F29976A5F000251F5 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
-		03F1B51129976A68000251F5 /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
-		03F1B51329976A70000251F5 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
-		03F1B51529976A7A000251F5 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
-		03F1B51729976A85000251F5 /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
+		03DA47732A4E23E7006E4994 /* KatFancy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatFancy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03DA47762A4E23E7006E4994 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
+		03DA47782A4E23E7006E4994 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		03DA477A2A4E23E8006E4994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03DA47872A4E280C006E4994 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		03DA47892A4E2813006E4994 /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
+		03DA478B2A4E2819006E4994 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		03DA478D2A4E2898006E4994 /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
+		03DA478F2A4E28B4006E4994 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03F1B4FB29976A52000251F5 /* Frameworks */ = {
+		03DA47702A4E23E7006E4994 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,64 +40,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03A928892A27A180009BFE26 /* Models */ = {
+		03DA476A2A4E23E7006E4994 = {
 			isa = PBXGroup;
 			children = (
-				03F1B50F29976A5F000251F5 /* Breed.swift */,
-				03F1B51129976A68000251F5 /* Breeds.swift */,
-				03F1B51329976A70000251F5 /* License.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		03A9288A2A27A18D009BFE26 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				03F1B51729976A85000251F5 /* BreedsLoader.swift */,
-				03F1B51529976A7A000251F5 /* URLExtension.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		03F1B4F529976A52000251F5 = {
-			isa = PBXGroup;
-			children = (
-				03F1B50029976A52000251F5 /* KatFancy */,
-				03F1B4FF29976A52000251F5 /* Products */,
+				03DA47752A4E23E7006E4994 /* KatFancy */,
+				03DA47742A4E23E7006E4994 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		03F1B4FF29976A52000251F5 /* Products */ = {
+		03DA47742A4E23E7006E4994 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03F1B4FE29976A52000251F5 /* KatFancy.app */,
+				03DA47732A4E23E7006E4994 /* KatFancy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		03F1B50029976A52000251F5 /* KatFancy */ = {
+		03DA47752A4E23E7006E4994 /* KatFancy */ = {
 			isa = PBXGroup;
 			children = (
-				03F1B50529976A53000251F5 /* Assets.xcassets */,
-				03F1B50329976A52000251F5 /* ContentView.swift */,
-				03A9288A2A27A18D009BFE26 /* Helpers */,
-				03F1B50129976A52000251F5 /* KatFancyApp.swift */,
-				03A928892A27A180009BFE26 /* Models */,
+				03DA477A2A4E23E8006E4994 /* Assets.xcassets */,
+				03DA47782A4E23E7006E4994 /* ContentView.swift */,
+				03DA47852A4E27B6006E4994 /* Helpers */,
+				03DA47762A4E23E7006E4994 /* KatFancyApp.swift */,
+				03DA47862A4E27C2006E4994 /* Models */,
 			);
 			path = KatFancy;
+			sourceTree = "<group>";
+		};
+		03DA47852A4E27B6006E4994 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03DA478D2A4E2898006E4994 /* BreedsLoader.swift */,
+				03DA478F2A4E28B4006E4994 /* URLExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		03DA47862A4E27C2006E4994 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03DA47872A4E280C006E4994 /* Breed.swift */,
+				03DA47892A4E2813006E4994 /* Breeds.swift */,
+				03DA478B2A4E2819006E4994 /* License.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03F1B4FD29976A52000251F5 /* KatFancy */ = {
+		03DA47722A4E23E7006E4994 /* KatFancy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03F1B50C29976A53000251F5 /* Build configuration list for PBXNativeTarget "KatFancy" */;
+			buildConfigurationList = 03DA47812A4E23E8006E4994 /* Build configuration list for PBXNativeTarget "KatFancy" */;
 			buildPhases = (
-				03F1B4FA29976A52000251F5 /* Sources */,
-				03F1B4FB29976A52000251F5 /* Frameworks */,
-				03F1B4FC29976A52000251F5 /* Resources */,
-				0348F1D32A47FDE5001C7BED /* Run SwiftLint */,
+				03DA476F2A4E23E7006E4994 /* Sources */,
+				03DA47702A4E23E7006E4994 /* Frameworks */,
+				03DA47712A4E23E7006E4994 /* Resources */,
+				03DA47842A4E245E006E4994 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -105,25 +105,25 @@
 			);
 			name = KatFancy;
 			productName = KatFancy;
-			productReference = 03F1B4FE29976A52000251F5 /* KatFancy.app */;
+			productReference = 03DA47732A4E23E7006E4994 /* KatFancy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		03F1B4F629976A52000251F5 /* Project object */ = {
+		03DA476B2A4E23E7006E4994 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					03F1B4FD29976A52000251F5 = {
-						CreatedOnToolsVersion = 14.2;
+					03DA47722A4E23E7006E4994 = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 03F1B4F929976A52000251F5 /* Build configuration list for PBXProject "KatFancy" */;
+			buildConfigurationList = 03DA476E2A4E23E7006E4994 /* Build configuration list for PBXProject "KatFancy" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -131,29 +131,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 03F1B4F529976A52000251F5;
-			productRefGroup = 03F1B4FF29976A52000251F5 /* Products */;
+			mainGroup = 03DA476A2A4E23E7006E4994;
+			productRefGroup = 03DA47742A4E23E7006E4994 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03F1B4FD29976A52000251F5 /* KatFancy */,
+				03DA47722A4E23E7006E4994 /* KatFancy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03F1B4FC29976A52000251F5 /* Resources */ = {
+		03DA47712A4E23E7006E4994 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03F1B50629976A53000251F5 /* Assets.xcassets in Resources */,
+				03DA477B2A4E23E8006E4994 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0348F1D32A47FDE5001C7BED /* Run SwiftLint */ = {
+		03DA47842A4E245E006E4994 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -175,27 +175,28 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03F1B4FA29976A52000251F5 /* Sources */ = {
+		03DA476F2A4E23E7006E4994 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03F1B51229976A68000251F5 /* Breeds.swift in Sources */,
-				03F1B51829976A85000251F5 /* BreedsLoader.swift in Sources */,
-				03F1B51029976A5F000251F5 /* Breed.swift in Sources */,
-				03F1B51429976A70000251F5 /* License.swift in Sources */,
-				03F1B50429976A52000251F5 /* ContentView.swift in Sources */,
-				03F1B50229976A52000251F5 /* KatFancyApp.swift in Sources */,
-				03F1B51629976A7A000251F5 /* URLExtension.swift in Sources */,
+				03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */,
+				03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */,
+				03DA478E2A4E2898006E4994 /* BreedsLoader.swift in Sources */,
+				03DA47882A4E280C006E4994 /* Breed.swift in Sources */,
+				03DA478C2A4E2819006E4994 /* License.swift in Sources */,
+				03DA47792A4E23E7006E4994 /* ContentView.swift in Sources */,
+				03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		03F1B50A29976A53000251F5 /* Debug */ = {
+		03DA477F2A4E23E8006E4994 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -228,7 +229,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -242,20 +244,22 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		03F1B50B29976A53000251F5 /* Release */ = {
+		03DA47802A4E23E8006E4994 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -288,7 +292,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -296,26 +301,27 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		03F1B50D29976A53000251F5 /* Debug */ = {
+		03DA47822A4E23E8006E4994 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -335,16 +341,17 @@
 			};
 			name = Debug;
 		};
-		03F1B50E29976A53000251F5 /* Release */ = {
+		03DA47832A4E23E8006E4994 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -367,25 +374,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03F1B4F929976A52000251F5 /* Build configuration list for PBXProject "KatFancy" */ = {
+		03DA476E2A4E23E7006E4994 /* Build configuration list for PBXProject "KatFancy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03F1B50A29976A53000251F5 /* Debug */,
-				03F1B50B29976A53000251F5 /* Release */,
+				03DA477F2A4E23E8006E4994 /* Debug */,
+				03DA47802A4E23E8006E4994 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03F1B50C29976A53000251F5 /* Build configuration list for PBXNativeTarget "KatFancy" */ = {
+		03DA47812A4E23E8006E4994 /* Build configuration list for PBXNativeTarget "KatFancy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03F1B50D29976A53000251F5 /* Debug */,
-				03F1B50E29976A53000251F5 /* Release */,
+				03DA47822A4E23E8006E4994 /* Debug */,
+				03DA47832A4E23E8006E4994 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 03F1B4F629976A52000251F5 /* Project object */;
+	rootObject = 03DA476B2A4E23E7006E4994 /* Project object */;
 }
