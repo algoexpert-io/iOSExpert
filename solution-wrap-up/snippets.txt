@@ -118,6 +118,16 @@ The breeds fit perfectly the dainty iPhone SE form factor. If some breed info en
 
 The coding challenge has no requirement for internationalization or localization so, in the interest of time, I did not wrap user-facing `String`s in `NSLocalizedString()`. I am, however, comfortable with that API.
 
+## Warnings
+
+If you run KatFancy in the simulator, as I did during development, you may see the following warnings:
+
+AddInstanceForFactory: No factory registered for id <CFUUID 0x600000299d60> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+
+81,923 HALC_ProxyIOContext.cpp:1,314 HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+
+My research indicates that the first warning is [harmless](https://en.wikipedia.org/wiki/Mostly_Harmless). I expect Apple to fix it in a future version of Xcode and iOS. The cause of the second warning is unclear to me.
+
 ## Screenshots
 
 | Browsing | Details |
