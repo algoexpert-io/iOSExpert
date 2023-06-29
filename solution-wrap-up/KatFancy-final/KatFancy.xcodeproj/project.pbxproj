@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		0304ABD62978BCA30029A775 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABD52978BCA30029A775 /* AppLauncher.swift */; };
 		0304ABD82978BCDE0029A775 /* KatFancyTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABD72978BCDE0029A775 /* KatFancyTestApp.swift */; };
-		0304ABDD297B18960029A775 /* SelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABDC297B18960029A775 /* SelectionStore.swift */; };
 		0304ABDF297B18D40029A775 /* BreedsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABDE297B18D40029A775 /* BreedsLoaderTests.swift */; };
-		0304ABE1297B19220029A775 /* FileManagerExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABE0297B19220029A775 /* FileManagerExtensionsTests.swift */; };
 		0304ABE3297B19690029A775 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABE2297B19690029A775 /* ImageLoaderTests.swift */; };
 		0304ABE5297B19AF0029A775 /* SoundPlayerRealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABE4297B19AF0029A775 /* SoundPlayerRealTests.swift */; };
 		0304ABE9297B1B4F0029A775 /* URLExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABE8297B1B4F0029A775 /* URLExtensionTests.swift */; };
@@ -27,8 +25,6 @@
 		0304ABFF297B1D070029A775 /* BreedsURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304ABF8297B1D070029A775 /* BreedsURLTests.swift */; };
 		0304AC01297B1D3F0029A775 /* BrowseBreedsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304AC00297B1D3F0029A775 /* BrowseBreedsViewModelTests.swift */; };
 		0304AC03297B201A0029A775 /* SoundPlayerDummyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304AC02297B201A0029A775 /* SoundPlayerDummyTests.swift */; };
-		0304AC05297E55B80029A775 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304AC04297E55B80029A775 /* SettingsViewModel.swift */; };
-		0304AC07297F26960029A775 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304AC06297F26960029A775 /* SettingsViewModelTests.swift */; };
 		030B7F2E2969CC5900C04F99 /* breeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 030B7F2D2969CC5900C04F99 /* breeds.json */; };
 		030B7F312969F9A500C04F99 /* BrowseBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F302969F9A500C04F99 /* BrowseBreedsViewModel.swift */; };
 		030B7F33296A873D00C04F99 /* BreedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030B7F32296A873D00C04F99 /* BreedDetailsView.swift */; };
@@ -64,7 +60,6 @@
 		030FCB1F2968DA9500EA23C8 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB1E2968DA9500EA23C8 /* URLExtension.swift */; };
 		030FCB212968DAE000EA23C8 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB202968DAE000EA23C8 /* License.swift */; };
 		030FCB252969397000EA23C8 /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB242969397000EA23C8 /* BreedsLoader.swift */; };
-		03BAC2C42977599500D07363 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAC2C32977599500D07363 /* FileManagerExtensions.swift */; };
 		03FCC1442973662200933493 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC1432973662200933493 /* ImageLoader.swift */; };
 		03FCC14829737A6300933493 /* SessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC14729737A6300933493 /* SessionType.swift */; };
 		03FCC14D29737AD900933493 /* Abyssinian.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03FCC14A29737AD900933493 /* Abyssinian.jpg */; };
@@ -102,9 +97,7 @@
 /* Begin PBXFileReference section */
 		0304ABD52978BCA30029A775 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		0304ABD72978BCDE0029A775 /* KatFancyTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyTestApp.swift; sourceTree = "<group>"; };
-		0304ABDC297B18960029A775 /* SelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionStore.swift; sourceTree = "<group>"; };
 		0304ABDE297B18D40029A775 /* BreedsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderTests.swift; sourceTree = "<group>"; };
-		0304ABE0297B19220029A775 /* FileManagerExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensionsTests.swift; sourceTree = "<group>"; };
 		0304ABE2297B19690029A775 /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
 		0304ABE4297B19AF0029A775 /* SoundPlayerRealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerRealTests.swift; sourceTree = "<group>"; };
 		0304ABE8297B1B4F0029A775 /* URLExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensionTests.swift; sourceTree = "<group>"; };
@@ -120,8 +113,6 @@
 		0304ABF8297B1D070029A775 /* BreedsURLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreedsURLTests.swift; sourceTree = "<group>"; };
 		0304AC00297B1D3F0029A775 /* BrowseBreedsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModelTests.swift; sourceTree = "<group>"; };
 		0304AC02297B201A0029A775 /* SoundPlayerDummyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerDummyTests.swift; sourceTree = "<group>"; };
-		0304AC04297E55B80029A775 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		0304AC06297F26960029A775 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		030B7F2D2969CC5900C04F99 /* breeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breeds.json; sourceTree = "<group>"; };
 		030B7F302969F9A500C04F99 /* BrowseBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModel.swift; sourceTree = "<group>"; };
 		030B7F32296A873D00C04F99 /* BreedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsView.swift; sourceTree = "<group>"; };
@@ -159,7 +150,6 @@
 		030FCB1E2968DA9500EA23C8 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		030FCB202968DAE000EA23C8 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		030FCB242969397000EA23C8 /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
-		03BAC2C32977599500D07363 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		03FCC1432973662200933493 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		03FCC14729737A6300933493 /* SessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionType.swift; sourceTree = "<group>"; };
 		03FCC14A29737AD900933493 /* Abyssinian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Abyssinian.jpg; sourceTree = "<group>"; };
@@ -216,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				0304AC00297B1D3F0029A775 /* BrowseBreedsViewModelTests.swift */,
-				0304AC06297F26960029A775 /* SettingsViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -238,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				0304ABDE297B18D40029A775 /* BreedsLoaderTests.swift */,
-				0304ABE0297B19220029A775 /* FileManagerExtensionsTests.swift */,
 				0304ABF7297B1D070029A775 /* GetterSetterFakeTests.swift */,
 				0304ABF2297B1D060029A775 /* GetterSetterRealTests.swift */,
 				0304ABE2297B19690029A775 /* ImageLoaderTests.swift */,
@@ -264,13 +252,12 @@
 			path = MockData;
 			sourceTree = "<group>";
 		};
-		030B7F2F2969F96600C04F99 /* ViewModels */ = {
+		030B7F2F2969F96600C04F99 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				030B7F302969F9A500C04F99 /* BrowseBreedsViewModel.swift */,
-				0304AC04297E55B80029A775 /* SettingsViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		030B7F56296F5FB100C04F99 /* Assets */ = {
@@ -310,7 +297,7 @@
 				030FCB1D2968DA8200EA23C8 /* Helpers */,
 				030B7F2C2969CC1C00C04F99 /* MockData */,
 				030FCB162968DA1100EA23C8 /* Models */,
-				030B7F2F2969F96600C04F99 /* ViewModels */,
+				030B7F2F2969F96600C04F99 /* ViewModel */,
 				030FCB222969387A00EA23C8 /* Views */,
 			);
 			path = KatFancy;
@@ -333,7 +320,6 @@
 				030FCB172968DA3800EA23C8 /* Breeds.swift */,
 				030FCB192968DA3800EA23C8 /* BreedsURL.swift */,
 				030FCB202968DAE000EA23C8 /* License.swift */,
-				0304ABDC297B18960029A775 /* SelectionStore.swift */,
 				03FCC14729737A6300933493 /* SessionType.swift */,
 				030B7F4C296F5AAC00C04F99 /* Settings.swift */,
 				030B7F4E296F5ADC00C04F99 /* SortOrder.swift */,
@@ -347,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				030FCB242969397000EA23C8 /* BreedsLoader.swift */,
-				03BAC2C32977599500D07363 /* FileManagerExtensions.swift */,
 				030B7F46296F5A5500C04F99 /* GetterSetter.swift */,
 				030B7F48296F5A5500C04F99 /* GetterSetterFake.swift */,
 				030B7F47296F5A5500C04F99 /* GetterSetterReal.swift */,
@@ -449,7 +434,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					030FCAE82968D90A00EA23C8 = {
 						CreatedOnToolsVersion = 14.1;
@@ -562,16 +547,13 @@
 				030B7F43296F59FD00C04F99 /* SoundPlayerReal.swift in Sources */,
 				030B7F53296F5C1F00C04F99 /* URLSessionExtension.swift in Sources */,
 				030FCB1B2968DA3800EA23C8 /* Breed.swift in Sources */,
-				0304AC05297E55B80029A775 /* SettingsViewModel.swift in Sources */,
 				030B7F55296F5E8600C04F99 /* Sound.swift in Sources */,
-				0304ABDD297B18960029A775 /* SelectionStore.swift in Sources */,
 				03FCC17129737EA800933493 /* MockData.swift in Sources */,
 				030FCAEF2968D90A00EA23C8 /* BrowseBreedsView.swift in Sources */,
 				030B7F5C296F7A6E00C04F99 /* Modifiers.swift in Sources */,
 				030B7F39296E052E00C04F99 /* MainTabView.swift in Sources */,
 				030B7F5E296F7AC300C04F99 /* Layout.swift in Sources */,
 				030B7F312969F9A500C04F99 /* BrowseBreedsViewModel.swift in Sources */,
-				03BAC2C42977599500D07363 /* FileManagerExtensions.swift in Sources */,
 				030B7F51296F5BE700C04F99 /* URLProtocolStub.swift in Sources */,
 				030B7F45296F59FD00C04F99 /* SoundPlayerDummy.swift in Sources */,
 				030FCB252969397000EA23C8 /* BreedsLoader.swift in Sources */,
@@ -608,8 +590,6 @@
 				0304ABDF297B18D40029A775 /* BreedsLoaderTests.swift in Sources */,
 				0304ABE3297B19690029A775 /* ImageLoaderTests.swift in Sources */,
 				0304ABFC297B1D070029A775 /* WorldTests.swift in Sources */,
-				0304ABE1297B19220029A775 /* FileManagerExtensionsTests.swift in Sources */,
-				0304AC07297F26960029A775 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +640,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -674,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -720,6 +701,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -728,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -754,7 +736,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -784,7 +766,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -807,7 +789,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.KatFancyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -827,7 +809,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.KatFancyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

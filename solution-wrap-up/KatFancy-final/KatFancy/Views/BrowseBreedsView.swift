@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct BrowseBreedsView: View {
-  @StateObject var viewModel = BrowseBreedsViewModel()
+  var viewModel = BrowseBreedsViewModel()
   @State private var images: [Breed: UIImage] = [:]
   private let mockedState: BrowseBreedsViewModel.State?
   private let photoHeightWidth: CGFloat = 150

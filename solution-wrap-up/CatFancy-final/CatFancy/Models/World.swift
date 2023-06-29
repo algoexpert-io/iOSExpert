@@ -19,7 +19,6 @@ struct World {
 
   static let production: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    settings.sessionType = .shared
 
     return World(
       settings: settings,

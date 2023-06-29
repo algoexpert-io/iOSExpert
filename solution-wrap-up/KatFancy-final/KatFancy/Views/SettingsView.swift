@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @StateObject var viewModel = SettingsViewModel()
+@Bindable private var current = Current
 
   var body: some View {
     ScrollView(.vertical) {
@@ -17,7 +17,7 @@ struct SettingsView: View {
         Text("Breeds URL")
           .font(.title)
 
-        Picker("", selection: $viewModel.store.breedsURL) {
+        Picker("", selection: $current.settings.breedsURL) {
           ForEach(BreedsURL.allCases, id: \.self) { breedsURL in
             Text(breedsURL.displayName).tag(breedsURL)
           }
@@ -32,7 +32,7 @@ struct SettingsView: View {
         Text("URLSession Type")
           .font(.title)
 
-        Picker("", selection: $viewModel.store.sessionType) {
+        Picker("", selection: $current.settings.sessionType) {
           ForEach(SessionType.allCases, id: \.self) { sessionType in
             Text(sessionType.displayName).tag(sessionType)
           }
@@ -47,7 +47,7 @@ struct SettingsView: View {
         Text("Sort Order")
           .font(.title)
 
-        Picker("", selection: $viewModel.store.sortOrder) {
+        Picker("", selection: $current.settings.sortOrder) {
           ForEach(SortOrder.allCases, id: \.self) { sortOrder in
             Text(sortOrder.displayName).tag(sortOrder)
           }
@@ -59,9 +59,6 @@ struct SettingsView: View {
       }
 
       Spacer()
-    }
-    .onAppear {
-      viewModel.configure()
     }
   }
 }

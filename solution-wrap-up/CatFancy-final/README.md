@@ -39,7 +39,7 @@ If you run CatFancy in the simulator, as I did during development, you may see t
 
 `[plugin] AddInstanceForFactory: No factory registered for id <CFUUID 0x6000001ad4a0> F8BB1C28-BAE8-11D6-9C31-00039315CD46`
 
-My research indicates that this warning is [harmless](https://en.wikipedia.org/wiki/Mostly_Harmless). I expect Apple to fix it in a future version of Xcode and iOS.
+My research [indicates](https://forum.juce.com/t/addinstanceforfactory-no-factory-registered-for-id/55166/2) that this warning is [harmless](https://en.wikipedia.org/wiki/Mostly_Harmless).
 
 ## Screenshots
 

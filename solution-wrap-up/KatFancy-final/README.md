@@ -21,9 +21,9 @@ I developed KatFancy using Xcode 15, iOS 17, SwiftLint 0.52.3, and [this song](h
 
 Aside from meeting the requirements of the coding challenge, I focused in KatFancy on using a technique, dependency injection, that facilitates unit testing. I have come to value unit testing because, as Jon Reid [observed](https://qualitycoding.org), a "robust suite of unit tests acts as a safety harness, giving you [courage](https://www.theverge.com/2016/9/7/12838024/apple-iphone-7-plus-headphone-jack-removal-courage) to make bold changes." In nuts-and-bolts terms, dependency injection makes objects testable by isolating dependencies and side effects. I have [written](https://racecondition.software/blog/dependency-injection/) [elsewhere](https://racecondition.software/blog/unit-testing/) on dependency injection.
 
-KatFancy uses view models to mediate between views and models. These view models keep views simple and are highly unit-testable.
+KatFancy uses a view model to mediate between `BrowseBreedsView` and its model, an array of `Breed`s, as well as to maintain loading state. This view model keeps the view simple and is highly unit-testable.
 
-KatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md).
+KatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md). KatFancy also leverages a new SwiftUI feature, `@Observable`.
 
 Although the requirements only call for two screens, breed browsing and breed details, I chose to implement a settings screen to give the reviewer the option of choosing an alternate `URL` or `URLSession`. This screen is also home to the sort-order setting.
 
@@ -39,11 +39,11 @@ The coding challenge has no requirement for internationalization or localization
 
 If you run KatFancy in the simulator, as I did during development, you may see the following warnings:
 
-AddInstanceForFactory: No factory registered for id <CFUUID 0x600000299d60> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+`AddInstanceForFactory: No factory registered for id <CFUUID 0x600000299d60> F8BB1C28-BAE8-11D6-9C31-00039315CD46`
 
-81,923 HALC_ProxyIOContext.cpp:1,314 HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload
+`81,923 HALC_ProxyIOContext.cpp:1,314 HALC_ProxyIOContext::IOWorkLoop: skipping cycle due to overload`
 
-My research indicates that the first warning is [harmless](https://en.wikipedia.org/wiki/Mostly_Harmless). I expect Apple to fix it in a future version of Xcode and iOS. The cause of the second warning is unclear to me.
+My research [indicates](https://forum.juce.com/t/addinstanceforfactory-no-factory-registered-for-id/55166/2) that the first warning is [harmless](https://en.wikipedia.org/wiki/Mostly_Harmless). I was unable to detemine the cause of or solution for the second warning, but it also appears harmless.
 
 ## Screenshots
 

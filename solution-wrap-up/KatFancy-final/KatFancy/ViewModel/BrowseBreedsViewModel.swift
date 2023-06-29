@@ -1,8 +1,9 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
 import Foundation
+import Observation
 
-@MainActor
+@Observable
 class BrowseBreedsViewModel: ObservableObject {
   enum State: Equatable {
     case loading
@@ -10,8 +11,8 @@ class BrowseBreedsViewModel: ObservableObject {
     case error
   }
 
-  @Published var state = State.loading
-  @Published var breeds: [Breed] = []
+  var state = State.loading
+  var breeds: [Breed] = []
 
   func loadBreeds(mockedState: State? = nil) async {
     if let mockedState {

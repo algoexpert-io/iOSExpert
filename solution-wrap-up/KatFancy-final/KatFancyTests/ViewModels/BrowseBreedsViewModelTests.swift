@@ -5,13 +5,13 @@ import XCTest
 
 final class BrowseBreedsViewModelTests: XCTestCase {
   func testLoadBreeds() async {
-    let vm = await BrowseBreedsViewModel()
+    let vm = BrowseBreedsViewModel()
 
-    let loadingState = await vm.getState()
+    let loadingState = vm.getState()
     XCTAssertEqual(loadingState, .loading)
 
     await vm.loadBreeds()
-    let actualLoadedState = await vm.getState()
+    let actualLoadedState = vm.getState()
     switch actualLoadedState {
     case .loading, .error:
       XCTFail("Unexpected state: \(actualLoadedState)")
@@ -22,7 +22,7 @@ final class BrowseBreedsViewModelTests: XCTestCase {
 
     Current.settings.breedsURL = .malformed
     await vm.loadBreeds()
-    let errorState = await vm.getState()
+    let errorState = vm.getState()
     switch errorState {
     case .loading, .loaded:
       XCTFail("Unexpected state: \(errorState)")
@@ -33,7 +33,7 @@ final class BrowseBreedsViewModelTests: XCTestCase {
 
     Current.settings.breedsURL = .empty
     await vm.loadBreeds()
-    let emptyLoadedState = await vm.getState()
+    let emptyLoadedState = vm.getState()
     switch emptyLoadedState {
     case .loading, .error:
       XCTFail("Unexpected state: \(emptyLoadedState)")

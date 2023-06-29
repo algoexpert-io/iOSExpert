@@ -2,13 +2,15 @@
 // https://www.pointfree.co/blog/posts/21-how-to-control-the-world
 
 import Foundation
+import Observation
 
 var Current = World.chooseWorld()
 
+@Observable
 class World: ObservableObject {
-  @Published var settings: Settings
-  @Published var soundPlayer: SoundPlayer
-  @Published var imageLoader: ImageLoader
+  var settings = Settings(getterSetter: GetterSetterFake())
+  var soundPlayer: SoundPlayer = SoundPlayerDummy()
+  var imageLoader = ImageLoader()
 
   init(settings: Settings, soundPlayer: SoundPlayer, imageLoader: ImageLoader) {
     self.settings = settings
@@ -26,7 +28,6 @@ class World: ObservableObject {
 
   static let production: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    settings.sessionType = .shared
 
     return World(
       settings: settings,
