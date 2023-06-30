@@ -20,9 +20,7 @@ struct Breed: Decodable, Identifiable, Hashable, Equatable {
   static func == (lhs: Breed, rhs: Breed) -> Bool {
     lhs.name == rhs.name
   }
-}
 
-extension Breed {
   static var mock: Breed {
     Breed(
       name: "Clouded Leopard",
@@ -35,10 +33,8 @@ extension Breed {
       description: "The clouded leopard (Neofelis nebulosa), also called the mainland clouded leopard, is a wild cat inhabiting dense forests from the foothills of the Himalayas through mainland Southeast Asia into South China. In the early 19th century, a clouded leopard was brought to London from China and described in 1821. It has large dusky-grey blotches and irregular spots and stripes reminiscent of clouds. Its head-and-body length ranges from 68.6 to 108 cm (27.0 to 42.5 in) with a 61 to 91 cm (24 to 36 in) long tail. It uses its tail for balancing when moving in trees and is able to climb down vertical tree trunks head first. It rests in trees during the day and hunts by night on the forest floor.\n\nThe clouded leopard is the first cat that genetically diverged 9.32 to 4.47 million years ago from the common ancestor of the pantherine cats. Today, the clouded leopard is locally extinct in Singapore, Taiwan, and possibly Hainan Island and Vietnam. Its total population is suspected to be fewer than 10,000 mature individuals, with a decreasing population trend, and no single population numbering more than 1,000 adults. It has therefore been listed as Vulnerable on the IUCN Red List since 2008. The population is threatened by large–scale deforestation and commercial poaching for the wildlife trade. Its body parts are offered for decoration and clothing, though it is legally protected in most range countries.\n\nThe clouded leopard has been kept in zoological gardens since the early 20th century. Captive breeding programs were initiated in the 1980s. In captivity, the clouded leopard has an average lifespan of 11 years.\n\nThe clouded leopard's fur is of a dark grey or ochreous ground-color, often largely obliterated by black and dark dusky-grey blotched pattern. There are black spots on the head, and the ears are black. Partly fused or broken-up stripes run from the corner of the eyes over the cheek, from the corner of the mouth to the neck, and along the nape to the shoulders. Elongated blotches continue down the spine and form a single median stripe on the loins. Two large blotches of dark dusky-grey hair on the side of the shoulders are each emphasized posteriorly by a dark stripe, which passes on to the foreleg and breaks up into irregular spots. The flanks are marked by dark dusky-grey irregular blotches bordered behind by long, oblique, irregularly curved or looped stripes. These blotches yielding the clouded pattern suggest the English name of the cat. The underparts and legs are spotted, and the tail is marked by large, irregular, paired spots. Its legs are short and stout, and paws broad. Females are slightly smaller than males."
     )
   }
-}
 
-extension [Breed] {
-  static var mock: [Breed] {
+  static var mocks: [Breed] {
     [
       Breed.mock,
       Breed(

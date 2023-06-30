@@ -76,23 +76,22 @@ struct BrowseBreedsView: View {
   }
 }
 
-struct BrowseBreedsView_Previews: PreviewProvider {
-  static var previews: some View {
-    Group {
-      BrowseBreedsView(mockedState: .loaded(breeds: [Breed].mock))
-        .previewDisplayName("Mocked Data")
+#Preview("Mocked Data") {
+  BrowseBreedsView(mockedState: .loaded(breeds: Breed.mocks))
+}
 
-      BrowseBreedsView()
-        .previewDisplayName("Actual Data")
+#Preview("Actual Data") {
+  BrowseBreedsView()
+}
 
-      BrowseBreedsView(mockedState: .loaded(breeds: []))
-        .previewDisplayName("No Data")
+#Preview("No Data") {
+  BrowseBreedsView(mockedState: .loaded(breeds: []))
+}
 
-      BrowseBreedsView(mockedState: .loading)
-        .previewDisplayName("Loading")
+#Preview("Loading") {
+  BrowseBreedsView(mockedState: .loading)
+}
 
-      BrowseBreedsView(mockedState: .error)
-        .previewDisplayName("Error")
-    }
-  }
+#Preview("Error") {
+  BrowseBreedsView(mockedState: .error)
 }

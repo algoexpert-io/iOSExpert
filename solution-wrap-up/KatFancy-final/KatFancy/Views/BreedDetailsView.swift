@@ -60,10 +60,8 @@ struct BreedDetailsView: View {
   }
 }
 
-struct BreedDetailsView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationStack {
-      BreedDetailsView(breed: [Breed].mock[[Breed].mock.count - 2])
-    }
+#Preview {
+  NavigationStack {
+    BreedDetailsView(breed: Breed.mock)
   }
 }
