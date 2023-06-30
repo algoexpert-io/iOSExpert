@@ -70,6 +70,9 @@ struct BrowseBreedsView: View {
           .padding()
         }
       }
+      .refreshable {
+        await viewModel.loadBreeds(mockedState: mockedState)
+      }
     } else {
       EmptyView()
     }
