@@ -40,6 +40,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		034726AF2A4F36F4000436AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		034726B02A4F36F6000436AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03DA47782A4E23E7006E4994 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		034726B12A4F36F8000436AD /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				03DA477A2A4E23E8006E4994 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		034726B22A4F36F9000436AD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				03DA47762A4E23E7006E4994 /* KatFancyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		03DA476A2A4E23E7006E4994 = {
 			isa = PBXGroup;
 			children = (
@@ -59,10 +90,11 @@
 		03DA47752A4E23E7006E4994 /* KatFancy */ = {
 			isa = PBXGroup;
 			children = (
-				03DA477A2A4E23E8006E4994 /* Assets.xcassets */,
-				03DA47782A4E23E7006E4994 /* ContentView.swift */,
+				034726B22A4F36F9000436AD /* App */,
+				034726B12A4F36F8000436AD /* Assets */,
+				034726B02A4F36F6000436AD /* Views */,
+				034726AF2A4F36F4000436AD /* ViewModel */,
 				03DA47852A4E27B6006E4994 /* Helpers */,
-				03DA47762A4E23E7006E4994 /* KatFancyApp.swift */,
 				03DA47862A4E27C2006E4994 /* Models */,
 			);
 			path = KatFancy;
