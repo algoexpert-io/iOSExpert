@@ -6,7 +6,7 @@ import SwiftUI
 struct KatFancyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }
