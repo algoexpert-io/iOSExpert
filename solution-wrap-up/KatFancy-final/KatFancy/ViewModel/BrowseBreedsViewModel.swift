@@ -1,10 +1,9 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
-import Foundation
 import Observation
 
 @Observable
-class BrowseBreedsViewModel: ObservableObject {
+class BrowseBreedsViewModel {
   enum State: Equatable {
     case loading
     case loaded(breeds: [Breed])
@@ -42,9 +41,5 @@ class BrowseBreedsViewModel: ObservableObject {
     case .error:
       Current.soundPlayer.play(.sadTrombone)
     }
-  }
-
-  func getState() -> State {
-    state
   }
 }

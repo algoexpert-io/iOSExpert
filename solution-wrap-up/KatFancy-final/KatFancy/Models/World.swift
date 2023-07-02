@@ -7,7 +7,7 @@ import Observation
 var Current = World.chooseWorld()
 
 @Observable
-class World: ObservableObject {
+class World {
   var settings = Settings(getterSetter: GetterSetterFake())
   var soundPlayer: SoundPlayer = SoundPlayerDummy()
   var imageLoader = ImageLoader()
