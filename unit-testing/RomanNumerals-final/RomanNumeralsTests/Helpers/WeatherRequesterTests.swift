@@ -3,7 +3,7 @@
 @testable import RomanNumerals
 import XCTest
 
-class WeatherRquesterTests: XCTestCase {
+class WeatherRequesterTests: XCTestCase {
   func testGetCurrentConditionsInRome() async {
     guard Config.openWeatherKey != "" else {
       XCTFail("This unit test requires an Open Weather API key.")
