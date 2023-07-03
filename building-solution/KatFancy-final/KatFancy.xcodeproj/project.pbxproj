@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		038A8DC82A52364F0042DA31 /* BrowseBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */; };
+		038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC92A52368E0042DA31 /* Sound.swift */; };
+		038A8DCC2A5236AB0042DA31 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */; };
+		038A8DCE2A5236F80042DA31 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 038A8DCD2A5236F80042DA31 /* chime.mp3 */; };
+		038A8DD02A5237060042DA31 /* sadTrombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */; };
 		03B0F02B2A4FE0AC00B81D6D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */; };
 		03B0F02D2A4FE35300B81D6D /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */; };
 		03B0F02F2A4FE3D700B81D6D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModel.swift; sourceTree = "<group>"; };
+		038A8DC92A52368E0042DA31 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		038A8DCD2A5236F80042DA31 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime.mp3; path = "../../../../solution-wrap-up/KatFancy-final/KatFancy/Assets/chime.mp3"; sourceTree = "<group>"; };
+		038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sadTrombone.mp3; path = "../../../../solution-wrap-up/KatFancy-final/KatFancy/Assets/sadTrombone.mp3"; sourceTree = "<group>"; };
 		03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
 		03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -47,6 +57,7 @@
 		034726AF2A4F36F4000436AD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -65,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				03DA477A2A4E23E8006E4994 /* Assets.xcassets */,
+				038A8DCD2A5236F80042DA31 /* chime.mp3 */,
+				038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -110,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				03DA478D2A4E2898006E4994 /* BreedsLoader.swift */,
+				038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */,
 				03DA478F2A4E28B4006E4994 /* URLExtension.swift */,
 			);
 			path = Helpers;
@@ -121,6 +135,7 @@
 				03DA47872A4E280C006E4994 /* Breed.swift */,
 				03DA47892A4E2813006E4994 /* Breeds.swift */,
 				03DA478B2A4E2819006E4994 /* License.swift */,
+				038A8DC92A52368E0042DA31 /* Sound.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +200,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				03DA477B2A4E23E8006E4994 /* Assets.xcassets in Resources */,
+				038A8DD02A5237060042DA31 /* sadTrombone.mp3 in Resources */,
+				038A8DCE2A5236F80042DA31 /* chime.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,13 +235,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */,
+				038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */,
 				03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */,
 				03DA478E2A4E2898006E4994 /* BreedsLoader.swift in Sources */,
 				03B0F02B2A4FE0AC00B81D6D /* MainTabView.swift in Sources */,
 				03DA47882A4E280C006E4994 /* Breed.swift in Sources */,
+				038A8DC82A52364F0042DA31 /* BrowseBreedsViewModel.swift in Sources */,
 				03B0F02F2A4FE3D700B81D6D /* SettingsView.swift in Sources */,
 				03B0F02D2A4FE35300B81D6D /* BrowseBreedsView.swift in Sources */,
 				03DA478C2A4E2819006E4994 /* License.swift in Sources */,
+				038A8DCC2A5236AB0042DA31 /* SoundPlayer.swift in Sources */,
 				03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

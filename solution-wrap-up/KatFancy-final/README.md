@@ -23,7 +23,7 @@ Aside from meeting the requirements of the coding challenge, I focused in KatFan
 
 KatFancy uses a view model to mediate between `BrowseBreedsView` and its model, an array of `Breed`s, as well as to maintain loading state. This view model keeps the view simple and is highly unit-testable.
 
-KatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md). KatFancy also leverages a new SwiftUI feature, `@Observable`.
+KatFancy demonstrates two newer Swift features, `if let` [shorthand](https://github.com/apple/swift-evolution/blob/main/proposals/0345-if-let-shorthand.md) and `async`/`await` [concurrency](https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md). KatFancy also demonstrates two new SwiftUI features, `@Observable` and `#Preview`.
 
 Although the requirements only call for two screens, breed browsing and breed details, I chose to implement a settings screen to give the reviewer the option of choosing an alternate `URL` or `URLSession`. This screen is also home to the sort-order setting.
 

@@ -11,7 +11,6 @@ class BrowseBreedsViewModel {
   }
 
   var state = State.loading
-  var breeds: [Breed] = []
 
   func loadBreeds(mockedState: State? = nil) async {
     if let mockedState {
@@ -19,7 +18,7 @@ class BrowseBreedsViewModel {
     } else {
       state = .loading
       do {
-        breeds = try await BreedsLoader.loadBreeds()
+        var breeds = try await BreedsLoader.loadBreeds()
         breeds.sort { breed1, breed2 in
           Current.settings.sortOrder.compare(breed1: breed1, breed2: breed2)
         }
