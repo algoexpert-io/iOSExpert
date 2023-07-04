@@ -37,44 +37,40 @@ struct BrowseBreedsView: View {
 
   @ViewBuilder
   func list(of breeds: [Breed], viewModel: BrowseBreedsViewModel, mockedState: BrowseBreedsViewModel.State? = nil) -> some View {
-    if !breeds.isEmpty {
-      List(breeds) { breed in
-        NavigationLink {
-          BreedDetailsView(breed: breed)
-        } label: {
-          HStack {
-            VStack(alignment: .leading) {
-              Text(breed.name)
-                .font(.headline)
-              Text(breed.knownFor)
-              Text("Popularity: \(breed.popularity)")
-            }
+    List(breeds) { breed in
+      NavigationLink {
+        BreedDetailsView(breed: breed)
+      } label: {
+        HStack {
+          VStack(alignment: .leading) {
+            Text(breed.name)
+              .font(.headline)
+            Text(breed.knownFor)
+            Text("Popularity: \(breed.popularity)")
+          }
 
-            Spacer()
+          Spacer()
 
-            Group {
-              if let image = images[breed] {
-                Image(uiImage: image)
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .padding()
-              } else {
-                ProgressView()
-              }
-            }
-            .frame(width: photoHeightWidth)
-            .task {
-              await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
+          Group {
+            if let image = images[breed] {
+              Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+            } else {
+              ProgressView()
             }
           }
-          .padding()
+          .frame(width: photoHeightWidth)
+          .task {
+            await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
+          }
         }
+        .padding()
       }
-      .refreshable {
-        await viewModel.loadBreeds(mockedState: mockedState)
-      }
-    } else {
-      EmptyView()
+    }
+    .refreshable {
+      await viewModel.loadBreeds(mockedState: mockedState)
     }
   }
 }
