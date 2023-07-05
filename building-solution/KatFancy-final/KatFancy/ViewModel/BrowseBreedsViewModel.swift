@@ -11,12 +11,15 @@ class BrowseBreedsViewModel {
   }
 
   var state = State.loading
-  private let soundPlayer = SoundPlayer()
+  private static let soundPlayer = SoundPlayer()
 
   func loadBreeds() async {
     state = .loading
     do {
-      let breeds = try await BreedsLoader.loadBreeds()
+      var breeds = try await BreedsLoader.loadBreeds()
+      breeds.sort { breed1, breed2 in
+        settings.sortOrder.compare(breed1: breed1, breed2: breed2)
+      }
       state = .loaded(breeds: breeds)
     } catch {
       state = .error
@@ -27,12 +30,12 @@ class BrowseBreedsViewModel {
       break
     case .loaded(breeds: let breeds):
       if breeds.isEmpty {
-        soundPlayer.play(.sadTrombone)
+        BrowseBreedsViewModel.soundPlayer.play(.sadTrombone)
       } else {
-        soundPlayer.play(.chime)
+        BrowseBreedsViewModel.soundPlayer.play(.chime)
       }
     case .error:
-      soundPlayer.play(.sadTrombone)
+      BrowseBreedsViewModel.soundPlayer.play(.sadTrombone)
     }
   }
 }

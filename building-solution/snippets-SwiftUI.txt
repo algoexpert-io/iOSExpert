@@ -49,7 +49,7 @@ class BrowseBreedsViewModel {
   }
 
   var state = State.loading
-  private let soundPlayer = SoundPlayer()
+  private static let soundPlayer = SoundPlayer()
 
   func loadBreeds() async {
     state = .loading
@@ -65,12 +65,12 @@ class BrowseBreedsViewModel {
       break
     case .loaded(breeds: let breeds):
       if breeds.isEmpty {
-        soundPlayer.play(.sadTrombone)
+        BrowseBreedsViewModel.soundPlayer.play(.sadTrombone)
       } else {
-        soundPlayer.play(.chime)
+        BrowseBreedsViewModel.soundPlayer.play(.chime)
       }
     case .error:
-      soundPlayer.play(.sadTrombone)
+      BrowseBreedsViewModel.soundPlayer.play(.sadTrombone)
     }
   }
 }
@@ -310,3 +310,78 @@ struct BreedDetailsView: View {
 
 17.
 BreedDetailsView(breed: breed)
+
+18.
+enum SortOrder: String, CaseIterable {
+  case name
+  case popularity
+
+  var displayName: String {
+    switch self {
+    case .name:
+      return "Name"
+    case .popularity:
+      return "Popularity"
+    }
+  }
+
+  func compare(breed1: Breed, breed2: Breed) -> Bool {
+    switch self {
+    case .name:
+      return breed1.name.caseInsensitiveCompare(breed2.name) == .orderedAscending
+    case .popularity:
+      return breed1.popularity < breed2.popularity
+    }
+  }
+}
+
+19.
+import Observation
+
+@Observable
+class Settings {
+  var sortOrder = SortOrder.name
+}
+
+let settings = Settings()
+
+20.
+import SwiftUI
+
+struct SettingsView: View {
+  @Bindable private var boundSettings = settings
+
+  var body: some View {
+    VStack {
+      Text("Settings")
+        .font(.largeTitle)
+
+      Spacer()
+        .frame(height: Layout.tripleDefaultSpacing)
+
+      Group {
+        Text("Sort Order")
+          .font(.title)
+
+        Picker("", selection: $boundSettings.sortOrder) {
+          ForEach(SortOrder.allCases, id: \.self) { sortOrder in
+            Text(sortOrder.displayName).tag(sortOrder)
+          }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+        .padding(.horizontal, Layout.doubleDefaultSpacing)
+
+        Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
+          .padding()
+      }
+
+      Spacer()
+    }
+  }
+}
+
+21.
+var breeds = try await BreedsLoader.loadBreeds()
+breeds.sort { breed1, breed2 in
+  settings.sortOrder.compare(breed1: breed1, breed2: breed2)
+}
