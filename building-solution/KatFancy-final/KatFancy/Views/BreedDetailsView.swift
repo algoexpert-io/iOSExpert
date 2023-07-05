@@ -5,7 +5,6 @@ import SwiftUI
 struct BreedDetailsView: View {
   let breed: Breed
   @Environment(\.openURL) var openURL
-  @State private var image: UIImage?
   private let photoHeightWidth: CGFloat = 250.0
 
   var body: some View {
@@ -33,25 +32,17 @@ struct BreedDetailsView: View {
 
       HStack {
         Button("Show License") {
-          showLicense()
+          openURL(breed.license.url)
         }
 
         Spacer()
 
         Button("View in Wikipedia") {
-          viewInWikipedia()
+          openURL(breed.infoUrl)
         }
       }
     }
     .navigationTitle(breed.name)
     .padding()
-  }
-
-  private func showLicense() {
-    openURL(breed.license.url)
-  }
-
-  private func viewInWikipedia() {
-    openURL(breed.infoUrl)
   }
 }
