@@ -2,7 +2,8 @@
 
 import Foundation
 
-struct Breed: Decodable {
+struct Breed: Decodable, Identifiable {
+  var id: String { name }
   let name: String
   let knownFor: String
   let popularity: Int

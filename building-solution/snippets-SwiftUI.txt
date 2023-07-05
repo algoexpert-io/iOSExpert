@@ -179,3 +179,143 @@ ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: v
 
 13.
 ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
+
+14.
+import SwiftUI
+
+struct BrowseBreedsView: View {
+  var viewModel = BrowseBreedsViewModel()
+  private let photoHeightWidth: CGFloat = 150
+
+  var body: some View {
+    NavigationStack {
+      Group {
+        switch viewModel.state {
+        case .loading:
+          ProgressView()
+        case .error:
+          ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: viewModel)
+        case .loaded(let breeds):
+          if !breeds.isEmpty {
+            list(of: breeds)
+              .refreshable {
+                await viewModel.loadBreeds()
+              }
+          } else {
+            ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
+          }
+        }
+      }
+      .navigationTitle("Cat Breeds")
+    }
+    .task {
+      await viewModel.loadBreeds()
+    }
+  }
+
+  func list(of breeds: [Breed]) -> some View {
+    List(breeds) { breed in
+      NavigationLink {
+        Text(breed.description)
+          .padding()
+      } label: {
+        HStack {
+          VStack(alignment: .leading) {
+            Text(breed.name)
+              .font(.headline)
+            Text(breed.knownFor)
+            Text("Popularity: \(breed.popularity)")
+          }
+
+          Spacer()
+
+          AsyncImage(url: breed.photoUrl) { image in
+            image
+              .resizable()
+              .scaledToFill()
+          } placeholder: {
+              Image(systemName: "pawprint.fill")
+                .resizable()
+                .scaledToFit()
+          }
+        }
+        .padding()
+      }
+    }
+  }
+}
+
+15.
+import Foundation
+
+struct Breed: Decodable, Identifiable {
+  var id: String { name }
+  let name: String
+  let knownFor: String
+  let popularity: Int
+  let photoUrl: URL
+  let infoUrl: URL
+  let credit: String
+  let license: License
+  let description: String
+}
+
+16.
+import SwiftUI
+
+struct BreedDetailsView: View {
+  let breed: Breed
+  @Environment(\.openURL) var openURL
+  @State private var image: UIImage?
+  private let photoHeightWidth: CGFloat = 250.0
+
+  var body: some View {
+    VStack {
+      AsyncImage(url: breed.photoUrl) { image in
+        image
+          .resizable()
+          .scaledToFill()
+      } placeholder: {
+          Image(systemName: "pawprint.fill")
+            .resizable()
+            .scaledToFit()
+      }
+      .frame(width: photoHeightWidth, height: photoHeightWidth)
+
+      ScrollView {
+        Text(breed.description)
+      }
+
+      Spacer()
+
+      Text("Photo Credit: \(breed.credit)")
+
+      Spacer()
+
+      HStack {
+        Button("Show License") {
+          showLicense()
+        }
+
+        Spacer()
+
+        Button("View in Wikipedia") {
+          viewInWikipedia()
+        }
+      }
+    }
+    .navigationTitle(breed.name)
+    .padding()
+  }
+
+  private func showLicense() {
+    openURL(breed.license.url)
+  }
+
+  private func viewInWikipedia() {
+    openURL(breed.infoUrl)
+  }
+}
+
+17.
+BreedDetailsView(breed: breed)

@@ -22,7 +22,10 @@ struct BrowseBreedsView: View {
           ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: viewModel)
         case .loaded(let breeds):
           if !breeds.isEmpty {
-            list(of: breeds, viewModel: viewModel, mockedState: mockedState)
+            list(of: breeds)
+              .refreshable {
+                await viewModel.loadBreeds(mockedState: mockedState)
+              }
           } else {
             ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
           }
@@ -35,7 +38,7 @@ struct BrowseBreedsView: View {
     }
   }
 
-  func list(of breeds: [Breed], viewModel: BrowseBreedsViewModel, mockedState: BrowseBreedsViewModel.State? = nil) -> some View {
+  func list(of breeds: [Breed]) -> some View {
     List(breeds) { breed in
       NavigationLink {
         BreedDetailsView(breed: breed)
@@ -67,9 +70,6 @@ struct BrowseBreedsView: View {
         }
         .padding()
       }
-    }
-    .refreshable {
-      await viewModel.loadBreeds(mockedState: mockedState)
     }
   }
 }

@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/5/23.
 
 import SwiftUI
 
@@ -10,20 +10,16 @@ struct BreedDetailsView: View {
 
   var body: some View {
     VStack {
-      Group {
-        if let image {
-          Image(uiImage: image)
+      AsyncImage(url: breed.photoUrl) { image in
+        image
+          .resizable()
+          .scaledToFill()
+      } placeholder: {
+          Image(systemName: "pawprint.fill")
             .resizable()
-            .aspectRatio(contentMode: .fit)
-            .padding()
-        } else {
-          ProgressView()
-        }
+            .scaledToFit()
       }
       .frame(width: photoHeightWidth, height: photoHeightWidth)
-      .task {
-        await image = Current.imageLoader.fetch(breed.photoUrl)
-      }
 
       ScrollView {
         Text(breed.description)
@@ -57,11 +53,5 @@ struct BreedDetailsView: View {
 
   private func viewInWikipedia() {
     openURL(breed.infoUrl)
-  }
-}
-
-#Preview {
-  NavigationStack {
-    BreedDetailsView(breed: Breed.mock)
   }
 }

@@ -14,6 +14,7 @@
 		038A8DD02A5237060042DA31 /* sadTrombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */; };
 		038A8DD22A5526D80042DA31 /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */; };
 		038A8DD42A5528B70042DA31 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD32A5528B70042DA31 /* Layout.swift */; };
+		038A8DD62A56027C0042DA31 /* BreedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */; };
 		03B0F02B2A4FE0AC00B81D6D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */; };
 		03B0F02D2A4FE35300B81D6D /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */; };
 		03B0F02F2A4FE3D700B81D6D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */; };
@@ -34,6 +35,7 @@
 		038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sadTrombone.mp3; path = "../../../../solution-wrap-up/KatFancy-final/KatFancy/Assets/sadTrombone.mp3"; sourceTree = "<group>"; };
 		038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
 		038A8DD32A5528B70042DA31 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsView.swift; sourceTree = "<group>"; };
 		03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
 		03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		034726B02A4F36F6000436AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */,
 				03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */,
 				038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */,
 				03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */,
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038A8DD62A56027C0042DA31 /* BreedDetailsView.swift in Sources */,
 				03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */,
 				038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */,
 				03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */,
