@@ -118,12 +118,12 @@ struct BrowseBreedsView: View {
         case .loading:
           ProgressView()
         case .error:
-          Text("An error occurred.")
+          Text("An error occurred during breed fetching.")
         case .loaded(let breeds):
           if !breeds.isEmpty {
             Text("Loading succeeded. First breed: \(breeds[0].name)")
           } else {
-            Text("The endpoint returned an empty array of beeds.")
+            Text("The endpoint returned an empty array of breeds.")
           }
         }
       }
@@ -134,3 +134,48 @@ struct BrowseBreedsView: View {
     }
   }
 }
+
+8.
+throw NSError()
+
+9.
+return []
+
+10.
+import SwiftUI
+
+struct ErrorRetryView: View {
+  let message: String
+  let viewModel: BrowseBreedsViewModel
+
+  var body: some View {
+    VStack {
+      Text(message)
+        .padding()
+
+      Spacer()
+        .frame(height: Layout.defaultSpacing)
+
+      Button("Retry") {
+        Task {
+          await viewModel.loadBreeds()
+        }
+      }
+    }
+  }
+}
+
+11.
+import UIKit
+
+enum Layout {
+  static let defaultSpacing: CGFloat = 8.0
+  static let doubleDefaultSpacing: CGFloat = 16.0
+  static let tripleDefaultSpacing: CGFloat = 24.0
+}
+
+12.
+ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: viewModel)
+
+13.
+ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)

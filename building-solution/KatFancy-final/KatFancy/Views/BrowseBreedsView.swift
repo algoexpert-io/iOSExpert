@@ -12,12 +12,12 @@ struct BrowseBreedsView: View {
         case .loading:
           ProgressView()
         case .error:
-          Text("An error occurred.")
+          ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: viewModel)
         case .loaded(let breeds):
           if !breeds.isEmpty {
             Text("Loading succeeded. First breed: \(breeds[0].name)")
           } else {
-            Text("The endpoint returned an empty array of beeds.")
+            ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
           }
         }
       }

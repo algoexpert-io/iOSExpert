@@ -24,7 +24,7 @@ struct BrowseBreedsView: View {
           if !breeds.isEmpty {
             list(of: breeds, viewModel: viewModel, mockedState: mockedState)
           } else {
-            ErrorRetryView(message: "The endpoint returned an empty array of beeds.", viewModel: viewModel)
+            ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
           }
         }
       }
@@ -35,7 +35,6 @@ struct BrowseBreedsView: View {
     }
   }
 
-  @ViewBuilder
   func list(of breeds: [Breed], viewModel: BrowseBreedsViewModel, mockedState: BrowseBreedsViewModel.State? = nil) -> some View {
     List(breeds) { breed in
       NavigationLink {
