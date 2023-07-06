@@ -1,0 +1,10 @@
+1.
+import Observation
+
+@Observable
+class World {
+  var soundPlayer: SoundPlayer = SoundPlayerReal()
+  var getterSetter: GetterSetter = GetterSetterReal()
+  var breedsURL: BreedsURL = .standard
+  var sessionType: SessionType = .shared
+}
