@@ -49,10 +49,6 @@ actor ImageLoader {
     }
   }
 
-  func configure(session: URLSession) async {
-    self.session = session
-  }
-
   func setSession(_ session: URLSession) async {
     self.session = session
   }

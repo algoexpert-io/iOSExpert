@@ -32,19 +32,6 @@ final class ImageLoaderTests: XCTestCase {
     XCTAssertEqual(errorImage.pngData(), expectedErrorImage.pngData())
   }
 
-  func testConfigure() async {
-    let imageLoader = ImageLoader()
-
-    await imageLoader.configure(session: .shared)
-    var session = await imageLoader.getSession()
-    XCTAssertEqual(session, .shared)
-
-    let stub = URLSession.stub
-    await imageLoader.configure(session: stub)
-    session = await imageLoader.getSession()
-    XCTAssertEqual(session, stub)
-  }
-
   func testSetSession() async {
     Current.settings.sessionType = .shared
     XCTAssertEqual(Current.settings.sessionType, .shared)

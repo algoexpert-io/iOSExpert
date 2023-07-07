@@ -5,7 +5,7 @@ import SwiftUI
 struct KatFancyApp: App {
   init() {
     Task {
-      await Current.imageLoader.configure(session: Current.settings.sessionType.session)
+      await Current.imageLoader.setSession(Current.settings.sessionType.session)
     }
   }
 
