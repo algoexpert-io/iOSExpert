@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/5/23.
 
 class Settings {
   let getterSetter: GetterSetter
@@ -17,9 +17,9 @@ class Settings {
     didSet {
       if sessionType != oldValue {
         getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
-        Task {
-          await Current.imageLoader.setSession(sessionType.session)
-        }
+//        Task {
+//          await Current.imageLoader.setSession(sessionType.session)
+//        }
       }
     }
   }

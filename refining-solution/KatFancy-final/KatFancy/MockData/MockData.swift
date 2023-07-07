@@ -1,8 +1,9 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/6/23.
 
 enum MockData {
   static let mockPhotoExtension = ".jpg"
   static let photoUrlPrefix = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/"
+
   static let breedNames: [String] = [
     "Abyssinian",
     "Balinese",

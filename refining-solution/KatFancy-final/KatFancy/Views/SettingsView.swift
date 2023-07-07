@@ -1,12 +1,12 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 6/30/23.
 
 import SwiftUI
 
 struct SettingsView: View {
-  @StateObject var viewModel = SettingsViewModel()
+  @Bindable private var current = Current
 
   var body: some View {
-    ScrollView(.vertical) {
+    VStack {
       Text("Settings")
         .font(.largeTitle)
 
@@ -14,61 +14,22 @@ struct SettingsView: View {
         .frame(height: Layout.tripleDefaultSpacing)
 
       Group {
-        Text("Breeds URL")
-          .font(.title)
-
-        Picker("", selection: $viewModel.store.breedsURL) {
-          ForEach(BreedsURL.allCases, id: \.self) { breedsURL in
-            Text(breedsURL.displayName).tag(breedsURL)
-          }
-        }
-        .segmentedPicker()
-
-        Text("This setting controls the URL of the JSON file that the breeds-browsing screen retrieves. Revisit that screen after changing this setting to initiate another API call.")
-          .padding()
-      }
-
-      Group {
-        Text("URLSession Type")
-          .font(.title)
-
-        Picker("", selection: $viewModel.store.sessionType) {
-          ForEach(SessionType.allCases, id: \.self) { sessionType in
-            Text(sessionType.displayName).tag(sessionType)
-          }
-        }
-        .segmentedPicker()
-
-        Text("This setting controls which URLSession to use for JSON retrieval and image fetching: shared or stub.")
-          .padding()
-      }
-
-      Group {
         Text("Sort Order")
           .font(.title)
 
-        Picker("", selection: $viewModel.store.sortOrder) {
+        Picker("", selection: $current.settings.sortOrder) {
           ForEach(SortOrder.allCases, id: \.self) { sortOrder in
             Text(sortOrder.displayName).tag(sortOrder)
           }
         }
-        .segmentedPicker()
+        .pickerStyle(SegmentedPickerStyle())
+        .padding(.horizontal, Layout.doubleDefaultSpacing)
 
-        Text("This setting controls the sort order of breeds on FancyKat's breed-browsing screen.")
+        Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
           .padding()
       }
 
       Spacer()
     }
-    .onAppear {
-      viewModel.configure()
-    }
-  }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-  static var previews: some View {
-    SettingsView()
-      .environmentObject(Current)
   }
 }

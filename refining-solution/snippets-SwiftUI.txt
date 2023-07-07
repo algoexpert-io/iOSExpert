@@ -8,3 +8,380 @@ class World {
   var breedsURL: BreedsURL = .standard
   var sessionType: SessionType = .shared
 }
+
+2.
+import Foundation
+import Observation
+
+var Current = World.chooseWorld()
+
+@Observable
+class World {
+  var settings = Settings(getterSetter: GetterSetterFake())
+  var soundPlayer: SoundPlayer = SoundPlayerDummy()
+  var imageLoader = ImageLoader()
+
+  init(settings: Settings, soundPlayer: SoundPlayer, imageLoader: ImageLoader) {
+    self.settings = settings
+    self.soundPlayer = soundPlayer
+    self.imageLoader = imageLoader
+  }
+
+  static func chooseWorld() -> World {
+    if NSClassFromString("XCTest") != nil {
+      return World.unitTest
+    } else {
+      return World.production
+    }
+  }
+
+  static let production: World = {
+    let settings = Settings(getterSetter: GetterSetterReal())
+
+    return World(
+      settings: settings,
+      soundPlayer: SoundPlayerReal(),
+      imageLoader: ImageLoader()
+    )
+  }()
+
+  static let unitTest: World = {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    settings.sessionType = .stub
+
+    return World(
+      settings: settings,
+      soundPlayer: SoundPlayerDummy(),
+      imageLoader: ImageLoader()
+    )
+  }()
+}
+
+3.
+protocol SoundPlayer {
+  func play(_ sound: Sound)
+}
+
+4.
+import AVFoundation
+
+class SoundPlayerReal: SoundPlayer {
+  private var sounds: [String: AVAudioPlayer]
+  private let soundExtension = "mp3"
+
+  init () {
+    sounds = [:]
+  }
+
+  func play(_ sound: Sound) {
+    if sounds[sound.rawValue] == nil {
+      if let audioURL = Bundle.main.url(forResource: sound.rawValue, withExtension: soundExtension) {
+        try? sounds[sound.rawValue] = AVAudioPlayer.init(contentsOf: audioURL)
+      }
+    }
+
+    if let retrievedSound = sounds[sound.rawValue] {
+      retrievedSound.play()
+    }
+  }
+}
+
+5.
+class SoundPlayerDummy: SoundPlayer {
+  func play(_ sound: Sound) {}
+}
+
+6.
+protocol GetterSetter {
+  func get(key: String) -> String?
+  func set(key: String, value: String)
+}
+
+7.
+import Foundation
+
+class GetterSetterReal: GetterSetter {
+  func get(key: String) -> String? {
+    return UserDefaults.standard.string(forKey: key)
+  }
+
+  func set(key: String, value: String) {
+    UserDefaults.standard.set(value, forKey: key)
+  }
+}
+
+8.
+class GetterSetterFake: GetterSetter {
+  var dictionary: [String: String] = [:]
+
+  init() {}
+
+  init(dictionary: [String: String]) {
+    self.dictionary = dictionary
+  }
+
+  func get(key: String) -> String? {
+    return dictionary[key]
+  }
+
+  func set(key: String, value: String) {
+    dictionary[key] = value
+  }
+}
+
+9.
+class Settings {
+  let getterSetter: GetterSetter
+
+  var breedsURL: BreedsURL {
+    didSet {
+      if breedsURL != oldValue {
+        getterSetter.set(key: Settings.breedsURLKey, value: breedsURL.rawValue)
+      }
+    }
+  }
+  static let breedsURLKey = "breedsURL"
+  static let breedsURLDefault: BreedsURL = .withMore
+
+  var sessionType: SessionType {
+    didSet {
+      if sessionType != oldValue {
+        getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+//        Task {
+//          await Current.imageLoader.setSession(sessionType.session)
+//        }
+      }
+    }
+  }
+  static let sessionTypeKey = "sessionType"
+  static let sessionTypeDefault: SessionType = .shared
+
+  var sortOrder: SortOrder {
+    didSet {
+      if sortOrder != oldValue {
+        getterSetter.set(key: Settings.sortOrderKey, value: sortOrder.rawValue)
+      }
+    }
+  }
+  static let sortOrderKey = "sortOrder"
+  static let sortOrderDefault: SortOrder = .name
+
+  init(getterSetter: GetterSetter) {
+    self.getterSetter = getterSetter
+
+    if let breedsURLString = getterSetter.get(key: Settings.breedsURLKey) {
+      breedsURL = BreedsURL(rawValue: breedsURLString) ?? Settings.breedsURLDefault
+    } else {
+      breedsURL = Settings.breedsURLDefault
+      getterSetter.set(key: Settings.breedsURLKey, value: breedsURL.rawValue)
+    }
+
+    if let sessionTypeString = getterSetter.get(key: Settings.sessionTypeKey) {
+      sessionType = SessionType(rawValue: sessionTypeString) ?? Settings.sessionTypeDefault
+    } else {
+      sessionType = Settings.sessionTypeDefault
+      getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+    }
+
+    if let sortOrderString = getterSetter.get(key: Settings.sortOrderKey) {
+      sortOrder = SortOrder(rawValue: sortOrderString) ?? Settings.sortOrderDefault
+    } else {
+      sortOrder = Settings.sortOrderDefault
+      getterSetter.set(key: Settings.sortOrderKey, value: sortOrder.rawValue)
+    }
+  }
+}
+
+10.
+import Foundation
+
+enum BreedsURL: String, CaseIterable {
+  case standard
+  case empty
+  case malformed
+  case withMore
+
+  var url: URL {
+    let standardURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"
+    let emptyURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_empty.json"
+    let malformedURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_malformed.json"
+    let withMoreURLString = "https://assets.algoexpert.io/course-assets/iosexpert/breeds_with_more.json"
+
+    let urlString: String
+
+    switch self {
+    case .standard:
+      urlString = standardURLString
+    case .empty:
+      urlString = emptyURLString
+    case .malformed:
+      urlString = malformedURLString
+    case .withMore:
+      urlString = withMoreURLString
+    }
+
+    if let url = URL(string: urlString) {
+      return url
+    } else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+  }
+
+  var displayName: String {
+    switch self {
+    case .standard:
+      return "Breeds"
+    case .empty:
+      return "Empty"
+    case .malformed:
+      return "Malformed"
+    case .withMore:
+      return "With More"
+    }
+  }
+}
+
+11.
+import Foundation
+
+enum SessionType: String, CaseIterable {
+  case shared
+  case stub
+
+  var session: URLSession {
+    switch self {
+    case .shared:
+      return URLSession.shared
+    case .stub:
+      return URLSession.stub
+    }
+  }
+
+  var displayName: String {
+    switch self {
+    case .shared:
+      return "Shared"
+    case .stub:
+      return "Stub"
+    }
+  }
+}
+
+12.
+import Foundation
+
+extension URLSession {
+  static var urlDataDict: [URL: Data] = [:]
+  static var didProcessURLs = false
+
+  static var stub: URLSession {
+    if !didProcessURLs {
+      didProcessURLs = true
+      BreedsURL.allCases.forEach {
+        if let path = Bundle.main.path(forResource: $0.url.lastPathComponent, ofType: nil) {
+          do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            URLSession.urlDataDict[$0.url] = data
+          } catch {
+            fatalError("Unable to load mock JSON data for URL \($0.url).")
+          }
+        }
+      }
+
+      for breedName in MockData.breedNames {
+        if
+          let bundleUrl = Bundle.main.url(forResource: breedName, withExtension: MockData.mockPhotoExtension),
+          let actualUrl = URL(string: "\(MockData.photoUrlPrefix)\(breedName)\(MockData.mockPhotoExtension)")
+        {
+          do {
+            let data = try Data(contentsOf: bundleUrl)
+            URLSession.urlDataDict[actualUrl] = data
+          } catch {
+            fatalError("Unable to initialize Data.")
+          }
+        } else {
+          fatalError("Unable to construct path to \(breedName).\(MockData.mockPhotoExtension).")
+        }
+      }
+    }
+
+    let config = URLSessionConfiguration.ephemeral
+    config.protocolClasses = [URLProtocolStub.self]
+    return URLSession(configuration: config)
+  }
+}
+
+13.
+enum MockData {
+  static let mockPhotoExtension = ".jpg"
+  static let photoUrlPrefix = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/"
+
+  static let breedNames: [String] = [
+    "Abyssinian",
+    "Balinese",
+    "Bengal",
+    "Burmese",
+    "CloudedLeopard",
+    "DevonRex",
+    "EuropeanWildcat",
+    "MaineCoon",
+    "Manx",
+    "Ragdoll",
+    "RussianBlue",
+    "Sand",
+    "Savannah",
+    "Serval",
+    "Siamese",
+    "Smilodon",
+    "Tonkinese",
+    "TurkishAngora",
+    "Van"
+  ]
+}
+
+14.
+import Foundation
+
+class URLProtocolStub: URLProtocol {
+  override class func canInit(with request: URLRequest) -> Bool {
+    true
+  }
+
+  override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    request
+  }
+
+  override func startLoading() {
+    if
+      let url = request.url,
+      let data = URLSession.urlDataDict[url]
+    {
+      client?.urlProtocol(self, didReceive: URLResponse(), cacheStoragePolicy: .notAllowed)
+      client?.urlProtocol(self, didLoad: data)
+    } else {
+      client?.urlProtocol(self, didFailWithError: LoadingError.loadFailed)
+    }
+    client?.urlProtocolDidFinishLoading(self)
+  }
+
+  override func stopLoading() {}
+
+  enum LoadingError: Error {
+    case loadFailed
+  }
+}
+
+15.
+class ImageLoader {}
+
+16.
+@Bindable private var current = Current
+
+17.
+Picker("", selection: $current.settings.sortOrder) {
+
+18.
+Current.soundPlayer.play
+
+19.
+let (data, _) = try await Current.settings.sessionType.session.data(from: Current.settings.breedsURL.url)

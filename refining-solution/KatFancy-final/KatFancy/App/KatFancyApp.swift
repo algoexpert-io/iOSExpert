@@ -1,18 +1,12 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 6/29/23.
 
 import SwiftUI
 
+@main
 struct KatFancyApp: App {
-  init() {
-    Task {
-      await Current.imageLoader.configure(session: Current.settings.sessionType.session)
+    var body: some Scene {
+        WindowGroup {
+            MainTabView()
+        }
     }
-  }
-
-  var body: some Scene {
-    WindowGroup {
-      MainTabView()
-        .environmentObject(Current)
-    }
-  }
 }

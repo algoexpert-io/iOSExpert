@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/4/23.
 
 import SwiftUI
 
@@ -20,11 +20,5 @@ struct ErrorRetryView: View {
         }
       }
     }
-  }
-}
-
-struct ErrorRetryView_Previews: PreviewProvider {
-  static var previews: some View {
-    ErrorRetryView(message: "This is a test error message.", viewModel: BrowseBreedsViewModel())
   }
 }

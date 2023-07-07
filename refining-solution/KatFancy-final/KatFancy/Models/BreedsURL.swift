@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/6/23.
 
 import Foundation
 
@@ -37,7 +37,7 @@ enum BreedsURL: String, CaseIterable {
   var displayName: String {
     switch self {
     case .standard:
-      return "Production"
+      return "Breeds"
     case .empty:
       return "Empty"
     case .malformed:

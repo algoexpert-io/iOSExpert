@@ -1,14 +1,15 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
-// https://www.pointfree.co/blog/posts/21-how-to-control-the-world
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/6/23.
 
 import Foundation
+import Observation
 
 var Current = World.chooseWorld()
 
-class World: ObservableObject {
-  @Published var settings: Settings
-  @Published var soundPlayer: SoundPlayer
-  @Published var imageLoader: ImageLoader
+@Observable
+class World {
+  var settings = Settings(getterSetter: GetterSetterFake())
+  var soundPlayer: SoundPlayer = SoundPlayerDummy()
+  var imageLoader = ImageLoader()
 
   init(settings: Settings, soundPlayer: SoundPlayer, imageLoader: ImageLoader) {
     self.settings = settings

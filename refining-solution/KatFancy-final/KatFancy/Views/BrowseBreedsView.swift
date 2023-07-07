@@ -1,16 +1,10 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 6/30/23.
 
 import SwiftUI
 
 struct BrowseBreedsView: View {
-  @StateObject var viewModel = BrowseBreedsViewModel()
-  @State private var images: [Breed: UIImage] = [:]
-  private let mockedState: BrowseBreedsViewModel.State?
+  var viewModel = BrowseBreedsViewModel()
   private let photoHeightWidth: CGFloat = 150
-
-  init(mockedState: BrowseBreedsViewModel.State? = nil) {
-    self.mockedState = mockedState
-  }
 
   var body: some View {
     NavigationStack {
@@ -22,77 +16,49 @@ struct BrowseBreedsView: View {
           ErrorRetryView(message: "An error occurred during breed fetching.", viewModel: viewModel)
         case .loaded(let breeds):
           if !breeds.isEmpty {
-            list(of: breeds, viewModel: viewModel, mockedState: mockedState)
+            list(of: breeds)
+              .refreshable {
+                await viewModel.loadBreeds()
+              }
           } else {
-            ErrorRetryView(message: "The endpoint returned an empty array of beeds.", viewModel: viewModel)
+            ErrorRetryView(message: "The endpoint returned an empty array of breeds.", viewModel: viewModel)
           }
         }
       }
       .navigationTitle("Cat Breeds")
     }
     .task {
-      await viewModel.loadBreeds(mockedState: mockedState)
+      await viewModel.loadBreeds()
     }
   }
 
-  @ViewBuilder
-  func list(of breeds: [Breed], viewModel: BrowseBreedsViewModel, mockedState: BrowseBreedsViewModel.State? = nil) -> some View {
-    if !breeds.isEmpty {
-      List(breeds) { breed in
-        NavigationLink {
-          BreedDetailsView(breed: breed)
-        } label: {
-          HStack {
-            VStack(alignment: .leading) {
-              Text(breed.name)
-                .font(.headline)
-              Text(breed.knownFor)
-              Text("Popularity: \(breed.popularity)")
-            }
-
-            Spacer()
-
-            Group {
-              if let image = images[breed] {
-                Image(uiImage: image)
-                  .resizable()
-                  .aspectRatio(contentMode: .fit)
-                  .padding()
-              } else {
-                ProgressView()
-              }
-            }
-            .frame(width: photoHeightWidth)
-            .task {
-              await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
-            }
+  func list(of breeds: [Breed]) -> some View {
+    List(breeds) { breed in
+      NavigationLink {
+        BreedDetailsView(breed: breed)
+      } label: {
+        HStack {
+          VStack(alignment: .leading) {
+            Text(breed.name)
+              .font(.headline)
+            Text(breed.knownFor)
+            Text("Popularity: \(breed.popularity)")
           }
-          .padding()
+
+          Spacer()
+
+          AsyncImage(url: breed.photoUrl) { image in
+            image
+              .resizable()
+              .scaledToFill()
+          } placeholder: {
+              Image(systemName: "pawprint.fill")
+                .resizable()
+                .scaledToFit()
+          }
         }
+        .padding()
       }
-    } else {
-      EmptyView()
-    }
-  }
-}
-
-struct BrowseBreedsView_Previews: PreviewProvider {
-  static var previews: some View {
-    Group {
-      BrowseBreedsView(mockedState: .loaded(breeds: [Breed].mock))
-        .previewDisplayName("Mocked Data")
-
-      BrowseBreedsView()
-        .previewDisplayName("Actual Data")
-
-      BrowseBreedsView(mockedState: .loaded(breeds: []))
-        .previewDisplayName("No Data")
-
-      BrowseBreedsView(mockedState: .loading)
-        .previewDisplayName("Loading")
-
-      BrowseBreedsView(mockedState: .error)
-        .previewDisplayName("Error")
     }
   }
 }

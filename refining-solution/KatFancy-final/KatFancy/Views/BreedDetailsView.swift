@@ -1,29 +1,24 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/5/23.
 
 import SwiftUI
 
 struct BreedDetailsView: View {
   let breed: Breed
   @Environment(\.openURL) var openURL
-  @State private var image: UIImage?
-  private let photoHeightWidth: CGFloat = 300
+  private let photoHeightWidth: CGFloat = 250.0
 
   var body: some View {
     VStack {
-      Group {
-        if let image {
-          Image(uiImage: image)
+      AsyncImage(url: breed.photoUrl) { image in
+        image
+          .resizable()
+          .scaledToFill()
+      } placeholder: {
+          Image(systemName: "pawprint.fill")
             .resizable()
-            .aspectRatio(contentMode: .fit)
-            .padding()
-        } else {
-          ProgressView()
-        }
+            .scaledToFit()
       }
       .frame(width: photoHeightWidth, height: photoHeightWidth)
-      .task {
-        await image = Current.imageLoader.fetch(breed.photoUrl)
-      }
 
       ScrollView {
         Text(breed.description)
@@ -37,33 +32,17 @@ struct BreedDetailsView: View {
 
       HStack {
         Button("Show License") {
-          showLicense()
+          openURL(breed.license.url)
         }
 
         Spacer()
 
         Button("View in Wikipedia") {
-          viewInWikipedia()
+          openURL(breed.infoUrl)
         }
       }
     }
     .navigationTitle(breed.name)
     .padding()
-  }
-
-  private func showLicense() {
-    openURL(breed.license.url)
-  }
-
-  private func viewInWikipedia() {
-    openURL(breed.infoUrl)
-  }
-}
-
-struct BreedDetailsView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationStack {
-      BreedDetailsView(breed: [Breed].mock[[Breed].mock.count - 2])
-    }
   }
 }

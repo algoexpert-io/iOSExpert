@@ -690,7 +690,7 @@ extension URLSession {
  static var urlDataDict: [URL: Data] = [:]
  static var didProcessURL = false
 
- static var stubSession: URLSession {
+ static var stub: URLSession {
    if !didProcessURL {
      didProcessURL = true
 
@@ -804,10 +804,10 @@ static func getCurrentConditionsInRome(
 ) async -> String? {
 
 64.
-session: URLSession.stubSession
+session: URLSession.stub
 
 65.
-if await WeatherRequester.getCurrentConditionsInRome(analyticsService: spy, session: .stubSession) != nil {
+if await WeatherRequester.getCurrentConditionsInRome(analyticsService: spy, session: .stub) != nil {
 
 66.
 @testable import RomanNumerals
@@ -822,7 +822,7 @@ class WeatherRequesterTests: XCTestCase {
 
     let currentConditions = await WeatherRequester.getCurrentConditionsInRome(
       analyticsService: AnalyticsServiceSpy(),
-      session: .stubSession
+      session: .stub
     )
     XCTAssertEqual("Currently in Rome: 53° F, cloudy with a chance of suppli", currentConditions)
   }
@@ -845,7 +845,7 @@ override func setUp() {
     soundPlayer: SoundPlayerDummy(),
     persistentStorage: PersistentStorageFake(),
     analyticsService: AnalyticsServiceSpy(),
-    session: URLSession.stubSession
+    session: URLSession.stub
   )
 }
 
@@ -1006,7 +1006,7 @@ class URLProtocolStubTests: XCTestCase {
   }
 
   func testStartLoading() {
-    _ = URLSession.stubSession
+    _ = URLSession.stub
     let exp = expectation(description: "Waiting for load.")
     let protocolClientSpy = ProtocolClientSpy(didLoad: { data in
       XCTAssertEqual(URLSession.conditionsDataFromBundle, data)
@@ -1043,7 +1043,7 @@ import XCTest
 
 class URLSessionExtensionTests: XCTestCase {
   func testStubData() {
-    let session = URLSession.stubSession
+    let session = URLSession.stub
     XCTAssert(session.configuration.protocolClasses?[0] is URLProtocolStub.Type)
     let expectedTestURLCount = 1
     XCTAssertEqual(expectedTestURLCount, URLSession.urlDataDict.count)
@@ -1098,7 +1098,7 @@ struct World {
       soundPlayer: SoundPlayerDummy(),
       persistentStorage: PersistentStorageFake(),
       analyticsService: AnalyticsServiceSpy(),
-      session: URLSession.stubSession
+      session: URLSession.stub
     )
   }()
 }

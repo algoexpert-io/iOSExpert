@@ -123,10 +123,10 @@
 			children = (
 				034726B22A4F36F9000436AD /* App */,
 				034726B12A4F36F8000436AD /* Assets */,
-				034726B02A4F36F6000436AD /* Views */,
-				034726AF2A4F36F4000436AD /* ViewModel */,
 				03DA47852A4E27B6006E4994 /* Helpers */,
 				03DA47862A4E27C2006E4994 /* Models */,
+				034726AF2A4F36F4000436AD /* ViewModel */,
+				034726B02A4F36F6000436AD /* Views */,
 			);
 			path = KatFancy;
 			sourceTree = "<group>";
