@@ -37,7 +37,7 @@ enum BreedsURL: String, CaseIterable {
   var displayName: String {
     switch self {
     case .standard:
-      return "Breeds"
+      return "Standard"
     case .empty:
       return "Empty"
     case .malformed:

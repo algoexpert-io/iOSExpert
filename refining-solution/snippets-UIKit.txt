@@ -215,7 +215,7 @@ enum BreedsURL: String, CaseIterable {
   var displayName: String {
     switch self {
     case .standard:
-      return "Breeds"
+      return "Standard"
     case .empty:
       return "Empty"
     case .malformed:
@@ -1354,7 +1354,7 @@ class BreedsURLTests: XCTestCase {
   }
 
   func testDisplayName() {
-    let expectedStandardDisplayName = "Breeds"
+    let expectedStandardDisplayName = "Standard"
     let expectedEmptyDisplayName = "Empty"
     let expectedMalformedDisplayName = "Malformed"
     let expectedWithMoreDisplayName = "With More"

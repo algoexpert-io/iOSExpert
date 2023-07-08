@@ -4,6 +4,7 @@ import Foundation
 
 enum BreedsLoader {
   static func loadBreeds() async throws -> [Breed] {
+    print(Current.settings.sessionType.displayName)
     let (data, _) = try await Current.settings.sessionType.session.data(from: Current.settings.breedsURL.url)
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase

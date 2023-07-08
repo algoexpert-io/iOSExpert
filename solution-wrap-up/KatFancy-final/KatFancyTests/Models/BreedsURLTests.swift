@@ -22,7 +22,7 @@ class BreedsURLTests: XCTestCase {
   }
 
   func testDisplayName() {
-    let expectedStandardDisplayName = "Production"
+    let expectedStandardDisplayName = "Standard"
     let expectedEmptyDisplayName = "Empty"
     let expectedMalformedDisplayName = "Malformed"
     let expectedWithMoreDisplayName = "With More"
