@@ -4,14 +4,9 @@
 import XCTest
 
 final class BreedTests: XCTestCase {
-  func testInitsEqualityAndHasher() async throws {
+  func testEquality() async throws {
     let mockLeopard = Breed.mock
     let networkLeopard = try await BreedsLoader.loadBreeds()[0]
-
     XCTAssertEqual(mockLeopard, networkLeopard)
-
-    var set = Set<Breed>()
-    set.insert(mockLeopard)
-    XCTAssert(set.contains(networkLeopard))
   }
 }

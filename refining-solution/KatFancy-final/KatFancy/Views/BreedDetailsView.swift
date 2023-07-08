@@ -5,20 +5,25 @@ import SwiftUI
 struct BreedDetailsView: View {
   let breed: Breed
   @Environment(\.openURL) var openURL
+  @State private var image: UIImage?
   private let photoHeightWidth: CGFloat = 250.0
 
   var body: some View {
     VStack {
-      AsyncImage(url: breed.photoUrl) { image in
-        image
-          .resizable()
-          .scaledToFill()
-      } placeholder: {
-          Image(systemName: "pawprint.fill")
+      Group {
+        if let image {
+          Image(uiImage: image)
             .resizable()
-            .scaledToFit()
+            .aspectRatio(contentMode: .fit)
+            .padding()
+        } else {
+          ProgressView()
+        }
       }
       .frame(width: photoHeightWidth, height: photoHeightWidth)
+      .task {
+        await image = Current.imageLoader.fetch(breed.photoUrl)
+      }
 
       ScrollView {
         Text(breed.description)

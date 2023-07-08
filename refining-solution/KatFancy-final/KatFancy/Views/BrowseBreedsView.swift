@@ -4,6 +4,7 @@ import SwiftUI
 
 struct BrowseBreedsView: View {
   var viewModel = BrowseBreedsViewModel()
+  @State private var images: [String: UIImage] = [:]
   private let photoHeightWidth: CGFloat = 150
 
   var body: some View {
@@ -47,14 +48,19 @@ struct BrowseBreedsView: View {
 
           Spacer()
 
-          AsyncImage(url: breed.photoUrl) { image in
-            image
-              .resizable()
-              .scaledToFill()
-          } placeholder: {
-              Image(systemName: "pawprint.fill")
+          Group {
+            if let image = images[breed.name] {
+              Image(uiImage: image)
                 .resizable()
-                .scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .padding()
+            } else {
+              ProgressView()
+            }
+          }
+          .frame(width: photoHeightWidth)
+          .task {
+            await images[breed.name] = Current.imageLoader.fetch(breed.photoUrl)
           }
         }
         .padding()

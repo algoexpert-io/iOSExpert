@@ -440,3 +440,142 @@ actor ImageLoader {
     self.session = session
   }
 }
+
+21.
+@State private var images: [Breed: UIImage] = [:]
+
+22.
+func list(of breeds: [Breed]) -> some View {
+  List(breeds) { breed in
+    NavigationLink {
+      BreedDetailsView(breed: breed)
+    } label: {
+      HStack {
+        VStack(alignment: .leading) {
+          Text(breed.name)
+            .font(.headline)
+          Text(breed.knownFor)
+          Text("Popularity: \(breed.popularity)")
+        }
+
+        Spacer()
+
+        Group {
+          if let image = images[breed] {
+            Image(uiImage: image)
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .padding()
+          } else {
+            ProgressView()
+          }
+        }
+        .frame(width: photoHeightWidth)
+        .task {
+          await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
+        }
+      }
+      .padding()
+    }
+  }
+}
+
+23.
+@State private var image: UIImage?
+
+24.
+Group {
+  if let image {
+    Image(uiImage: image)
+      .resizable()
+      .aspectRatio(contentMode: .fit)
+      .padding()
+  } else {
+    ProgressView()
+  }
+}
+.frame(width: photoHeightWidth, height: photoHeightWidth)
+.task {
+  await image = Current.imageLoader.fetch(breed.photoUrl)
+}
+
+25.
+import SwiftUI
+
+extension View {
+  func segmentedPicker() -> some View {
+    modifier(SegmentedPicker())
+  }
+}
+
+private struct SegmentedPicker: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .pickerStyle(SegmentedPickerStyle())
+      .padding(.horizontal, Layout.doubleDefaultSpacing)
+  }
+}
+
+26.
+import SwiftUI
+
+struct SettingsView: View {
+  @Bindable private var current = Current
+
+  var body: some View {
+    ScrollView(.vertical) {
+      Text("Settings")
+        .font(.largeTitle)
+
+      Spacer()
+        .frame(height: Layout.tripleDefaultSpacing)
+
+      Group {
+        Text("Breeds URL")
+          .font(.title)
+
+        Picker("", selection: $current.settings.breedsURL) {
+          ForEach(BreedsURL.allCases, id: \.self) { breedsURL in
+            Text(breedsURL.displayName).tag(breedsURL)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls the URL of the JSON file that the breeds-browsing screen retrieves. Revisit that screen after changing this setting to initiate another API call.")
+          .padding()
+      }
+
+      Group {
+        Text("URLSession Type")
+          .font(.title)
+
+        Picker("", selection: $current.settings.sessionType) {
+          ForEach(SessionType.allCases, id: \.self) { sessionType in
+            Text(sessionType.displayName).tag(sessionType)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls which URLSession to use for JSON retrieval and image fetching: shared or stub.")
+          .padding()
+      }
+
+      Group {
+        Text("Sort Order")
+          .font(.title)
+
+        Picker("", selection: $current.settings.sortOrder) {
+          ForEach(SortOrder.allCases, id: \.self) { sortOrder in
+            Text(sortOrder.displayName).tag(sortOrder)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
+          .padding()
+      }
+
+      Spacer()
+    }
+  }
+}

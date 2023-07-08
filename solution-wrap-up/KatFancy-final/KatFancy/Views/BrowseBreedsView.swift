@@ -4,7 +4,7 @@ import SwiftUI
 
 struct BrowseBreedsView: View {
   var viewModel = BrowseBreedsViewModel()
-  @State private var images: [Breed: UIImage] = [:]
+  @State private var images: [String: UIImage] = [:]
   private let mockedState: BrowseBreedsViewModel.State?
   private let photoHeightWidth: CGFloat = 150
 
@@ -54,7 +54,7 @@ struct BrowseBreedsView: View {
           Spacer()
 
           Group {
-            if let image = images[breed] {
+            if let image = images[breed.name] {
               Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -65,7 +65,7 @@ struct BrowseBreedsView: View {
           }
           .frame(width: photoHeightWidth)
           .task {
-            await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
+            await images[breed.name] = Current.imageLoader.fetch(breed.photoUrl)
           }
         }
         .padding()
