@@ -52,8 +52,4 @@ actor ImageLoader {
   func setSession(_ session: URLSession) async {
     self.session = session
   }
-
-  func getSession() -> URLSession {
-    session
-  }
 }

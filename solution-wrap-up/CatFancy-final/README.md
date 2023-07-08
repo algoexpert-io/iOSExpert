@@ -77,4 +77,6 @@ Soroush Khanlou [developed](http://khanlou.com/2015/01/the-coordinator/) the coo
 
 Geoff Hackworth [shared](https://medium.com/@hacknicity/how-to-switch-your-ios-app-and-scene-delegates-for-improved-testing-9746279378c3) the technique of bespoke app/scene delegates for unit tests exemplified by `TestingRootViewController.swift`, `TestingAppDelegate.swift`,  `TestingSceneDelegate.swift`, and `main.swift`, building on a technique [shared](https://qualitycoding.org/ios-app-delegate-testing/) by Jon Reid.
 
+Breed descriptions are from Wikipedia articles licensed under the [Creative Commons Attribution-Share-Alike License 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Changes to the descriptions involve removal of footnotes and fixing of non-printing characters.
+
 An earlier version of CatFancy accompanied [this blog post](https://racecondition.software/blog/challenges/) about UIKit iOS-developer coding challenges.

@@ -3,12 +3,6 @@
 import SwiftUI
 
 struct KatFancyApp: App {
-  init() {
-    Task {
-      await Current.imageLoader.setSession(Current.settings.sessionType.session)
-    }
-  }
-
   var body: some Scene {
     WindowGroup {
       MainTabView()

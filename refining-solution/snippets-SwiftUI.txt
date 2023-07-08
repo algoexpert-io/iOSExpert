@@ -390,7 +390,7 @@ let (data, _) = try await Current.settings.sessionType.session.data(from: Curren
 import UIKit
 
 actor ImageLoader {
-  var session = URLSession.shared
+  private var session = URLSession.shared
   private var loaderStatuses: [URL: LoaderStatus] = [:]
 
   private enum LoaderStatus {
@@ -438,9 +438,5 @@ actor ImageLoader {
 
   func setSession(_ session: URLSession) async {
     self.session = session
-  }
-
-  func getSession() -> URLSession {
-    session
   }
 }

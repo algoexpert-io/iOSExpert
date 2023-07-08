@@ -17,9 +17,9 @@ class Settings {
     didSet {
       if sessionType != oldValue {
         getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
-//        Task {
-//          await Current.imageLoader.setSession(sessionType.session)
-//        }
+        Task {
+          await Current.imageLoader.setSession(sessionType.session)
+        }
       }
     }
   }
