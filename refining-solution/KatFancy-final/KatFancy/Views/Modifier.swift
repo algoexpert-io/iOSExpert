@@ -15,3 +15,25 @@ private struct SegmentedPicker: ViewModifier {
       .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
 }
+
+private struct SegmentedPickerView: View {
+  @State var selection = BreedsURL.withMore
+
+  var body: some View {
+    VStack {
+      Text("segmentedPicker()")
+        .font(.headline)
+
+      Picker("", selection: $selection) {
+        ForEach(BreedsURL.allCases, id: \.self) { breedsURL in
+          Text(breedsURL.displayName)
+        }
+      }
+      .segmentedPicker()
+    }
+  }
+}
+
+#Preview {
+  SegmentedPickerView()
+}

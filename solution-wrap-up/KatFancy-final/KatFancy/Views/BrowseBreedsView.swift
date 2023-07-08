@@ -5,8 +5,8 @@ import SwiftUI
 struct BrowseBreedsView: View {
   var viewModel = BrowseBreedsViewModel()
   @State private var images: [String: UIImage] = [:]
-  private let mockedState: BrowseBreedsViewModel.State?
   private let photoHeightWidth: CGFloat = 150
+  private let mockedState: BrowseBreedsViewModel.State?
 
   init(mockedState: BrowseBreedsViewModel.State? = nil) {
     self.mockedState = mockedState
@@ -75,7 +75,7 @@ struct BrowseBreedsView: View {
 }
 
 #Preview("Mocked Data") {
-  BrowseBreedsView(mockedState: .loaded(breeds: Breed.mocks))
+  BrowseBreedsView(mockedState: .loaded(breeds: MockData.breeds))
 }
 
 #Preview("Actual Data") {
@@ -86,10 +86,10 @@ struct BrowseBreedsView: View {
   BrowseBreedsView(mockedState: .loaded(breeds: []))
 }
 
-#Preview("Loading") {
-  BrowseBreedsView(mockedState: .loading)
-}
-
 #Preview("Error") {
   BrowseBreedsView(mockedState: .error)
+}
+
+#Preview("Loading") {
+  BrowseBreedsView(mockedState: .loading)
 }

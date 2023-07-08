@@ -5,7 +5,7 @@ import XCTest
 
 final class BreedTests: XCTestCase {
   func testEquality() async throws {
-    let mockLeopard = Breed.mock
+    let mockLeopard = MockData.breed
     let networkLeopard = try await BreedsLoader.loadBreeds()[0]
     XCTAssertEqual(mockLeopard, networkLeopard)
   }

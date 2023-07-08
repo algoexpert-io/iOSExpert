@@ -54,6 +54,6 @@ struct BreedDetailsView: View {
 
 #Preview {
   NavigationStack {
-    BreedDetailsView(breed: Breed.mock)
+    BreedDetailsView(breed: MockData.breed)
   }
 }

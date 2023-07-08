@@ -12,16 +12,20 @@ class BrowseBreedsViewModel {
 
   var state = State.loading
 
-  func loadBreeds() async {
-    state = .loading
-    do {
-      var breeds = try await BreedsLoader.loadBreeds()
-      breeds.sort { breed1, breed2 in
-        Current.settings.sortOrder.compare(breed1: breed1, breed2: breed2)
+  func loadBreeds(mockedState: State? = nil) async {
+    if let mockedState {
+      self.state = mockedState
+    } else {
+      state = .loading
+      do {
+        var breeds = try await BreedsLoader.loadBreeds()
+        breeds.sort { breed1, breed2 in
+          Current.settings.sortOrder.compare(breed1: breed1, breed2: breed2)
+        }
+        state = .loaded(breeds: breeds)
+      } catch {
+        state = .error
       }
-      state = .loaded(breeds: breeds)
-    } catch {
-      state = .error
     }
 
     switch state {

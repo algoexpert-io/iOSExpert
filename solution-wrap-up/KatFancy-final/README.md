@@ -75,7 +75,7 @@ Paul Hudson [shared](https://www.hackingwithswift.com/articles/153/how-to-test-i
 
 `ImageLoader` is a modification of an approach to image caching that Donny Wals presented in [this article](https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/).
 
-[This video](https://www.youtube.com/watch?v=n1PeOa3qXy8) by Vincent Pradeilles inspired KatFancy's implementation.
+[This video](https://www.youtube.com/watch?v=n1PeOa3qXy8) by Vincent Pradeilles inspired KatFancy's initial implementation.
 
 Breed descriptions are from Wikipedia articles licensed under the [Creative Commons Attribution-Share-Alike License 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Changes to the descriptions involve removal of footnotes and fixing of non-printing characters.
 
