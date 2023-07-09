@@ -4,7 +4,7 @@ import Observation
 
 @Observable
 class BrowseBreedsViewModel {
-  enum State {
+  enum State: Equatable {
     case loading
     case loaded(breeds: [Breed])
     case error

@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "15906D13-0F63-4A95-B515-48A7902B58C2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:KatFancy.xcodeproj",
+      "identifier" : "03DA47722A4E23E7006E4994",
+      "name" : "KatFancy"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:KatFancy.xcodeproj",
+        "identifier" : "0343226B2A5A206000B37815",
+        "name" : "KatFancyTests"
+      }
+    }
+  ],
+  "version" : 1
+}

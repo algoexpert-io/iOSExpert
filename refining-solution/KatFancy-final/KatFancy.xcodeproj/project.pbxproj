@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034322652A5A1AA800B37815 /* KatFancyTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322642A5A1AA800B37815 /* KatFancyTestApp.swift */; };
+		034322672A5A1DEF00B37815 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322662A5A1DEF00B37815 /* AppLauncher.swift */; };
+		034322792A5A258600B37815 /* BreedsLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322782A5A258600B37815 /* BreedsLoaderTests.swift */; };
+		0343227B2A5A26BD00B37815 /* GetterSetterFakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343227A2A5A26BD00B37815 /* GetterSetterFakeTests.swift */; };
+		0343227D2A5A271800B37815 /* GetterSetterRealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343227C2A5A271800B37815 /* GetterSetterRealTests.swift */; };
+		0343227F2A5A279B00B37815 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343227E2A5A279B00B37815 /* ImageLoaderTests.swift */; };
+		034322832A5A29E000B37815 /* SoundPlayerDummyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322822A5A29E000B37815 /* SoundPlayerDummyTests.swift */; };
+		034322852A5A2A5900B37815 /* SoundPlayerRealTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322842A5A2A5900B37815 /* SoundPlayerRealTests.swift */; };
+		034322872A5A2AB800B37815 /* URLExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322862A5A2AB800B37815 /* URLExtensionTests.swift */; };
+		034322892A5A2B2000B37815 /* URLProtocolStubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322882A5A2B2000B37815 /* URLProtocolStubTests.swift */; };
+		0343228B2A5A2B8600B37815 /* URLSessionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343228A2A5A2B8600B37815 /* URLSessionExtensionTests.swift */; };
+		034322BC2A5A690C00B37815 /* BreedsURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322BB2A5A690C00B37815 /* BreedsURLTests.swift */; };
+		034322BE2A5A69C200B37815 /* BreedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322BD2A5A69C200B37815 /* BreedTests.swift */; };
+		034322C02A5A6A0600B37815 /* LIcenseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034322BF2A5A6A0600B37815 /* LIcenseTests.swift */; };
+		037ACA532A5A6DA600D1ABC8 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ACA522A5A6DA600D1ABC8 /* SettingsTests.swift */; };
+		037ACA552A5A6E1500D1ABC8 /* SortOrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ACA542A5A6E1500D1ABC8 /* SortOrderTests.swift */; };
+		037ACA572A5A6E7500D1ABC8 /* WorldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ACA562A5A6E7500D1ABC8 /* WorldTests.swift */; };
+		037ACA592A5A6F2C00D1ABC8 /* BrowseBreedsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037ACA582A5A6F2C00D1ABC8 /* BrowseBreedsViewModelTests.swift */; };
 		038A8DC82A52364F0042DA31 /* BrowseBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */; };
 		038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC92A52368E0042DA31 /* Sound.swift */; };
 		038A8DCC2A5236AB0042DA31 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */; };
@@ -65,7 +83,37 @@
 		03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478F2A4E28B4006E4994 /* URLExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		034322702A5A206000B37815 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03DA476B2A4E23E7006E4994 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03DA47722A4E23E7006E4994;
+			remoteInfo = KatFancy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		034322642A5A1AA800B37815 /* KatFancyTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyTestApp.swift; sourceTree = "<group>"; };
+		034322662A5A1DEF00B37815 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		0343226C2A5A206000B37815 /* KatFancyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KatFancyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		034322782A5A258600B37815 /* BreedsLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderTests.swift; sourceTree = "<group>"; };
+		0343227A2A5A26BD00B37815 /* GetterSetterFakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetterFakeTests.swift; sourceTree = "<group>"; };
+		0343227C2A5A271800B37815 /* GetterSetterRealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetterRealTests.swift; sourceTree = "<group>"; };
+		0343227E2A5A279B00B37815 /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
+		034322822A5A29E000B37815 /* SoundPlayerDummyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerDummyTests.swift; sourceTree = "<group>"; };
+		034322842A5A2A5900B37815 /* SoundPlayerRealTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayerRealTests.swift; sourceTree = "<group>"; };
+		034322862A5A2AB800B37815 /* URLExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensionTests.swift; sourceTree = "<group>"; };
+		034322882A5A2B2000B37815 /* URLProtocolStubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStubTests.swift; sourceTree = "<group>"; };
+		0343228A2A5A2B8600B37815 /* URLSessionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensionTests.swift; sourceTree = "<group>"; };
+		0343228C2A5A673900B37815 /* KatFancy.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = KatFancy.xctestplan; sourceTree = "<group>"; };
+		034322BB2A5A690C00B37815 /* BreedsURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsURLTests.swift; sourceTree = "<group>"; };
+		034322BD2A5A69C200B37815 /* BreedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTests.swift; sourceTree = "<group>"; };
+		034322BF2A5A6A0600B37815 /* LIcenseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LIcenseTests.swift; sourceTree = "<group>"; };
+		037ACA522A5A6DA600D1ABC8 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		037ACA542A5A6E1500D1ABC8 /* SortOrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrderTests.swift; sourceTree = "<group>"; };
+		037ACA562A5A6E7500D1ABC8 /* WorldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTests.swift; sourceTree = "<group>"; };
+		037ACA582A5A6F2C00D1ABC8 /* BrowseBreedsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModelTests.swift; sourceTree = "<group>"; };
 		038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModel.swift; sourceTree = "<group>"; };
 		038A8DC92A52368E0042DA31 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
@@ -126,6 +174,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		034322692A5A206000B37815 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03DA47702A4E23E7006E4994 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,6 +191,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0343226D2A5A206000B37815 /* KatFancyTests */ = {
+			isa = PBXGroup;
+			children = (
+				034322772A5A227700B37815 /* Helpers */,
+				034322762A5A227200B37815 /* Models */,
+				034322752A5A226B00B37815 /* ViewModel */,
+			);
+			path = KatFancyTests;
+			sourceTree = "<group>";
+		};
+		034322752A5A226B00B37815 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				037ACA582A5A6F2C00D1ABC8 /* BrowseBreedsViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		034322762A5A227200B37815 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				034322BB2A5A690C00B37815 /* BreedsURLTests.swift */,
+				034322BD2A5A69C200B37815 /* BreedTests.swift */,
+				034322BF2A5A6A0600B37815 /* LIcenseTests.swift */,
+				037ACA522A5A6DA600D1ABC8 /* SettingsTests.swift */,
+				037ACA542A5A6E1500D1ABC8 /* SortOrderTests.swift */,
+				037ACA562A5A6E7500D1ABC8 /* WorldTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		034322772A5A227700B37815 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				034322782A5A258600B37815 /* BreedsLoaderTests.swift */,
+				0343227A2A5A26BD00B37815 /* GetterSetterFakeTests.swift */,
+				0343227C2A5A271800B37815 /* GetterSetterRealTests.swift */,
+				0343227E2A5A279B00B37815 /* ImageLoaderTests.swift */,
+				034322822A5A29E000B37815 /* SoundPlayerDummyTests.swift */,
+				034322842A5A2A5900B37815 /* SoundPlayerRealTests.swift */,
+				034322862A5A2AB800B37815 /* URLExtensionTests.swift */,
+				034322882A5A2B2000B37815 /* URLProtocolStubTests.swift */,
+				0343228A2A5A2B8600B37815 /* URLSessionExtensionTests.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		034726AF2A4F36F4000436AD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				03DA47762A4E23E7006E4994 /* KatFancyApp.swift */,
+				034322642A5A1AA800B37815 /* KatFancyTestApp.swift */,
+				034322662A5A1DEF00B37815 /* AppLauncher.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -218,7 +322,9 @@
 		03DA476A2A4E23E7006E4994 = {
 			isa = PBXGroup;
 			children = (
+				0343228C2A5A673900B37815 /* KatFancy.xctestplan */,
 				03DA47752A4E23E7006E4994 /* KatFancy */,
+				0343226D2A5A206000B37815 /* KatFancyTests */,
 				03DA47742A4E23E7006E4994 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -227,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				03DA47732A4E23E7006E4994 /* KatFancy.app */,
+				0343226C2A5A206000B37815 /* KatFancyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +390,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0343226B2A5A206000B37815 /* KatFancyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 034322722A5A206000B37815 /* Build configuration list for PBXNativeTarget "KatFancyTests" */;
+			buildPhases = (
+				034322682A5A206000B37815 /* Sources */,
+				034322692A5A206000B37815 /* Frameworks */,
+				0343226A2A5A206000B37815 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				034322712A5A206000B37815 /* PBXTargetDependency */,
+			);
+			name = KatFancyTests;
+			productName = KatFancyTests;
+			productReference = 0343226C2A5A206000B37815 /* KatFancyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		03DA47722A4E23E7006E4994 /* KatFancy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03DA47812A4E23E8006E4994 /* Build configuration list for PBXNativeTarget "KatFancy" */;
@@ -311,6 +436,11 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					0343226B2A5A206000B37815 = {
+						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
+						TestTargetID = 03DA47722A4E23E7006E4994;
+					};
 					03DA47722A4E23E7006E4994 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -330,11 +460,19 @@
 			projectRoot = "";
 			targets = (
 				03DA47722A4E23E7006E4994 /* KatFancy */,
+				0343226B2A5A206000B37815 /* KatFancyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0343226A2A5A206000B37815 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03DA47712A4E23E7006E4994 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +531,29 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		034322682A5A206000B37815 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				034322852A5A2A5900B37815 /* SoundPlayerRealTests.swift in Sources */,
+				034322872A5A2AB800B37815 /* URLExtensionTests.swift in Sources */,
+				037ACA592A5A6F2C00D1ABC8 /* BrowseBreedsViewModelTests.swift in Sources */,
+				034322BC2A5A690C00B37815 /* BreedsURLTests.swift in Sources */,
+				034322C02A5A6A0600B37815 /* LIcenseTests.swift in Sources */,
+				0343227D2A5A271800B37815 /* GetterSetterRealTests.swift in Sources */,
+				034322BE2A5A69C200B37815 /* BreedTests.swift in Sources */,
+				034322892A5A2B2000B37815 /* URLProtocolStubTests.swift in Sources */,
+				0343228B2A5A2B8600B37815 /* URLSessionExtensionTests.swift in Sources */,
+				034322832A5A29E000B37815 /* SoundPlayerDummyTests.swift in Sources */,
+				0343227B2A5A26BD00B37815 /* GetterSetterFakeTests.swift in Sources */,
+				0343227F2A5A279B00B37815 /* ImageLoaderTests.swift in Sources */,
+				034322792A5A258600B37815 /* BreedsLoaderTests.swift in Sources */,
+				037ACA572A5A6E7500D1ABC8 /* WorldTests.swift in Sources */,
+				037ACA552A5A6E1500D1ABC8 /* SortOrderTests.swift in Sources */,
+				037ACA532A5A6DA600D1ABC8 /* SettingsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		03DA476F2A4E23E7006E4994 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,14 +586,65 @@
 				038A8DEF2A57D3D60042DA31 /* MockData.swift in Sources */,
 				038A8DE22A57CDFD0042DA31 /* GetterSetter.swift in Sources */,
 				038A8DD82A5613530042DA31 /* SortOrder.swift in Sources */,
+				034322652A5A1AA800B37815 /* KatFancyTestApp.swift in Sources */,
 				038A8DDE2A57C8240042DA31 /* SoundPlayerReal.swift in Sources */,
 				03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */,
+				034322672A5A1DEF00B37815 /* AppLauncher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		034322712A5A206000B37815 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03DA47722A4E23E7006E4994 /* KatFancy */;
+			targetProxy = 034322702A5A206000B37815 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		034322732A5A206000B37815 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.KatFancyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KatFancy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KatFancy";
+			};
+			name = Debug;
+		};
+		034322742A5A206000B37815 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.KatFancyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KatFancy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/KatFancy";
+			};
+			name = Release;
+		};
 		03DA477F2A4E23E8006E4994 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -615,6 +827,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		034322722A5A206000B37815 /* Build configuration list for PBXNativeTarget "KatFancyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				034322732A5A206000B37815 /* Debug */,
+				034322742A5A206000B37815 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		03DA476E2A4E23E7006E4994 /* Build configuration list for PBXProject "KatFancy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

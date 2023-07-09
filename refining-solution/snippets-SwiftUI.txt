@@ -747,3 +747,447 @@ private struct SegmentedPickerView: View {
 #Preview {
   SettingsView()
 }
+
+38.
+import SwiftUI
+
+struct KatFancyTestApp: App {
+  var body: some Scene {
+    WindowGroup {
+      VStack {
+        Text("Running Unit Tests")
+          .font(.largeTitle)
+        ProgressView()
+      }
+    }
+  }
+}
+
+39.
+import SwiftUI
+
+@main
+struct AppLauncher {
+  static func main() throws {
+    if NSClassFromString("XCTestCase") == nil {
+      KatFancyApp.main()
+    } else {
+      KatFancyTestApp.main()
+    }
+  }
+}
+
+40.
+@testable import KatFancy
+import XCTest
+
+class BreedsLoaderTests: XCTestCase {
+  func testLoadBreeds() async throws {
+    Current.settings.breedsURL = .withMore
+    let breeds = try await BreedsLoader.loadBreeds()
+    let expectedCount = MockData.breedNames.count
+    XCTAssertEqual(expectedCount, breeds.count)
+  }
+}
+
+41.
+@testable import KatFancy
+import XCTest
+
+class GetterSetterFakeTests: XCTestCase {
+  func testGetAndSet() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    let initialOrder = settings.sortOrder
+    XCTAssertEqual(SortOrder.name, initialOrder)
+    settings.sortOrder = .popularity
+    XCTAssertEqual(settings.sortOrder, .popularity)
+  }
+
+  func testInitialization() {
+    let 🦖 = "🦖"
+    let 🪐 = "🪐"
+    let getterSetter = GetterSetterFake(dictionary: [🦖: 🪐])
+    XCTAssertEqual(getterSetter.get(key: 🦖), 🪐)
+  }
+}
+
+42.
+@testable import KatFancy
+import XCTest
+
+class GetterSetterRealTests: XCTestCase {
+  func testGetAndSet() {
+    let getterSetter = GetterSetterReal()
+    let key = "key"
+    let emptyValue = ""
+    let actualValue = "🍕"
+    getterSetter.set(key: key, value: emptyValue)
+    XCTAssertEqual(emptyValue, getterSetter.get(key: key))
+    getterSetter.set(key: key, value: actualValue)
+    XCTAssertEqual(actualValue, getterSetter.get(key: key))
+  }
+}
+
+43.
+@testable import KatFancy
+import XCTest
+
+final class ImageLoaderTests: XCTestCase {
+  func testFetch() async throws {
+    guard let goodUrl = URL(string: MockData.photoUrlPrefix + MockData.breedNames[0] + MockData.mockPhotoExtension) else {
+      XCTFail("Unable to initialize good photo URL.")
+      return
+    }
+
+    let imageLoader = ImageLoader()
+    var goodImage = await imageLoader.fetch(goodUrl)
+    XCTAssertNotNil(goodImage)
+    goodImage = await imageLoader.fetch(goodUrl)
+    XCTAssertNotNil(goodImage)
+
+    let expectedErrorImage = UIImage(resource: .error)
+
+    guard let badUrl = URL(string: "https://racecondition.software") else {
+      XCTFail("Unable to initialize bad photo URL.")
+      return
+    }
+
+    let errorImage = await imageLoader.fetch(badUrl)
+    XCTAssertNotNil(errorImage)
+
+    XCTAssertEqual(errorImage.pngData(), expectedErrorImage.pngData())
+  }
+
+  func testSetSession() async {
+    Current.settings.sessionType = .shared
+    XCTAssertEqual(Current.settings.sessionType, .shared)
+    Current.settings.sessionType = .stub
+    XCTAssertEqual(Current.settings.sessionType, .stub)
+  }
+}
+
+44.
+@testable import KatFancy
+import XCTest
+
+final class SoundPlayerDummyTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerDummy()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+45.
+@testable import KatFancy
+import XCTest
+
+final class SoundPlayerRealTests: XCTestCase {
+  func testPlay() {
+    let soundPlayer = SoundPlayerReal()
+    soundPlayer.play(.chime)
+    soundPlayer.play(.sadTrombone)
+  }
+}
+
+46.
+@testable import KatFancy
+import XCTest
+
+class URLExtensionTests: XCTestCase {
+  func testCouldNotInit() {
+    let 🙀 = "🙀"
+    XCTAssertEqual("Could not initialize URL from \(🙀).", URL.couldNotInit(urlString: 🙀))
+  }
+}
+
+47.
+@testable import KatFancy
+import XCTest
+
+class URLProtocolStubTests: XCTestCase {
+  private static var backupURLDataDict = [URL: Data]()
+
+  override class func setUp() {
+    backupURLDataDict = URLSession.urlDataDict
+  }
+
+  override class func tearDown() {
+    URLSession.urlDataDict = backupURLDataDict
+  }
+
+  private var url: URL {
+    let urlString = "https://racecondition.software"
+    if let url = URL(string: urlString) {
+      return url
+    } else {
+      fatalError(URL.couldNotInit(urlString: urlString))
+    }
+  }
+
+  private var request: URLRequest {
+    URLRequest(url: url)
+  }
+
+  func testCanInit() {
+    XCTAssert(URLProtocolStub.canInit(with: request))
+  }
+
+  func testCanonicalRequest() {
+    XCTAssertEqual(request, URLProtocolStub.canonicalRequest(for: request))
+  }
+
+  func testStartLoading() {
+    URLSession.urlDataDict = [url: Data()]
+    let exp = expectation(description: "Waiting for load.")
+    let protocolClientStub = ProtocolClientStub(didFinishLoading: { urlProtocol in
+      XCTAssert(urlProtocol is URLProtocolStub)
+      exp.fulfill()
+    })
+    let urlProtocolStub = URLProtocolStub(request: request, cachedResponse: nil, client: protocolClientStub)
+    urlProtocolStub.startLoading()
+    let timeout: TimeInterval = 1.0
+    wait(for: [exp], timeout: timeout)
+  }
+}
+
+private class ProtocolClientStub: NSObject, URLProtocolClient {
+  let didFinishLoading: (URLProtocol) -> ()
+
+  init(didFinishLoading: @escaping (URLProtocol) -> ()) {
+    self.didFinishLoading = didFinishLoading
+  }
+
+  func urlProtocolDidFinishLoading(_ protocol: URLProtocol) {
+    didFinishLoading(`protocol`)
+  }
+
+  func urlProtocol(_ protocol: URLProtocol, wasRedirectedTo request: URLRequest, redirectResponse: URLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, cachedResponseIsValid cachedResponse: CachedURLResponse) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive response: URLResponse, cacheStoragePolicy policy: URLCache.StoragePolicy) {}
+  func urlProtocol(_ protocol: URLProtocol, didLoad data: Data) {}
+  func urlProtocol(_ protocol: URLProtocol, didFailWithError error: Error) {}
+  func urlProtocol(_ protocol: URLProtocol, didReceive challenge: URLAuthenticationChallenge) {}
+  func urlProtocol(_ protocol: URLProtocol, didCancel challenge: URLAuthenticationChallenge) {}
+}
+
+48.
+@testable import KatFancy
+import XCTest
+
+class URLSessionExtensionTests: XCTestCase {
+  override class func setUp() {
+    URLSession.didProcessURLs = false
+  }
+
+  override class func tearDown() {
+    URLSession.didProcessURLs = false
+  }
+
+  func testStubData() {
+    Current.settings.breedsURL = .withMore
+    let session = URLSession.stub
+    XCTAssert(session.configuration.protocolClasses?[0] is URLProtocolStub.Type)
+    let expectedTestURLCount = MockData.breedNames.count + BreedsURL.allCases.count
+    XCTAssertEqual(expectedTestURLCount, URLSession.urlDataDict.count)
+  }
+}
+
+49.
+@testable import KatFancy
+import XCTest
+
+class BreedsURLTests: XCTestCase {
+  func testURL() {
+    guard
+      let expectedStandardURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds.json"),
+      let expectedEmptyURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_empty.json"),
+      let expectedMalformedURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_malformed.json"),
+      let expectedWithMoreURL = URL(string: "https://assets.algoexpert.io/course-assets/iosexpert/breeds_with_more.json")
+    else {
+      XCTFail("Failed to initialize expected URL.")
+      return
+    }
+
+    XCTAssertEqual(expectedStandardURL, BreedsURL.standard.url)
+    XCTAssertEqual(expectedEmptyURL, BreedsURL.empty.url)
+    XCTAssertEqual(expectedMalformedURL, BreedsURL.malformed.url)
+    XCTAssertEqual(expectedWithMoreURL, BreedsURL.withMore.url)
+  }
+
+  func testDisplayName() {
+    let expectedStandardDisplayName = "Standard"
+    let expectedEmptyDisplayName = "Empty"
+    let expectedMalformedDisplayName = "Malformed"
+    let expectedWithMoreDisplayName = "With More"
+
+    XCTAssertEqual(expectedStandardDisplayName, BreedsURL.standard.displayName)
+    XCTAssertEqual(expectedEmptyDisplayName, BreedsURL.empty.displayName)
+    XCTAssertEqual(expectedMalformedDisplayName, BreedsURL.malformed.displayName)
+    XCTAssertEqual(expectedWithMoreDisplayName, BreedsURL.withMore.displayName)
+  }
+}
+
+50.
+static func == (lhs: Breed, rhs: Breed) -> Bool {
+  lhs.name == rhs.name
+}
+
+51.
+@testable import KatFancy
+import XCTest
+
+final class BreedTests: XCTestCase {
+  func testEquality() async throws {
+    let mockLeopard = MockData.breed
+    let networkLeopard = try await BreedsLoader.loadBreeds()[0]
+    XCTAssertEqual(mockLeopard, networkLeopard)
+  }
+}
+
+52.
+@testable import KatFancy
+import XCTest
+
+class LicenseTests: XCTestCase {
+  func testURL() {
+    [
+      (License.cc1, "https://creativecommons.org/licenses/by-sa/1.0/"),
+      (.cc2, "https://creativecommons.org/licenses/by-sa/2.0/"),
+      (.cc3, "https://creativecommons.org/licenses/by-sa/3.0/"),
+      (.cc4, "https://creativecommons.org/licenses/by-sa/4.0/"),
+      (.ccnd2, "https://creativecommons.org/licenses/by-nd/2.0/"),
+      (.pinterest, "https://policy.pinterest.com/en/terms-of-service"),
+      (.publicDomain, "https://creativecommons.org/share-your-work/public-domain/")
+    ].forEach {
+      XCTAssertEqual("\($0.0.url)", $0.1)
+    }
+  }
+}
+
+53.
+@testable import KatFancy
+import XCTest
+
+class SettingsTests: XCTestCase {
+  func testBreedsURLSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.breedsURLDefault, settings.breedsURL)
+    XCTAssertEqual(BreedsURL.withMore, settings.breedsURL)
+    settings.breedsURL = .withMore
+    XCTAssertEqual(Settings.breedsURLDefault, settings.breedsURL)
+    XCTAssertEqual(BreedsURL.withMore, settings.breedsURL)
+    Current.settings.breedsURL = Settings.breedsURLDefault
+  }
+
+  func testSessionTypeSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.shared, settings.sessionType)
+    settings.sessionType = .stub
+    XCTAssertNotEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.stub, settings.sessionType)
+    Current.settings.sessionType = Settings.sessionTypeDefault
+  }
+
+  func testSortOrderSetting() {
+    let settings = Settings(getterSetter: GetterSetterFake())
+    XCTAssertEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.name, settings.sortOrder)
+    settings.sortOrder = .popularity
+    XCTAssertNotEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
+    Current.settings.sortOrder = Settings.sortOrderDefault
+  }
+}
+
+54.
+@testable import KatFancy
+import XCTest
+
+class SortOrderTests: XCTestCase {
+  func testCompareTo() {
+    let a = "A"
+    let b = "B"
+
+    let urlString = "https://racecondition.software"
+    guard let url = URL(string: urlString) else {
+      XCTFail(URL.couldNotInit(urlString: urlString))
+      return
+    }
+
+    let breed1 = Breed(name: a, knownFor: "", popularity: 42, photoUrl: url, infoUrl: url, credit: "", license: .publicDomain, description: "")
+    let breed2 = Breed(name: b, knownFor: "", popularity: 21, photoUrl: url, infoUrl: url, credit: "", license: .publicDomain, description: "")
+
+    var sortOrder = SortOrder.name
+    XCTAssert(sortOrder.compare(breed1: breed1, breed2: breed2))
+    sortOrder = .popularity
+    XCTAssertFalse(sortOrder.compare(breed1: breed1, breed2: breed2))
+  }
+}
+
+55.
+@testable import KatFancy
+import XCTest
+
+class WorldTests: XCTestCase {
+  func testProductionWorld() {
+    let world = World.production
+    XCTAssert(world.settings.getterSetter is GetterSetterReal)
+    XCTAssert(world.soundPlayer is SoundPlayerReal)
+  }
+
+  func testUnitTestWorld() {
+    let world = World.unitTest
+    XCTAssert(world.settings.getterSetter is GetterSetterFake)
+    XCTAssert(world.soundPlayer is SoundPlayerDummy)
+  }
+}
+
+56.
+@testable import KatFancy
+import XCTest
+
+final class BrowseBreedsViewModelTests: XCTestCase {
+  func testLoadBreeds() async {
+    let vm = BrowseBreedsViewModel()
+
+    let loadingState = vm.state
+    XCTAssertEqual(loadingState, .loading)
+
+    Current.settings.breedsURL = .withMore
+    await vm.loadBreeds()
+    let actualLoadedState = vm.state
+    switch actualLoadedState {
+    case .loading, .error:
+      XCTFail("Unexpected state: \(actualLoadedState)")
+      return
+    case .loaded(let breeds):
+      XCTAssertEqual(breeds.count, MockData.breedNames.count)
+    }
+
+    Current.settings.breedsURL = .malformed
+    await vm.loadBreeds()
+    let errorState = vm.state
+    switch errorState {
+    case .loading, .loaded:
+      XCTFail("Unexpected state: \(errorState)")
+      return
+    case .error:
+      break
+    }
+
+    Current.settings.breedsURL = .empty
+    await vm.loadBreeds()
+    let emptyLoadedState = vm.state
+    switch emptyLoadedState {
+    case .loading, .error:
+      XCTFail("Unexpected state: \(emptyLoadedState)")
+      return
+    case .loaded(let breeds):
+      XCTAssertEqual(breeds.count, 0)
+    }
+
+    Current.settings.breedsURL = .withMore
+  }
+}
