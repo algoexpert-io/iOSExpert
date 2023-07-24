@@ -11,7 +11,7 @@ struct SettingsView: View {
         .font(.largeTitle)
 
       Spacer()
-        .frame(height: Layout.tripleDefaultSpacing)
+        .frame(height: Layout.tripleStandard)
 
       Group {
         Text("Sort Order")
@@ -23,7 +23,7 @@ struct SettingsView: View {
           }
         }
         .pickerStyle(SegmentedPickerStyle())
-        .padding(.horizontal, Layout.doubleDefaultSpacing)
+        .padding(.horizontal, Layout.doubleStandard)
 
         Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
           .padding()

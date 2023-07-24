@@ -61,7 +61,7 @@ class BrowseBreedsView: UIView {
 
     tableView.refreshControl = refreshControl
 
-    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.defaultSpacing).activate()
+    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standard).activate()
     tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
     tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
@@ -74,10 +74,10 @@ class BrowseBreedsView: UIView {
     statusDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
     statusLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    statusLabel.bottomAnchor.constraint(equalTo: statusDescription.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    statusLabel.bottomAnchor.constraint(equalTo: statusDescription.topAnchor, constant: Layout.standard * -1.0).activate()
 
     retryButton.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    retryButton.topAnchor.constraint(equalTo: statusDescription.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    retryButton.topAnchor.constraint(equalTo: statusDescription.bottomAnchor, constant: Layout.standard).activate()
   }
 
   func setupTable(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {

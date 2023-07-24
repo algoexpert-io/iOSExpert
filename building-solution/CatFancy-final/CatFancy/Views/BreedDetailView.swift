@@ -67,19 +67,19 @@ class BreedDetailView: UIView, UITextViewDelegate {
     photoWidth = photoImageView.widthAnchor.constraint(equalToConstant: BreedDetailView.initialPhotoHeightWidth)
     photoWidth?.activate()
 
-    descriptionTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    descriptionTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Layout.standard).activate()
     descriptionTextView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     descriptionTextView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
 
-    creditLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    creditLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Layout.standard).activate()
     creditLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
 
     licenseButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
-    licenseButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: Layout.defaultSpacing).activate()
+    licenseButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: Layout.standard).activate()
     licenseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
 
     wikipediaButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
-    wikipediaButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    wikipediaButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: Layout.standard * -1.0).activate()
     wikipediaButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
   }
 

@@ -12,7 +12,7 @@ struct ErrorRetryView: View {
         .padding()
 
       Spacer()
-        .frame(height: Layout.defaultSpacing)
+        .frame(height: Layout.standard)
 
       Button("Retry") {
         Task {

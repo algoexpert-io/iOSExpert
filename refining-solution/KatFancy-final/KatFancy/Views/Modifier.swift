@@ -12,7 +12,7 @@ private struct SegmentedPicker: ViewModifier {
   func body(content: Content) -> some View {
     content
       .pickerStyle(SegmentedPickerStyle())
-      .padding(.horizontal, Layout.doubleDefaultSpacing)
+      .padding(.horizontal, Layout.doubleStandard)
   }
 }
 

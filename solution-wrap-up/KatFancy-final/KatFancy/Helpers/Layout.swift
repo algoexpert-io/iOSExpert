@@ -3,7 +3,7 @@
 import UIKit
 
 enum Layout {
-  static let defaultSpacing: CGFloat = 8.0
-  static let doubleDefaultSpacing: CGFloat = 16.0
-  static let tripleDefaultSpacing: CGFloat = 24.0
+  static let standard: CGFloat = 8.0
+  static let doubleStandard: CGFloat = 16.0
+  static let tripleStandard: CGFloat = 24.0
 }

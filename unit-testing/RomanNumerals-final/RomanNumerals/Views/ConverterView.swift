@@ -110,10 +110,10 @@ class ConverterView: UIView {
       addSubview($0)
     }
 
-    decimalToRomanLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standardSpacing).activate()
+    decimalToRomanLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standard).activate()
     decimalToRomanLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     decimalToRomanLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    decimalToRomanLabel.bottomAnchor.constraint(equalTo: decimalToRomanTextField.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    decimalToRomanLabel.bottomAnchor.constraint(equalTo: decimalToRomanTextField.topAnchor, constant: Layout.standard * -1.0).activate()
 
     decimalToRomanTextField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
 
@@ -121,10 +121,10 @@ class ConverterView: UIView {
     decimalToRomanButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
     decimalToRomanButton.leadingAnchor.constraint(equalTo: decimalToRomanTextField.trailingAnchor).activate()
 
-    romanToDecimalLabel.topAnchor.constraint(equalTo: decimalToRomanTextField.bottomAnchor, constant: Layout.standardSpacing).activate()
+    romanToDecimalLabel.topAnchor.constraint(equalTo: decimalToRomanTextField.bottomAnchor, constant: Layout.standard).activate()
     romanToDecimalLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     romanToDecimalLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    romanToDecimalLabel.bottomAnchor.constraint(equalTo: romanToDecimalTextField.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    romanToDecimalLabel.bottomAnchor.constraint(equalTo: romanToDecimalTextField.topAnchor, constant: Layout.standard * -1.0).activate()
 
     romanToDecimalTextField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
 
@@ -132,21 +132,21 @@ class ConverterView: UIView {
     romanToDecimalButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
     romanToDecimalButton.leadingAnchor.constraint(equalTo: romanToDecimalTextField.trailingAnchor).activate()
 
-    tableView.topAnchor.constraint(equalTo: romanToDecimalTextField.bottomAnchor, constant: Layout.standardSpacing).activate()
+    tableView.topAnchor.constraint(equalTo: romanToDecimalTextField.bottomAnchor, constant: Layout.standard).activate()
     tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    tableView.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    tableView.bottomAnchor.constraint(equalTo: clearButton.topAnchor, constant: Layout.standard * -1.0).activate()
 
     clearButton.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    clearButton.bottomAnchor.constraint(equalTo: weatherLabel.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    clearButton.bottomAnchor.constraint(equalTo: weatherLabel.topAnchor, constant: Layout.standard * -1.0).activate()
 
     weatherLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     weatherLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    weatherLabel.bottomAnchor.constraint(equalTo: deviceLabel.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    weatherLabel.bottomAnchor.constraint(equalTo: deviceLabel.topAnchor, constant: Layout.standard * -1.0).activate()
 
     deviceLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     deviceLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    deviceLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    deviceLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standard * -1.0).activate()
   }
 
   func setupTable(dataSource: UITableViewDataSource) {

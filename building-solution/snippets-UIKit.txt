@@ -4,8 +4,7 @@ Snippets: Building the Model UIKit Solution
 import UIKit
 
 struct Layout {
-  static let defaultSpacing: CGFloat = 8.0
-  static let doubleDefaultSpacing: CGFloat = 16.0
+  static let standard: CGFloat = 8.0
   static let defaultHorizontalMargin: CGFloat = 16.0
 }
 
@@ -221,7 +220,7 @@ class BrowseBreedsView: UIView {
 
     tableView.refreshControl = refreshControl
 
-    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.defaultSpacing).activate()
+    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standard).activate()
     tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
     tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
@@ -234,10 +233,10 @@ class BrowseBreedsView: UIView {
     statusDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
     statusLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    statusLabel.bottomAnchor.constraint(equalTo: statusDescription.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    statusLabel.bottomAnchor.constraint(equalTo: statusDescription.topAnchor, constant: Layout.standard * -1.0).activate()
 
     retryButton.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    retryButton.topAnchor.constraint(equalTo: statusDescription.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    retryButton.topAnchor.constraint(equalTo: statusDescription.bottomAnchor, constant: Layout.standard).activate()
   }
 
   func setupTable(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {
@@ -355,20 +354,20 @@ class BreedCell: UITableViewCell {
       addSubview($0)
     }
 
-    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.defaultSpacing).activate()
-    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standard).activate()
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.standard).activate()
+    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.standard).activate()
+    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
     let photoPadding: CGFloat = 4.0
-    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.defaultSpacing * -1.0 + photoPadding).activate()
+    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standard * -1.0 + photoPadding).activate()
     photoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
     photoImageView.heightAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
     photoImageView.widthAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
@@ -614,13 +613,13 @@ class SettingsView: UIView {
     }
 
     sortOrderLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     sortOrderControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
     sortOrderControl.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
 
-    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.standard).activate()
     sortOrderDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
   }
@@ -781,19 +780,19 @@ class BreedDetailView: UIView, UITextViewDelegate {
     photoWidth = photoImageView.widthAnchor.constraint(equalToConstant: BreedDetailView.initialPhotoHeightWidth)
     photoWidth?.activate()
 
-    descriptionTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    descriptionTextView.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Layout.standard).activate()
     descriptionTextView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     descriptionTextView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
 
-    creditLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    creditLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: Layout.standard).activate()
     creditLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
 
     licenseButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
-    licenseButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: Layout.defaultSpacing).activate()
+    licenseButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: Layout.standard).activate()
     licenseButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
 
     wikipediaButton.topAnchor.constraint(equalTo: creditLabel.bottomAnchor).activate()
-    wikipediaButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    wikipediaButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: Layout.standard * -1.0).activate()
     wikipediaButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
   }
 

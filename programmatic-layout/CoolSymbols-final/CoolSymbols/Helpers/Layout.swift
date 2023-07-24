@@ -3,5 +3,5 @@
 import UIKit
 
 struct Layout {
-  static let standardSpacing: CGFloat = 8.0
+  static let standard: CGFloat = 8.0
 }

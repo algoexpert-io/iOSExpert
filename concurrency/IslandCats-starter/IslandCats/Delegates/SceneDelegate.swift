@@ -1,11 +1,20 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/15/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 2/10/23.
 
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
 
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {}
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    guard let windowScene = scene as? UIWindowScene else {
+      fatalError("Could not cast scene to UIWindowScene.")
+    }
+    let window = UIWindow(windowScene: windowScene)
+    window.rootViewController = MainTabBarVC()
+    window.tintColor = .systemPurple
+    self.window = window
+    window.makeKeyAndVisible()
+  }
 
   func sceneDidDisconnect(_ scene: UIScene) {}
 
@@ -17,4 +26,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func sceneDidEnterBackground(_ scene: UIScene) {}
 }
-

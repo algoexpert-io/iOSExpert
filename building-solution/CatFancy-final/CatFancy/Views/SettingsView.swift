@@ -43,13 +43,13 @@ class SettingsView: UIView {
     }
 
     sortOrderLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     sortOrderControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
     sortOrderControl.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
 
-    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.standard).activate()
     sortOrderDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
   }

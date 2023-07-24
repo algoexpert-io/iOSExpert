@@ -22,9 +22,9 @@ class ResultCell: UITableViewCell {
 
     addSubview(resultLabel)
 
-    resultLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standardSpacing).activate()
-    resultLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standardSpacing).activate()
-    resultLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    resultLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standard).activate()
+    resultLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    resultLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standard * -1.0).activate()
   }
 
   func configure(result: String) {

@@ -11,7 +11,7 @@ struct SettingsView: View {
         .font(.largeTitle)
 
       Spacer()
-        .frame(height: Layout.tripleDefaultSpacing)
+        .frame(height: Layout.tripleStandard)
 
       Group {
         Text("Breeds URL")

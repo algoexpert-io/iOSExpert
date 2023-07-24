@@ -34,16 +34,16 @@ class SymbolCell: UITableViewCell {
       addSubview($0)
     }
 
-    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standardSpacing).activate()
-    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standardSpacing).activate()
-    nameLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standard).activate()
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    nameLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    categoryLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.standardSpacing).activate()
-    categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standardSpacing).activate()
-    categoryLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    categoryLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.standard).activate()
+    categoryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    categoryLabel.trailingAnchor.constraint(equalTo: representationImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    representationImageView.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standardSpacing).activate()
-    representationImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    representationImageView.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standard).activate()
+    representationImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standard * -1.0).activate()
     let representationHeightWidth: CGFloat = 104
     representationImageView.heightAnchor.constraint(equalToConstant: representationHeightWidth).activate()
     representationImageView.widthAnchor.constraint(equalToConstant: representationHeightWidth).activate()

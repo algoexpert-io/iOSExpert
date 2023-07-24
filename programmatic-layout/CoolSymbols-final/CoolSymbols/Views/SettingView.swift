@@ -33,13 +33,13 @@ class SettingView: UIView {
     }
 
     sortByLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    sortByLabel.bottomAnchor.constraint(equalTo: sortSegmentedControl.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    sortByLabel.bottomAnchor.constraint(equalTo: sortSegmentedControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     sortSegmentedControl.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
     sortSegmentedControl.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
 
     iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standard * -1.0).activate()
   }
 }

@@ -46,36 +46,36 @@ class SettingsView: UIView {
       addSubview($0)
     }
 
-    breedsURLLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.defaultSpacing).activate()
+    breedsURLLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standard).activate()
     breedsURLLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    breedsURLLabel.bottomAnchor.constraint(equalTo: breedsURLControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    breedsURLLabel.bottomAnchor.constraint(equalTo: breedsURLControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     breedsURLControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     breedsURLControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
-    breedsURLDescription.topAnchor.constraint(equalTo: breedsURLControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    breedsURLDescription.topAnchor.constraint(equalTo: breedsURLControl.bottomAnchor, constant: Layout.standard).activate()
     breedsURLDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     breedsURLDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
-    sessionTypeLabel.topAnchor.constraint(equalTo: breedsURLDescription.bottomAnchor, constant: Layout.doubleDefaultSpacing).activate()
+    sessionTypeLabel.topAnchor.constraint(equalTo: breedsURLDescription.bottomAnchor, constant: Layout.doubleStandard).activate()
     sessionTypeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    sessionTypeLabel.bottomAnchor.constraint(equalTo: sessionTypeControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    sessionTypeLabel.bottomAnchor.constraint(equalTo: sessionTypeControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     sessionTypeControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sessionTypeControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
-    sessionTypeDescription.topAnchor.constraint(equalTo: sessionTypeControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sessionTypeDescription.topAnchor.constraint(equalTo: sessionTypeControl.bottomAnchor, constant: Layout.standard).activate()
     sessionTypeDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sessionTypeDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
-    sortOrderLabel.topAnchor.constraint(equalTo: sessionTypeDescription.bottomAnchor, constant: Layout.doubleDefaultSpacing).activate()
+    sortOrderLabel.topAnchor.constraint(equalTo: sessionTypeDescription.bottomAnchor, constant: Layout.doubleStandard).activate()
     sortOrderLabel.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
-    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    sortOrderLabel.bottomAnchor.constraint(equalTo: sortOrderControl.topAnchor, constant: Layout.standard * -1.0).activate()
 
     sortOrderControl.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderControl.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
 
-    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.defaultSpacing).activate()
+    sortOrderDescription.topAnchor.constraint(equalTo: sortOrderControl.bottomAnchor, constant: Layout.standard).activate()
     sortOrderDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Layout.defaultHorizontalMargin).activate()
     sortOrderDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Layout.defaultHorizontalMargin * -1.0).activate()
   }

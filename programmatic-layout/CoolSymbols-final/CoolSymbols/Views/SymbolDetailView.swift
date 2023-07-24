@@ -41,7 +41,7 @@ class SymbolDetailView: UIView {
 
     nameLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     nameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    nameLabel.bottomAnchor.constraint(equalTo: representationImageView.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    nameLabel.bottomAnchor.constraint(equalTo: representationImageView.topAnchor, constant: Layout.standard * -1.0).activate()
 
     representationImageView.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
     representationImageView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
@@ -49,13 +49,13 @@ class SymbolDetailView: UIView {
     representationImageView.heightAnchor.constraint(equalToConstant: representationHeightWidth).activate()
     representationImageView.widthAnchor.constraint(equalToConstant: representationHeightWidth).activate()
 
-    categoryLabel.topAnchor.constraint(equalTo: representationImageView.bottomAnchor, constant: Layout.standardSpacing).activate()
+    categoryLabel.topAnchor.constraint(equalTo: representationImageView.bottomAnchor, constant: Layout.standard).activate()
     categoryLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     categoryLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
 
     iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standard * -1.0).activate()
   }
 
   func configure(symbol: Symbol) {

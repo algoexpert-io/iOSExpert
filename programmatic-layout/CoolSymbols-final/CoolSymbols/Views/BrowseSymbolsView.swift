@@ -27,14 +27,14 @@ class BrowseSymbolsView: UIView {
       addSubview($0)
     }
 
-    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standardSpacing).activate()
+    tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Layout.standard).activate()
     tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    tableView.bottomAnchor.constraint(equalTo: iosExpertLabel.topAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    tableView.bottomAnchor.constraint(equalTo: iosExpertLabel.topAnchor, constant: Layout.standard * -1.0).activate()
 
     iosExpertLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     iosExpertLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standardSpacing * -1.0).activate()
+    iosExpertLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: Layout.standard * -1.0).activate()
   }
 
   func setupTable(dataSource: UITableViewDataSource, delegate: UITableViewDelegate) {

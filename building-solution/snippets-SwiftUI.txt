@@ -154,7 +154,7 @@ struct ErrorRetryView: View {
         .padding()
 
       Spacer()
-        .frame(height: Layout.defaultSpacing)
+        .frame(height: Layout.standard)
 
       Button("Retry") {
         Task {
@@ -169,9 +169,9 @@ struct ErrorRetryView: View {
 import UIKit
 
 enum Layout {
-  static let defaultSpacing: CGFloat = 8.0
-  static let doubleDefaultSpacing: CGFloat = 16.0
-  static let tripleDefaultSpacing: CGFloat = 24.0
+  static let standard: CGFloat = 8.0
+  static let doubleStandard: CGFloat = 16.0
+  static let tripleStandard: CGFloat = 24.0
 }
 
 12.
@@ -357,7 +357,7 @@ struct SettingsView: View {
         .font(.largeTitle)
 
       Spacer()
-        .frame(height: Layout.tripleDefaultSpacing)
+        .frame(height: Layout.tripleStandard)
 
       Group {
         Text("Sort Order")
@@ -369,7 +369,7 @@ struct SettingsView: View {
           }
         }
         .pickerStyle(SegmentedPickerStyle())
-        .padding(.horizontal, Layout.doubleDefaultSpacing)
+        .padding(.horizontal, Layout.doubleStandard)
 
         Text("This setting controls the sort order of breeds on KatFancy's breed-browsing screen.")
           .padding()

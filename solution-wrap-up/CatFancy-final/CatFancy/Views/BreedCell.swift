@@ -46,20 +46,20 @@ class BreedCell: UITableViewCell {
       addSubview($0)
     }
 
-    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.defaultSpacing).activate()
-    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: Layout.standard).activate()
+    nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    nameLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    knownForLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Layout.standard).activate()
+    knownForLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    knownForLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
-    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.defaultSpacing).activate()
-    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.defaultSpacing).activate()
-    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.defaultSpacing * -1.0).activate()
+    popularityLabel.topAnchor.constraint(equalTo: knownForLabel.bottomAnchor, constant: Layout.standard).activate()
+    popularityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Layout.standard).activate()
+    popularityLabel.trailingAnchor.constraint(equalTo: photoImageView.leadingAnchor, constant: Layout.standard * -1.0).activate()
 
     let photoPadding: CGFloat = 4.0
-    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.defaultSpacing * -1.0 + photoPadding).activate()
+    photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Layout.standard * -1.0 + photoPadding).activate()
     photoImageView.centerYAnchor.constraint(equalTo: centerYAnchor).activate()
     photoImageView.heightAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
     photoImageView.widthAnchor.constraint(equalToConstant: BrowseBreedsView.rowHeight - photoPadding).activate()
