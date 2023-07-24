@@ -115,7 +115,7 @@ class CensusView: UIView {
     collectionView.register(BreedCell.self, forCellWithReuseIdentifier: "\(BreedCell.self)")
   }
 
-  func showPhotoLoadingState() {
+  func showPhotosLoadingState() {
     setButtonVisibility(false)
     statusLabel.text = "Loading Photos"
     activityIndicator.isHidden = false

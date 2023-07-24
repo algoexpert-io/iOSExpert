@@ -52,4 +52,9 @@ class BreedCell: UICollectionViewCell {
   required init?(coder aDecoder: NSCoder) {
     NSCoder.fatalErrorNotImplemented()
   }
+
+  func configure(photo: UIImage, breed: String) {
+    photoImageView.image = photo
+    breedLabel.text = breed
+  }
 }

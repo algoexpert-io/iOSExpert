@@ -44,12 +44,14 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "\(BreedCell.self)",
-      for: indexPath) as? BreedCell
-    else {
+      for: indexPath
+    ) as? BreedCell else {
       fatalError("Could not dequeue \(BreedCell.self).")
     }
-    cell.photoImageView.image = photos[breeds[indexPath.row].name]
-    cell.breedLabel.text = Localizations.localizationForBreed(breeds[indexPath.row].name)
+
+    let breed = breeds[indexPath.row]
+    cell.configure(photo: photos[breed.name] ?? UIImage(), breed: Localizations.localizationForBreed(breed.name))
+
     return cell
   }
 
@@ -125,7 +127,7 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
 
   private func startTiming() {
     photos = [:]
-    censusView.showPhotoLoadingState()
+    censusView.showPhotosLoadingState()
     startTime = CFAbsoluteTimeGetCurrent()
   }
 
