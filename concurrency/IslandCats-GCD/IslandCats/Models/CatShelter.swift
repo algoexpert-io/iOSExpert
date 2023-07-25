@@ -1,8 +1,10 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 7/22/23.
 
-actor CatShelter {
-  private var availableCats: [AdoptableBreed: Int]
-  private var waitingList: [AdoptableBreed: [Adopter]]
+import Foundation
+
+class CatShelter {
+  private var availableCats: ThreadSafeDictionary<AdoptableBreed, Int>
+  private var waitingList: ThreadSafeDictionary<AdoptableBreed, [Adopter]>
 
   private let statusClosure: (CatStatus) -> Void
   private let updateClosure: (String) -> Void
@@ -10,34 +12,26 @@ actor CatShelter {
   init(statusClosure: @escaping (CatStatus) -> Void, updateClosure: @escaping (String) -> Void) {
     self.statusClosure = statusClosure
     self.updateClosure = updateClosure
-    waitingList = [:]
-    availableCats = [:]
+    availableCats = ThreadSafeDictionary<AdoptableBreed, Int>()
+    waitingList = ThreadSafeDictionary<AdoptableBreed, [Adopter]>()
 
-    Task {
-      await populateAvailableCatsAndWaitingList()
-    }
-
-    _ = Task(priority: .userInitiated) {
-      while true {
-        await updateCatCensus()
-        let updateFrequencyInNanoseconds: UInt64 = 1_000_000_000
-        try? await Task.sleep(nanoseconds: updateFrequencyInNanoseconds)
-      }
-    }
-  }
-
-  func populateAvailableCatsAndWaitingList() {
     AdoptableBreed.allCases.forEach {
       availableCats[$0] = 0
       waitingList[$0] = []
+    }
+
+    let updateFrequencyInSeconds = 1.0
+    Timer.scheduledTimer(withTimeInterval: updateFrequencyInSeconds, repeats: true) { _ in
+      self.updateCatCensus()
     }
   }
 
   func requestCat(breed: AdoptableBreed, adopter: Adopter) {
     let lowercaseArticle = breed.article(shouldCapitalize: false)
     let availableCatsOfBreed = availableCats[breed] ?? 0
+
     if availableCatsOfBreed > 0 {
-      availableCats[breed] = availableCatsOfBreed - 1
+      self.availableCats[breed] = availableCatsOfBreed - 1
       updateClosure("\(adopter.rawValue) adopted \(lowercaseArticle) \(breed.rawValue).")
     } else {
       var waitingListForBreed = waitingList[breed] ?? []

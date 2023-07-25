@@ -29,23 +29,23 @@ class CensusView: UIView {
   }()
 
   @UsesAutoLayout
-  private(set) var serialSCButton: UIButton = {
-    let serialSCButton = UIButton()
-    serialSCButton.setTitle("Load Serially (SC)", for: .normal)
-    serialSCButton.setTitleColor(.systemPurple, for: .normal)
-    serialSCButton.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 15.0)
-    serialSCButton.isHidden = true
-    return serialSCButton
+  private(set) var serialGCDButton: UIButton = {
+    let serialGCDButton = UIButton()
+    serialGCDButton.setTitle("Load Serially (GCD)", for: .normal)
+    serialGCDButton.setTitleColor(.systemPurple, for: .normal)
+    serialGCDButton.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 15.0)
+    serialGCDButton.isHidden = true
+    return serialGCDButton
   }()
 
   @UsesAutoLayout
-  private(set) var parallelSCButton: UIButton = {
-    let parallelSCButton = UIButton()
-    parallelSCButton.setTitle("Load in Parallel (SC)", for: .normal)
-    parallelSCButton.setTitleColor(.systemPurple, for: .normal)
-    parallelSCButton.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 15.0)
-    parallelSCButton.isHidden = true
-    return parallelSCButton
+  private(set) var parallelGCDButton: UIButton = {
+    let parallelGCDButton = UIButton()
+    parallelGCDButton.setTitle("Load in Parallel (GCD)", for: .normal)
+    parallelGCDButton.setTitleColor(.systemPurple, for: .normal)
+    parallelGCDButton.titleLabel?.font = UIFont(name: "AvenirNext-Demibold", size: 15.0)
+    parallelGCDButton.isHidden = true
+    return parallelGCDButton
   }()
 
   override init(frame: CGRect) {
@@ -53,7 +53,7 @@ class CensusView: UIView {
     backgroundColor = .systemBackground
     collectionView.frame = frame
 
-    [collectionView, statusLabel, activityIndicator, serialSCButton, parallelSCButton].forEach {
+    [collectionView, statusLabel, activityIndicator, serialGCDButton, parallelGCDButton].forEach {
       addSubview($0)
     }
 
@@ -66,17 +66,17 @@ class CensusView: UIView {
 
     statusLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
     statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    statusLabel.bottomAnchor.constraint(equalTo: serialSCButton.topAnchor, constant: standard * -1.0).activate()
-    statusLabel.bottomAnchor.constraint(equalTo: parallelSCButton.topAnchor, constant: standard * -1.0).activate()
+    statusLabel.bottomAnchor.constraint(equalTo: serialGCDButton.topAnchor, constant: standard * -1.0).activate()
+    statusLabel.bottomAnchor.constraint(equalTo: parallelGCDButton.topAnchor, constant: standard * -1.0).activate()
 
     activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).activate()
     activityIndicator.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: standard).activate()
 
-    serialSCButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
-    serialSCButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
+    serialGCDButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).activate()
+    serialGCDButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
 
-    parallelSCButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
-    parallelSCButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
+    parallelGCDButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).activate()
+    parallelGCDButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).activate()
   }
 
   required init(coder aDecoder: NSCoder) {
@@ -105,7 +105,7 @@ class CensusView: UIView {
   }
 
   func setButtonVisibility(_ isVisible: Bool) {
-    [serialSCButton, parallelSCButton].forEach {
+    [serialGCDButton, parallelGCDButton].forEach {
       $0.isHidden = !isVisible
     }
   }

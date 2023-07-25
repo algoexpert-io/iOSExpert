@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ImageLoaderCompletion {
+class ImageLoaderGCD {
   private let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
   
   func fetch(url: URL, completion: @escaping ((UIImage) -> ())) {

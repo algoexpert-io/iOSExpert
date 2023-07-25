@@ -1,6 +1,6 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 7/15/23.
 
-enum Localizations {
+enum Localization {
   private static var localizations: [String: String] = [
     "Abyssinian": "アビシニアン",
     "Balinese": "バリニーズ",
@@ -23,7 +23,7 @@ enum Localizations {
     "Van": "ヴァン猫"
   ]
 
-  static func localizationForBreed(_ breed: String) -> String {
+  static func forBreed(_ breed: String) -> String {
     let unknown = "知らない"
     return localizations[breed] ?? unknown
   }

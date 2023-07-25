@@ -2,7 +2,7 @@
 
 import UIKit
 
-class ImageLoaderAsync {
+class ImageLoaderSC {
   private let session: URLSession
   private let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
 

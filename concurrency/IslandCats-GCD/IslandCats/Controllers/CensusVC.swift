@@ -6,7 +6,7 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
   private var breeds: [Breed] = []
   private var photos: [String: UIImage] = [:]
   private var photos3: [UIImage] = []
-  private let imageLoaderSC = ImageLoaderSC()
+  private let imageLoaderGCD = ImageLoaderGCD()
   private var startTime: CFAbsoluteTime = 0.0
   private var endTime: CFAbsoluteTime = 0.0
 
@@ -22,12 +22,14 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
     view = CensusView(frame: UIScreen.main.bounds)
 
     censusView.setupCollection(dataSource: self)
-    censusView.serialSCButton.addTarget(self, action: #selector(loadPhotosSeriallySC), for: .touchUpInside)
-    censusView.parallelSCButton.addTarget(self, action: #selector(loadPhotosInParallelSC), for: .touchUpInside)
+    censusView.serialGCDButton.addTarget(self, action: #selector(loadPhotosSeriallyGCD), for: .touchUpInside)
+    censusView.parallelGCDButton.addTarget(self, action: #selector(loadPhotosInParallelGCD), for: .touchUpInside)
 
-    Task {
-      breeds = await BreedsLoaderSC.loadBreeds()
-      censusView.setButtonVisibility(true)
+    BreedsLoaderGCD.loadBreeds { breeds in
+      self.breeds = breeds
+      DispatchQueue.main.async {
+        self.censusView.setButtonVisibility(true)
+      }
     }
   }
 
@@ -54,36 +56,38 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
   }
 
   @objc
-  func loadPhotosSeriallySC() {
-    Task {
-      startTiming()
-      for breed in breeds {
-        let photo = await self.imageLoaderSC.fetch(breed.photoUrl)
-        photos[breed.name] = photo
+  func loadPhotosSeriallyGCD() {
+    startTiming()
+    loadPhotoGCD(index: 0)
+  }
+
+  private func loadPhotoGCD(index: Int) {
+    if index < breeds.count {
+      imageLoaderGCD.fetch(url: breeds[index].photoUrl) { photo in
+        self.photos[self.breeds[index].name] = photo
+        self.loadPhotoGCD(index: index + 1)
       }
-      endTiming()
+    } else {
+      DispatchQueue.main.async {
+        self.endTiming()
+      }
     }
   }
 
   @objc
-  func loadPhotosInParallelSC() {
-    Task {
-      startTiming()
-      photos = await withTaskGroup(of: (String, UIImage).self, returning: [String: UIImage].self) { taskGroup in
-        for breed in breeds {
-          taskGroup.addTask {
-            let photo = await self.imageLoaderSC.fetch(breed.photoUrl)
-            return (breed.name, photo)
-          }
-        }
-
-        var photos2: [String: UIImage] = [:]
-        for await result in taskGroup {
-          photos2[result.0] = result.1
-        }
-        return photos2
+  func loadPhotosInParallelGCD() {
+    startTiming()
+    let dispatchGroup = DispatchGroup()
+    for breed in breeds {
+      dispatchGroup.enter()
+      imageLoaderGCD.fetch(url: breed.photoUrl) { photo in
+        self.photos[breed.name] = photo
+        dispatchGroup.leave()
       }
-      endTiming()
+    }
+
+    dispatchGroup.notify(queue: .main) {
+      self.endTiming()
     }
   }
 
