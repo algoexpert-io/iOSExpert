@@ -26,9 +26,7 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
 
     BreedsLoaderGCD.loadBreeds { breeds in
       self.breeds = breeds
-      DispatchQueue.main.async {
-        self.censusView.setButtonVisibility(true)
-      }
+      self.censusView.setButtonVisibility(true)
     }
   }
 
