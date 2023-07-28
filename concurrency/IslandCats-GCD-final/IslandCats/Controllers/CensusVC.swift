@@ -5,7 +5,6 @@ import UIKit
 class CensusVC: UIViewController, UICollectionViewDataSource {
   private var breeds: [Breed] = []
   private var photos: [String: UIImage] = [:]
-  private var photos3: [UIImage] = []
   private let imageLoaderGCD = ImageLoaderGCD()
   private var startTime: CFAbsoluteTime = 0.0
   private var endTime: CFAbsoluteTime = 0.0
