@@ -2,7 +2,7 @@
 
 class CatShelter {
   private var availableCats: [AdoptableBreed: Int]
-  private var waitingList: [AdoptableBreed: [Adopter]]
+  private var waitingLists: [AdoptableBreed: [Adopter]]
 
   private let statusClosure: (CatStatus) -> Void
   private let updateClosure: (String) -> Void
@@ -10,12 +10,12 @@ class CatShelter {
   init(statusClosure: @escaping (CatStatus) -> Void, updateClosure: @escaping (String) -> Void) {
     self.statusClosure = statusClosure
     self.updateClosure = updateClosure
-    waitingList = [:]
+    waitingLists = [:]
     availableCats = [:]
 
     AdoptableBreed.allCases.forEach {
       availableCats[$0] = 0
-      waitingList[$0] = []
+      waitingLists[$0] = []
     }
 
     _ = Task(priority: .userInitiated) {
@@ -34,9 +34,9 @@ class CatShelter {
       availableCats[breed] = availableCatsOfBreed - 1
       updateClosure("\(adopter.rawValue) adopted \(lowercaseArticle) \(breed.rawValue).")
     } else {
-      var waitingListForBreed = waitingList[breed] ?? []
+      var waitingListForBreed = waitingLists[breed] ?? []
       waitingListForBreed.append(adopter)
-      waitingList[breed] = waitingListForBreed
+      waitingLists[breed] = waitingListForBreed
       updateClosure("\(adopter.rawValue) got on the waiting list for \(lowercaseArticle) \(breed.rawValue).")
     }
   }
@@ -48,11 +48,11 @@ class CatShelter {
 
     let randomBreed = AdoptableBreed.randomBreed
     if
-      let waitingListForBreed = waitingList[randomBreed],
+      let waitingListForBreed = waitingLists[randomBreed],
       waitingListForBreed.count > 0
     {
       let adopter = waitingListForBreed[0]
-      waitingList[randomBreed] = Array(waitingListForBreed.dropFirst())
+      waitingLists[randomBreed] = Array(waitingListForBreed.dropFirst())
       updateClosure("\(adopter.rawValue) adopted a newborn \(randomBreed.rawValue).")
     } else {
       let currentCount = availableCats[randomBreed] ?? 0
@@ -64,13 +64,13 @@ class CatShelter {
   private func callStatusClosure() {
     let catStatus = CatStatus(
       abyssinianPopulation: availableCats[.abyssinian] ?? 0,
-      abyssinianWaitingList: waitingList[.abyssinian]?.count ?? 0,
+      abyssinianWaitingList: waitingLists[.abyssinian]?.count ?? 0,
       burmesePopulation: availableCats[.burmese] ?? 0,
-      burmeseWaitingList: waitingList[.burmese]?.count ?? 0,
+      burmeseWaitingList: waitingLists[.burmese]?.count ?? 0,
       smilodonPopulation: availableCats[.smilodon] ?? 0,
-      smilodonWaitingList: waitingList[.smilodon]?.count ?? 0,
+      smilodonWaitingList: waitingLists[.smilodon]?.count ?? 0,
       tonkinesePopulation: availableCats[.tonkinese] ?? 0,
-      tonkineseWaitingList: waitingList[.tonkinese]?.count ?? 0
+      tonkineseWaitingList: waitingLists[.tonkinese]?.count ?? 0
     )
 
     statusClosure(catStatus)

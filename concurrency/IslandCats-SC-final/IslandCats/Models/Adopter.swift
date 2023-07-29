@@ -11,10 +11,6 @@ enum Adopter: String, CaseIterable {
   case roberto = "Roberto"
   case yukihiro = "行弘"
 
-  static var shuffledAdopters: [Adopter] {
-    Adopter.allCases.shuffled()
-  }
-
   static var randomAdopter: Adopter {
     let allAdopters = Adopter.allCases
     return allAdopters[Int.random(in: 0 ..< allAdopters.count)]
