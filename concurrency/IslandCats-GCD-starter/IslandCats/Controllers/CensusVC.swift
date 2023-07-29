@@ -5,9 +5,9 @@ import UIKit
 class CensusVC: UIViewController, UICollectionViewDataSource {
   private var breeds: [Breed] = []
   private var photos: [String: UIImage] = [:]
-  private let imageLoaderGCD = ImageLoaderGCD()
   private var startTime: CFAbsoluteTime = 0.0
   private var endTime: CFAbsoluteTime = 0.0
+  private let imageLoaderGCD = ImageLoaderGCD()
 
   var censusView: CensusView {
     if let castedView = view as? CensusView {
@@ -65,9 +65,7 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
         self.loadPhotoGCD(index: index + 1)
       }
     } else {
-      DispatchQueue.main.async {
-        self.endTiming()
-      }
+        endTiming()
     }
   }
 

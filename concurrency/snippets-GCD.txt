@@ -1,0 +1,29 @@
+1.
+DispatchQueue.main.async {
+  self.censusView.setButtonVisibility(true)
+}
+
+2.
+DispatchQueue.main.async {
+  self.endTiming()
+}
+
+3.
+@objc
+func loadPhotosInParallelGCD() {
+  startTiming()
+  let dispatchGroup = DispatchGroup()
+  for breed in breeds {
+    dispatchGroup.enter()
+    imageLoaderGCD.fetch(url: breed.photoUrl) { photo in
+      self.photos[breed.name] = photo
+      dispatchGroup.leave()
+    }
+  }
+
+  dispatchGroup.notify(queue: .main) {
+    self.endTiming()
+  }
+}
+
+
