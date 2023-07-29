@@ -3,8 +3,8 @@
 import UIKit
 
 class ImageLoaderGCD {
-  private let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
-  
+  static let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
+
   func fetch(url: URL, completion: @escaping ((UIImage) -> ())) {
     let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
     URLSession.shared.dataTask(with: request) { data, _, error in
@@ -13,7 +13,7 @@ class ImageLoaderGCD {
         let data = data,
         let image = UIImage(data: data)
       else {
-        completion(self.errorImage)
+        completion(ImageLoaderGCD.errorImage)
         return
       }
       completion(image)
