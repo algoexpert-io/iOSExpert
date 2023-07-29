@@ -9,7 +9,7 @@ enum BreedsLoaderGCD {
       fatalError(URL.couldNotInit(urlString: urlString))
     }
 
-    let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+    let request = URLRequest(url: url)
     URLSession.shared.dataTask(with: request) { data, _, error in
       let decoder = JSONDecoder()
       decoder.keyDecodingStrategy = .convertFromSnakeCase
