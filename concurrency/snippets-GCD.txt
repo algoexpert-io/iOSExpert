@@ -26,4 +26,91 @@ func loadPhotosInParallelGCD() {
   }
 }
 
+4.
+import Foundation
 
+class ThreadSafeDictionary<Key, Value> where Key: Hashable {
+  private let queue = DispatchQueue(label: "ThreadSafeDictionary.queue", attributes: .concurrent)
+  private var dictionary: [Key: Value] = [:]
+
+  subscript(key: Key) -> Value? {
+    get {
+      var safeDictionary: [Key: Value] = [:]
+      queue.sync {
+        safeDictionary = dictionary
+      }
+      return safeDictionary[key]
+    }
+
+    set {
+      queue.async(flags: .barrier) {
+        self.dictionary[key] = newValue
+      }
+    }
+  }
+}
+
+5.
+private var availableCats: ThreadSafeDictionary<AdoptableBreed, Int>
+private var waitingLists: ThreadSafeDictionary<AdoptableBreed, [Adopter]>
+
+6.
+availableCats = ThreadSafeDictionary<AdoptableBreed, Int>()
+waitingLists = ThreadSafeDictionary<AdoptableBreed, [Adopter]>()
+
+7.
+catShelter = CatShelter(
+  statusClosure: { catStatus in
+    DispatchQueue.main.async {
+      self.adoptionView.updateCatStatus(catStatus)
+    }
+  },
+  updateClosure: { update in
+    DispatchQueue.main.async {
+      self.adoptionView.appendUpdate(update)
+    }
+  }
+)
+
+8.
+func testLoadBreedsGCD() {
+  let exp = expectation(description: "loading breeds")
+
+  BreedsLoaderGCD.loadBreeds { breeds in
+    let expectedBreedCount = 19
+    XCTAssertEqual(expectedBreedCount, breeds.count)
+    exp.fulfill()
+  }
+
+  let loadBreedsTimeout: TimeInterval = 2.0
+  waitForExpectations(timeout: loadBreedsTimeout)
+}
+
+9.
+func testFetch() {
+  let goodURLString = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/CloudedLeopard.jpg"
+  privateTestFetch(urlString: goodURLString, shouldSucceed: true)
+  
+  let badURLString = "https://🙀.jpg"
+  privateTestFetch(urlString: badURLString, shouldSucceed: false)
+}
+
+private func privateTestFetch(urlString: String, shouldSucceed: Bool) {
+  guard let url = URL(string: urlString) else {
+    XCTFail("Could not initialize URL for \(urlString).")
+    return
+  }
+  
+  let exp = expectation(description: "loading photo")
+  ImageLoaderGCD().fetch(url: url) { image in
+    if shouldSucceed {
+      XCTAssertNotEqual(ImageLoaderGCD.errorImage.pngData(), image.pngData())
+    } else {
+      XCTAssertEqual(ImageLoaderGCD.errorImage.pngData(), image.pngData())
+    }
+    exp.fulfill()
+  }
+  
+  let loadImageTimeout: TimeInterval = 2.0
+  waitForExpectations(timeout: loadImageTimeout)
+}
