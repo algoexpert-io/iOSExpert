@@ -27,7 +27,7 @@ class CatShelter {
     }
   }
 
-  func requestCat(breed: AdoptableBreed, adopter: Adopter) {
+  func requestCat(breed: AdoptableBreed, adopter: Adopter) async {
     let lowercaseArticle = breed.article(shouldCapitalize: false)
     let availableCatsOfBreed = availableCats[breed] ?? 0
     if availableCatsOfBreed > 0 {
