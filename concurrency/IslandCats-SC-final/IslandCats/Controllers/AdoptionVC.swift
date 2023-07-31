@@ -36,10 +36,11 @@ class AdoptionVC: UIViewController {
 
   @objc
   func requestFourCats() {
-    DispatchQueue.concurrentPerform(iterations: 4) { _ in
-      Task {
-        await catShelter?.requestCat(breed: AdoptableBreed.randomBreed, adopter: Adopter.randomAdopter)
-      }
+    Task {
+      async let _ = catShelter?.requestCat(breed: AdoptableBreed.randomBreed, adopter: Adopter.randomAdopter)
+      async let _ = catShelter?.requestCat(breed: AdoptableBreed.randomBreed, adopter: Adopter.randomAdopter)
+      async let _ = catShelter?.requestCat(breed: AdoptableBreed.randomBreed, adopter: Adopter.randomAdopter)
+      async let _ = catShelter?.requestCat(breed: AdoptableBreed.randomBreed, adopter: Adopter.randomAdopter)
     }
   }
 }

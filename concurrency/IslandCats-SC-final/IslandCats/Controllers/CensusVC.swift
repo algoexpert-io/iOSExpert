@@ -5,7 +5,6 @@ import UIKit
 class CensusVC: UIViewController, UICollectionViewDataSource {
   private var breeds: [Breed] = []
   private var photos: [String: UIImage] = [:]
-  private var photos3: [UIImage] = []
   private let imageLoaderSC = ImageLoaderSC()
   private var startTime: CFAbsoluteTime = 0.0
   private var endTime: CFAbsoluteTime = 0.0
@@ -79,11 +78,11 @@ class CensusVC: UIViewController, UICollectionViewDataSource {
           }
         }
 
-        var photos2: [String: UIImage] = [:]
+        var photosResults: [String: UIImage] = [:]
         for await result in taskGroup {
-          photos2[result.0] = result.1
+          photosResults[result.0] = result.1
         }
-        return photos2
+        return photosResults
       }
       endTiming()
     }

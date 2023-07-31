@@ -4,7 +4,7 @@ import UIKit
 
 class ImageLoaderSC {
   private let session: URLSession
-  private let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
+  static let errorImage = UIImage(systemName: "xmark.octagon") ?? UIImage()
 
   init() {
     let configuration = URLSessionConfiguration.default
@@ -15,9 +15,9 @@ class ImageLoaderSC {
   func fetch(_ url: URL) async -> UIImage {
     do {
       let (imageData, _) = try await session.data(from: url)
-      return UIImage(data: imageData) ?? errorImage
+      return UIImage(data: imageData) ?? ImageLoaderSC.errorImage
     } catch {
-      return errorImage
+      return ImageLoaderSC.errorImage
     }
   }
 }

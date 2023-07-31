@@ -18,7 +18,7 @@ class CatShelter {
       waitingLists[$0] = []
     }
 
-    _ = Task(priority: .userInitiated) {
+    Task {
       while true {
         updateCatCensus()
         let updateFrequencyInNanoseconds: UInt64 = 1_000_000_000
