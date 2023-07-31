@@ -1,1 +1,76 @@
-TODO
+1.
+@objc
+func loadPhotosInParallelSC() {
+  Task {
+    startTiming()
+    photos = await withTaskGroup(of: (String, UIImage).self, returning: [String: UIImage].self) { taskGroup in
+      for breed in breeds {
+        taskGroup.addTask {
+          let photo = await self.imageLoaderSC.fetch(breed.photoUrl)
+          return (breed.name, photo)
+        }
+      }
+
+      var photosResults: [String: UIImage] = [:]
+      for await result in taskGroup {
+        photosResults[result.0] = result.1
+      }
+      return photosResults
+    }
+    endTiming()
+  }
+}
+
+2.
+catShelter = CatShelter(
+  statusClosure: { catStatus in
+    Task {
+      await MainActor.run {
+        self.adoptionView.updateCatStatus(catStatus)
+      }
+    }
+  },
+  updateClosure: { update in
+    Task {
+      await MainActor.run {
+        self.adoptionView.appendUpdate(update)
+      }
+    }
+  }
+)
+
+3.
+Task {
+  await populateAvailableCatsAndWaitingList()
+}
+
+4.
+func populateAvailableCatsAndWaitingList() {
+  AdoptableBreed.allCases.forEach {
+    availableCats[$0] = 0
+    waitingLists[$0] = []
+  }
+}
+
+5.
+func testFetch() async {
+  let goodURLString = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/CloudedLeopard.jpg"
+  await privateTestFetch(urlString: goodURLString, shouldSucceed: true)
+
+  let badURLString = "https://🙀.jpg"
+  await privateTestFetch(urlString: badURLString, shouldSucceed: false)
+}
+
+private func privateTestFetch(urlString: String, shouldSucceed: Bool) async {
+  guard let url = URL(string: urlString) else {
+    XCTFail("Could not initialize URL for \(urlString).")
+    return
+  }
+
+  let image = await ImageLoaderSC().fetch(url)
+  if shouldSucceed {
+    XCTAssertNotEqual(ImageLoaderSC.errorImage.pngData(), image.pngData())
+  } else {
+    XCTAssertEqual(ImageLoaderSC.errorImage.pngData(), image.pngData())
+  }
+}
