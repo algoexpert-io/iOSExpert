@@ -16,6 +16,7 @@ class ConverterTextFieldDelegate: NSObject, UITextFieldDelegate {
     self.decimalInputFinished = decimalInputFinished
     self.romanInputFinished = romanInputFinished
   }
+
   func textField(
     _ textField: UITextField,
     shouldChangeCharactersIn range: NSRange,
@@ -27,11 +28,13 @@ class ConverterTextFieldDelegate: NSObject, UITextFieldDelegate {
     } else /* if textField == converterView.romanToDecimalTextField */ {
       convertButton = converterView.romanToDecimalButton
     }
+
     if range.location == 0 && string == "" {
       convertButton.isHidden = true
     } else {
       convertButton.isHidden = false
     }
+
     return true
   }
 

@@ -15,10 +15,12 @@ final class ConverterDataSourceTests: XCTestCase {
   func testCellForRowAt() {
     let tableView = UITableView()
     tableView.register(ResultCell.self, forCellReuseIdentifier: "\(ResultCell.self)")
+
     guard let cell = dataSource.tableView(tableView, cellForRowAt: indexPathZero) as? ResultCell else {
       XCTFail("Could not get first \(ResultCell.self).")
       return
     }
+
     XCTAssertEqual(dataSource.results[0], cell.resultLabel.text)
   }
 

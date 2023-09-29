@@ -111,6 +111,7 @@
 		03F0BD762AC53A1B00B66FAA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD752AC53A1B00B66FAA /* SettingsView.swift */; };
 		03F0BD782AC53AD400B66FAA /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD772AC53AD400B66FAA /* ImageCacheLoader.swift */; };
 		03F0BD7A2AC53B6A00B66FAA /* BreedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD792AC53B6A00B66FAA /* BreedDetailView.swift */; };
+		03FF31532AC75D5800A8C806 /* BrowseBreedsDeleSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF31522AC75D5800A8C806 /* BrowseBreedsDeleSourceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		03F0BD752AC53A1B00B66FAA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		03F0BD772AC53AD400B66FAA /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
 		03F0BD792AC53B6A00B66FAA /* BreedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailView.swift; sourceTree = "<group>"; };
+		03FF31522AC75D5800A8C806 /* BrowseBreedsDeleSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsDeleSourceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				033EDE3E2AC6871C003A31EA /* AppDelegateTests.swift */,
+				03FF31522AC75D5800A8C806 /* BrowseBreedsDeleSourceTests.swift */,
 				033EDE302AC684E4003A31EA /* TestingAppDelegate.swift */,
 				033EDE342AC6853B003A31EA /* TestingRootVC.swift */,
 				033EDE322AC68509003A31EA /* TestingSceneDelegate.swift */,
@@ -713,6 +716,7 @@
 				033EDE452AC6878B003A31EA /* GetterSetterFakeTests.swift in Sources */,
 				033EDE412AC68747003A31EA /* BreedsLoaderTests.swift in Sources */,
 				033EDE3F2AC6871C003A31EA /* AppDelegateTests.swift in Sources */,
+				03FF31532AC75D5800A8C806 /* BrowseBreedsDeleSourceTests.swift in Sources */,
 				033EDE672AC68ABE003A31EA /* BreedCoordinatorTests.swift in Sources */,
 				033EDE512AC688C5003A31EA /* SoundPlayerRealTests.swift in Sources */,
 				033EDE692AC68AE8003A31EA /* SettingsCoordinatorTests.swift in Sources */,

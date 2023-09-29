@@ -27,7 +27,7 @@ enum WeatherRequester {
       }
 
       guard let url = URL(string: urlString) else {
-        fatalError("Could not initialize URL from \(urlString).")
+        fatalError(URL.couldNotInit(urlString: urlString))
       }
 
       let (data, _) = try await Current.session.data(from: url)
