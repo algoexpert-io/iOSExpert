@@ -1,9 +1,9 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 5/22/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/21/23.
 
 import UIKit
 
 extension UIViewController {
   func fatalCastMessage(view: Any) -> String {
-    "Could not cast \(self).view to \(view)."
+    return "Could not cast \(self).view to \(view)."
   }
 }

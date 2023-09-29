@@ -53,6 +53,13 @@ func populateAvailableCatsAndWaitingList() {
 }
 
 5.
+func testLoadBreeds() async throws {
+  let breeds = try await BreedsLoaderSC.loadBreeds()
+  let expectedBreedCount = 19
+  XCTAssertEqual(expectedBreedCount, breeds.count)
+}
+
+6.
 func testFetch() async {
   let goodURLString = "https://assets.algoexpert.io/course-assets/iosexpert/CatImages/CloudedLeopard.jpg"
   await privateTestFetch(urlString: goodURLString, shouldSucceed: true)

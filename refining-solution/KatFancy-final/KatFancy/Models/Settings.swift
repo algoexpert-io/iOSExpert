@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/5/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/28/23.
 
 class Settings {
   let getterSetter: GetterSetter

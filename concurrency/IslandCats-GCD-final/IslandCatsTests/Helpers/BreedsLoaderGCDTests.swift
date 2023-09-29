@@ -3,8 +3,8 @@
 @testable import IslandCats
 import XCTest
 
-final class BreedsLoaderTests: XCTestCase {
-  func testLoadBreedsGCD() {
+final class BreedsLoaderGCDTests: XCTestCase {
+  func testLoadBreeds() {
     let exp = expectation(description: "loading breeds")
 
     BreedsLoaderGCD.loadBreeds { breeds in

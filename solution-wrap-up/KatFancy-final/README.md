@@ -15,7 +15,7 @@ KatFancy is an iOS app that demonstrates iOS-development techniques by solving a
 
 ## Build Tools & Versions Used
 
-I developed KatFancy using Xcode 15.0, iOS 17.0, SwiftLint 0.52.3, and [this song](https://youtu.be/gHFb1WFG5PU?t=3630).
+I developed KatFancy using Xcode 15.0, iOS 17.0, SwiftLint 0.52.3, and [this song](https://www.youtube.com/watch?v=28tjh5S9bp0).
 
 ## Discussion
 
@@ -33,7 +33,7 @@ In both [profes](https://apps.apple.com/us/app/capital-one-mobile/id407558537)[s
 
 The breeds fit perfectly the dainty iPhone SE form factor. If some breed info ended up not fitting properly, tweaks would be in order.
 
-The coding challenge has no requirement for internationalization or localization so, in the interest of time, I did not wrap user-facing `String`s in `NSLocalizedString()`. I am, however, comfortable with that API.
+The coding challenge has no requirement for internationalization or localization so, in the interest of time, I did not wrap user-facing `String`s in `String(localized:)`. I am, however, comfortable with that API.
 
 ## Warnings
 
@@ -66,8 +66,6 @@ The humorous badges at the top of this readme are from my [curated list](https:/
 `Settings.swift` and the `GetterSetter` files reflect an approach to storing and retrieving settings that I developed for [Immigration](https://itunes.apple.com/us/app/immigration/id777319358) and also use in [Racerunner](https://itunes.apple.com/us/app/racerunner-run-tracking-app/id1065017082) ([GitHub](https://github.com/vermont42/RaceRunner)), [Conjugar](https://itunes.apple.com/us/app/conjugar/id1236500467) ([GitHub](https://github.com/vermont42/Conjugar/)), and [Conjuguer](https://apps.apple.com/us/app/conjuguer/id1588624373) ([GitHub](https://github.com/vermont42/Conjuguer)).
 
 `SoundPlayerReal.swift` reflects an approach to playing sounds that I developed for Immigration and also use in RaceRunner, Conjugar, and Conjuguer, though I added dependency injection to KatFancy's implementation because playing a sound is a side effect, I realized, that is undesirable in unit tests.
-
-`UIViewControllerExtensionTests.swift` contains [code](https://github.com/vermont42/Conjugar/blob/master/ConjugarTests/Utils/UIViewControllerExtensionsTests.swift) I developed for Conjugar.
 
 [Point-Free](https://www.pointfree.co/) developed and [evangelized](https://www.pointfree.co/blog/posts/21-how-to-control-the-world) KatFancy's approach to dependency injection, The World.
 

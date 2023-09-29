@@ -7,54 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		038A8DC82A52364F0042DA31 /* BrowseBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */; };
-		038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DC92A52368E0042DA31 /* Sound.swift */; };
-		038A8DCC2A5236AB0042DA31 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */; };
-		038A8DCE2A5236F80042DA31 /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 038A8DCD2A5236F80042DA31 /* chime.mp3 */; };
-		038A8DD02A5237060042DA31 /* sadTrombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */; };
-		038A8DD22A5526D80042DA31 /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */; };
-		038A8DD42A5528B70042DA31 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD32A5528B70042DA31 /* Layout.swift */; };
-		038A8DD62A56027C0042DA31 /* BreedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */; };
-		038A8DD82A5613530042DA31 /* SortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD72A5613530042DA31 /* SortOrder.swift */; };
-		038A8DDA2A56145B0042DA31 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038A8DD92A56145B0042DA31 /* Settings.swift */; };
-		03B0F02B2A4FE0AC00B81D6D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */; };
-		03B0F02D2A4FE35300B81D6D /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */; };
-		03B0F02F2A4FE3D700B81D6D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */; };
-		03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47762A4E23E7006E4994 /* KatFancyApp.swift */; };
-		03DA477B2A4E23E8006E4994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03DA477A2A4E23E8006E4994 /* Assets.xcassets */; };
-		03DA47882A4E280C006E4994 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47872A4E280C006E4994 /* Breed.swift */; };
-		03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA47892A4E2813006E4994 /* Breeds.swift */; };
-		03DA478C2A4E2819006E4994 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478B2A4E2819006E4994 /* License.swift */; };
-		03DA478E2A4E2898006E4994 /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478D2A4E2898006E4994 /* BreedsLoader.swift */; };
-		03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DA478F2A4E28B4006E4994 /* URLExtension.swift */; };
+		031DB4AB2AC4FA1800BDAF30 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031DB4AA2AC4FA1800BDAF30 /* KatFancyApp.swift */; };
+		031DB4AF2AC4FA1900BDAF30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031DB4AE2AC4FA1900BDAF30 /* Assets.xcassets */; };
+		033EDDAF2AC5D3AC003A31EA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDAE2AC5D3AC003A31EA /* MainTabView.swift */; };
+		033EDDB12AC5D3E8003A31EA /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDB02AC5D3E8003A31EA /* BrowseBreedsView.swift */; };
+		033EDDB32AC5D40E003A31EA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDB22AC5D40E003A31EA /* SettingsView.swift */; };
+		033EDDB52AC5D494003A31EA /* BrowseBreedsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDB42AC5D494003A31EA /* BrowseBreedsViewModel.swift */; };
+		033EDDB72AC5D4CA003A31EA /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDB62AC5D4CA003A31EA /* SoundPlayer.swift */; };
+		033EDDB92AC5D4E9003A31EA /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDB82AC5D4E9003A31EA /* Sound.swift */; };
+		033EDDBC2AC5D57E003A31EA /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 033EDDBA2AC5D57E003A31EA /* chime.mp3 */; };
+		033EDDBD2AC5D57E003A31EA /* sadTrombone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 033EDDBB2AC5D57E003A31EA /* sadTrombone.mp3 */; };
+		033EDDBF2AC5D842003A31EA /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDBE2AC5D842003A31EA /* ErrorRetryView.swift */; };
+		033EDDC12AC5D881003A31EA /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDC02AC5D881003A31EA /* Layout.swift */; };
+		033EDDC32AC5DB17003A31EA /* BreedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDC22AC5DB17003A31EA /* BreedDetailView.swift */; };
+		033EDDC52AC5DCC1003A31EA /* SortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDC42AC5DCC1003A31EA /* SortOrder.swift */; };
+		033EDDC72AC5DCF6003A31EA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EDDC62AC5DCF6003A31EA /* Settings.swift */; };
+		03F0BD3E2AC4FA8300B66FAA /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD3D2AC4FA8300B66FAA /* Breed.swift */; };
+		03F0BD402AC4FAB000B66FAA /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD3F2AC4FAB000B66FAA /* License.swift */; };
+		03F0BD432AC4FAF500B66FAA /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD422AC4FAF500B66FAA /* URLExtension.swift */; };
+		03F0BD452AC4FB2600B66FAA /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD442AC4FB2600B66FAA /* Breeds.swift */; };
+		03F0BD472AC4FB4600B66FAA /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0BD462AC4FB4600B66FAA /* BreedsLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModel.swift; sourceTree = "<group>"; };
-		038A8DC92A52368E0042DA31 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
-		038A8DCD2A5236F80042DA31 /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chime.mp3; path = "../../../../solution-wrap-up/KatFancy-final/KatFancy/Assets/chime.mp3"; sourceTree = "<group>"; };
-		038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sadTrombone.mp3; path = "../../../../solution-wrap-up/KatFancy-final/KatFancy/Assets/sadTrombone.mp3"; sourceTree = "<group>"; };
-		038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
-		038A8DD32A5528B70042DA31 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
-		038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsView.swift; sourceTree = "<group>"; };
-		038A8DD72A5613530042DA31 /* SortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrder.swift; sourceTree = "<group>"; };
-		038A8DD92A56145B0042DA31 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
-		03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		03DA47732A4E23E7006E4994 /* KatFancy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatFancy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		03DA47762A4E23E7006E4994 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
-		03DA477A2A4E23E8006E4994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		03DA47872A4E280C006E4994 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
-		03DA47892A4E2813006E4994 /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
-		03DA478B2A4E2819006E4994 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
-		03DA478D2A4E2898006E4994 /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
-		03DA478F2A4E28B4006E4994 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		031DB4A72AC4FA1800BDAF30 /* KatFancy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatFancy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		031DB4AA2AC4FA1800BDAF30 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
+		031DB4AE2AC4FA1900BDAF30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		033EDDAE2AC5D3AC003A31EA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		033EDDB02AC5D3E8003A31EA /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
+		033EDDB22AC5D40E003A31EA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		033EDDB42AC5D494003A31EA /* BrowseBreedsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsViewModel.swift; sourceTree = "<group>"; };
+		033EDDB62AC5D4CA003A31EA /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		033EDDB82AC5D4E9003A31EA /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		033EDDBA2AC5D57E003A31EA /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
+		033EDDBB2AC5D57E003A31EA /* sadTrombone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sadTrombone.mp3; sourceTree = "<group>"; };
+		033EDDBE2AC5D842003A31EA /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
+		033EDDC02AC5D881003A31EA /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		033EDDC22AC5DB17003A31EA /* BreedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailView.swift; sourceTree = "<group>"; };
+		033EDDC42AC5DCC1003A31EA /* SortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOrder.swift; sourceTree = "<group>"; };
+		033EDDC62AC5DCF6003A31EA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		03F0BD3D2AC4FA8300B66FAA /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		03F0BD3F2AC4FAB000B66FAA /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		03F0BD422AC4FAF500B66FAA /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		03F0BD442AC4FB2600B66FAA /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
+		03F0BD462AC4FB4600B66FAA /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03DA47702A4E23E7006E4994 /* Frameworks */ = {
+		031DB4A42AC4FA1800BDAF30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -64,108 +64,108 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		034726AF2A4F36F4000436AD /* ViewModel */ = {
+		031DB49E2AC4FA1800BDAF30 = {
 			isa = PBXGroup;
 			children = (
-				038A8DC72A52364F0042DA31 /* BrowseBreedsViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		034726B02A4F36F6000436AD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				038A8DD52A56027C0042DA31 /* BreedDetailsView.swift */,
-				03B0F02C2A4FE35300B81D6D /* BrowseBreedsView.swift */,
-				038A8DD12A5526D80042DA31 /* ErrorRetryView.swift */,
-				03B0F02A2A4FE0AC00B81D6D /* MainTabView.swift */,
-				03B0F02E2A4FE3D700B81D6D /* SettingsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		034726B12A4F36F8000436AD /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				03DA477A2A4E23E8006E4994 /* Assets.xcassets */,
-				038A8DCD2A5236F80042DA31 /* chime.mp3 */,
-				038A8DCF2A5237060042DA31 /* sadTrombone.mp3 */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		034726B22A4F36F9000436AD /* App */ = {
-			isa = PBXGroup;
-			children = (
-				03DA47762A4E23E7006E4994 /* KatFancyApp.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		03DA476A2A4E23E7006E4994 = {
-			isa = PBXGroup;
-			children = (
-				03DA47752A4E23E7006E4994 /* KatFancy */,
-				03DA47742A4E23E7006E4994 /* Products */,
+				031DB4A92AC4FA1800BDAF30 /* KatFancy */,
+				031DB4A82AC4FA1800BDAF30 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		03DA47742A4E23E7006E4994 /* Products */ = {
+		031DB4A82AC4FA1800BDAF30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03DA47732A4E23E7006E4994 /* KatFancy.app */,
+				031DB4A72AC4FA1800BDAF30 /* KatFancy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		03DA47752A4E23E7006E4994 /* KatFancy */ = {
+		031DB4A92AC4FA1800BDAF30 /* KatFancy */ = {
 			isa = PBXGroup;
 			children = (
-				034726B22A4F36F9000436AD /* App */,
-				034726B12A4F36F8000436AD /* Assets */,
-				03DA47852A4E27B6006E4994 /* Helpers */,
-				03DA47862A4E27C2006E4994 /* Models */,
-				034726AF2A4F36F4000436AD /* ViewModel */,
-				034726B02A4F36F6000436AD /* Views */,
+				033EDDAD2AC5D29D003A31EA /* App */,
+				033EDDAC2AC5D29B003A31EA /* Assets */,
+				03F0BD412AC4FAE400B66FAA /* Helpers */,
+				03F0BD3C2AC4FA7200B66FAA /* Models */,
+				033EDDAB2AC5D299003A31EA /* ViewModel */,
+				033EDDAA2AC5D297003A31EA /* Views */,
 			);
 			path = KatFancy;
 			sourceTree = "<group>";
 		};
-		03DA47852A4E27B6006E4994 /* Helpers */ = {
+		033EDDAA2AC5D297003A31EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				03DA478D2A4E2898006E4994 /* BreedsLoader.swift */,
-				038A8DD32A5528B70042DA31 /* Layout.swift */,
-				038A8DCB2A5236AB0042DA31 /* SoundPlayer.swift */,
-				03DA478F2A4E28B4006E4994 /* URLExtension.swift */,
+				033EDDC22AC5DB17003A31EA /* BreedDetailView.swift */,
+				033EDDB02AC5D3E8003A31EA /* BrowseBreedsView.swift */,
+				033EDDBE2AC5D842003A31EA /* ErrorRetryView.swift */,
+				033EDDAE2AC5D3AC003A31EA /* MainTabView.swift */,
+				033EDDB22AC5D40E003A31EA /* SettingsView.swift */,
 			);
-			path = Helpers;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		03DA47862A4E27C2006E4994 /* Models */ = {
+		033EDDAB2AC5D299003A31EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				03DA47872A4E280C006E4994 /* Breed.swift */,
-				03DA47892A4E2813006E4994 /* Breeds.swift */,
-				03DA478B2A4E2819006E4994 /* License.swift */,
-				038A8DD92A56145B0042DA31 /* Settings.swift */,
-				038A8DD72A5613530042DA31 /* SortOrder.swift */,
-				038A8DC92A52368E0042DA31 /* Sound.swift */,
+				033EDDB42AC5D494003A31EA /* BrowseBreedsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		033EDDAC2AC5D29B003A31EA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				031DB4AE2AC4FA1900BDAF30 /* Assets.xcassets */,
+				033EDDBA2AC5D57E003A31EA /* chime.mp3 */,
+				033EDDBB2AC5D57E003A31EA /* sadTrombone.mp3 */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		033EDDAD2AC5D29D003A31EA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				031DB4AA2AC4FA1800BDAF30 /* KatFancyApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		03F0BD3C2AC4FA7200B66FAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03F0BD3D2AC4FA8300B66FAA /* Breed.swift */,
+				03F0BD442AC4FB2600B66FAA /* Breeds.swift */,
+				03F0BD3F2AC4FAB000B66FAA /* License.swift */,
+				033EDDC62AC5DCF6003A31EA /* Settings.swift */,
+				033EDDC42AC5DCC1003A31EA /* SortOrder.swift */,
+				033EDDB82AC5D4E9003A31EA /* Sound.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		03F0BD412AC4FAE400B66FAA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03F0BD462AC4FB4600B66FAA /* BreedsLoader.swift */,
+				033EDDC02AC5D881003A31EA /* Layout.swift */,
+				033EDDB62AC5D4CA003A31EA /* SoundPlayer.swift */,
+				03F0BD422AC4FAF500B66FAA /* URLExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03DA47722A4E23E7006E4994 /* KatFancy */ = {
+		031DB4A62AC4FA1800BDAF30 /* KatFancy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03DA47812A4E23E8006E4994 /* Build configuration list for PBXNativeTarget "KatFancy" */;
+			buildConfigurationList = 031DB4B52AC4FA1900BDAF30 /* Build configuration list for PBXNativeTarget "KatFancy" */;
 			buildPhases = (
-				03DA476F2A4E23E7006E4994 /* Sources */,
-				03DA47702A4E23E7006E4994 /* Frameworks */,
-				03DA47712A4E23E7006E4994 /* Resources */,
-				03DA47842A4E245E006E4994 /* Run SwiftLint */,
+				031DB4A32AC4FA1800BDAF30 /* Sources */,
+				031DB4A42AC4FA1800BDAF30 /* Frameworks */,
+				031DB4A52AC4FA1800BDAF30 /* Resources */,
+				03F0BD482AC4FC2400B66FAA /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -173,25 +173,25 @@
 			);
 			name = KatFancy;
 			productName = KatFancy;
-			productReference = 03DA47732A4E23E7006E4994 /* KatFancy.app */;
+			productReference = 031DB4A72AC4FA1800BDAF30 /* KatFancy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		03DA476B2A4E23E7006E4994 /* Project object */ = {
+		031DB49F2AC4FA1800BDAF30 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					03DA47722A4E23E7006E4994 = {
+					031DB4A62AC4FA1800BDAF30 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 03DA476E2A4E23E7006E4994 /* Build configuration list for PBXProject "KatFancy" */;
+			buildConfigurationList = 031DB4A22AC4FA1800BDAF30 /* Build configuration list for PBXProject "KatFancy" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,31 +199,31 @@
 				en,
 				Base,
 			);
-			mainGroup = 03DA476A2A4E23E7006E4994;
-			productRefGroup = 03DA47742A4E23E7006E4994 /* Products */;
+			mainGroup = 031DB49E2AC4FA1800BDAF30;
+			productRefGroup = 031DB4A82AC4FA1800BDAF30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				03DA47722A4E23E7006E4994 /* KatFancy */,
+				031DB4A62AC4FA1800BDAF30 /* KatFancy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03DA47712A4E23E7006E4994 /* Resources */ = {
+		031DB4A52AC4FA1800BDAF30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03DA477B2A4E23E8006E4994 /* Assets.xcassets in Resources */,
-				038A8DD02A5237060042DA31 /* sadTrombone.mp3 in Resources */,
-				038A8DCE2A5236F80042DA31 /* chime.mp3 in Resources */,
+				031DB4AF2AC4FA1900BDAF30 /* Assets.xcassets in Resources */,
+				033EDDBD2AC5D57E003A31EA /* sadTrombone.mp3 in Resources */,
+				033EDDBC2AC5D57E003A31EA /* chime.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03DA47842A4E245E006E4994 /* Run SwiftLint */ = {
+		03F0BD482AC4FC2400B66FAA /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -245,34 +245,34 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03DA476F2A4E23E7006E4994 /* Sources */ = {
+		031DB4A32AC4FA1800BDAF30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				038A8DD62A56027C0042DA31 /* BreedDetailsView.swift in Sources */,
-				03DA478A2A4E2813006E4994 /* Breeds.swift in Sources */,
-				038A8DCA2A52368E0042DA31 /* Sound.swift in Sources */,
-				038A8DDA2A56145B0042DA31 /* Settings.swift in Sources */,
-				03DA47902A4E28B4006E4994 /* URLExtension.swift in Sources */,
-				03DA478E2A4E2898006E4994 /* BreedsLoader.swift in Sources */,
-				03B0F02B2A4FE0AC00B81D6D /* MainTabView.swift in Sources */,
-				03DA47882A4E280C006E4994 /* Breed.swift in Sources */,
-				038A8DC82A52364F0042DA31 /* BrowseBreedsViewModel.swift in Sources */,
-				03B0F02F2A4FE3D700B81D6D /* SettingsView.swift in Sources */,
-				03B0F02D2A4FE35300B81D6D /* BrowseBreedsView.swift in Sources */,
-				03DA478C2A4E2819006E4994 /* License.swift in Sources */,
-				038A8DD22A5526D80042DA31 /* ErrorRetryView.swift in Sources */,
-				038A8DD42A5528B70042DA31 /* Layout.swift in Sources */,
-				038A8DCC2A5236AB0042DA31 /* SoundPlayer.swift in Sources */,
-				038A8DD82A5613530042DA31 /* SortOrder.swift in Sources */,
-				03DA47772A4E23E7006E4994 /* KatFancyApp.swift in Sources */,
+				033EDDB92AC5D4E9003A31EA /* Sound.swift in Sources */,
+				03F0BD432AC4FAF500B66FAA /* URLExtension.swift in Sources */,
+				033EDDC12AC5D881003A31EA /* Layout.swift in Sources */,
+				033EDDC72AC5DCF6003A31EA /* Settings.swift in Sources */,
+				03F0BD472AC4FB4600B66FAA /* BreedsLoader.swift in Sources */,
+				03F0BD3E2AC4FA8300B66FAA /* Breed.swift in Sources */,
+				033EDDAF2AC5D3AC003A31EA /* MainTabView.swift in Sources */,
+				033EDDB32AC5D40E003A31EA /* SettingsView.swift in Sources */,
+				033EDDC32AC5DB17003A31EA /* BreedDetailView.swift in Sources */,
+				033EDDB52AC5D494003A31EA /* BrowseBreedsViewModel.swift in Sources */,
+				033EDDBF2AC5D842003A31EA /* ErrorRetryView.swift in Sources */,
+				033EDDB12AC5D3E8003A31EA /* BrowseBreedsView.swift in Sources */,
+				031DB4AB2AC4FA1800BDAF30 /* KatFancyApp.swift in Sources */,
+				03F0BD452AC4FB2600B66FAA /* Breeds.swift in Sources */,
+				033EDDB72AC5D4CA003A31EA /* SoundPlayer.swift in Sources */,
+				033EDDC52AC5DCC1003A31EA /* SortOrder.swift in Sources */,
+				03F0BD402AC4FAB000B66FAA /* License.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		03DA477F2A4E23E8006E4994 /* Debug */ = {
+		031DB4B32AC4FA1900BDAF30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -335,7 +335,7 @@
 			};
 			name = Debug;
 		};
-		03DA47802A4E23E8006E4994 /* Release */ = {
+		031DB4B42AC4FA1900BDAF30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -391,15 +391,15 @@
 			};
 			name = Release;
 		};
-		03DA47822A4E23E8006E4994 /* Debug */ = {
+		031DB4B62AC4FA1900BDAF30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -421,15 +421,15 @@
 			};
 			name = Debug;
 		};
-		03DA47832A4E23E8006E4994 /* Release */ = {
+		031DB4B72AC4FA1900BDAF30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -454,25 +454,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03DA476E2A4E23E7006E4994 /* Build configuration list for PBXProject "KatFancy" */ = {
+		031DB4A22AC4FA1800BDAF30 /* Build configuration list for PBXProject "KatFancy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03DA477F2A4E23E8006E4994 /* Debug */,
-				03DA47802A4E23E8006E4994 /* Release */,
+				031DB4B32AC4FA1900BDAF30 /* Debug */,
+				031DB4B42AC4FA1900BDAF30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		03DA47812A4E23E8006E4994 /* Build configuration list for PBXNativeTarget "KatFancy" */ = {
+		031DB4B52AC4FA1900BDAF30 /* Build configuration list for PBXNativeTarget "KatFancy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03DA47822A4E23E8006E4994 /* Debug */,
-				03DA47832A4E23E8006E4994 /* Release */,
+				031DB4B62AC4FA1900BDAF30 /* Debug */,
+				031DB4B72AC4FA1900BDAF30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 03DA476B2A4E23E7006E4994 /* Project object */;
+	rootObject = 031DB49F2AC4FA1800BDAF30 /* Project object */;
 }

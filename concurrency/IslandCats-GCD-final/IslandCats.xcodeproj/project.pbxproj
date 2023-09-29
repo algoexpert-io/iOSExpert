@@ -22,10 +22,10 @@
 		032729CB2A66ECEF00086BA5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032729CA2A66ECEF00086BA5 /* UIViewControllerExtension.swift */; };
 		032729CD2A66ED1300086BA5 /* UsesAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032729CC2A66ED1300086BA5 /* UsesAutoLayout.swift */; };
 		032729CF2A66ED7C00086BA5 /* BreedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032729CE2A66ED7C00086BA5 /* BreedCell.swift */; };
+		0334CA122AC48DD900FED7C4 /* ThreadSafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334CA112AC48DD900FED7C4 /* ThreadSafeDictionary.swift */; };
 		03424A1F2A63A1130098E66C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03424A1E2A63A1130098E66C /* Localization.swift */; };
-		03CB335B2A6F49DB0027D018 /* ThreadSafeDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CB335A2A6F49DB0027D018 /* ThreadSafeDictionary.swift */; };
-		03D09C5F2A7374800037FB30 /* BreedsLoaderGCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C5E2A7374800037FB30 /* BreedsLoaderGCDTests.swift */; };
-		03D09C612A7375050037FB30 /* ImageLoaderGCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C602A7375050037FB30 /* ImageLoaderGCDTests.swift */; };
+		03D09C3B2A730E1B0037FB30 /* BreedsLoaderGCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C3A2A730E1B0037FB30 /* BreedsLoaderGCDTests.swift */; };
+		03D09C3D2A730E620037FB30 /* ImageLoaderGCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C3C2A730E620037FB30 /* ImageLoaderGCDTests.swift */; };
 		03F1F38D2A634D9200C3E61B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1F38C2A634D9200C3E61B /* AppDelegate.swift */; };
 		03F1F38F2A634D9200C3E61B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1F38E2A634D9200C3E61B /* SceneDelegate.swift */; };
 		03F1F3962A634D9500C3E61B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F1F3952A634D9500C3E61B /* Assets.xcassets */; };
@@ -39,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03D09C582A73740E0037FB30 /* PBXContainerItemProxy */ = {
+		03D09C342A730DE30037FB30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03F1F3812A634D9200C3E61B /* Project object */;
 			proxyType = 1;
@@ -64,11 +64,11 @@
 		032729CA2A66ECEF00086BA5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		032729CC2A66ED1300086BA5 /* UsesAutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsesAutoLayout.swift; sourceTree = "<group>"; };
 		032729CE2A66ED7C00086BA5 /* BreedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCell.swift; sourceTree = "<group>"; };
+		0334CA112AC48DD900FED7C4 /* ThreadSafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeDictionary.swift; sourceTree = "<group>"; };
 		03424A1E2A63A1130098E66C /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		03CB335A2A6F49DB0027D018 /* ThreadSafeDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeDictionary.swift; sourceTree = "<group>"; };
-		03D09C542A73740E0037FB30 /* IslandCatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IslandCatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03D09C5E2A7374800037FB30 /* BreedsLoaderGCDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderGCDTests.swift; sourceTree = "<group>"; };
-		03D09C602A7375050037FB30 /* ImageLoaderGCDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderGCDTests.swift; sourceTree = "<group>"; };
+		03D09C302A730DE30037FB30 /* IslandCatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IslandCatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D09C3A2A730E1B0037FB30 /* BreedsLoaderGCDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderGCDTests.swift; sourceTree = "<group>"; };
+		03D09C3C2A730E620037FB30 /* ImageLoaderGCDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderGCDTests.swift; sourceTree = "<group>"; };
 		03F1F3892A634D9200C3E61B /* IslandCats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IslandCats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03F1F38C2A634D9200C3E61B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03F1F38E2A634D9200C3E61B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03D09C512A73740E0037FB30 /* Frameworks */ = {
+		03D09C2D2A730DE30037FB30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +134,7 @@
 				032729C42A66EC7C00086BA5 /* Layout.swift */,
 				032729C62A66ECA000086BA5 /* NSCoderExtension.swift */,
 				032729C82A66ECC700086BA5 /* NSLayoutConstraintExtension.swift */,
-				03CB335A2A6F49DB0027D018 /* ThreadSafeDictionary.swift */,
+				0334CA112AC48DD900FED7C4 /* ThreadSafeDictionary.swift */,
 				032729CA2A66ECEF00086BA5 /* UIViewControllerExtension.swift */,
 				032729B92A64F99500086BA5 /* URLExtension.swift */,
 				032729CC2A66ED1300086BA5 /* UsesAutoLayout.swift */,
@@ -170,19 +170,19 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		03D09C552A73740E0037FB30 /* IslandCatsTests */ = {
+		03D09C312A730DE30037FB30 /* IslandCatsTests */ = {
 			isa = PBXGroup;
 			children = (
-				03D09C5D2A7374230037FB30 /* Helpers */,
+				03D09C392A730DF00037FB30 /* Helpers */,
 			);
 			path = IslandCatsTests;
 			sourceTree = "<group>";
 		};
-		03D09C5D2A7374230037FB30 /* Helpers */ = {
+		03D09C392A730DF00037FB30 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				03D09C5E2A7374800037FB30 /* BreedsLoaderGCDTests.swift */,
-				03D09C602A7375050037FB30 /* ImageLoaderGCDTests.swift */,
+				03D09C3A2A730E1B0037FB30 /* BreedsLoaderGCDTests.swift */,
+				03D09C3C2A730E620037FB30 /* ImageLoaderGCDTests.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				03F1F38B2A634D9200C3E61B /* IslandCats */,
-				03D09C552A73740E0037FB30 /* IslandCatsTests */,
+				03D09C312A730DE30037FB30 /* IslandCatsTests */,
 				03F1F38A2A634D9200C3E61B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				03F1F3892A634D9200C3E61B /* IslandCats.app */,
-				03D09C542A73740E0037FB30 /* IslandCatsTests.xctest */,
+				03D09C302A730DE30037FB30 /* IslandCatsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,22 +222,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03D09C532A73740E0037FB30 /* IslandCatsTests */ = {
+		03D09C2F2A730DE30037FB30 /* IslandCatsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03D09C5C2A73740E0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */;
+			buildConfigurationList = 03D09C382A730DE30037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */;
 			buildPhases = (
-				03D09C502A73740E0037FB30 /* Sources */,
-				03D09C512A73740E0037FB30 /* Frameworks */,
-				03D09C522A73740E0037FB30 /* Resources */,
+				03D09C2C2A730DE30037FB30 /* Sources */,
+				03D09C2D2A730DE30037FB30 /* Frameworks */,
+				03D09C2E2A730DE30037FB30 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				03D09C592A73740E0037FB30 /* PBXTargetDependency */,
+				03D09C352A730DE30037FB30 /* PBXTargetDependency */,
 			);
 			name = IslandCatsTests;
 			productName = IslandCatsTests;
-			productReference = 03D09C542A73740E0037FB30 /* IslandCatsTests.xctest */;
+			productReference = 03D09C302A730DE30037FB30 /* IslandCatsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		03F1F3882A634D9200C3E61B /* IslandCats */ = {
@@ -267,7 +267,7 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					03D09C532A73740E0037FB30 = {
+					03D09C2F2A730DE30037FB30 = {
 						CreatedOnToolsVersion = 15.0;
 						LastSwiftMigration = 1500;
 						TestTargetID = 03F1F3882A634D9200C3E61B;
@@ -291,13 +291,13 @@
 			projectRoot = "";
 			targets = (
 				03F1F3882A634D9200C3E61B /* IslandCats */,
-				03D09C532A73740E0037FB30 /* IslandCatsTests */,
+				03D09C2F2A730DE30037FB30 /* IslandCatsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03D09C522A73740E0037FB30 /* Resources */ = {
+		03D09C2E2A730DE30037FB30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,12 +316,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03D09C502A73740E0037FB30 /* Sources */ = {
+		03D09C2C2A730DE30037FB30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D09C5F2A7374800037FB30 /* BreedsLoaderGCDTests.swift in Sources */,
-				03D09C612A7375050037FB30 /* ImageLoaderGCDTests.swift in Sources */,
+				03D09C3B2A730E1B0037FB30 /* BreedsLoaderGCDTests.swift in Sources */,
+				03D09C3D2A730E620037FB30 /* ImageLoaderGCDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,17 +353,17 @@
 				03F3ED1B2A6C69DF00208D25 /* AdoptableBreed.swift in Sources */,
 				032729CD2A66ED1300086BA5 /* UsesAutoLayout.swift in Sources */,
 				032729C92A66ECC700086BA5 /* NSLayoutConstraintExtension.swift in Sources */,
-				03CB335B2A6F49DB0027D018 /* ThreadSafeDictionary.swift in Sources */,
+				0334CA122AC48DD900FED7C4 /* ThreadSafeDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03D09C592A73740E0037FB30 /* PBXTargetDependency */ = {
+		03D09C352A730DE30037FB30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 03F1F3882A634D9200C3E61B /* IslandCats */;
-			targetProxy = 03D09C582A73740E0037FB30 /* PBXContainerItemProxy */;
+			targetProxy = 03D09C342A730DE30037FB30 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -379,7 +379,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		03D09C5A2A73740E0037FB30 /* Debug */ = {
+		03D09C362A730DE30037FB30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -399,7 +399,7 @@
 			};
 			name = Debug;
 		};
-		03D09C5B2A73740E0037FB30 /* Release */ = {
+		03D09C372A730DE30037FB30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,7 +544,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IslandCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -572,7 +572,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IslandCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -596,11 +596,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03D09C5C2A73740E0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */ = {
+		03D09C382A730DE30037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03D09C5A2A73740E0037FB30 /* Debug */,
-				03D09C5B2A73740E0037FB30 /* Release */,
+				03D09C362A730DE30037FB30 /* Debug */,
+				03D09C372A730DE30037FB30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

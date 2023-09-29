@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/26/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/26/23.
 
 @testable import RomanNumerals
 import XCTest
@@ -12,7 +12,6 @@ final class ConverterViewTests: XCTestCase {
 
     let dataSource = ConverterDataSource(results: ["🥥", "🍕", "🐋"])
     converterView.setupTable(dataSource: dataSource)
-
     guard let castedDataSource = converterView.tableView.dataSource as? ConverterDataSource else {
       XCTFail("Could not cast dataSource to \(ConverterDataSource.self).")
       return

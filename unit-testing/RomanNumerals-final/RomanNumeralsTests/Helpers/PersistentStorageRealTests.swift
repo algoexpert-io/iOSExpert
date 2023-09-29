@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/18/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/26/23.
 
 @testable import RomanNumerals
 import XCTest
@@ -12,7 +12,6 @@ final class PersistentStorageRealTests: XCTestCase {
   }
 
   func testLoadAndPersistStringArray() {
-    print("testLoadAndPersistStringArray")
     persistentStorage.persistStringArray([])
     XCTAssert(persistentStorage.loadStringArray().isEmpty)
     let arrayToPersist = ["🎉", "🐋", "🍕", "🥥", "🌴"]
@@ -21,7 +20,6 @@ final class PersistentStorageRealTests: XCTestCase {
   }
 
   override func tearDown() {
-    print("???")
     persistentStorage.persistStringArray(savedArray)
   }
 }

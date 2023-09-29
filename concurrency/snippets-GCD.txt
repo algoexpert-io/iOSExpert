@@ -73,7 +73,7 @@ catShelter = CatShelter(
 )
 
 8.
-func testLoadBreedsGCD() {
+func testLoadBreeds() {
   let exp = expectation(description: "loading breeds")
 
   BreedsLoaderGCD.loadBreeds { breeds in

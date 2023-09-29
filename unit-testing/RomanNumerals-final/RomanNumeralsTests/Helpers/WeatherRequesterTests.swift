@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/19/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/26/23.
 
 @testable import RomanNumerals
 import XCTest
@@ -11,7 +11,6 @@ class WeatherRequesterTests: XCTestCase {
     }
 
     let currentConditions = await WeatherRequester.getCurrentConditionsInRome()
-
     XCTAssertEqual("Currently in Rome: 53° F, cloudy with a chance of suppli", currentConditions)
   }
 }

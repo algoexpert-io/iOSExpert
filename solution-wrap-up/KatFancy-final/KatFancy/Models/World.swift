@@ -1,5 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
-// https://www.pointfree.co/blog/posts/21-how-to-control-the-world
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/28/23.
 
 import Foundation
 import Observation

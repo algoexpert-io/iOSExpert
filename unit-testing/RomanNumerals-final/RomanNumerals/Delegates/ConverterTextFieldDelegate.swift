@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/11/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/25/23.
 
 import UIKit
 
@@ -16,7 +16,6 @@ class ConverterTextFieldDelegate: NSObject, UITextFieldDelegate {
     self.decimalInputFinished = decimalInputFinished
     self.romanInputFinished = romanInputFinished
   }
-
   func textField(
     _ textField: UITextField,
     shouldChangeCharactersIn range: NSRange,
@@ -28,13 +27,11 @@ class ConverterTextFieldDelegate: NSObject, UITextFieldDelegate {
     } else /* if textField == converterView.romanToDecimalTextField */ {
       convertButton = converterView.romanToDecimalButton
     }
-
     if range.location == 0 && string == "" {
       convertButton.isHidden = true
     } else {
       convertButton.isHidden = false
     }
-
     return true
   }
 

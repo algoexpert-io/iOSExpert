@@ -64,7 +64,7 @@
 			children = (
 				03F567E92A06B46800E29F70 /* App */,
 				03F567C72A06B19F00E29F70 /* Info.plist */,
-				03F567EA2A06B49800E29F70 /* UntestableImplementations */,
+				03F567EA2A06B49800E29F70 /* Implementations */,
 			);
 			path = UnitTestingBonus;
 			sourceTree = "<group>";
@@ -82,14 +82,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		03F567EA2A06B49800E29F70 /* UntestableImplementations */ = {
+		03F567EA2A06B49800E29F70 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
 				03F567EE2A06B81C00E29F70 /* Formatter.swift */,
 				03F567F22A06B89900E29F70 /* GetterSetter.swift */,
 				03F567F02A06B88300E29F70 /* ReviewPrompter.swift */,
 			);
-			path = UntestableImplementations;
+			path = Implementations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -298,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -315,7 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitTestingBonus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -343,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitTestingBonus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

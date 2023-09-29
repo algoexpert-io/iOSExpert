@@ -6,6 +6,10 @@ enum AdoptableBreed: String, CaseIterable {
   case smilodon = "Smilodon"
   case tonkinese = "Tonkinese"
 
+  static var shuffledAdoptableBreeds: [AdoptableBreed] {
+    AdoptableBreed.allCases.shuffled()
+  }
+
   func article(shouldCapitalize: Bool) -> String {
     switch self {
     case .abyssinian:

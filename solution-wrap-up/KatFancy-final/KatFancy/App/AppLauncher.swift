@@ -1,5 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
-// https://mokacoding.com/blog/prevent-swiftui-app-loading-in-unit-tests/
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/29/23.
 
 import SwiftUI
 

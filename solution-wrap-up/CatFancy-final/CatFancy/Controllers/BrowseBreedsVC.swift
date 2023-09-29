@@ -1,11 +1,10 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/24/22.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/27/23.
 
 import UIKit
 
 class BrowseBreedsVC: UIViewController {
   let deleSource: BrowseBreedsDeleSource
   private var loadingState: LoadingState = .notStarted
-  private let photoCache = NSCache<NSString, UIImage>()
   private var isRefreshing = false
   private let onRequestFinished: ([Breed]) -> ()
 
@@ -31,7 +30,7 @@ class BrowseBreedsVC: UIViewController {
     view = BrowseBreedsView(frame: UIScreen.main.bounds)
     title = "Browse"
     browseBreedsView.setupTable(dataSource: deleSource, delegate: deleSource)
-    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds), for: .valueChanged)
+    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
     browseBreedsView.retryButton.addTarget(self, action: #selector(retry), for: .touchUpInside)
   }
 

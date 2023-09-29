@@ -1,7 +1,5 @@
 // Created by Josh Adams, who holds the copyright and reserves all rights, on 2/1/23.
 
-import Foundation
-
 enum SortOrder {
   case name
   case category

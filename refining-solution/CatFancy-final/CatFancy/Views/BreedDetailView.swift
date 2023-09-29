@@ -1,17 +1,17 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/24/22.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/27/23.
 
 import UIKit
 
 class BreedDetailView: UIView, UITextViewDelegate {
   @UsesAutoLayout
-  var photoImageView: UIImageView = {
+  private(set) var photoImageView: UIImageView = {
     let photoImageView = UIImageView()
     photoImageView.contentMode = .scaleAspectFit
     return photoImageView
   }()
 
   @UsesAutoLayout
-  var descriptionTextView: UITextView = {
+  private(set) var descriptionTextView: UITextView = {
     let descriptionTextView = UITextView()
     descriptionTextView.font = Fonts.smallBody
     descriptionTextView.bounces = false
@@ -43,7 +43,7 @@ class BreedDetailView: UIView, UITextViewDelegate {
     return wikipediaButton
   }()
 
-  static let initialPhotoHeightWidth: CGFloat = 180.0
+  private static let initialPhotoHeightWidth: CGFloat = 180.0
   private var photoHeight: NSLayoutConstraint?
   private var photoWidth: NSLayoutConstraint?
 

@@ -1,9 +1,9 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/29/23.
 
 import UIKit
 
 actor ImageLoader {
-  var session = URLSession.shared
+  private var session = URLSession.shared
   private var loaderStatuses: [URL: LoaderStatus] = [:]
 
   private enum LoaderStatus {

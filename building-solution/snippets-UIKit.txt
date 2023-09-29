@@ -446,6 +446,8 @@ class SoundPlayer {
 }
 
 21.
+import UIKit
+
 class BrowseBreedsVC: UIViewController {
   private let soundPlayer = SoundPlayer()
   private let deleSource: BrowseBreedsDeleSource
@@ -560,11 +562,11 @@ enum SortOrder: String, CaseIterable {
 }
 
 23.
-  func sortBreeds() {
-    breeds.sort { breed1, breed2 in
-      SortOrder.current.compare(breed1: breed1, breed2: breed2)
-    }
+func sortBreeds() {
+  breeds.sort { breed1, breed2 in
+    SortOrder.current.compare(breed1: breed1, breed2: breed2)
   }
+}
 
 24.
 deleSource.sortBreeds()

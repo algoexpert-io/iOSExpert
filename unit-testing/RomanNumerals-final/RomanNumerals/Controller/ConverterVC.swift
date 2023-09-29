@@ -3,15 +3,15 @@
 import UIKit
 
 class ConverterVC: UIViewController {
-  private let converter: Converter
-  let converterDataSource: ConverterDataSource
   private var converterTextFieldDelegate: ConverterTextFieldDelegate?
+  let converterDataSource: ConverterDataSource
+  private let converter: Converter
 
   var converterView: ConverterView {
     if let castedView = view as? ConverterView {
       return castedView
     } else {
-      fatalError("Could not cast \(self).view to \(ConverterView.self).")
+      fatalError(fatalCastMessage(view: ConverterView.self))
     }
   }
 

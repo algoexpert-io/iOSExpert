@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/18/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/26/23.
 
 @testable import RomanNumerals
 import XCTest
@@ -16,24 +16,33 @@ final class AnalyticsServiceSpyTests: XCTestCase {
     }
     spy.clearEvents()
 
+    // converterViewLoaded
     let converterVC = await ConverterVC()
     await converterVC.loadView()
     XCTAssertEqual(.converterViewLoaded, spy.processedEvents[0])
 
+    // conversionFailed (decimal to Roman)
     let converter = Converter()
-
     _ = converter.convertFromDecimalToRoman("🥥")
     XCTAssertEqual(.conversionFailed, spy.processedEvents[1])
+
+    // conversionSucceeded (decimal to Roman)
     _ = converter.convertFromDecimalToRoman("42")
     XCTAssertEqual(.conversionSucceeded, spy.processedEvents[2])
 
+    // conversionFailed (Roman to decimal)
     _ = converter.convertFromRomanToDecimal("🍕")
     XCTAssertEqual(.conversionFailed, spy.processedEvents[3])
+
+    // conversionFailed (Roman to decimal, non-canonical)
     _ = converter.convertFromRomanToDecimal("IIII")
     XCTAssertEqual(.conversionFailed, spy.processedEvents[4])
+
+    // conversionSucceeded (Roman to decimal)
     _ = converter.convertFromRomanToDecimal("IV")
     XCTAssertEqual(.conversionSucceeded, spy.processedEvents[5])
 
+    // weatherRequestSucceeded or weatherRequestFailed
     if await WeatherRequester.getCurrentConditionsInRome() != nil {
       XCTAssertEqual(.weatherRequestSucceeded, spy.processedEvents[6])
     } else {

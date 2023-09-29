@@ -24,8 +24,8 @@
 		032729CF2A66ED7C00086BA5 /* BreedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032729CE2A66ED7C00086BA5 /* BreedCell.swift */; };
 		032729D12A67394300086BA5 /* ImageLoaderSC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032729D02A67394300086BA5 /* ImageLoaderSC.swift */; };
 		03424A1F2A63A1130098E66C /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03424A1E2A63A1130098E66C /* Localization.swift */; };
-		03D09C702A7377640037FB30 /* ImageLoaderSCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C6F2A7377640037FB30 /* ImageLoaderSCTests.swift */; };
-		03D09C722A7377770037FB30 /* BreedsLoaderSCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C712A7377770037FB30 /* BreedsLoaderSCTests.swift */; };
+		03D09C4D2A73732F0037FB30 /* BreedsLoaderSCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C4C2A73732F0037FB30 /* BreedsLoaderSCTests.swift */; };
+		03D09C4F2A7373610037FB30 /* ImageLoaderSCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D09C4E2A7373610037FB30 /* ImageLoaderSCTests.swift */; };
 		03F1F38D2A634D9200C3E61B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1F38C2A634D9200C3E61B /* AppDelegate.swift */; };
 		03F1F38F2A634D9200C3E61B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F1F38E2A634D9200C3E61B /* SceneDelegate.swift */; };
 		03F1F3962A634D9500C3E61B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F1F3952A634D9500C3E61B /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		03D09C6A2A73770B0037FB30 /* PBXContainerItemProxy */ = {
+		03D09C462A7372CC0037FB30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03F1F3812A634D9200C3E61B /* Project object */;
 			proxyType = 1;
@@ -65,9 +65,9 @@
 		032729CE2A66ED7C00086BA5 /* BreedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCell.swift; sourceTree = "<group>"; };
 		032729D02A67394300086BA5 /* ImageLoaderSC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSC.swift; sourceTree = "<group>"; };
 		03424A1E2A63A1130098E66C /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		03D09C662A73770B0037FB30 /* IslandCatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IslandCatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03D09C6F2A7377640037FB30 /* ImageLoaderSCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSCTests.swift; sourceTree = "<group>"; };
-		03D09C712A7377770037FB30 /* BreedsLoaderSCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderSCTests.swift; sourceTree = "<group>"; };
+		03D09C422A7372CB0037FB30 /* IslandCatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IslandCatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D09C4C2A73732F0037FB30 /* BreedsLoaderSCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoaderSCTests.swift; sourceTree = "<group>"; };
+		03D09C4E2A7373610037FB30 /* ImageLoaderSCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderSCTests.swift; sourceTree = "<group>"; };
 		03F1F3892A634D9200C3E61B /* IslandCats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IslandCats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03F1F38C2A634D9200C3E61B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03F1F38E2A634D9200C3E61B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		03D09C632A73770B0037FB30 /* Frameworks */ = {
+		03D09C3F2A7372CB0037FB30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,20 +167,28 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		03D09C672A73770B0037FB30 /* IslandCatsTests */ = {
+		03D09C432A7372CC0037FB30 /* IslandCatsTests */ = {
 			isa = PBXGroup;
 			children = (
-				03D09C712A7377770037FB30 /* BreedsLoaderSCTests.swift */,
-				03D09C6F2A7377640037FB30 /* ImageLoaderSCTests.swift */,
+				03D09C4B2A7372DD0037FB30 /* Helpers */,
 			);
 			path = IslandCatsTests;
+			sourceTree = "<group>";
+		};
+		03D09C4B2A7372DD0037FB30 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03D09C4C2A73732F0037FB30 /* BreedsLoaderSCTests.swift */,
+				03D09C4E2A7373610037FB30 /* ImageLoaderSCTests.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		03F1F3802A634D9200C3E61B = {
 			isa = PBXGroup;
 			children = (
 				03F1F38B2A634D9200C3E61B /* IslandCats */,
-				03D09C672A73770B0037FB30 /* IslandCatsTests */,
+				03D09C432A7372CC0037FB30 /* IslandCatsTests */,
 				03F1F38A2A634D9200C3E61B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -189,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				03F1F3892A634D9200C3E61B /* IslandCats.app */,
-				03D09C662A73770B0037FB30 /* IslandCatsTests.xctest */,
+				03D09C422A7372CB0037FB30 /* IslandCatsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,22 +219,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		03D09C652A73770B0037FB30 /* IslandCatsTests */ = {
+		03D09C412A7372CB0037FB30 /* IslandCatsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 03D09C6E2A73770B0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */;
+			buildConfigurationList = 03D09C4A2A7372CC0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */;
 			buildPhases = (
-				03D09C622A73770B0037FB30 /* Sources */,
-				03D09C632A73770B0037FB30 /* Frameworks */,
-				03D09C642A73770B0037FB30 /* Resources */,
+				03D09C3E2A7372CB0037FB30 /* Sources */,
+				03D09C3F2A7372CB0037FB30 /* Frameworks */,
+				03D09C402A7372CB0037FB30 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				03D09C6B2A73770B0037FB30 /* PBXTargetDependency */,
+				03D09C472A7372CC0037FB30 /* PBXTargetDependency */,
 			);
 			name = IslandCatsTests;
 			productName = IslandCatsTests;
-			productReference = 03D09C662A73770B0037FB30 /* IslandCatsTests.xctest */;
+			productReference = 03D09C422A7372CB0037FB30 /* IslandCatsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		03F1F3882A634D9200C3E61B /* IslandCats */ = {
@@ -256,7 +264,7 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					03D09C652A73770B0037FB30 = {
+					03D09C412A7372CB0037FB30 = {
 						CreatedOnToolsVersion = 15.0;
 						LastSwiftMigration = 1500;
 						TestTargetID = 03F1F3882A634D9200C3E61B;
@@ -280,13 +288,13 @@
 			projectRoot = "";
 			targets = (
 				03F1F3882A634D9200C3E61B /* IslandCats */,
-				03D09C652A73770B0037FB30 /* IslandCatsTests */,
+				03D09C412A7372CB0037FB30 /* IslandCatsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03D09C642A73770B0037FB30 /* Resources */ = {
+		03D09C402A7372CB0037FB30 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,12 +313,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		03D09C622A73770B0037FB30 /* Sources */ = {
+		03D09C3E2A7372CB0037FB30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D09C702A7377640037FB30 /* ImageLoaderSCTests.swift in Sources */,
-				03D09C722A7377770037FB30 /* BreedsLoaderSCTests.swift in Sources */,
+				03D09C4F2A7373610037FB30 /* ImageLoaderSCTests.swift in Sources */,
+				03D09C4D2A73732F0037FB30 /* BreedsLoaderSCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,10 +356,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03D09C6B2A73770B0037FB30 /* PBXTargetDependency */ = {
+		03D09C472A7372CC0037FB30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 03F1F3882A634D9200C3E61B /* IslandCats */;
-			targetProxy = 03D09C6A2A73770B0037FB30 /* PBXContainerItemProxy */;
+			targetProxy = 03D09C462A7372CC0037FB30 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -367,7 +375,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		03D09C6C2A73770B0037FB30 /* Debug */ = {
+		03D09C482A7372CC0037FB30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -387,7 +395,7 @@
 			};
 			name = Debug;
 		};
-		03D09C6D2A73770B0037FB30 /* Release */ = {
+		03D09C492A7372CC0037FB30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -532,7 +540,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IslandCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -560,7 +568,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IslandCats/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -584,11 +592,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03D09C6E2A73770B0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */ = {
+		03D09C4A2A7372CC0037FB30 /* Build configuration list for PBXNativeTarget "IslandCatsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				03D09C6C2A73770B0037FB30 /* Debug */,
-				03D09C6D2A73770B0037FB30 /* Release */,
+				03D09C482A7372CC0037FB30 /* Debug */,
+				03D09C492A7372CC0037FB30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

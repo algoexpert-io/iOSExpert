@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 6/1/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/27/23.
 
 import UIKit
 
@@ -28,10 +28,10 @@ class BrowseBreedsVC: UIViewController {
   override func loadView() {
     view = BrowseBreedsView(frame: UIScreen.main.bounds)
     title = "Browse"
-    deleSource.navigationController = navigationController
     browseBreedsView.setupTable(dataSource: deleSource, delegate: deleSource)
-    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds), for: .valueChanged)
+    browseBreedsView.refreshControl.addTarget(self, action: #selector(refreshBreeds(_:)), for: .valueChanged)
     browseBreedsView.retryButton.addTarget(self, action: #selector(retry), for: .touchUpInside)
+    deleSource.navigationController = navigationController
   }
 
   override func viewWillAppear(_ animated: Bool) {

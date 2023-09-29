@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 4/8/23.
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/25/23.
 
 @testable import RomanNumerals
 import XCTest
@@ -10,7 +10,7 @@ final class ConverterTests: XCTestCase {
     XCTAssertNil(converter.convertFromDecimalToRoman("coconut"))
     XCTAssertNil(converter.convertFromDecimalToRoman("0"))
     XCTAssertNil(converter.convertFromDecimalToRoman("5000"))
-
+    XCTAssertEqual(converter.convertFromDecimalToRoman("1"), "I")
     XCTAssertEqual(converter.convertFromDecimalToRoman("4999"), "MMMMCMXCIX")
     XCTAssertEqual(converter.convertFromDecimalToRoman("700"), "DCC")
     XCTAssertEqual(converter.convertFromDecimalToRoman("450"), "CDL")
@@ -35,7 +35,6 @@ final class ConverterTests: XCTestCase {
 
     XCTAssertNil(converter.convertFromRomanToDecimal("COCONUT"))
     XCTAssertNil(converter.convertFromRomanToDecimal("IIII"))
-
     XCTAssertEqual(converter.convertFromRomanToDecimal("MDCLXIV"), "1664")
   }
 }
