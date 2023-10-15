@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/15/23.
+// Copyright © 2023 AlgoExpert LLC. All rights reserved.
 
 enum Localization {
   private static var localizations: [String: String] = [

@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 7/22/23.
+// Copyright © 2023 AlgoExpert LLC. All rights reserved.
 
 enum AdoptableBreed: String, CaseIterable {
   case abyssinian = "Abyssinian"

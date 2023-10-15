@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/24/22.
+// Copyright © 2023 AlgoExpert LLC. All rights reserved.
 
 @testable import CatFancy
 import XCTest

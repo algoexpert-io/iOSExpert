@@ -1,4 +1,4 @@
-// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/26/23.
+// Copyright © 2023 AlgoExpert LLC. All rights reserved.
 
 protocol AnalyticsService {
   func sendAnalyticsEvent(_ analyticsEvent: AnalyticsEvent)
