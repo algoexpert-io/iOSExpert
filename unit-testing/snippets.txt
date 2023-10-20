@@ -349,10 +349,11 @@ import XCTest
 final class PersistentStorageTests: XCTestCase {
   func testPersistAndLoadStringArray() {
     let sampleStringArray = ["🥥", "🍕", "🐋"]
-    PersistentStorage.persistStringArray([])
-    XCTAssertEqual([], PersistentStorage.loadStringArray())
-    PersistentStorage.persistStringArray(sampleStringArray)
-    XCTAssertEqual(sampleStringArray, PersistentStorage.loadStringArray())
+    let persistentStorage = PersistentStorage()
+    persistentStorage.persistStringArray([])
+    XCTAssertEqual([], persistentStorage.loadStringArray())
+    persistentStorage.persistStringArray(sampleStringArray)
+    XCTAssertEqual(sampleStringArray, persistentStorage.loadStringArray())
   }
 }
 
