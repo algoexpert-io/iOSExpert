@@ -338,7 +338,7 @@ import XCTest
 
 final class DeviceTests: XCTestCase {
   func testUserFacingMessage() {
-    XCTAssertEqual("RomanNumerals is running on Simulator.", Device.userFacingMessage)
+    XCTAssertEqual("RomanNumerals is running on Simulator.", Device().userFacingMessage)
   }
 }
 
