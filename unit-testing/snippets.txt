@@ -490,9 +490,6 @@ window.rootViewController = ConverterVC(
 )
 
 36.
-let converter = Converter(soundPlayer: SoundPlayerDummy())
-
-37.
 @testable import RomanNumerals
 import XCTest
 
@@ -503,6 +500,9 @@ final class SoundPlayerDummyTests: XCTestCase {
     soundPlayer.play(.sadTrombone)
   }
 }
+
+37.
+let converter = Converter(soundPlayer: SoundPlayerDummy())
 
 38.
 @testable import RomanNumerals
