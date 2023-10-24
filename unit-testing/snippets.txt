@@ -1139,7 +1139,7 @@ override func tearDown() {
 
 83.
 func testAddTwoInts() {
-  XCTAssertEqual(42, Adder.addTwoInts(int1: 20, int2: 22)
+  XCTAssertEqual(42, Adder.addTwoInts(int1: 20, int2: 22))
 }
 
 84.
@@ -1150,7 +1150,7 @@ enum Adder {
 }
 
 85.
-XCTAssertEqual(2, Adder.addTwoInts(int1: 1, int2: 1)
+XCTAssertEqual(2, Adder.addTwoInts(int1: 1, int2: 1))
 
 86.
 enum Adder {
