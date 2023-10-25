@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0345938D2A076167002E77FD /* GetterSetterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345938C2A076167002E77FD /* GetterSetterProtocol.swift */; };
+		0345938D2A076167002E77FD /* GetterSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345938C2A076167002E77FD /* GetterSetter.swift */; };
 		0345938F2A0761F3002E77FD /* GetterSetterFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345938E2A0761F3002E77FD /* GetterSetterFake.swift */; };
 		034593912A076205002E77FD /* GetterSetterReal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034593902A076205002E77FD /* GetterSetterReal.swift */; };
-		034593932A0766BE002E77FD /* ReviewPrompterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034593922A0766BE002E77FD /* ReviewPrompterProtocol.swift */; };
+		034593932A0766BE002E77FD /* ReviewPrompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034593922A0766BE002E77FD /* ReviewPrompter.swift */; };
 		034593952A07670F002E77FD /* ReviewPrompterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034593942A07670F002E77FD /* ReviewPrompterSpy.swift */; };
 		034593972A076877002E77FD /* ReviewPrompterReal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034593962A076877002E77FD /* ReviewPrompterReal.swift */; };
 		03F567BA2A06B19E00E29F70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F567B92A06B19E00E29F70 /* AppDelegate.swift */; };
@@ -23,10 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0345938C2A076167002E77FD /* GetterSetterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetterProtocol.swift; sourceTree = "<group>"; };
+		0345938C2A076167002E77FD /* GetterSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetter.swift; sourceTree = "<group>"; };
 		0345938E2A0761F3002E77FD /* GetterSetterFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetterFake.swift; sourceTree = "<group>"; };
 		034593902A076205002E77FD /* GetterSetterReal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetterSetterReal.swift; sourceTree = "<group>"; };
-		034593922A0766BE002E77FD /* ReviewPrompterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompterProtocol.swift; sourceTree = "<group>"; };
+		034593922A0766BE002E77FD /* ReviewPrompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompter.swift; sourceTree = "<group>"; };
 		034593942A07670F002E77FD /* ReviewPrompterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompterSpy.swift; sourceTree = "<group>"; };
 		034593962A076877002E77FD /* ReviewPrompterReal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPrompterReal.swift; sourceTree = "<group>"; };
 		03F567B62A06B19E00E29F70 /* UnitTestingBonus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTestingBonus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,9 +95,9 @@
 			children = (
 				03F567F62A06E5CE00E29F70 /* FormatterWithInjection.swift */,
 				0345938E2A0761F3002E77FD /* GetterSetterFake.swift */,
-				0345938C2A076167002E77FD /* GetterSetterProtocol.swift */,
+				0345938C2A076167002E77FD /* GetterSetter.swift */,
 				034593902A076205002E77FD /* GetterSetterReal.swift */,
-				034593922A0766BE002E77FD /* ReviewPrompterProtocol.swift */,
+				034593922A0766BE002E77FD /* ReviewPrompter.swift */,
 				034593962A076877002E77FD /* ReviewPrompterReal.swift */,
 				034593942A07670F002E77FD /* ReviewPrompterSpy.swift */,
 			);
@@ -178,13 +178,13 @@
 				03F567BE2A06B19E00E29F70 /* ViewController.swift in Sources */,
 				034593912A076205002E77FD /* GetterSetterReal.swift in Sources */,
 				03F567BA2A06B19E00E29F70 /* AppDelegate.swift in Sources */,
-				034593932A0766BE002E77FD /* ReviewPrompterProtocol.swift in Sources */,
+				034593932A0766BE002E77FD /* ReviewPrompter.swift in Sources */,
 				034593952A07670F002E77FD /* ReviewPrompterSpy.swift in Sources */,
 				034593972A076877002E77FD /* ReviewPrompterReal.swift in Sources */,
 				03F567BC2A06B19E00E29F70 /* SceneDelegate.swift in Sources */,
 				03F567F72A06E5CE00E29F70 /* FormatterWithInjection.swift in Sources */,
 				0345938F2A0761F3002E77FD /* GetterSetterFake.swift in Sources */,
-				0345938D2A076167002E77FD /* GetterSetterProtocol.swift in Sources */,
+				0345938D2A076167002E77FD /* GetterSetter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
