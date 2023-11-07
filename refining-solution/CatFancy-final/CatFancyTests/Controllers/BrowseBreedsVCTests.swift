@@ -30,7 +30,7 @@ class BrowseBreedsVCTests: XCTestCase {
     testScenario(breedsURL: .malformed, expectedBreedCount: expectedBreedCount)
   }
 
-  func testScenario(breedsURL: BreedsURL, expectedBreedCount: Int, expectedFirstName: String? = nil) {
+  private func testScenario(breedsURL: BreedsURL, expectedBreedCount: Int, expectedFirstName: String? = nil) {
     Current.settings.breedsURL = breedsURL
     var breeds: [Breed] = []
     var selectedBreed: Breed?
