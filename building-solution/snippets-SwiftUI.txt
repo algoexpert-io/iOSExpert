@@ -136,10 +136,10 @@ struct BrowseBreedsView: View {
 }
 
 8.
-throw NSError()
+state = .error
 
 9.
-return []
+state = .loaded(breeds: [])
 
 10.
 import SwiftUI
